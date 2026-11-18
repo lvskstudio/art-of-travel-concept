@@ -1,6 +1,6 @@
 (function () {
   var v = document.body.dataset.variant;
-  var items = [['a', 'A'], ['b', 'B'], ['c1', 'C1'], ['c2', 'C2'], ['d', 'D']];
+  var items = [['a', 'A'], ['b', 'B'], ['c1', 'C1'], ['d', 'D']];
   var nav = document.createElement('nav');
   nav.className = 'switcher';
   var home = location.protocol === 'file:' || /localhost|127\.0\.0\.1/.test(location.host) ? 'index.html' : './';
@@ -17,13 +17,14 @@
 })();
 
 // Plays a paused GSAP intro timeline on its own after `delay` seconds.
-// Scroll is locked while it runs; wheel / touch / key / click just speeds it up.
+// The page is never locked: the first scroll / touch / key / click jumps the intro
+// almost instantly to the hero, so scrolling always works right away.
 window.autoIntro = function (tl, delay) {
-  var root = document.documentElement, done = false;
-  root.style.overflow = 'hidden';
+  var done = false;
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   var timer = setTimeout(function () { tl.play(); }, delay * 1000);
-  function finish() { if (done) return; done = true; root.style.overflow = ''; off(); }
-  function skip() { clearTimeout(timer); tl.timeScale(2.4).play(); }
+  function finish() { if (done) return; done = true; off(); }
+  function skip() { clearTimeout(timer); tl.timeScale(8).play(); off(); }
   var evs = ['wheel', 'touchstart', 'keydown', 'mousedown'];
   function off() { evs.forEach(function (e) { removeEventListener(e, skip); }); }
   evs.forEach(function (e) { addEventListener(e, skip, { passive: true }); });

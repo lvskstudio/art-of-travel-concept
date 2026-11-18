@@ -32,10 +32,10 @@
 .btn{display:inline-flex;align-items:center;gap:12px;border-radius:999px;font:600 15px/1 'Manrope';padding:17px 28px;background:var(--cream);color:var(--ink);transition:transform .25s ease}
 .btn:hover{transform:translateY(-2px)}
 .btn.sm{font-size:14px;padding:12px 22px}
-.btn.ghost{background:rgba(255,255,255,.12);color:var(--cream);border:1px solid rgba(244,238,227,.5);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.btn.ghost{background:rgba(10,14,28,.35);color:var(--cream);border:1px solid rgba(244,238,227,.5)}
 .btn.ghost i{width:0;height:0;border-left:10px solid var(--cream);border-top:6px solid transparent;border-bottom:6px solid transparent}
 .chip{position:absolute;left:0;right:0;top:24vh;text-align:center;font:500 12px/1 'Manrope';letter-spacing:.3em;text-transform:uppercase;opacity:.9}
-.chip span{display:inline-block;padding:11px 18px;border:1px solid rgba(244,238,227,.45);border-radius:999px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(255,255,255,.06)}
+.chip span{display:inline-block;padding:11px 18px;border:1px solid rgba(244,238,227,.45);border-radius:999px;background:rgba(10,14,28,.3)}
 .ptitle{position:absolute;top:31vh;left:0;right:0;text-align:center;font:300 8.6vw/1 'Cormorant Garamond',serif;white-space:nowrap}
 .tag{position:absolute;top:calc(31vh + 11.6vw);left:0;right:0;text-align:center;font:400 clamp(22px,2.2vw,30px)/1.3 'Cormorant Garamond',serif;opacity:.95}
 .btns{position:absolute;top:calc(31vh + 11.6vw + 64px);left:0;right:0;display:flex;justify-content:center;gap:14px}
@@ -81,7 +81,7 @@
 const clips = [...document.querySelectorAll('.clip')], dots = [...document.querySelectorAll('.dots i')], where = document.querySelector('.where');
 let cur = 0;
 function show(i) {
-  clips.forEach((c, k) => { c.classList.toggle('on', k === i); const v = c.querySelector('video'); if (k === i) { v.currentTime = 0; v.play().catch(() => {}); } });
+  clips.forEach((c, k) => { c.classList.toggle('on', k === i); const v = c.querySelector('video'); if (k === i) { v.currentTime = 0; v.play().catch(() => {}); } else { setTimeout(() => { if (!c.classList.contains('on')) v.pause(); }, 1200); } });
   dots.forEach((d, k) => { d.classList.remove('on'); if (k === i) { void d.offsetWidth; d.classList.add('on'); } });
   where.textContent = clips[i].dataset.loc;
 }

@@ -11,7 +11,7 @@
 <style>
 :root{--navy:#021A52;--ink:#0F1A33;--cream:#F7F3EA}
 .pin{position:relative;height:100vh;overflow:hidden;background:#DDE3EA}
-.ph{position:absolute;left:-5.56vw;top:-6.46vw;width:111.1vw;aspect-ratio:3/2;background-size:cover;background-position:center;will-change:transform,filter}
+.ph{position:absolute;left:-5.56vw;top:-6.46vw;width:111.1vw;aspect-ratio:3/2;background-size:cover;background-position:center;will-change:transform}
 .photo{background-image:url(assets/dolomites.jpg)}
 .cut{background-image:url(assets/dolomites-cut.webp);z-index:3}
 .fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(244,245,246,.35),rgba(244,245,246,.55) 50%,rgba(244,245,246,.3))}
@@ -82,10 +82,8 @@
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="shared.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger);
 const title = document.querySelector('.title');
 const titleY0 = () => innerHeight * .44 - title.offsetTop - title.offsetHeight / 2;
 gsap.set('.ph', { y: () => innerWidth * .16, scale: 1.08, transformOrigin: '50% 30%' });
@@ -106,6 +104,7 @@ tl.to('.intro-s', { opacity: 0, duration: .4 }, 0)
   .to('.shade', { opacity: 1, duration: .8 }, 1)
   .to('.slogan', { opacity: 1, duration: .6 }, 1.4)
   .to('.ui', { opacity: 1, duration: .7 }, 1.5);
+tl.call(() => { document.querySelector('.fog').style.display = 'none'; });
 autoIntro(tl, 1.8);
 // depth parallax on mouse
 const qx = { photo: gsap.quickTo('.photo', 'x', { duration: .8 }), cut: gsap.quickTo('.cut', 'x', { duration: .8 }), title: gsap.quickTo(title, 'x', { duration: .8 }) };

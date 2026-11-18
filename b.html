@@ -21,7 +21,7 @@
 .btn.sm{font-size:14px;padding:12px 22px}
 .big{position:absolute;left:0;right:0;top:10.2vh;text-align:center;font:300 8.6vw/1 'Cormorant Garamond',serif;color:var(--navy);white-space:nowrap;z-index:2}
 /* window: final box = Figma hero (x 56..1384, y 29.5vh..88vh), organic blob via objectBoundingBox clip-path */
-.win{position:absolute;z-index:3;clip-path:url(#blobClip);-webkit-clip-path:url(#blobClip);will-change:top,left,width,height}
+.win{position:absolute;z-index:3;clip-path:url(#blobClip);-webkit-clip-path:url(#blobClip)}
 .win video,.win .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .win .still{background:url(assets/dolomites.jpg) center 45%/cover;opacity:0;transform:scale(1.08)}
 .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cream);background:rgba(2,26,82,.38)}
@@ -29,7 +29,7 @@
 .ov .t{font:500 26px/1 'Cormorant Garamond',serif;letter-spacing:.42em;margin-top:30px;animation:fade 1s .6s both}
 .ov .s{font:500 12px/1 'Manrope';letter-spacing:.3em;text-transform:uppercase;margin-top:18px;animation:fade 1s 1s both}
 .cta{position:absolute;left:50%;transform:translateX(-50%);top:calc(29.5vh - 26px);z-index:4}
-.glass{position:absolute;right:calc(3.9vw + 44px);bottom:calc(12vh + 40px);z-index:4;padding:18px 22px;border-radius:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);color:#fff}
+.glass{position:absolute;right:calc(3.9vw + 44px);bottom:calc(12vh + 40px);z-index:4;padding:18px 22px;border-radius:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff}
 .glass small{display:block;font:500 11px/1 'Manrope';letter-spacing:.2em;text-transform:uppercase;opacity:.85}
 .glass b{display:block;font:500 24px/1.1 'Cormorant Garamond',serif;margin-top:8px}
 .row{position:absolute;left:56px;right:56px;bottom:3.6vh;display:flex;justify-content:space-between;align-items:center;color:var(--navy);z-index:4}
@@ -71,18 +71,15 @@
 const P = [[.04,.16],[.13,.03],[.30,.10],[.45,.07],[.60,.04],[.80,0],[.93,.10],[1,.22],[.985,.45],[.975,.62],[1,.85],[.90,.97],[.72,.94],[.55,.96],[.36,1],[.15,.99],[.04,.90],[0,.70],[.02,.50],[0,.32]];
 const R = P.map(([x, y]) => Math.min(x, 1 - x) < Math.min(y, 1 - y) ? [Math.round(x), y] : [x, Math.round(y)]);
 const path = document.getElementById('blobPath');
-const st = { m: 0, wob: 0 };
-function draw(t) {
-  const pts = P.map((p, i) => {
-    const w = st.wob * .012 * Math.sin(t / 1400 + i * 1.7);
-    return [R[i][0] + (p[0] - R[i][0]) * st.m + w, R[i][1] + (p[1] - R[i][1]) * st.m + w * .8];
-  });
+const st = { m: 0 };
+// redrawn only while the shape is morphing (no per-frame work afterwards, so scrolling stays smooth)
+function draw() {
+  const pts = P.map((p, i) => [R[i][0] + (p[0] - R[i][0]) * st.m, R[i][1] + (p[1] - R[i][1]) * st.m]);
   if (st.m === 0) { path.setAttribute('d', 'M0 0H1V1H0Z'); return; }
   const n = pts.length; let d = `M ${(pts[0][0] + pts[n - 1][0]) / 2} ${(pts[0][1] + pts[n - 1][1]) / 2}`;
   for (let i = 0; i < n; i++) { const p = pts[i], q = pts[(i + 1) % n]; d += ` Q ${p[0]} ${p[1]} ${(p[0] + q[0]) / 2} ${(p[1] + q[1]) / 2}`; }
   path.setAttribute('d', d + ' Z');
 }
-(function loop(t) { draw(t || 0); requestAnimationFrame(loop); })();
 
 const win = document.querySelector('.win');
 gsap.set(win, { top: 0, left: 0, width: '100vw', height: '100vh' });
@@ -92,14 +89,15 @@ gsap.set('.big', { y: 50 });
 const tl = gsap.timeline({ paused: true });
 tl.to('.ov', { opacity: 0, duration: .4 }, 0)
   .to(win, { top: '29.5vh', left: '3.9vw', width: '92.2vw', height: '58.5vh', ease: 'power3.inOut', duration: 1.5 }, 0)
-  .to(st, { m: 1, ease: 'power2.inOut', duration: 1.5 }, 0)
+  .to(st, { m: 1, ease: 'power2.inOut', duration: 1.5, onUpdate: draw }, 0)
   .to('.still', { opacity: 1, duration: 1, ease: 'none' }, .5)
   .call(() => gsap.to('.still', { scale: 1, duration: 7, ease: 'none' }), null, .5)
   .to('.big', { opacity: 1, y: 0, duration: .8, ease: 'power2.out' }, .7)
   .to('.nav', { opacity: 1, duration: .6 }, .9)
   .to('.cta, .glass', { opacity: 1, duration: .6 }, 1.1)
-  .to('.row', { opacity: 1, duration: .6 }, 1.2)
-  .to(st, { wob: 1, duration: 1 }, 1.4);
+  .to('.row', { opacity: 1, duration: .6 }, 1.2);
+// once the window has settled, the full-screen video is no longer visible: pause it to save work
+tl.call(() => { const v = win.querySelector('video'); v.pause(); }, null, 1.6);
 autoIntro(tl, 2.6);
 </script>
 </body>
