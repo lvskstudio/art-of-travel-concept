@@ -2,15 +2,43 @@
 <html lang="uk">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>The Art of Travel — нові концепції</title>
+<title>The Art of Travel — головна сторінка, 3 варіанти</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r2a">
 <style>
-html,body{height:100%;margin:0}
-body{display:flex;align-items:center;justify-content:center;background:#F2ECE2;color:#021A52;font:400 18px/1.5 Georgia,serif;text-align:center;padding:0 16px}
-p{margin:0}
-small{display:block;margin-top:10px;font:500 12px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
+body{background:var(--bone);color:var(--navy);min-height:100vh;padding:56px 16px 64px}
+.wrap{max-width:1180px;margin:0 auto}
+.top{display:flex;align-items:center;gap:14px;font:500 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.top img{width:34px}
+h1{margin-top:40px;font:300 clamp(40px,6vw,76px)/1 var(--serif)}
+.lead{margin-top:18px;max-width:560px;font-size:16px;line-height:1.6;opacity:.8}
+.grid{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.v{position:relative;display:block;border-radius:22px;overflow:hidden;aspect-ratio:4/5;color:var(--cream);background:var(--navy)}
+.v img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
+.v:hover img{transform:scale(1.05)}
+.v::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,26,82,.85),rgba(2,26,82,0) 55%)}
+.v div{position:absolute;z-index:2;left:24px;right:24px;bottom:22px}
+.v small{font:600 11px/1 var(--sans);letter-spacing:.2em;color:var(--gold)}
+.v b{display:block;margin-top:10px;font:400 32px/1.05 var(--serif)}
+.v p{margin-top:10px;font-size:13px;line-height:1.5;opacity:.85}
+.note{margin-top:36px;font-size:13px;opacity:.6}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.v{aspect-ratio:4/3}}
 </style>
 </head>
-<body><div><p>Нові концепції першого екрану готуються.</p><small>The Art of Travel · LVSKSTUDIO</small></div></body>
+<body>
+<div class="wrap">
+  <div class="top"><img src="assets/logo-navy.png" alt="">Дизайн-концепт · LVSKSTUDIO</div>
+  <h1>Перший екран сайту —<br>три варіанти</h1>
+  <p class="lead">Кожна сторінка — живий прототип: інтро програється автоматично і приводить на головний екран. Відкрийте з комп’ютера і з телефона.</p>
+  <div class="grid">
+    <a class="v" href="v1.html?v=r2a"><img src="assets/r2/montage-poster.jpg?v=r2a" alt=""><div><small>ВАРІАНТ 1</small><b>Крізь букву A</b><p>Нарізка з турів грає всередині логотипу, камера пролітає крізь букву у відео.</p></div></a>
+    <a class="v" href="v2.html?v=r2a"><img src="assets/r2/canyon-in-poster.jpg?v=r2a" alt="" style="object-position:50% 70%"><div><small>ВАРІАНТ 2</small><b>Трикутники і глибина</b><p>Фото складаються в гору, вона відкриває каньйон — назва стоїть за Артемом.</p></div></a>
+    <a class="v" href="v3.html?v=r2a"><img src="assets/r2/mug-hand-poster.jpg?v=r2a" alt=""><div><small>ВАРІАНТ 3</small><b>Кружка і скло</b><p>Пара над фірмовою кружкою стає горою, а історія продовжується в скляній картці.</p></div></a>
+  </div>
+  <p class="note">Щоб подивитися інтро ще раз — кнопка «Інтро ще раз» внизу сторінки (на телефоні — просто оновіть сторінку).</p>
+</div>
+</body>
 </html>

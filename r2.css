@@ -1,0 +1,17 @@
+/* The Art of Travel — Round 2 shared tokens */
+:root{
+  --navy:#021A52; --navy-deep:#01102F; --gold:#CB9846; --olive:#635E38; --bone:#E8DDC8; --cream:#F3EBDD;
+  --serif:"Cormorant Garamond", Georgia, serif; --sans:"Manrope", system-ui, sans-serif; --geo:"Montserrat", system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
+.replay{position:fixed;left:16px;bottom:14px;z-index:300;font:500 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--cream);background:rgba(1,16,47,.55);padding:9px 12px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .4s}
+.replay.on{opacity:.85;pointer-events:auto}
+.replay:hover{opacity:1}
+@media (max-width:860px){.replay{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

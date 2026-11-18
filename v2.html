@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Варіант 2 · Трикутники + глибина — The Art of Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&family=Montserrat:wght@200;300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r2a">
+<style>
+body{background:var(--navy);color:var(--cream)}
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:var(--navy)}
+/* intro triangles */
+.tris{position:absolute;z-index:5}
+.tri{position:absolute;inset:0;background-size:cover;background-position:center}
+.intro-name{position:absolute;left:0;right:0;z-index:6;text-align:center}
+.intro-name b{display:block;font:200 clamp(16px,1.6vw,22px)/1 var(--geo);letter-spacing:.42em;padding-left:.42em}
+.intro-name small{display:block;margin-top:14px;font:500 10px/1 var(--geo);letter-spacing:.32em;color:var(--bone);opacity:.7}
+/* reveal: canyon scene with depth */
+.reveal{position:absolute;inset:0;z-index:10;clip-path:polygon(50% 50%,50% 50%,50% 50%);overflow:hidden}
+.scene,.artem{position:absolute;will-change:transform}
+.scene{z-index:1}
+.scene video,.scene img{position:absolute;inset:0;width:100%;height:100%}
+.scene img{opacity:0}
+.title{position:absolute;left:0;right:0;z-index:2;text-align:center;font:300 9.3vw/1 var(--serif);letter-spacing:-.01em;color:var(--cream);white-space:nowrap;will-change:transform}
+.title span{display:inline-block}
+.artem{z-index:3;opacity:0}
+.shade{position:absolute;pointer-events:none;z-index:4}
+.shade.top{left:0;right:0;top:0;height:32%;background:linear-gradient(180deg,rgba(2,26,82,.8),rgba(2,26,82,0))}
+.shade.bottom{left:0;right:0;bottom:0;height:52%;background:linear-gradient(0deg,rgba(2,26,82,.85),rgba(2,26,82,0))}
+.shade.left{left:-30%;bottom:-30%;width:100%;height:110%;background:radial-gradient(closest-side,rgba(2,26,82,.6),rgba(2,26,82,0))}
+.shade{opacity:0}
+/* UI */
+.ui{position:absolute;inset:0;z-index:20;pointer-events:none}
+.ui > *{pointer-events:auto}
+.h0{opacity:0}
+.nav{position:absolute;left:56px;right:56px;top:28px;display:flex;align-items:flex-start;justify-content:space-between}
+.links{display:flex;gap:30px;font-size:13px;padding-top:12px}
+.links a:hover{color:var(--gold)}
+.logo{position:absolute;left:50%;top:-14px;transform:translateX(-50%);width:72px}
+.nright{display:flex;gap:22px;align-items:center}
+.nright small{font:500 11px/1.35 var(--sans);opacity:.85}
+.burger{width:44px;height:44px;border-radius:50%;background:var(--gold);display:grid;place-items:center}
+.burger span{display:block;width:18px;height:2px;background:var(--navy);box-shadow:0 6px 0 var(--navy),0 -6px 0 var(--navy)}
+.explore{position:absolute;left:64px;font:500 12px/1 var(--sans);letter-spacing:.3em;color:var(--gold)}
+.left{position:absolute;left:60px;bottom:118px;max-width:380px}
+.left h2{font:300 clamp(36px,3.8vw,54px)/1.02 var(--serif);text-transform:uppercase}
+.left p{margin-top:16px;font-size:16px;line-height:1.5;opacity:.88}
+.cta{margin-top:28px;display:inline-flex;align-items:center;gap:16px;background:var(--olive);color:var(--cream);font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:9px 9px 9px 24px;border-radius:40px}
+.cta i{width:34px;height:34px;border-radius:50%;border:1px solid rgba(243,235,221,.5);display:grid;place-items:center;font-style:normal;letter-spacing:0}
+.count{position:absolute;left:60px;bottom:48px;display:flex;gap:24px;font:500 11px/1 var(--sans)}
+.count span{opacity:.5}.count span.on{opacity:1;border-bottom:2px solid var(--cream);padding-bottom:8px;width:44px}
+.facts{position:absolute;right:56px;top:43%;width:250px}
+.facts svg{display:block;margin-bottom:12px}
+.facts .row{display:flex;align-items:center;gap:12px;font-size:11px}
+.facts .row i{flex:1;height:1px;background:rgba(243,235,221,.6)}
+.facts p{margin:14px 0 0 26px;font:500 12px/1.5 var(--sans);letter-spacing:.06em}
+.tour{position:absolute;right:56px;bottom:96px;width:274px;height:190px;border-radius:20px;overflow:hidden;border:1px solid rgba(243,235,221,.35)}
+.tour img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.tour:hover img{transform:scale(1.06)}
+.tour::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,26,82,.7),rgba(2,26,82,0) 60%)}
+.tour b{position:absolute;z-index:2;left:18px;bottom:18px;font:500 12px/1.3 var(--sans);letter-spacing:.1em}
+.tour i{position:absolute;z-index:2;right:16px;bottom:14px;width:34px;height:34px;border-radius:50%;background:var(--cream);color:var(--navy);display:grid;place-items:center;font-style:normal}
+.cal{position:absolute;right:56px;bottom:48px;font:500 11px/1 var(--sans);letter-spacing:.14em}
+.cal:hover{color:var(--gold)}
+@media (max-width:860px){
+  .nav{left:20px;right:20px;top:18px}.links,.nright small{display:none}
+  .logo{width:48px;top:-4px}
+  .nav::before{content:"UA / EN";font:500 12px/44px var(--sans)}
+  .burger{width:40px;height:40px}
+  .title{font-size:17.5vw;line-height:.95;white-space:normal}
+  .title span{display:block}
+  .explore{left:0;right:0;text-align:center;font-size:10px;letter-spacing:.24em}
+  .left{left:22px;right:22px;bottom:44px}
+  .left h2{font-size:30px;text-transform:none}
+  .left p{display:none}
+  .count,.facts,.tour,.cal{display:none}
+}
+</style>
+</head>
+<body>
+<main class="hero" id="hero">
+  <div class="tris" id="tris">
+    <div class="tri" style="background-image:url(assets/r2/tri-lake.jpg)"></div>
+    <div class="tri" style="background-image:url(assets/r2/tri-stack.jpg)"></div>
+    <div class="tri" style="background-image:url(assets/r2/tri-peaks.jpg)"></div>
+    <div class="tri" style="background-image:url(assets/r2/tri-merch.jpg)"></div>
+  </div>
+  <div class="intro-name" id="iname"><b>THE ART OF TRAVEL</b><small>EXPLORE · EXPERIENCE · INSPIRE</small></div>
+
+  <div class="reveal" id="reveal">
+   <div id="depth" style="position:absolute;inset:0">
+    <div class="scene" id="scene">
+      <video id="cv" src="assets/r2/canyon-in.mp4?v=r2a" poster="assets/r2/canyon-in-poster.jpg?v=r2a" muted playsinline preload="auto"></video>
+      <img id="still" src="assets/r2/canyon-still.jpg?v=r2a" alt="">
+    </div>
+    <div class="title" id="title"><span>THE ART</span> <span>OF TRAVEL</span></div>
+    <img class="artem" id="artem" src="assets/r2/artem.png?v=r2a" alt="">
+   </div>
+    <div class="shade top"></div><div class="shade left"></div><div class="shade bottom"></div>
+  </div>
+
+  <div class="ui">
+    <nav class="nav h0">
+      <div class="links"><a href="#">Тури</a><a href="#">Календар</a><a href="#">Про мене</a><a href="#">Контакти</a></div>
+      <img class="logo" src="assets/logo-cream.png" alt="The Art of Travel">
+      <div class="nright"><small>Календар подорожей<br>2027 уже відкрито</small><small>UA / EN</small><button class="burger" aria-label="Меню"><span></span></button></div>
+    </nav>
+    <div class="explore h0" id="explore">EXPLORE &nbsp;·&nbsp; EXPERIENCE &nbsp;·&nbsp; INSPIRE</div>
+    <div class="left h0">
+      <h2>Гори, океан<br>і свої люди<br>поруч</h2>
+      <p>Авторські групові тури з увагою<br>до кожної деталі.</p>
+      <a class="cta" href="#">Обрати подорож <i>→</i></a>
+    </div>
+    <div class="count h0"><span class="on">01</span><span>02</span><span>03</span></div>
+    <div class="facts h0">
+      <svg width="22" height="19" viewBox="0 0 22 19"><path d="M11 1 L21 18 L1 18 Z" stroke="#CB9846" stroke-width="1.2" fill="none"/></svg>
+      <div class="row">01 <i></i></div>
+      <p>АВТОРСЬКІ ТУРИ<br>МАЛІ ГРУПИ<br>ОФІЦІЙНИЙ ТУРОПЕРАТОР</p>
+    </div>
+    <a class="tour h0" href="#"><img src="assets/r2/cliffs.jpg" alt=""><b>НАЙБЛИЖЧІ<br>ТУРИ</b><i>→</i></a>
+    <a class="cal h0" href="#">КАЛЕНДАР 2027 →</a>
+  </div>
+</main>
+<button class="replay">↻ Інтро ще раз</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="r2.js?v=r2a"></script>
+<script>
+const $ = s => document.querySelector(s);
+const tris = $('#tris'), reveal = $('#reveal'), scene = $('#scene'), artem = $('#artem'), title = $('#title'), video = $('#cv'), still = $('#still');
+// Sierpinski pieces (percent of the triangle box) with a small gap
+const P = {A:[50,0],B:[100,100],C:[0,100],ab:[75,50],bc:[50,100],ca:[25,50]};
+const pieces = [[P.A,P.ab,P.ca],[P.ca,P.bc,P.C],[P.ab,P.B,P.bc],[P.ca,P.ab,P.bc]];
+const shrink = (pts, d) => { const cx = pts.reduce((a,p)=>a+p[0],0)/3, cy = pts.reduce((a,p)=>a+p[1],0)/3;
+  return pts.map(([x,y]) => { const dx = x-cx, dy = y-cy, l = Math.hypot(dx,dy); return [x-dx/l*d, y-dy/l*d]; }); };
+document.querySelectorAll('.tri').forEach((t,i) => t.style.clipPath = 'polygon(' + shrink(pieces[i], 1.3).map(p=>p[0]+'% '+p[1]+'%').join(',') + ')');
+
+let G = {};
+function layout(){
+  const vw = innerWidth, vh = innerHeight, mob = vw < 860;
+  // triangle box
+  const L = Math.min(mob ? vw*0.74 : 560, vh*0.62), H = L*0.866, cx = vw/2, cy = vh*(mob?0.42:0.44);
+  Object.assign(tris.style, {width:L+'px', height:H+'px', left:(cx-L/2)+'px', top:(cy-H/2)+'px'});
+  $('#iname').style.top = (cy + H/2 + 40) + 'px';
+  G.tri = [[cx, cy-H/2],[cx+L/2, cy+H/2],[cx-L/2, cy+H/2]];
+  // scene: cover box of the 1350x2400 frame, Artem centred
+  const s = Math.max(vw/1350, vh/2400) * (mob ? 1.15 : 1.25), w = 1350*s, h = 2400*s;
+  const capT = vh * (mob ? 0.40 : 0.235);
+  const left = Math.min(0, Math.max(vw - w, vw/2 - 537*s)), top = Math.min(0, Math.max(vh - h, capT - 1336*s));
+  Object.assign(scene.style, {width:w+'px', height:h+'px', left:left+'px', top:top+'px'});
+  Object.assign(artem.style, {width:405*s+'px', height:1052*s+'px', left:(left+335*s)+'px', top:(top+1336*s)+'px'});
+  const cap = top + 1336*s + 4*s;                    // where the cap really is
+  const fs = parseFloat(getComputedStyle(title).fontSize);
+  if (mob) title.style.top = (cap - 0.95*fs - 0.58*fs) + 'px';   // head overlaps the 2nd line
+  else title.style.top = (cap - 0.58*fs) + 'px';                 // head overlaps the letters
+  const tb = title.getBoundingClientRect();
+  $('#explore').style.top = mob ? (parseFloat(title.style.top) - 30) + 'px' : (parseFloat(title.style.top) + fs*0.98) + 'px';
+  G.vw = vw; G.vh = vh;
+}
+layout(); addEventListener('resize', () => { layout(); if (done) reveal.style.clipPath = 'none'; });
+
+const poly = pts => 'polygon(' + pts.map(p => p[0].toFixed(1)+'px '+p[1].toFixed(1)+'px').join(',') + ')';
+const grow = (pts, k) => { const cx = pts.reduce((a,p)=>a+p[0],0)/3, cy = pts.reduce((a,p)=>a+p[1],0)/3; return pts.map(([x,y]) => [cx+(x-cx)*k, cy+(y-cy)*k]); };
+let done = false;
+const tl = gsap.timeline({paused: true});
+const from = [[0,-1],[-1,.6],[1,.6],[0,1]];
+document.querySelectorAll('.tri').forEach((t,i) => tl.from(t, {x: from[i][0]*innerWidth*0.6, y: from[i][1]*innerHeight*0.7, rotation: (i%2?-1:1)*40, opacity: 0, duration: 1.0, ease: 'power3.out'}, i*0.12));
+tl.from('#iname > *', {opacity: 0, y: 12, stagger: .12, duration: .6}, .7)
+  .to('#iname', {opacity: 0, duration: .4}, 1.75)
+  // the mountain opens onto the canyon video
+  .set(reveal, {clipPath: () => poly(G.tri)}, 1.85)
+  .add(() => { video.currentTime = 0; video.play().catch(()=>{}); }, 1.85)
+  .to(reveal, {clipPath: () => poly(grow(G.tri, 7)), duration: 1.5, ease: 'power3.in'}, 1.9)
+  .set(tris, {opacity: 0}, 2.6)
+  .add(() => { reveal.style.clipPath = 'none'; done = true; }, 3.45)
+  // video lands on the frame with Artem → the depth layers take over
+  .to(still, {opacity: 1, duration: .25}, 3.75)
+  .set(artem, {opacity: 1}, 3.75)
+  .to('.shade', {opacity: 1, duration: .9}, 3.6)
+  .from('#title span', {y: 60, opacity: 0, duration: 1.2, stagger: .08, ease: 'power3.out'}, 3.85)
+  .to('.nav', {opacity: 1, duration: .6}, 4.3)
+  .to('#explore', {opacity: 1, duration: .6}, 4.5)
+  .to('.left', {opacity: 1, duration: .7}, 4.6)
+  .fromTo('.facts, .tour, .count, .cal', {opacity: 0, y: 16}, {opacity: 1, y: 0, duration: .7, stagger: .08}, 4.8);
+// subtle depth: background + Artem drift together, the title floats between them
+addEventListener('pointermove', e => {
+  if (!done) return;
+  const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+  gsap.to('#depth', {x: x*-14, y: y*-8, duration: 1.2, ease: 'power2.out'});
+  gsap.to(title, {x: x*36, y: y*18, duration: 1.2, ease: 'power2.out'});
+});
+gsap.to('#depth', {scale: 1.035, transformOrigin: '50% 35%', duration: 18, ease: 'none', yoyo: true, repeat: -1, delay: 4});
+R2.run(tl, {waitFor: [video]});
+</script>
+</body>
+</html>
