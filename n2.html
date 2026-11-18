@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N2 · Плівка — The Art of Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css?v=20261118d">
+<style>
+/* Film / field journal: warm paper, the client's real photos as film frames with coordinates,
+   a big editorial serif, mono captions. Intro: a roll of frames flashes in one window, then the frames scatter into the hero. */
+:root{--paper:#ECE6DA;--ink:#14171D;--navy:#021A52;--gold:#B8863D;--line:rgba(20,23,29,.14);--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',ui-monospace,monospace;--text:'Manrope',system-ui,sans-serif}
+.j{position:relative;height:100vh;min-height:640px;overflow:hidden;background:var(--paper);color:var(--ink)}
+.j::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .45 0 0 0 0 .38 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:absolute;top:28px;left:44px;right:44px;display:flex;justify-content:space-between;align-items:center;z-index:5;font:500 13px/1 var(--text)}
+.nav .brand{display:flex;align-items:center;gap:12px;font:500 12px/1 var(--mono);letter-spacing:.14em}
+.nav .brand img{height:30px}
+.nav .menu{display:flex;gap:32px}
+.nav .btn{padding:12px 20px;border-radius:999px;background:var(--navy);color:var(--paper);font-weight:600}
+.copy{position:absolute;left:44px;top:21vh;z-index:4;width:min(640px,48vw)}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.h1{font:400 clamp(58px,6.6vw,108px)/.96 var(--serif);letter-spacing:-.02em;margin-top:22px;color:var(--navy)}
+.h1 em{font-style:italic}
+.sub{margin-top:26px;font-size:17px;line-height:1.6;max-width:420px;color:#3b3f47}
+.ctas{display:flex;align-items:center;gap:22px;margin-top:34px}
+.ctas a.main{padding:18px 28px;border-radius:999px;background:var(--navy);color:var(--paper);font:600 14px/1 var(--text);transition:transform .3s}
+.ctas a.main:hover{transform:translateY(-2px)}
+.ctas a.link{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:5px}
+.ph{position:absolute;z-index:3;background:#f7f3ea;padding:10px 10px 34px;box-shadow:0 1px 0 rgba(0,0,0,.05),0 18px 40px -18px rgba(20,23,29,.45);will-change:transform}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph figcaption{position:absolute;left:12px;right:12px;bottom:11px;display:flex;justify-content:space-between;font:400 10px/1 var(--mono);letter-spacing:.08em;color:#5c5f66;text-transform:uppercase}
+.p1{left:55vw;top:13vh;width:21vw;height:27vw}
+.p2{left:77.5vw;top:22vh;width:17vw;height:12vw}
+.p3{left:60vw;top:56vh;width:15vw;height:19vw}
+.p4{left:77vw;top:50vh;width:19vw;height:26vw}
+.p5{left:47vw;top:66vh;width:11vw;height:8vw}
+.roll{position:absolute;left:50%;top:50%;width:46vw;height:30.6vw;transform:translate(-50%,-50%);z-index:6;background:#0d0f13;padding:1.4vw 1.4vw;display:flex;flex-direction:column;gap:.8vw}
+.roll .holes{height:.9vw;background:repeating-linear-gradient(90deg,transparent 0 1.1vw,#ECE6DA 1.1vw 2vw);opacity:.85;border-radius:2px}
+.roll .win{flex:1;position:relative;overflow:hidden}
+.roll .win img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.roll .win img.on{opacity:1}
+.roll .cnt{position:absolute;left:0;right:0;bottom:-34px;display:flex;justify-content:space-between;font:500 11px/1 var(--mono);letter-spacing:.14em;color:var(--ink)}
+.trail{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.trail img{position:absolute;width:150px;height:110px;object-fit:cover;border:6px solid #f7f3ea;box-shadow:0 12px 26px -12px rgba(0,0,0,.5);transform:translate(-50%,-50%)}
+.hint{position:absolute;right:44px;bottom:34px;z-index:4;font:400 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#6b6e75}
+.fade{opacity:0}
+@media (max-width:900px){.nav .menu{display:none}.copy{width:auto;right:20px;left:20px;top:16vh}.p1,.p2,.p3,.p5{display:none}.p4{left:auto;right:20px;top:auto;bottom:90px;width:42vw;height:52vw}.roll{width:86vw;height:57vw}.trail,.hint{display:none}}
+</style>
+</head>
+<body data-variant="n2">
+<section class="j">
+  <header class="nav fade">
+    <div class="brand"><img src="assets/mark-gold.png" alt="">THE ART OF TRAVEL</div>
+    <nav class="menu"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про мене</a><a href="#">Відгуки</a><a href="#">Контакти</a></nav>
+    <a class="btn" href="#">Залишити заявку</a>
+  </header>
+  <div class="copy">
+    <div class="eyebrow fade">Авторські групові тури · сезон 2027</div>
+    <h1 class="h1 fade">Подорожі, які<br>хочеться <em>розповідати</em></h1>
+    <p class="sub fade">Маленькі групи, свої люди поруч і маршрут, продуманий до кожної деталі. Кожен кадр тут — з наших справжніх подорожей.</p>
+    <div class="ctas fade"><a class="main" href="#">Обрати подорож &nbsp;→</a><a class="link" href="#">Календар 2027</a></div>
+  </div>
+  <figure class="ph p1"><img src="assets/film/img_4523.jpg" alt=""><figcaption><span>Доломіти</span><span>46.6°N</span></figcaption></figure>
+  <figure class="ph p2"><img src="assets/film/img_5446.jpg" alt=""><figcaption><span>Ісландія</span><span>64.2°N</span></figcaption></figure>
+  <figure class="ph p3"><img src="assets/film/img_5426.jpg" alt=""><figcaption><span>Свартіфосс</span><span>64.0°N</span></figcaption></figure>
+  <figure class="ph p4"><img src="assets/film/img_5480.jpg" alt=""><figcaption><span>Доломіти</span><span>46.5°N</span></figcaption></figure>
+  <figure class="ph p5"><img src="assets/film/img_4228.jpg" alt=""><figcaption><span>Кава</span><span>06:40</span></figcaption></figure>
+  <div class="trail"></div>
+  <div class="hint fade">Поводь курсором — кадри з турів</div>
+  <div class="roll">
+    <div class="holes"></div>
+    <div class="win"></div>
+    <div class="holes"></div>
+    <div class="cnt"><span class="fr">Кадр 01 / 12</span><span>The Art of Travel · сезон 2027</span></div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="shared.js?v=20261118d"></script>
+<script>
+const POOL = ['img_5571','img_5461','img_5464','img_4320','img_5443','img_5482','img_5430','img_5486','img_4223','img_5476','img_5615','img_4523'];
+const win = document.querySelector('.roll .win'), fr = document.querySelector('.roll .fr');
+POOL.forEach(n => { const im = new Image(); im.src = `assets/film/${n}.jpg`; im.alt = ''; win.appendChild(im); });
+const frames = [...win.children];
+const phs = [...document.querySelectorAll('.ph')];
+gsap.set(phs, { opacity: 0, scale: .6, rotation: () => gsap.utils.random(-8, 8), x: (i, el) => innerWidth / 2 - el.getBoundingClientRect().left - el.offsetWidth / 2, y: (i, el) => innerHeight / 2 - el.getBoundingClientRect().top - el.offsetHeight / 2 });
+
+// intro: 12 real frames flash in the film window (~1.9s), then the roll lifts away and the frames scatter into place
+const intro = gsap.timeline({ paused: true });
+frames.forEach((f, i) => intro.call(() => { frames.forEach(x => x.classList.remove('on')); f.classList.add('on'); fr.textContent = `Кадр ${String(i + 1).padStart(2, '0')} / 12`; }, null, i * 0.16));
+intro.to('.roll', { scale: .9, opacity: 0, duration: .5, ease: 'power2.in' }, '+=0.25')
+  .to(phs, { opacity: 1, scale: 1, x: 0, y: 0, rotation: (i) => [-3, 4, -2, 3, -5][i], duration: 1.1, stagger: .07, ease: 'expo.out' }, '-=0.15')
+  .to('.fade', { opacity: 1, duration: .8, stagger: .08 }, '-=0.8')
+  .add(() => { document.querySelector('.roll').remove(); trailOn = true; });
+let trailOn = false;
+setTimeout(() => intro.play(), 350);
+const skip = () => { intro.timeScale(6).play(); off(); };
+const evs = ['wheel', 'touchstart', 'keydown'];
+const off = () => evs.forEach(e => removeEventListener(e, skip));
+evs.forEach(e => addEventListener(e, skip, { passive: true }));
+intro.eventCallback('onComplete', off);
+
+// cursor trail of real tour frames
+const trail = document.querySelector('.trail');
+let lx = 0, ly = 0, ti = 0;
+addEventListener('mousemove', e => {
+  if (!trailOn || e.target.closest('a,.ph,.copy')) return;
+  if (Math.hypot(e.clientX - lx, e.clientY - ly) < 90) return;
+  lx = e.clientX; ly = e.clientY;
+  const im = document.createElement('img'); im.src = `assets/film/${POOL[ti++ % POOL.length]}.jpg`; im.alt = '';
+  im.style.left = e.clientX + 'px'; im.style.top = e.clientY + 'px'; trail.appendChild(im);
+  gsap.fromTo(im, { scale: .6, opacity: 0, rotation: gsap.utils.random(-10, 10) }, { scale: 1, opacity: 1, duration: .35, ease: 'power3.out' });
+  gsap.to(im, { opacity: 0, scale: .85, y: 30, duration: .7, delay: .55, ease: 'power2.in', onComplete: () => im.remove() });
+});
+// gentle depth on the photos
+addEventListener('mousemove', e => { if (!trailOn) return; const mx = e.clientX / innerWidth - .5, my = e.clientY / innerHeight - .5; phs.forEach((p, i) => gsap.to(p, { x: mx * (10 + i * 6), y: my * (8 + i * 4), duration: 1.2, ease: 'power3.out' })); });
+</script>
+</body>
+</html>
