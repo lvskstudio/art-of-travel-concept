@@ -7,7 +7,7 @@
 <title>Варіант 3 · Кружка і скло — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2k">
+<link rel="stylesheet" href="r2.css?v=r3a">
 <style>
 body{background:#ECE4D7;color:var(--cream)}
 .hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden}
@@ -21,7 +21,7 @@ body{background:#ECE4D7;color:var(--cream)}
 .mist{position:absolute;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#F4EEE4,#E6DCCC);opacity:0;pointer-events:none}
 .tint{position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,26,82,.5),rgba(2,26,82,0) 45%),rgba(2,26,82,.12);opacity:0}
 .edge{position:absolute;z-index:9;border:1.2px solid rgba(255,255,255,.55);border-radius:36px;pointer-events:none;opacity:0}
-.glass{position:absolute;z-index:6;background:rgba(232,221,200,.30);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);border-right:1px solid rgba(255,255,255,.5);display:none;opacity:0}
+.glass{position:absolute;z-index:6;background:rgba(232,221,200,.46);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);border-right:1px solid rgba(255,255,255,.5);display:none;opacity:0}
 /* split title: same text twice, each clipped to one side of the glass edge */
 .ttl{position:absolute;z-index:7;pointer-events:none}
 .ttl div{font:300 var(--tsize)/1 var(--geo);white-space:nowrap;position:absolute;left:0}
@@ -32,14 +32,16 @@ body{background:#ECE4D7;color:var(--cream)}
 .ui{position:absolute;z-index:8}
 .ui > *{position:absolute}
 .h0{opacity:0}
-.brand{left:40px;top:38px;font:500 12px/1 var(--geo);letter-spacing:.25em;color:var(--navy)}
+.brand{display:none;left:40px;top:38px;font:500 12px/1 var(--geo);letter-spacing:.25em;color:var(--navy)}
 .soc{left:40px;top:66px;display:flex;gap:10px}
 .soc a{width:30px;height:30px;border-radius:50%;border:1px solid rgba(2,26,82,.8);display:grid;place-items:center;font:600 10px/1 var(--sans);color:var(--navy)}
 .info{left:40px;bottom:44px;width:min(370px,calc(var(--pw) - 80px));color:var(--navy)}
-.info h3{font:600 20px/1.2 var(--sans);text-decoration:underline;text-underline-offset:5px}
-.info p{margin-top:14px;font-size:15px;line-height:1.5;opacity:.85}
+.info h3{font:600 22px/1.2 var(--sans)}
+.info p{margin-top:12px;font-size:15px;line-height:1.55;opacity:.9}
 .info a{margin-top:24px;display:inline-block;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);padding:18px 34px;border-radius:30px}
-.menu{right:40px;top:40px;display:flex;gap:44px;font-size:14px}
+.menu{right:32px;top:30px;display:flex;align-items:center;gap:34px;font:500 14px/1 var(--sans);color:#fff;text-shadow:0 1px 12px rgba(2,26,82,.55)}
+.menu .pill{background:var(--cream);color:var(--navy);text-shadow:none;font-weight:600;padding:13px 20px;border-radius:30px}
+.menu .pill:hover{background:var(--gold);color:var(--navy)}
 .menu a:hover{color:var(--gold)}
 .slider{right:44px;top:28%;height:44%;width:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
 .slider::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.6)}
@@ -50,11 +52,11 @@ body{background:#ECE4D7;color:var(--cream)}
 .pager span{margin-right:40px;opacity:.85}
 .pager button{width:66px;height:32px;border-radius:4px;border:1px solid rgba(255,255,255,.5);background:rgba(232,221,200,.16);color:#fff;font-size:11px}
 @media (max-width:860px){
-  .brand{left:22px;top:24px;color:var(--cream);font-size:10px}
+  .brand{display:block;left:22px;top:24px;color:var(--cream);font-size:10px}
   .soc,.menu,.slider,.pager span{display:none}
   .mmenu{display:block!important;right:22px;top:20px;font-size:13px}
   .info{left:22px;right:22px;bottom:30px;width:auto}
-  .info h3{font-size:17px}.info p{font-size:14px}
+  .info h3{font-size:18px}.info p{font-size:14px}.info .more{display:none}
   .pager{display:none}
   .edge{border-radius:28px}
   #hand{object-position:70% 50%}
@@ -65,8 +67,8 @@ body{background:#ECE4D7;color:var(--cream)}
 <main class="hero">
   <div class="bg" id="bg"></div>
   <div class="card" id="card">
-    <video id="steam" src="assets/r2/mug-steam.mp4?v=r2k" poster="assets/r2/mug-steam-poster.jpg?v=r2k" muted playsinline preload="auto"></video>
-    <video id="hand" src="assets/r2/mug-hand.mp4?v=r2k" muted playsinline preload="auto"></video>
+    <video id="steam" src="assets/r2/mug-steam.mp4?v=r3a" poster="assets/r2/mug-steam-poster.jpg?v=r3a" muted playsinline preload="auto"></video>
+    <video id="hand" src="assets/r2/mug-hand.mp4?v=r3a" muted playsinline preload="auto"></video>
     <div class="tint" id="tint"></div>
   </div>
   <div class="glass" id="glass"></div>
@@ -77,18 +79,15 @@ body{background:#ECE4D7;color:var(--cream)}
   <div class="shadow" id="shadow"></div>
   <div class="ui" id="ui">
     <div class="brand h0">THE ART OF TRAVEL</div>
-    <div class="soc h0"><a href="#">IG</a><a href="#">TG</a></div>
-    <div class="info h0"><h3>Авторські групові тури</h3><p>Маршрути, які ми пройшли самі. Маленькі групи, свій темп і люди, з якими хочеться поїхати знову.</p><a href="#">Обрати подорож</a></div>
-    <div class="menu h0"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">UA / EN</a></div>
+    <div class="info h0"><h3>Спокій за результат</h3><p>Все, що вказано в турі, вже включено в ціну.<span class="more"> Офіційний договір, страхування і своя команда поруч — вам лишається тільки відчувати.</span></p><a href="#">Обрати подорож</a></div>
+    <div class="menu h0"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a><a href="#">UA / EN</a><a class="pill" href="#">Залишити заявку</a></div>
     <div class="mmenu h0" style="display:none">Меню</div>
-    <div class="slider h0"><i class="dn"></i><b></b><i class="up"></i></div>
-    <div class="pager h0"><span>01 / 05 &nbsp; Гори</span><button aria-label="Назад">◀</button><button aria-label="Вперед">▶</button></div>
   </div>
 </main>
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r2k"></script>
+<script src="r2.js?v=r3a"></script>
 <script>
 const $ = s => document.querySelector(s);
 const card = $('#card'), steam = $('#steam'), hand = $('#hand');
@@ -137,7 +136,7 @@ tl.add(() => { steam.currentTime = 0; steam.play().catch(()=>{}); }, 0)
   .fromTo('.ttl', {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 3.3)
   .to('.brand, .soc, .menu, .mmenu', {opacity: 1, duration: .6}, 3.6)
   .to('.info', {opacity: 1, duration: .7}, 3.7)
-  .to('.slider, .pager', {opacity: 1, duration: .6}, 3.9);
+;
 R2.run(tl, {waitFor: [steam]});
 </script>
 </body>

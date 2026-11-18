@@ -7,7 +7,7 @@
 <title>Варіант 1 · Крізь букву A — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2b">
+<link rel="stylesheet" href="r2.css?v=r3a">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
@@ -34,15 +34,17 @@ body{background:var(--bone);color:var(--navy)}
 .links a{opacity:.9}.links a:hover{opacity:1;color:var(--gold)}
 .right{display:flex;gap:14px;align-items:center}
 .pill{background:var(--bone);color:var(--navy);font-weight:600;font-size:13px;padding:13px 22px;border-radius:30px}
-.burger{width:42px;height:42px;border-radius:50%;border:1px solid rgba(243,235,221,.6);display:grid;place-items:center}
+.lang{font-size:13px;opacity:.9}
+.burger{display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(243,235,221,.6);place-items:center}
 .burger span{display:block;width:16px;height:1.5px;background:var(--cream);box-shadow:0 5px 0 var(--cream),0 -5px 0 var(--cream)}
-.copy{position:absolute;left:56px;top:clamp(96px,14vh,140px);max-width:560px}
-h1{font:400 clamp(44px,6.1vw,88px)/1.02 var(--serif);letter-spacing:-.005em}
+.copy{position:absolute;left:56px;top:clamp(84px,11vh,112px);max-width:560px}
+h1{font:400 clamp(42px,5.3vw,76px)/1.02 var(--serif);letter-spacing:-.005em}
 h1 span{display:block;overflow:hidden}
 h1 span em{display:block;font-style:normal}
 h1 .gold{color:var(--gold)}
-.sub{margin-top:26px;font-size:15px;line-height:1.6;opacity:.88;max-width:330px}
-.cta{margin-top:30px;display:inline-flex;align-items:center;gap:14px;background:var(--navy);color:var(--cream);font-weight:600;font-size:14px;padding:8px 8px 8px 24px;border-radius:40px}
+.sub{margin-top:20px;font-size:15px;line-height:1.55;opacity:.9;max-width:430px}
+.perks{margin-top:14px;font-size:12px;letter-spacing:.05em;opacity:.78}
+.cta{margin-top:22px;display:inline-flex;align-items:center;gap:14px;background:var(--navy);color:var(--cream);font-weight:600;font-size:14px;padding:8px 8px 8px 24px;border-radius:40px}
 .cta i{width:34px;height:34px;border-radius:50%;background:rgba(243,235,221,.14);display:grid;place-items:center;font-style:normal}
 .values{position:absolute;right:28px;bottom:26px;display:flex;gap:30px;font-size:12px}
 .values div{display:flex;align-items:center;gap:10px}
@@ -64,10 +66,11 @@ h1 .gold{color:var(--gold)}
 @media (max-width:860px){
   .hero{height:100svh;min-height:600px}
   .ui{inset:12px 12px auto 12px;height:calc(100% - 24px)}
-  .nav{left:18px;right:18px;top:18px}.links,.pill{display:none}
+  .nav{left:18px;right:18px;top:18px}.links,.pill,.lang{display:none}.burger{display:grid}
   .brand{font-size:12px}
   .copy{left:22px;right:22px;top:auto;bottom:150px}
-  .sub{font-size:14px}
+  .sub{font-size:14px}.sub .more{display:none}
+  .perks{font-size:11px}
   .values{left:18px;right:18px;bottom:22px;justify-content:space-between;gap:8px;font-size:10px}
   .values svg{width:22px;height:22px}
   .mprog{display:none}
@@ -79,34 +82,29 @@ h1 .gold{color:var(--gold)}
 <body>
 <main class="hero" id="hero">
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r2b" poster="assets/r2/montage-poster.jpg?v=r2b" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r3a" poster="assets/r2/montage-poster.jpg?v=r3a" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
   <div class="ui" id="ui">
     <nav class="nav hidden0">
       <a class="brand" href="#"><img src="assets/mark-cream.png" alt="">THE ART OF TRAVEL</a>
-      <div class="links"><a href="#">Про нас</a><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Галерея</a><a href="#">Контакти</a></div>
-      <div class="right"><a class="pill" href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span></button></div>
+      <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
+      <div class="right"><span class="lang">UA / EN</span><a class="pill" href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span></button></div>
     </nav>
     <div class="copy">
       <h1><span><em>Відкривай.</em></span><span><em>Відчувай.</em></span><span><em class="gold">Надихайся.</em></span></h1>
-      <p class="sub hidden0">Авторські групові тури з увагою до кожної деталі — і свої люди поруч.</p>
+      <p class="sub hidden0">Авторські групові тури, які залишають слід.<span class="more"> Все включено в ціну — навіть смачна кухня від нашого шефа.</span></p>
+      <p class="perks hidden0">Все включено &nbsp;·&nbsp; Договір і страхування &nbsp;·&nbsp; Свої люди поруч</p>
       <a class="cta hidden0" href="#">Обрати подорож <i>→</i></a>
-    </div>
-    <div class="values hidden0">
-      <div><svg viewBox="0 0 30 30" fill="none" stroke="currentColor"><circle cx="15" cy="15" r="14" opacity=".6"/><path d="M9 20l5-9 3 5 2-3 3 7z"/></svg>Авторські маршрути</div>
-      <div><svg viewBox="0 0 30 30" fill="none" stroke="currentColor"><circle cx="15" cy="15" r="14" opacity=".6"/><circle cx="12" cy="13" r="2.5"/><circle cx="18.5" cy="13" r="2.5"/><path d="M8 21c1-3 7-3 8 0M14 21c1-3 7-3 8 0"/></svg>Маленькі групи</div>
-      <div><svg viewBox="0 0 30 30" fill="none" stroke="currentColor"><circle cx="15" cy="15" r="14" opacity=".6"/><path d="M15 21s-6-3.6-6-7.6A3.3 3.3 0 0115 11a3.3 3.3 0 016 2.4C21 17.4 15 21 15 21z"/></svg>Своя тусовка</div>
     </div>
   </div>
 
   <div class="cards">
-    <a class="card hidden0" href="#"><img src="assets/r2/card-peaks.jpg" alt=""><b>Гірські<br>маршрути</b><small>01</small></a>
-    <a class="card hidden0" href="#"><img src="assets/r2/cliffs.jpg" alt=""><b>Океан<br>і скелі</b><small>02</small></a>
-    <a class="card hidden0" href="#"><img src="assets/r2/card-falls.jpg" alt=""><b>Північна<br>природа</b><small>03</small></a>
+    <a class="card hidden0" href="#"><img src="assets/r2/card-peaks.jpg" alt=""><b>Гірські<br>маршрути</b></a>
+    <a class="card hidden0" href="#"><img src="assets/r2/cliffs.jpg" alt=""><b>Океан<br>і скелі</b></a>
+    <a class="card hidden0" href="#"><img src="assets/r2/card-falls.jpg" alt=""><b>Північна<br>природа</b></a>
   </div>
-  <div class="arrows hidden0"><button aria-label="Назад">←</button><button aria-label="Вперед">→</button></div>
 </main>
 
 <div class="intro" id="intro"></div>
@@ -117,7 +115,7 @@ h1 .gold{color:var(--gold)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r2b"></script>
+<script src="r2.js?v=r3a"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv');
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;           // a thick point on the A's right leg
@@ -163,9 +161,9 @@ tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
   .to('.nav', {opacity: 1, duration: .5}, 3.2)
   .from('h1 em', {yPercent: 110, duration: .8, stagger: .12, ease: 'power3.out'}, 3.25)
   .to('.sub, .cta', {opacity: 1, duration: .5, stagger: .08}, 3.65)
-  .to('.values', {opacity: 1, duration: .5}, 3.75)
+  .to('.perks', {opacity: 1, duration: .5}, 3.75)
   .fromTo('.card', {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: .7, stagger: .08, ease: 'power3.out'}, 3.6)
-  .to('.arrows', {opacity: 1, duration: .4}, 4.0);
+;
 R2.run(tl, {waitFor: [video]});
 </script>
 </body>
