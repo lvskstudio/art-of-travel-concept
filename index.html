@@ -12,6 +12,9 @@
 body{background:#F4EEE3;color:#021A52;min-height:100vh;padding:64px 6vw 120px}
 header{display:flex;align-items:center;gap:18px}
 header img{height:64px}
+header{justify-content:space-between;flex-wrap:wrap}
+.badge{font:500 12px/1 'Manrope';letter-spacing:.14em;text-transform:uppercase;opacity:.65;border:1px solid rgba(2,26,82,.15);border-radius:999px;padding:10px 14px}
+@media (max-width:760px){body{padding:40px 16px 120px}}
 h1{font:300 clamp(40px,5vw,72px)/1 'Cormorant Garamond',serif;margin-top:40px}
 .lead{margin-top:14px;max-width:620px;line-height:1.6;opacity:.75}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:48px}
@@ -25,7 +28,7 @@ h1{font:300 clamp(40px,5vw,72px)/1 'Cormorant Garamond',serif;margin-top:40px}
 </style>
 </head>
 <body>
-<header><img src="assets/logo-navy.png" alt="The Art of Travel"></header>
+<header><img src="assets/logo-navy.png" alt="The Art of Travel"><span class="badge">Дизайн-концепт · LVSKSTUDIO</span></header>
 <h1>Варіанти першого екрану</h1>
 <p class="lead">Кожен варіант — жива сторінка: інтро-анімація, перехід на скролі та херо. Відкрийте й гортайте.</p>
 <div class="grid">
