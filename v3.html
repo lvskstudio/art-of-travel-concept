@@ -7,11 +7,11 @@
 <title>Варіант 3 · Кружка і скло — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2h">
+<link rel="stylesheet" href="r2.css?v=r2i">
 <style>
 body{background:var(--navy-deep);color:var(--cream)}
 .hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden}
-.bg{position:absolute;inset:0;background:url(assets/r2/mug-hand-bg.jpg?v=r2h) center/cover;opacity:0}
+.bg{position:absolute;inset:0;background:url(assets/r2/mug-hand-bg.jpg?v=r2i) center/cover;opacity:0}
 .bg::after{content:"";position:absolute;inset:0;background:rgba(2,26,82,.55)}
 /* the card: full screen during the intro, then a rounded glass card */
 .card{position:absolute;z-index:5;overflow:hidden;transform-origin:50% 50%;will-change:transform;-webkit-mask-image:-webkit-radial-gradient(white,black)}
@@ -63,8 +63,8 @@ body{background:var(--navy-deep);color:var(--cream)}
 <main class="hero">
   <div class="bg" id="bg"></div>
   <div class="card" id="card">
-    <video id="steam" src="assets/r2/mug-steam.mp4?v=r2h" poster="assets/r2/mug-steam-poster.jpg?v=r2h" muted playsinline preload="auto"></video>
-    <video id="hand" src="assets/r2/mug-hand.mp4?v=r2h" muted playsinline preload="auto"></video>
+    <video id="steam" src="assets/r2/mug-steam.mp4?v=r2i" poster="assets/r2/mug-steam-poster.jpg?v=r2i" muted playsinline preload="auto"></video>
+    <video id="hand" src="assets/r2/mug-hand.mp4?v=r2i" muted playsinline preload="auto"></video>
     <div class="tint" id="tint"></div>
   </div>
   <div class="glass" id="glass"></div>
@@ -84,7 +84,7 @@ body{background:var(--navy-deep);color:var(--cream)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r2h"></script>
+<script src="r2.js?v=r2i"></script>
 <script>
 const $ = s => document.querySelector(s);
 const card = $('#card'), steam = $('#steam'), hand = $('#hand');
@@ -116,24 +116,24 @@ gsap.set(card, coverState());
 addEventListener('resize', () => { layout(); if (!settled) gsap.set(card, coverState()); });
 let settled = false;
 const tl = gsap.timeline({paused: true});
-// 0–3.9s: the steam rises and turns into mountains — nothing moves on top of it
+// steam only (the AI mountain part shimmers, so it is cut); slowed down smoothly
 tl.add(() => { steam.currentTime = 0; steam.play().catch(()=>{}); }, 0)
   .from(steam, {opacity: 0, duration: .6}, 0)
-  // when the clip has finished, the frame calmly becomes the card
-  .to(card, {x: 0, y: 0, scale: 1, duration: 1.1, ease: 'power3.inOut'}, 3.95)
-  .to('#bg', {opacity: 1, duration: .9}, 4.1)
-  .to('#edge', {opacity: 1, duration: .5}, 4.8)
-  .add(() => { settled = true; }, 5.05)
+  // while the steam keeps rising, the frame calmly becomes the card (GPU transform, nothing on top of the video)
+  .to(card, {x: 0, y: 0, scale: 1, duration: 1.2, ease: 'power3.inOut'}, 2.1)
+  .to('#bg', {opacity: 1, duration: .9}, 2.3)
+  .to('#edge', {opacity: 1, duration: .5}, 3.0)
+  .add(() => { settled = true; }, 3.3)
   // the story continues inside the card: canyon, the hand brings the mug in once, and stays
-  .add(() => { hand.currentTime = 0; hand.play().catch(()=>{}); }, 5.05)
-  .to(hand, {opacity: 1, duration: .6, ease: 'power1.inOut'}, 5.05)
-  .to('#tint', {opacity: 1, duration: .8}, 5.3)
-  .set('#glass', {display: 'block'}, 5.4)
-  .to('#glass', {opacity: 1, duration: .8, ease: 'power1.out'}, 5.4)
-  .fromTo('.ttl', {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 5.6)
-  .to('.brand, .soc, .menu, .mmenu', {opacity: 1, duration: .6}, 5.9)
-  .to('.info', {opacity: 1, duration: .7}, 6.0)
-  .to('.slider, .pager', {opacity: 1, duration: .6}, 6.2);
+  .add(() => { hand.currentTime = 0; hand.play().catch(()=>{}); }, 3.2)
+  .to(hand, {opacity: 1, duration: .7, ease: 'power1.inOut'}, 3.2)
+  .to('#tint', {opacity: 1, duration: .8}, 3.5)
+  .set('#glass', {display: 'block'}, 3.6)
+  .to('#glass', {opacity: 1, duration: .8, ease: 'power1.out'}, 3.6)
+  .fromTo('.ttl', {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 3.8)
+  .to('.brand, .soc, .menu, .mmenu', {opacity: 1, duration: .6}, 4.1)
+  .to('.info', {opacity: 1, duration: .7}, 4.2)
+  .to('.slider, .pager', {opacity: 1, duration: .6}, 4.4);
 R2.run(tl, {waitFor: [steam]});
 </script>
 </body>
