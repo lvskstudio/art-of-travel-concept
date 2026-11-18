@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A · Щоденник експедиції — The Art of Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&family=Oswald:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+:root{--paper:#F3EBDC;--navy:#021A52;--gold:#CB9846;--cream:#F7F1E4;--ink:#1B2433}
+.pin{position:relative;height:100vh;overflow:hidden;background:var(--paper)}
+.hero{position:absolute;inset:0;background:url(assets/dolomites.jpg) center 40%/cover;z-index:1}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,20,36,.78),rgba(13,20,36,.25) 55%,rgba(13,20,36,.05)),linear-gradient(180deg,rgba(13,20,36,.5),transparent 18%)}
+.nav{position:absolute;top:28px;left:56px;right:56px;display:flex;justify-content:space-between;align-items:center;z-index:3;color:var(--cream)}
+.brand{display:flex;align-items:center;gap:12px;font:600 18px/1 'Cormorant Garamond',serif;letter-spacing:.16em}
+.brand img{height:32px}
+.menu{display:flex;gap:34px;font:500 14px/1 'Manrope'}
+.right{display:flex;align-items:center;gap:22px;font:500 13px/1 'Manrope';letter-spacing:.1em}
+.btn{display:inline-flex;align-items:center;gap:12px;border-radius:999px;font:600 15px/1 'Manrope';padding:17px 28px;background:var(--paper);color:var(--navy);transition:transform .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.sm{font-size:14px;padding:12px 22px}
+.content{position:absolute;left:58px;top:20vh;z-index:3;color:var(--cream);max-width:800px}
+.note{font:400 36px/1 'Caveat',cursive;color:var(--gold);transform:rotate(-3deg);transform-origin:left}
+.h1{font:400 clamp(64px,7.8vw,112px)/.96 'Oswald',sans-serif;text-transform:uppercase;margin-top:14px}
+.h1 span{display:block}
+.sub{font-size:18px;line-height:1.5;opacity:.85;max-width:430px;margin-top:28px}
+.ctas{display:flex;align-items:center;gap:26px;margin-top:34px}
+.ctas .hand{font:400 28px/1 'Caveat',cursive;opacity:.9}
+.pol{position:absolute;width:19.5vw;max-width:290px;background:#FBF8F1;padding:14px 14px 0;box-shadow:0 18px 34px rgba(0,0,0,.35);z-index:3;transition:transform .35s ease}
+.pol img{width:100%;aspect-ratio:1;object-fit:cover}
+.pol p{font:400 28px/1 'Caveat',cursive;color:var(--ink);text-align:center;padding:14px 0 18px}
+.pol::after{content:"";position:absolute;top:-14px;left:50%;width:90px;height:30px;margin-left:-45px;background:rgba(233,223,198,.85);transform:rotate(-4deg)}
+.p1{left:60vw;top:15vh;transform:rotate(6deg)}
+.p2{left:79vw;top:26vh;transform:rotate(-6deg)}
+.p3{left:57vw;top:52vh;transform:rotate(-3deg)}
+.pol:hover{transform:rotate(0deg) translateY(-8px) scale(1.03)!important;z-index:4}
+.edge-next{position:absolute;left:0;right:0;bottom:-2px;height:120px;z-index:3;background:url(assets/torn-top.png) bottom/100% 100% no-repeat}
+.edge-next span{position:absolute;left:58px;bottom:14px;font:400 22px/1 'Oswald';letter-spacing:.04em;color:var(--navy);text-transform:uppercase}
+
+/* paper layers */
+.paper{position:absolute;left:-3vw;width:106vw;background:var(--paper);z-index:5;will-change:transform}
+.paper-top{top:-2vh;height:57vh;z-index:6}
+.paper-top::after{content:"";position:absolute;left:0;right:0;top:100%;margin-top:-2px;height:9.5vw;background:url(assets/torn-bottom.png) top/100% 100% no-repeat}
+.paper-bottom{top:52vh;height:52vh}
+.paper-bottom::before{content:"";position:absolute;left:0;right:0;bottom:100%;margin-bottom:-2px;height:9.5vw;background:url(assets/torn-top.png) bottom/100% 100% no-repeat}
+.mtn{position:absolute;left:50%;bottom:16vh;width:min(54vw,720px);transform:translateX(-50%);clip-path:inset(0 100% 0 0);animation:draw 2.4s .3s cubic-bezier(.6,.05,.3,1) forwards}
+@keyframes draw{to{clip-path:inset(0 0 0 0)}}
+.title{position:absolute;left:0;right:0;bottom:7vh;text-align:center;font:600 30px/1 'Cormorant Garamond',serif;letter-spacing:.3em;color:var(--navy);opacity:0;animation:fade 1s 2s forwards}
+.slogan{position:absolute;left:0;right:0;top:9vh;text-align:center;font:400 40px/1 'Caveat',cursive;color:var(--gold);transform:rotate(-2deg);opacity:0;animation:fade 1s 2.4s forwards}
+.hint{position:absolute;left:0;right:0;bottom:9vh;text-align:center;font:500 13px/1 'Manrope';letter-spacing:.18em;text-transform:uppercase;color:var(--navy);opacity:0;animation:fade 1s 2.8s forwards}
+.topbar{position:absolute;top:30px;left:56px;right:56px;display:flex;justify-content:space-between;align-items:center;z-index:6;color:var(--navy);font:500 13px/1 'Manrope';letter-spacing:.12em}
+.topbar img{height:28px}
+@keyframes fade{to{opacity:1}}
+@media (max-width:1100px){.menu{display:none}}
+@media (max-width:900px){.menu{display:none}.pol{width:34vw}.p1{left:56vw;top:58vh}.p2,.p3{display:none}.content{top:16vh;left:24px;right:24px}.nav{left:24px;right:24px}}
+</style>
+</head>
+<body data-variant="a">
+<section class="pin">
+  <div class="hero">
+    <div class="nav">
+      <div class="brand"><img src="assets/mark-cream.png" alt="">THE ART OF TRAVEL</div>
+      <div class="menu"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про мене</a><a href="#">Відгуки</a><a href="#">Контакти</a></div>
+      <div class="right"><span>UA / EN</span><a class="btn sm" href="#">Залишити заявку</a></div>
+    </div>
+    <div class="content">
+      <div class="note rv">Авторські групові тури</div>
+      <h1 class="h1"><span class="rv">Подорожі,</span><span class="rv">які хочеться</span><span class="rv">розповідати</span></h1>
+      <p class="sub rv">Маленькі групи, свої люди поруч і маршрут, продуманий до кожної деталі.</p>
+      <div class="ctas rv"><a class="btn" href="#">Обрати подорож &nbsp;→</a><span class="hand">або подивись календар 2027</span></div>
+    </div>
+    <div class="pol p1"><img src="assets/pol-waterfall.jpg" alt=""><p>водоспади Ісландії</p></div>
+    <div class="pol p2"><img src="assets/pol-peaks.jpg" alt=""><p>тут тихо</p></div>
+    <div class="pol p3"><img src="assets/pol-grass.jpg" alt=""><p>лежати й дивитись</p></div>
+    <div class="edge-next"><span>↓ &nbsp;Найближчі подорожі</span></div>
+  </div>
+
+  <div class="paper paper-top">
+    <div class="topbar"><img src="assets/mark-gold.png" alt=""><span>UA / EN</span></div>
+    <img class="mtn" src="assets/mountains-navy.png" alt="">
+    <div class="title">THE ART OF TRAVEL</div>
+  </div>
+  <div class="paper paper-bottom">
+    <div class="slogan">Explore. Experience. Inspire.</div>
+    <div class="hint">Гортай униз ↓</div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="shared.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.set('.rv', { y: 40, opacity: 0 });
+gsap.set('.pol', { y: -260, opacity: 0 });
+const tl = gsap.timeline({ scrollTrigger: { trigger: '.pin', start: 'top top', end: '+=170%', scrub: 1, pin: true } });
+tl.to('.paper-top', { yPercent: -125, rotation: -3, ease: 'power2.in', duration: .5 }, 0)
+  .to('.paper-bottom', { yPercent: 125, rotation: 2.5, ease: 'power2.in', duration: .5 }, 0)
+  .fromTo('.hero', { scale: 1.12 }, { scale: 1, ease: 'none', duration: .6 }, 0)
+  .to('.rv', { y: 0, opacity: 1, stagger: .06, duration: .25 }, .42)
+  .to('.p1', { y: 0, opacity: 1, duration: .22, ease: 'back.out(1.6)' }, .55)
+  .to('.p2', { y: 0, opacity: 1, duration: .22, ease: 'back.out(1.6)' }, .63)
+  .to('.p3', { y: 0, opacity: 1, duration: .22, ease: 'back.out(1.6)' }, .71)
+  .to({}, { duration: .15 });
+</script>
+</body>
+</html>

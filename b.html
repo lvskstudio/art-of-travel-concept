@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B · Тиха розкіш — The Art of Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+:root{--navy:#021A52;--gold:#C9974A;--cream:#F4EEE3}
+.pin{position:relative;height:100vh;overflow:hidden;background:var(--cream)}
+.nav{position:absolute;top:28px;left:56px;right:56px;display:flex;justify-content:space-between;align-items:center;color:var(--navy);z-index:5}
+.brand{display:flex;align-items:center;gap:12px;font:600 18px/1 'Cormorant Garamond',serif;letter-spacing:.16em}
+.brand img{height:32px}
+.menu{display:flex;gap:34px;font:500 14px/1 'Manrope'}
+.right{display:flex;align-items:center;gap:22px;font:500 13px/1 'Manrope';letter-spacing:.1em}
+.btn{display:inline-flex;align-items:center;gap:12px;border-radius:999px;font:600 15px/1 'Manrope';padding:17px 28px;background:var(--navy);color:var(--cream);transition:transform .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.sm{font-size:14px;padding:12px 22px}
+.big{position:absolute;left:0;right:0;top:9.5vh;text-align:center;font:300 8.6vw/1 'Cormorant Garamond',serif;color:var(--navy);white-space:nowrap;z-index:2}
+.win{position:absolute;overflow:hidden;z-index:3;will-change:width,height,top,left,border-radius;background:#123}
+.win video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.win.breathe{animation:breathe 9s ease-in-out infinite}
+@keyframes breathe{
+ 0%,100%{border-radius:14% 18% 15% 20% / 28% 24% 30% 26%}
+ 50%{border-radius:18% 14% 20% 15% / 24% 30% 26% 30%}}
+.ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cream);background:rgba(2,26,82,.38)}
+.ov img{width:124px;opacity:0;animation:fade 1.2s .3s forwards}
+.ov .t{font:500 26px/1 'Cormorant Garamond',serif;letter-spacing:.42em;margin-top:30px;opacity:0;animation:fade 1.2s 1s forwards}
+.ov .s{font:500 12px/1 'Manrope';letter-spacing:.3em;text-transform:uppercase;margin-top:18px;opacity:0;animation:fade 1.2s 1.6s forwards}
+.tl{position:absolute;left:56px;right:56px;bottom:56px;height:1px;background:rgba(244,238,227,.3)}
+.tl i{position:absolute;left:0;top:-1px;height:3px;width:0;background:var(--gold)}
+.ovb{position:absolute;left:56px;right:56px;bottom:24px;display:flex;justify-content:space-between;font:500 12px/1 'Manrope';letter-spacing:.14em;color:var(--cream)}
+.cta{position:absolute;left:50%;transform:translateX(-50%);top:calc(29.5vh - 26px);z-index:4}
+.glass{position:absolute;right:calc(3.9vw + 40px);bottom:calc(12vh + 40px);z-index:4;padding:18px 22px;border-radius:20px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);color:#fff}
+.glass small{display:block;font:500 11px/1 'Manrope';letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.glass b{display:block;font:500 24px/1.1 'Cormorant Garamond',serif;margin-top:8px}
+.row{position:absolute;left:56px;right:56px;bottom:3.6vh;display:flex;justify-content:space-between;align-items:center;color:var(--navy);z-index:4}
+.row .l{font:400 30px/1 'Cormorant Garamond',serif}
+.row .c{font:500 14px/1 'Manrope';opacity:.75;letter-spacing:.04em}
+.row .r{font:500 12px/1 'Manrope';letter-spacing:.22em;text-transform:uppercase;opacity:.7}
+@keyframes fade{to{opacity:1}}
+@media (max-width:1100px){.menu{display:none}}
+@media (max-width:900px){.menu,.row .c{display:none}.nav{left:20px;right:20px}}
+</style>
+</head>
+<body data-variant="b">
+<section class="pin">
+  <header class="nav hv">
+    <div class="brand"><img src="assets/mark-gold.png" alt="">THE ART OF TRAVEL</div>
+    <nav class="menu"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про мене</a><a href="#">Відгуки</a><a href="#">Контакти</a></nav>
+    <div class="right"><span>UA / EN</span><a class="btn sm" href="#">Залишити заявку</a></div>
+  </header>
+  <h1 class="big hv">THE ART OF TRAVEL</h1>
+  <div class="win">
+    <video src="assets/b-montage.mp4" poster="assets/coast-poster.jpg" autoplay muted loop playsinline></video>
+    <div class="ov">
+      <img src="assets/mark-gold.png" alt="">
+      <div class="t">THE ART OF TRAVEL</div>
+      <div class="s">Explore · Experience · Inspire</div>
+      <div class="tl"><i></i></div>
+      <div class="ovb"><span class="tc">00:00 / 00:15</span><span>Гортайте ↓</span><span>Звук ○</span></div>
+    </div>
+    <div class="glass hv"><small>Explore · Experience · Inspire</small><b>Офіційний туроператор</b></div>
+  </div>
+  <a class="btn cta hv" href="#">Календар подорожей &nbsp;→</a>
+  <div class="row hv"><span class="l">Мистецтво подорожувати разом</span><span class="c">Гори, океан і свої люди поруч</span><span class="r">Гортайте ↓</span></div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="shared.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const win = document.querySelector('.win'), vid = win.querySelector('video');
+vid.addEventListener('timeupdate', () => {
+  const p = vid.currentTime / (vid.duration || 15);
+  document.querySelector('.tl i').style.width = (p * 100) + '%';
+  const s = Math.floor(vid.currentTime); document.querySelector('.tc').textContent = '00:' + String(s).padStart(2, '0') + ' / 00:15';
+});
+gsap.set(win, { top: 0, left: 0, width: '100vw', height: '100vh', borderRadius: '0% 0% 0% 0% / 0% 0% 0% 0%' });
+gsap.set('.hv', { opacity: 0 });
+gsap.set('.big', { y: 60 });
+const tl = gsap.timeline({ scrollTrigger: { trigger: '.pin', start: 'top top', end: '+=150%', scrub: 1, pin: true,
+  onLeave: () => win.classList.add('breathe'), onEnterBack: () => win.classList.remove('breathe') } });
+tl.to('.ov', { opacity: 0, duration: .2 }, 0)
+  .to(win, { top: '29.5vh', left: '3.9vw', width: '92.2vw', height: '58vh', borderRadius: '14% 18% 15% 20% / 28% 24% 30% 26%', ease: 'power2.inOut', duration: .6 }, .05)
+  .to('.big', { opacity: 1, y: 0, duration: .35 }, .35)
+  .to('.nav', { opacity: 1, duration: .25 }, .45)
+  .to('.cta, .glass', { opacity: 1, duration: .25 }, .55)
+  .to('.row', { opacity: 1, duration: .25 }, .6)
+  .to({}, { duration: .15 });
+</script>
+</body>
+</html>
