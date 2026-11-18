@@ -7,19 +7,19 @@
 <title>Варіант 3 · Кружка і скло — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2b">
+<link rel="stylesheet" href="r2.css?v=r2h">
 <style>
 body{background:var(--navy-deep);color:var(--cream)}
 .hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden}
-.bg{position:absolute;inset:-60px;background:url(assets/r2/mug-hand-poster.jpg?v=r2b) center/cover;filter:blur(40px);opacity:0}
+.bg{position:absolute;inset:0;background:url(assets/r2/mug-hand-bg.jpg?v=r2h) center/cover;opacity:0}
 .bg::after{content:"";position:absolute;inset:0;background:rgba(2,26,82,.55)}
 /* the card: full screen during the intro, then a rounded glass card */
-.card{position:absolute;inset:0;z-index:5;will-change:clip-path}
+.card{position:absolute;z-index:5;overflow:hidden;transform-origin:50% 50%;will-change:transform;-webkit-mask-image:-webkit-radial-gradient(white,black)}
 .card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #hand{opacity:0}
 .tint{position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,26,82,.5),rgba(2,26,82,0) 45%),rgba(2,26,82,.12);opacity:0}
 .edge{position:absolute;z-index:9;border:1.2px solid rgba(255,255,255,.55);border-radius:36px;pointer-events:none;opacity:0}
-.glass{position:absolute;z-index:6;background:rgba(232,221,200,.30);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);border-right:1px solid rgba(255,255,255,.5)}
+.glass{position:absolute;z-index:6;background:rgba(232,221,200,.30);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);border-right:1px solid rgba(255,255,255,.5);display:none;opacity:0}
 /* split title: same text twice, each clipped to one side of the glass edge */
 .ttl{position:absolute;z-index:7;pointer-events:none}
 .ttl div{font:300 var(--tsize)/1 var(--geo);white-space:nowrap;position:absolute;left:0}
@@ -63,8 +63,8 @@ body{background:var(--navy-deep);color:var(--cream)}
 <main class="hero">
   <div class="bg" id="bg"></div>
   <div class="card" id="card">
-    <video id="steam" src="assets/r2/mug-steam.mp4?v=r2b" poster="assets/r2/mug-steam-poster.jpg?v=r2b" muted playsinline preload="auto"></video>
-    <video id="hand" src="assets/r2/mug-hand.mp4?v=r2b" poster="assets/r2/mug-hand-poster.jpg?v=r2b" muted playsinline loop preload="auto"></video>
+    <video id="steam" src="assets/r2/mug-steam.mp4?v=r2h" poster="assets/r2/mug-steam-poster.jpg?v=r2h" muted playsinline preload="auto"></video>
+    <video id="hand" src="assets/r2/mug-hand.mp4?v=r2h" muted playsinline preload="auto"></video>
     <div class="tint" id="tint"></div>
   </div>
   <div class="glass" id="glass"></div>
@@ -84,7 +84,7 @@ body{background:var(--navy-deep);color:var(--cream)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r2b"></script>
+<script src="r2.js?v=r2h"></script>
 <script>
 const $ = s => document.querySelector(s);
 const card = $('#card'), steam = $('#steam'), hand = $('#hand');
@@ -94,7 +94,7 @@ function layout(){
   const r = mob ? {x:12, y:56, w:vw-24, h:vh-56-24, rad:28} : {x:Math.round(vw*0.07), y:Math.round(vh*0.12), w:Math.round(vw*0.86), h:Math.round(vh*0.76), rad:36};
   R = {...r, mob, vw, vh};
   const place = el => Object.assign(el.style, {left:r.x+'px', top:r.y+'px', width:r.w+'px', height:r.h+'px'});
-  place($('#edge')); place($('#ui'));
+  place($('#edge')); place($('#ui')); place(card); card.style.borderRadius = r.rad+'px';
   const g = $('#glass');
   if (mob) { const gy = Math.round(r.h*0.58); Object.assign(g.style, {left:r.x+'px', top:(r.y+gy)+'px', width:r.w+'px', height:(r.h-gy)+'px', borderRadius:`0 0 ${r.rad}px ${r.rad}px`, borderRight:'0', borderTop:'1px solid rgba(255,255,255,.5)'}); R.gy = gy; }
   else { const pw = Math.round(r.w*0.38); Object.assign(g.style, {left:r.x+'px', top:r.y+'px', width:pw+'px', height:r.h+'px', borderRadius:`${r.rad}px 0 0 ${r.rad}px`}); R.pw = pw; $('#ui').style.setProperty('--pw', pw+'px'); }
@@ -110,27 +110,30 @@ function layout(){
   }
 }
 layout();
-const cardClip = () => `inset(${R.y}px ${R.vw-R.x-R.w}px ${R.vh-R.y-R.h}px ${R.x}px round ${R.rad}px)`;
-addEventListener('resize', () => { layout(); if (settled) card.style.clipPath = cardClip(); });
-card.style.clipPath = 'inset(0px 0px 0px 0px round 0px)';
+// FLIP: the card sits at its final place; at the start it is scaled up (GPU transform) so the video fills the screen
+const coverState = () => ({x: R.vw/2 - (R.x + R.w/2), y: R.vh/2 - (R.y + R.h/2), scale: Math.max(R.vw/R.w, R.vh/R.h) * 1.002});
+gsap.set(card, coverState());
+addEventListener('resize', () => { layout(); if (!settled) gsap.set(card, coverState()); });
 let settled = false;
 const tl = gsap.timeline({paused: true});
+// 0–3.9s: the steam rises and turns into mountains — nothing moves on top of it
 tl.add(() => { steam.currentTime = 0; steam.play().catch(()=>{}); }, 0)
   .from(steam, {opacity: 0, duration: .6}, 0)
-  // ~2.4s: the steam has become a mountain → the card forms around it
-  .to(card, {clipPath: () => cardClip(), duration: 1.1, ease: 'power3.inOut'}, 2.6)
-  .to('#bg', {opacity: 1, duration: 1.0}, 2.7)
-  .to('#edge', {opacity: 1, duration: .6}, 3.2)
-  .fromTo('#glass', innerWidth < 860 ? {yPercent: 102, opacity: 0} : {xPercent: -102, opacity: 0}, {xPercent: 0, yPercent: 0, opacity: 1, duration: 1.0, ease: 'power3.out'}, 3.2)
-  .add(() => { settled = true; }, 3.7)
-  // the story continues inside the card: hand with the mug over the canyon
-  .add(() => { hand.currentTime = 0; hand.play().catch(()=>{}); }, 3.75)
-  .to(hand, {opacity: 1, duration: .9, ease: 'power1.inOut'}, 3.8)
-  .to('#tint', {opacity: 1, duration: .8}, 3.9)
-  .fromTo('.ttl', {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 1.0, ease: 'power3.out'}, 4.1)
-  .to('.brand, .soc, .menu, .mmenu', {opacity: 1, duration: .6}, 4.4)
-  .to('.info', {opacity: 1, duration: .7}, 4.6)
-  .to('.slider, .pager', {opacity: 1, duration: .6}, 4.8);
+  // when the clip has finished, the frame calmly becomes the card
+  .to(card, {x: 0, y: 0, scale: 1, duration: 1.1, ease: 'power3.inOut'}, 3.95)
+  .to('#bg', {opacity: 1, duration: .9}, 4.1)
+  .to('#edge', {opacity: 1, duration: .5}, 4.8)
+  .add(() => { settled = true; }, 5.05)
+  // the story continues inside the card: canyon, the hand brings the mug in once, and stays
+  .add(() => { hand.currentTime = 0; hand.play().catch(()=>{}); }, 5.05)
+  .to(hand, {opacity: 1, duration: .6, ease: 'power1.inOut'}, 5.05)
+  .to('#tint', {opacity: 1, duration: .8}, 5.3)
+  .set('#glass', {display: 'block'}, 5.4)
+  .to('#glass', {opacity: 1, duration: .8, ease: 'power1.out'}, 5.4)
+  .fromTo('.ttl', {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 5.6)
+  .to('.brand, .soc, .menu, .mmenu', {opacity: 1, duration: .6}, 5.9)
+  .to('.info', {opacity: 1, duration: .7}, 6.0)
+  .to('.slider, .pager', {opacity: 1, duration: .6}, 6.2);
 R2.run(tl, {waitFor: [steam]});
 </script>
 </body>
