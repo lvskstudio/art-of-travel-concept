@@ -7,13 +7,14 @@
 <title>E1 · Кружка — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=20261118b">
-<link rel="stylesheet" href="story.css?v=20261118b">
+<link rel="stylesheet" href="shared.css?v=20261118c">
+<link rel="stylesheet" href="story.css?v=20261118c">
 <style>.story{--bg:#F4E3C7}</style>
 </head>
 <body data-variant="e1">
 <section class="story">
-  <video src="assets/story-mug.mp4?v=20261118b" poster="assets/story-mug-poster.jpg?v=20261118b" muted playsinline preload="auto"></video>
+  <video class="intro" src="assets/intro-mug.mp4?v=20261118c" poster="assets/story-mug-poster.jpg?v=20261118c" muted playsinline preload="auto"></video>
+  <video class="real" src="assets/real-canyon.mp4?v=20261118c" muted playsinline loop preload="auto"></video>
   <div class="shade"></div>
   <div class="hero">
     <header class="nav">
@@ -27,8 +28,8 @@
     <div class="ctas"><a class="btn" href="#">Обрати подорож &nbsp;→</a><a class="btn ghost" href="#">Календар 2027</a></div>
   </div>
 </section>
-<script src="shared.js?v=20261118b"></script>
-<script src="story.js?v=20261118b"></script>
-<script>initStory();</script>
+<script src="shared.js?v=20261118c"></script>
+<script src="story.js?v=20261118c"></script>
+<script>initStory({ cut: 3.55 });</script>
 </body>
 </html>
