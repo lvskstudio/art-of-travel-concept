@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники + каньйон — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&family=Montserrat:wght@200;300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2f">
+<link rel="stylesheet" href="r2.css?v=r2g">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -28,10 +28,9 @@ body{background:var(--navy);color:var(--cream)}
 .shard{position:absolute;background:var(--navy);will-change:transform}
 .reveal video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .shade{position:absolute;pointer-events:none;opacity:0}
-.shade.top{left:0;right:0;top:0;height:40%;background:linear-gradient(180deg,rgba(2,26,82,.7),rgba(2,26,82,0))}
-.shade.bottom{left:0;right:0;bottom:0;height:45%;background:linear-gradient(0deg,rgba(2,26,82,.75),rgba(2,26,82,0))}
-.shade.left{left:-30%;bottom:-30%;width:100%;height:110%;background:radial-gradient(closest-side,rgba(2,26,82,.55),rgba(2,26,82,0))}
-.title{position:absolute;left:0;right:0;top:clamp(110px,16vh,150px);z-index:12;text-align:center;font:300 9.3vw/1 var(--serif);letter-spacing:-.01em;color:var(--cream);white-space:nowrap}
+.shade.top{left:0;right:0;top:0;height:34%;background:linear-gradient(180deg,rgba(2,26,82,.5),rgba(2,26,82,0))}
+.shade.bottom{left:0;right:0;bottom:0;height:40%;background:linear-gradient(0deg,rgba(2,26,82,.55),rgba(2,26,82,0))}
+.title{position:absolute;left:0;right:0;top:clamp(110px,16vh,150px);z-index:12;text-align:center;font:300 9.3vw/1 var(--serif);letter-spacing:-.01em;color:var(--cream);white-space:nowrap;text-shadow:0 2px 34px rgba(2,26,82,.35)}
 .title span{display:inline-block;opacity:0}
 /* UI */
 .ui{position:absolute;inset:0;z-index:20;pointer-events:none}
@@ -46,7 +45,7 @@ body{background:var(--navy);color:var(--cream)}
 .burger{width:44px;height:44px;border-radius:50%;background:var(--gold);display:grid;place-items:center}
 .burger span{display:block;width:18px;height:2px;background:var(--navy);box-shadow:0 6px 0 var(--navy),0 -6px 0 var(--navy)}
 .explore{position:absolute;left:64px;top:calc(clamp(110px,16vh,150px) + 9.3vw + 4px);font:500 12px/1 var(--sans);letter-spacing:.3em;color:var(--gold)}
-.left{position:absolute;left:60px;bottom:118px;max-width:380px}
+.left{position:absolute;left:60px;bottom:118px;max-width:380px;text-shadow:0 1px 18px rgba(2,26,82,.45)}
 .left h2{font:300 clamp(36px,3.8vw,54px)/1.02 var(--serif);text-transform:uppercase}
 .left p{margin-top:16px;font-size:16px;line-height:1.5;opacity:.88}
 .cta{margin-top:28px;display:inline-flex;align-items:center;gap:16px;background:var(--olive);color:var(--cream);font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:9px 9px 9px 24px;border-radius:40px}
@@ -95,7 +94,7 @@ body{background:var(--navy);color:var(--cream)}
   <div class="shards" id="shards"></div>
   <div class="reveal" id="reveal">
     <video id="cv" muted playsinline preload="auto"></video>
-    <div class="shade top"></div><div class="shade left"></div><div class="shade bottom"></div>
+    <div class="shade top"></div><div class="shade bottom"></div>
   </div>
   <div class="title" id="title"><span>THE ART</span> <span>OF TRAVEL</span></div>
 
@@ -129,16 +128,15 @@ const $ = s => document.querySelector(s);
 const tris = $('#tris'), reveal = $('#reveal'), video = $('#cv');
 const mob = innerWidth < 860;
 // real drone footage: wide crop for desktop, full vertical for phones
-video.src = mob ? 'assets/r2/canyon-tall.mp4?v=r2f' : 'assets/r2/canyon-wide.mp4?v=r2f';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r2f' : 'assets/r2/canyon-wide-poster.jpg?v=r2f';
+video.src = mob ? 'assets/r2/canyon-tall.mp4?v=r2g' : 'assets/r2/canyon-wide.mp4?v=r2g';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r2g' : 'assets/r2/canyon-wide-poster.jpg?v=r2g';
 // robust playback: muted inline autoplay, retried when data arrives and on the first touch/click
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;
 const playVideo = () => { wantPlay = true; const p = video.play(); if (p) p.catch(() => {}); };
 video.addEventListener('canplay', () => { if (wantPlay && video.paused) playVideo(); });
 ['touchstart', 'pointerdown', 'click', 'scroll'].forEach(e => addEventListener(e, () => { if (wantPlay && video.paused) playVideo(); }, {passive: true}));
-// first pass shows Artem; afterwards loop only the canyon flight (he is out of shot after ~3.8s)
-video.addEventListener('ended', () => { video.currentTime = 4.0; playVideo(); });
+// plays once (slow, smooth 60→30 fps half-speed) and rests on its last frame — no looping
 video.load();
 
 // each piece gets its own box (so its photo is framed for it), clipped to its triangle
