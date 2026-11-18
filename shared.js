@@ -1,6 +1,6 @@
 (function () {
   var v = document.body.dataset.variant;
-  var items = [['a', 'A'], ['b', 'B'], ['c1', 'C1'], ['d', 'D']];
+  var items = [['a', 'A'], ['b', 'B'], ['c1', 'C1'], ['d', 'D'], ['e1', 'E1'], ['e2', 'E2']];
   var nav = document.createElement('nav');
   nav.className = 'switcher';
   var home = location.protocol === 'file:' || /localhost|127\.0\.0\.1/.test(location.host) ? 'index.html' : './';
