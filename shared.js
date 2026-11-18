@@ -15,3 +15,18 @@
     '<div class="cards"><div class="card">Тур · дати · місця</div><div class="card">Тур · дати · місця</div><div class="card">Тур · дати · місця</div></div>';
   document.body.appendChild(next);
 })();
+
+// Plays a paused GSAP intro timeline on its own after `delay` seconds.
+// Scroll is locked while it runs; wheel / touch / key / click just speeds it up.
+window.autoIntro = function (tl, delay) {
+  var root = document.documentElement, done = false;
+  root.style.overflow = 'hidden';
+  var timer = setTimeout(function () { tl.play(); }, delay * 1000);
+  function finish() { if (done) return; done = true; root.style.overflow = ''; off(); }
+  function skip() { clearTimeout(timer); tl.timeScale(2.4).play(); }
+  var evs = ['wheel', 'touchstart', 'keydown', 'mousedown'];
+  function off() { evs.forEach(function (e) { removeEventListener(e, skip); }); }
+  evs.forEach(function (e) { addEventListener(e, skip, { passive: true }); });
+  tl.eventCallback('onComplete', finish);
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { clearTimeout(timer); tl.progress(1); finish(); }
+};

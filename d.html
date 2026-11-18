@@ -14,7 +14,7 @@
 .ph{position:absolute;left:-5.56vw;top:-6.46vw;width:111.1vw;aspect-ratio:3/2;background-size:cover;background-position:center;will-change:transform,filter}
 .photo{background-image:url(assets/dolomites.jpg)}
 .cut{background-image:url(assets/dolomites-cut.webp);z-index:3}
-.fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(244,245,246,.75),rgba(244,245,246,.92) 50%,rgba(244,245,246,.75))}
+.fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(244,245,246,.35),rgba(244,245,246,.55) 50%,rgba(244,245,246,.3))}
 .title{position:absolute;left:0;right:0;top:11vw;text-align:center;font:300 8.6vw/1 'Cormorant Garamond',serif;color:var(--navy);white-space:nowrap;z-index:2;will-change:transform}
 .shade{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(180deg,transparent 42%,rgba(11,18,34,.6)),radial-gradient(60% 55% at 18% 92%,rgba(11,18,34,.6),rgba(11,18,34,.25) 55%,transparent 100%)}
 .hdr{position:absolute;inset:0 0 auto 0;height:110px;z-index:6;color:var(--ink)}
@@ -89,22 +89,24 @@ gsap.registerPlugin(ScrollTrigger);
 const title = document.querySelector('.title');
 const titleY0 = () => innerHeight * .44 - title.offsetTop - title.offsetHeight / 2;
 gsap.set('.ph', { y: () => innerWidth * .16, scale: 1.08, transformOrigin: '50% 30%' });
-gsap.set('.photo', { filter: 'blur(16px)' });
-gsap.set('.cut', { opacity: 0, filter: 'blur(16px)' });
+const PUNCH = ' saturate(1.18) contrast(1.08)';
+gsap.set('.photo', { filter: 'blur(6px)' + PUNCH });
+gsap.set('.cut', { opacity: 0, filter: 'blur(6px)' + PUNCH });
 gsap.set('.shade', { opacity: 0 });
 gsap.set(title, { y: titleY0 });
 gsap.set('.hv', { opacity: 0 });
-const tl = gsap.timeline({ scrollTrigger: { trigger: '.pin', start: 'top top', end: '+=180%', scrub: 1, pin: true, invalidateOnRefresh: true } });
-tl.to('.intro-s', { opacity: 0, duration: .1 }, 0)
-  .to('.fog', { opacity: 0, duration: .45 }, 0)
-  .to('.photo', { filter: 'blur(0px)', duration: .45 }, 0)
-  .to('.cut', { opacity: 1, filter: 'blur(0px)', duration: .3 }, .1)
-  .to('.ph', { y: 0, scale: 1, duration: .6, ease: 'power2.out' }, .05)
-  .to(title, { y: 0, duration: .45, ease: 'power2.inOut' }, .1)
-  .to('.shade', { opacity: 1, duration: .3 }, .45)
-  .to('.slogan', { opacity: 1, duration: .15 }, .6)
-  .to('.ui', { opacity: 1, duration: .2 }, .65)
-  .to({}, { duration: .1 });
+// short light haze (~1.8s), then the mountain rises in front of the title on its own
+const tl = gsap.timeline({ paused: true });
+tl.to('.intro-s', { opacity: 0, duration: .4 }, 0)
+  .to('.fog', { opacity: 0, duration: .9, ease: 'power1.out' }, 0)
+  .to('.photo', { filter: 'blur(0px)' + PUNCH, duration: .9 }, 0)
+  .to('.cut', { opacity: 1, filter: 'blur(0px)' + PUNCH, duration: .7 }, .2)
+  .to('.ph', { y: 0, scale: 1, duration: 1.8, ease: 'power3.out' }, .1)
+  .to(title, { y: 0, duration: 1.4, ease: 'power3.inOut' }, .2)
+  .to('.shade', { opacity: 1, duration: .8 }, 1)
+  .to('.slogan', { opacity: 1, duration: .6 }, 1.4)
+  .to('.ui', { opacity: 1, duration: .7 }, 1.5);
+autoIntro(tl, 1.8);
 // depth parallax on mouse
 const qx = { photo: gsap.quickTo('.photo', 'x', { duration: .8 }), cut: gsap.quickTo('.cut', 'x', { duration: .8 }), title: gsap.quickTo(title, 'x', { duration: .8 }) };
 addEventListener('mousemove', e => { const m = e.clientX / innerWidth - .5; qx.photo(m * -14); qx.cut(m * -14); qx.title(m * 26); });
