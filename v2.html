@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники + каньйон — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&family=Montserrat:wght@200;300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2e">
+<link rel="stylesheet" href="r2.css?v=r2f">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -22,7 +22,10 @@ body{background:var(--navy);color:var(--cream)}
 .intro-name b{display:block;font:200 clamp(16px,1.6vw,22px)/1 var(--geo);letter-spacing:.42em;padding-left:.42em}
 .intro-name small{display:block;margin-top:14px;font:500 10px/1 var(--geo);letter-spacing:.32em;color:var(--bone);opacity:.7}
 /* reveal: the mountain opens onto the canyon video */
-.reveal{position:absolute;inset:0;z-index:10;clip-path:polygon(50% 50%,50% 50%,50% 50%)}
+.reveal{position:absolute;inset:0;z-index:1}
+.backdrop{position:absolute;inset:0;z-index:3;background:var(--navy)}
+.shards{position:absolute;inset:0;z-index:4;pointer-events:none}
+.shard{position:absolute;background:var(--navy);will-change:transform}
 .reveal video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .shade{position:absolute;pointer-events:none;opacity:0}
 .shade.top{left:0;right:0;top:0;height:40%;background:linear-gradient(180deg,rgba(2,26,82,.7),rgba(2,26,82,0))}
@@ -88,8 +91,10 @@ body{background:var(--navy);color:var(--cream)}
   </div>
   <div class="intro-name" id="iname"><b>THE ART OF TRAVEL</b><small>EXPLORE · EXPERIENCE · INSPIRE</small></div>
 
+  <div class="backdrop" id="backdrop"></div>
+  <div class="shards" id="shards"></div>
   <div class="reveal" id="reveal">
-    <video id="cv" muted playsinline loop preload="auto"></video>
+    <video id="cv" muted playsinline preload="auto"></video>
     <div class="shade top"></div><div class="shade left"></div><div class="shade bottom"></div>
   </div>
   <div class="title" id="title"><span>THE ART</span> <span>OF TRAVEL</span></div>
@@ -124,16 +129,16 @@ const $ = s => document.querySelector(s);
 const tris = $('#tris'), reveal = $('#reveal'), video = $('#cv');
 const mob = innerWidth < 860;
 // real drone footage: wide crop for desktop, full vertical for phones
-video.src = mob ? 'assets/r2/canyon-tall.mp4?v=r2e' : 'assets/r2/canyon-wide.mp4?v=r2e';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r2e' : 'assets/r2/canyon-wide-poster.jpg?v=r2e';
+video.src = mob ? 'assets/r2/canyon-tall.mp4?v=r2f' : 'assets/r2/canyon-wide.mp4?v=r2f';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r2f' : 'assets/r2/canyon-wide-poster.jpg?v=r2f';
 // robust playback: muted inline autoplay, retried when data arrives and on the first touch/click
-// (Safari / iPhone sometimes refuse the first play() call); slightly faster so the flight reads as motion
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;
-const playVideo = () => { wantPlay = true; video.playbackRate = 1.6; const p = video.play(); if (p) p.catch(() => {}); };
+const playVideo = () => { wantPlay = true; const p = video.play(); if (p) p.catch(() => {}); };
 video.addEventListener('canplay', () => { if (wantPlay && video.paused) playVideo(); });
-video.addEventListener('loadedmetadata', () => { video.playbackRate = 1.6; });
-['touchstart', 'pointerdown', 'click', 'scroll'].forEach(e => addEventListener(e, () => { if (video.paused) playVideo(); }, {passive: true}));
+['touchstart', 'pointerdown', 'click', 'scroll'].forEach(e => addEventListener(e, () => { if (wantPlay && video.paused) playVideo(); }, {passive: true}));
+// first pass shows Artem; afterwards loop only the canyon flight (he is out of shot after ~3.8s)
+video.addEventListener('ended', () => { video.currentTime = 4.0; playVideo(); });
 video.load();
 
 // each piece gets its own box (so its photo is framed for it), clipped to its triangle
@@ -152,10 +157,21 @@ function layout(){
 }
 layout();
 addEventListener('resize', () => { layout(); });
-// triangle of the assembled mountain, after the container's slow push-in (scale s)
-const triPts = s => { const {cx, cy, L, H} = G; return [[cx, cy - H/2*s], [cx + L/2*s, cy + H/2*s], [cx - L/2*s, cy + H/2*s]]; };
-const poly = pts => 'polygon(' + pts.map(p => p[0].toFixed(1)+'px '+p[1].toFixed(1)+'px').join(',') + ')';
-const grow = (pts, k) => { const cx = pts.reduce((a,p)=>a+p[0],0)/3, cy = pts.reduce((a,p)=>a+p[1],0)/3; return pts.map(([x,y]) => [cx+(x-cx)*k, cy+(y-cy)*k]); };
+// the navy screen is cut into shards; when the mountain is assembled everything scatters
+const shardBox = $('#shards'); let shards = [];
+function buildShards(){
+  shardBox.innerHTML = ''; shards = [];
+  const vw = innerWidth, vh = innerHeight, cols = mob ? 4 : 8, rows = mob ? 7 : 5;
+  const P = []; for (let r = 0; r <= rows; r++) { P[r] = []; for (let c = 0; c <= cols; c++) {
+    const edge = r === 0 || c === 0 || r === rows || c === cols;
+    P[r][c] = [c/cols*vw + (edge ? 0 : (Math.random()-.5)*vw/cols*.55), r/rows*vh + (edge ? 0 : (Math.random()-.5)*vh/rows*.55)]; } }
+  const add = pts => { const xs = pts.map(p=>p[0]), ys = pts.map(p=>p[1]); const x0 = Math.min(...xs)-1, y0 = Math.min(...ys)-1, w = Math.max(...xs)-x0+1, h = Math.max(...ys)-y0+1;
+    const d = document.createElement('div'); d.className = 'shard'; Object.assign(d.style, {left:x0+'px', top:y0+'px', width:w+'px', height:h+'px', clipPath:'polygon('+pts.map(p=>(p[0]-x0)+'px '+(p[1]-y0)+'px').join(',')+')'});
+    shardBox.appendChild(d); shards.push({el:d, cx:xs.reduce((a,b)=>a+b)/3, cy:ys.reduce((a,b)=>a+b)/3}); };
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const a = P[r][c], b = P[r][c+1], cc = P[r+1][c+1], d = P[r+1][c];
+    if ((r + c) % 2) { add([a,b,cc]); add([a,cc,d]); } else { add([a,b,d]); add([b,cc,d]); } }
+}
+buildShards();
 
 const PUSH = 1.08;   // the mountain keeps moving towards the viewer while it assembles
 const tl = gsap.timeline({paused: true});
@@ -164,12 +180,17 @@ pieces.forEach((t,i) => tl.from(t, {x: from[i][0]*innerWidth*0.55, y: from[i][1]
 tl.fromTo(tris, {scale: .94}, {scale: PUSH, duration: 1.65, ease: 'none'}, 0)
   .from('#iname > *', {opacity: 0, y: 10, stagger: .1, duration: .5}, .5)
   .to('#iname', {opacity: 0, duration: .3}, 1.25)
-  // the mountain opens: through it we fly into the real canyon footage
-  .set(reveal, {clipPath: () => poly(triPts(PUSH))}, 1.6)
-  .add(() => { video.currentTime = 0; playVideo(); }, 1.6)
-  .to(reveal, {clipPath: () => poly(grow(triPts(PUSH), 7)), duration: 1.25, ease: 'power3.in'}, 1.62)
-  .set(tris, {opacity: 0}, 2.3)
-  .add(() => { reveal.style.clipPath = 'none'; }, 2.87)
+  // scatter: the photo triangles fly apart unchanged, the navy screen breaks up behind them → the hero video
+  .add(() => { video.currentTime = 0; playVideo(); }, 1.55)
+  .set('#backdrop', {opacity: 0}, 1.62);
+const out = [[0,-1],[-1,.35],[1,.35],[0,1]];
+pieces.forEach((t,i) => tl.to(t, {x: out[i][0]*innerWidth*0.75, y: out[i][1]*innerHeight*0.8, rotation: [0,-40,40,25][i], opacity: 0, duration: 1.05, ease: 'power2.in'}, 1.62 + i*0.04));
+tl.add(() => {
+  const vw = innerWidth, vh = innerHeight, maxD = Math.hypot(vw, vh) / 2;
+  shards.forEach(s => { const dx = s.cx - vw/2, dy = s.cy - vh/2, d = Math.hypot(dx, dy) || 1;
+    gsap.to(s.el, {x: dx/d*(vw*.45 + Math.random()*vw*.3), y: dy/d*(vh*.45 + Math.random()*vh*.3), rotation: (Math.random()-.5)*90, scale: .8, opacity: 0,
+      duration: 1.1, ease: 'power2.in', delay: (d/maxD)*0.3}); });
+}, 1.62)
   .to('.shade', {opacity: 1, duration: .9}, 2.6)
   .fromTo('#title span', {y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 1.0, stagger: .08, ease: 'power3.out'}, 2.8)
   .to('.nav', {opacity: 1, duration: .5}, 3.1)
