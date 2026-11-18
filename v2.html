@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники + каньйон — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&family=Montserrat:wght@200;300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r3b">
+<link rel="stylesheet" href="r2.css?v=r3c">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -19,8 +19,8 @@ body{background:var(--navy);color:var(--cream)}
 .tris{position:absolute;z-index:5;will-change:transform}
 .tri{position:absolute;background-size:cover;background-position:center;will-change:transform}
 .intro-name{position:absolute;left:0;right:0;z-index:6;text-align:center}
-.intro-name b{display:block;font:200 clamp(16px,1.6vw,22px)/1 var(--geo);letter-spacing:.42em;padding-left:.42em}
-.intro-name small{display:block;margin-top:14px;font:500 10px/1 var(--geo);letter-spacing:.32em;color:var(--bone);opacity:.7}
+.intro-name b{display:block;font:400 clamp(18px,1.8vw,26px)/1 var(--serif);letter-spacing:.3em;padding-left:.3em}
+.intro-name small{display:block;margin-top:14px;font:500 10px/1 var(--sans);letter-spacing:.32em;color:var(--bone);opacity:.7}
 /* reveal: the mountain opens onto the canyon video */
 .reveal{position:absolute;inset:0;z-index:1}
 .backdrop{position:absolute;inset:0;z-index:3;background:var(--navy)}
@@ -39,7 +39,8 @@ body{background:var(--navy);color:var(--cream)}
 .nav{position:absolute;left:56px;right:56px;top:28px;display:flex;align-items:flex-start;justify-content:space-between}
 .links{display:flex;gap:30px;font-size:13px;padding-top:12px}
 .links a:hover{color:var(--gold)}
-.logo{position:absolute;left:50%;top:-14px;transform:translateX(-50%);width:72px}
+.logo{position:absolute;left:50%;top:-14px;transform:translateX(-50%);width:84px;opacity:0}
+.flymark{position:fixed;z-index:200;object-fit:contain;opacity:0;pointer-events:none}
 .nright{display:flex;gap:22px;align-items:center}
 .nright small{font:500 11px/1.35 var(--sans);opacity:.85}
 .pill{background:var(--cream);color:var(--navy);font:600 13px/1 var(--sans);padding:14px 22px;border-radius:30px}
@@ -47,8 +48,8 @@ body{background:var(--navy);color:var(--cream)}
 .burger{display:none;width:44px;height:44px;border-radius:50%;background:var(--gold);place-items:center}
 .burger span{display:block;width:18px;height:2px;background:var(--navy);box-shadow:0 6px 0 var(--navy),0 -6px 0 var(--navy)}
 .explore{position:absolute;left:64px;top:calc(clamp(110px,16vh,150px) + 9.3vw + 4px);font:500 12px/1 var(--sans);letter-spacing:.3em;color:var(--gold)}
-.left{position:absolute;left:60px;bottom:64px;max-width:600px;text-shadow:0 1px 18px rgba(2,26,82,.45)}
-.left h2{font:400 clamp(44px,5vw,74px)/.98 var(--serif);text-transform:uppercase;white-space:nowrap}
+.left{position:absolute;left:60px;bottom:72px;max-width:720px;text-shadow:0 1px 18px rgba(2,26,82,.45)}
+.left h2{font:400 clamp(48px,5.8vw,88px)/.95 var(--serif);text-transform:uppercase;white-space:nowrap;letter-spacing:-.005em}
 .left h2 em{font-style:normal;color:var(--gold)}
 .left p{margin-top:18px;font-size:16px;line-height:1.5;opacity:.92;max-width:380px}
 .cta{margin-top:28px;display:inline-flex;align-items:center;gap:16px;background:var(--olive);color:var(--cream);font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:9px 9px 9px 24px;border-radius:40px}
@@ -77,7 +78,7 @@ body{background:var(--navy);color:var(--cream)}
   .title span{display:block}
   .explore{left:0;right:0;top:calc(22% - 30px);text-align:center;font-size:10px;letter-spacing:.24em}
   .left{left:22px;right:22px;bottom:44px}
-  .left h2{font-size:42px;text-transform:none;white-space:normal}
+  .left h2{font-size:48px;line-height:1;text-transform:none;white-space:normal}
   .left p{font-size:14px;margin-top:10px}.left .more{display:none}
   .tour{display:none}
 }
@@ -99,7 +100,6 @@ body{background:var(--navy);color:var(--cream)}
     <video id="cv" muted playsinline preload="auto"></video>
     <div class="shade top"></div><div class="shade bottom"></div>
   </div>
-  <div class="title" id="title"><span>THE ART</span> <span>OF TRAVEL</span></div>
 
   <div class="ui">
     <nav class="nav h0">
@@ -107,25 +107,24 @@ body{background:var(--navy);color:var(--cream)}
       <img class="logo" src="assets/logo-cream.png" alt="The Art of Travel">
       <div class="nright"><small>UA / EN</small><a class="pill" href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span></button></div>
     </nav>
-    <div class="explore h0">EXPLORE &nbsp;·&nbsp; EXPERIENCE &nbsp;·&nbsp; INSPIRE</div>
     <div class="left h0">
       <h2>Подорож,<br>що залишає<br><em>слід</em></h2>
       <p>Авторські маршрути, маленькі групи і жодних доплат на місці.<span class="more"> Ми офіційний туроператор — з договором і страхуванням для кожного.</span></p>
       <a class="cta" href="#">Обрати подорож <i>→</i></a>
     </div>
-    <a class="tour h0" href="#"><img src="assets/r2/cliffs.jpg" alt=""><b>НАЙБЛИЖЧІ<br>ТУРИ</b><i>→</i></a>
   </div>
 </main>
+<img class="flymark" id="fly" src="assets/logo-cream.png" alt="">
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 const $ = s => document.querySelector(s);
-const tris = $('#tris'), reveal = $('#reveal'), video = $('#cv');
+const tris = $('#tris'), reveal = $('#reveal'), video = $('#cv'), fly = $('#fly');
 const mob = innerWidth < 860;
 // real drone footage: wide crop for desktop, full vertical for phones
-video.src = mob ? 'assets/r2/canyon-tall.mp4?v=r3b' : 'assets/r2/canyon-wide.mp4?v=r3b';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r3b' : 'assets/r2/canyon-wide-poster.jpg?v=r3b';
+video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r3c' : 'assets/r2/canyon-wide.mp4?v=r3c';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r3c' : 'assets/r2/canyon-wide-poster.jpg?v=r3c';
 // robust playback: muted inline autoplay, retried when data arrives and on the first touch/click
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;
@@ -173,7 +172,13 @@ const from = [[0,-1],[-1,.5],[1,.5],[0,1.1]];
 pieces.forEach((t,i) => tl.from(t, {x: from[i][0]*innerWidth*0.55, y: from[i][1]*innerHeight*0.6, rotation: [0,-30,30,180][i], opacity: 0, duration: .85, ease: 'power3.out'}, i*0.07));
 tl.fromTo(tris, {scale: .94}, {scale: PUSH, duration: 1.65, ease: 'none'}, 0)
   .from('#iname > *', {opacity: 0, y: 10, stagger: .1, duration: .5}, .5)
-  .to('#iname', {opacity: 0, duration: .3}, 1.25)
+  .to('#iname', {opacity: 0, duration: .3}, 1.2)
+  // the brand mark appears where the name was, floats over the scatter and lands in the menu
+  .add(() => { const n = $('#iname').getBoundingClientRect(), w0 = 76, h0 = w0*604/569;
+      gsap.set(fly, {left: innerWidth/2 - w0/2, top: n.top - 6, width: w0, height: h0}); }, 1.2)
+  .to(fly, {opacity: 1, duration: .35}, 1.25)
+  .add(() => { const t = $('.logo').getBoundingClientRect();
+      gsap.to(fly, {left: t.left, top: t.top, width: t.width, height: t.height, duration: .9, ease: 'power3.inOut', onComplete: () => { $('.logo').style.opacity = 1; fly.style.opacity = 0; }}); }, 2.75)
   // scatter: the photo triangles fly apart unchanged, the navy screen breaks up behind them → the hero video
   .add(() => { video.currentTime = 0; playVideo(); }, 1.55)
   .set('#backdrop', {opacity: 0}, 1.62);
@@ -181,16 +186,15 @@ const out = [[0,-1],[-1,.35],[1,.35],[0,1]];
 pieces.forEach((t,i) => tl.to(t, {x: out[i][0]*innerWidth*0.75, y: out[i][1]*innerHeight*0.8, rotation: [0,-40,40,25][i], opacity: 0, duration: 1.05, ease: 'power2.in'}, 1.62 + i*0.04));
 tl.add(() => {
   const vw = innerWidth, vh = innerHeight, maxD = Math.hypot(vw, vh) / 2;
+  shards.forEach(s => { s.el.style.background = `hsl(222, ${85 + Math.random()*10}%, ${12 + Math.random()*9}%)`; });
   shards.forEach(s => { const dx = s.cx - vw/2, dy = s.cy - vh/2, d = Math.hypot(dx, dy) || 1;
     gsap.to(s.el, {x: dx/d*(vw*.45 + Math.random()*vw*.3), y: dy/d*(vh*.45 + Math.random()*vh*.3), rotation: (Math.random()-.5)*90, scale: .8, opacity: 0,
       duration: 1.1, ease: 'power2.in', delay: (d/maxD)*0.3}); });
 }, 1.62)
   .to('.shade', {opacity: 1, duration: .9}, 2.6)
-  .fromTo('#title span', {y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 1.0, stagger: .08, ease: 'power3.out'}, 2.8)
   .to('.nav', {opacity: 1, duration: .5}, 3.1)
-  .to('.explore', {opacity: 1, duration: .5}, 3.3)
-  .to('.left', {opacity: 1, duration: .6}, 3.35)
-  .fromTo('.tour', {opacity: 0, y: 14}, {opacity: 1, y: 0, duration: .6}, 3.5);
+  .fromTo('.left', {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 3.0)
+;
 // start right away — no waiting on a blank screen
 const fast = () => { if (tl.progress() < 1) tl.timeScale(6); };
 ['wheel','touchstart','keydown','pointerdown'].forEach(e => addEventListener(e, fast, {passive: true, once: true}));

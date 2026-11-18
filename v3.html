@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Варіант 3 · Кружка і скло — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r3b">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r3c">
 <style>
 body{background:#ECE4D7;color:var(--cream)}
 .hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden}
@@ -16,7 +16,7 @@ body{background:#ECE4D7;color:var(--cream)}
 .card{position:absolute;z-index:5;overflow:hidden;transform-origin:50% 50%;will-change:transform;-webkit-mask-image:-webkit-radial-gradient(white,black)}
 .shadow{position:absolute;z-index:4;border-radius:36px;box-shadow:0 30px 80px rgba(70,52,30,.28),0 6px 18px rgba(70,52,30,.12);opacity:0}
 .card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#hand{opacity:0}
+#photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;opacity:0}
 #steam{transform-origin:50% 26%;will-change:transform}
 .mist{position:absolute;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#F4EEE4,#E6DCCC);opacity:0;pointer-events:none}
 .tint{position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,26,82,.5),rgba(2,26,82,0) 45%),rgba(2,26,82,.12);opacity:0}
@@ -24,19 +24,21 @@ body{background:#ECE4D7;color:var(--cream)}
 .glass{position:absolute;z-index:6;background:rgba(232,221,200,.46);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);border-right:1px solid rgba(255,255,255,.5);display:none;opacity:0}
 /* split title: same text twice, each clipped to one side of the glass edge */
 .ttl{position:absolute;z-index:7;pointer-events:none}
-.ttl div{font:300 var(--tsize)/1 var(--geo);white-space:nowrap;position:absolute;left:0}
-.ttl .l2{top:calc(var(--tsize) * 1.05)}
+.ttl div{font:500 var(--tsize)/1 var(--serif);white-space:nowrap;position:absolute;left:0;letter-spacing:.01em}
+.ttl .l2{top:calc(var(--tsize) * .98)}
 .ttl.on-photo{color:#fff}
 .ttl.on-glass{color:var(--navy)}
 /* card UI */
 .ui{position:absolute;z-index:8}
 .ui > *{position:absolute}
 .h0{opacity:0}
-.brand{display:none;left:40px;top:38px;font:500 12px/1 var(--geo);letter-spacing:.25em;color:var(--navy)}
+.brand{display:none;left:40px;top:38px;font:500 12px/1 var(--sans);letter-spacing:.25em;color:var(--navy)}
 .soc{left:40px;top:66px;display:flex;gap:10px}
 .soc a{width:30px;height:30px;border-radius:50%;border:1px solid rgba(2,26,82,.8);display:grid;place-items:center;font:600 10px/1 var(--sans);color:var(--navy)}
 .info{left:40px;bottom:44px;width:min(370px,calc(var(--pw) - 80px));color:var(--navy)}
-.info h3{font:500 clamp(30px,3.1vw,46px)/1.08 var(--geo);letter-spacing:-.01em}
+.info h3{font:500 clamp(36px,3.6vw,54px)/1.02 var(--serif)}
+.quote{margin-top:18px;padding-left:16px;border-left:1px solid var(--gold);font:400 18px/1.35 var(--serif);color:var(--navy)}
+.quote small{display:block;margin-top:6px;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
 .info p{margin-top:14px;font-size:16px;line-height:1.5;opacity:.92}
 .info a{margin-top:24px;display:inline-block;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);padding:18px 34px;border-radius:30px}
 .menu{right:32px;top:30px;display:flex;align-items:center;gap:34px;font:500 14px/1 var(--sans);color:#fff;text-shadow:0 1px 12px rgba(2,26,82,.55)}
@@ -59,7 +61,8 @@ body{background:#ECE4D7;color:var(--cream)}
   .info h3{font-size:28px}.info p{font-size:14px}.info .more{display:none}
   .pager{display:none}
   .edge{border-radius:28px}
-  #hand{object-position:70% 50%}
+  #photo{inset:auto;top:-52%;left:0;width:100%;height:140%;object-position:56% 50%}
+  .quote{display:none}
 }
 </style>
 </head>
@@ -67,19 +70,18 @@ body{background:#ECE4D7;color:var(--cream)}
 <main class="hero">
   <div class="bg" id="bg"></div>
   <div class="card" id="card">
-    <video id="steam" src="assets/r2/mug-steam.mp4?v=r3b" poster="assets/r2/mug-steam-poster.jpg?v=r3b" muted playsinline preload="auto"></video>
-    <video id="hand" src="assets/r2/mug-hand.mp4?v=r3b" muted playsinline preload="auto"></video>
+    <video id="steam" src="assets/r2/mug-steam.mp4?v=r3c" poster="assets/r2/mug-steam-poster.jpg?v=r3c" muted playsinline preload="auto"></video>
+    <img id="photo" src="assets/r2/mug-real.jpg?v=r3c" alt="Фірмова кружка The Art of Travel на тлі льодовикової лагуни">
     <div class="tint" id="tint"></div>
   </div>
   <div class="glass" id="glass"></div>
   <div class="mist" id="mist"></div>
-  <div class="ttl on-photo h0" id="tPhoto"><div class="l1">THE ART</div><div class="l2">OF TRAVEL</div></div>
   <div class="ttl on-glass h0" id="tGlass"><div class="l1">THE ART</div><div class="l2">OF TRAVEL</div></div>
   <div class="edge" id="edge"></div>
   <div class="shadow" id="shadow"></div>
   <div class="ui" id="ui">
     <div class="brand h0">THE ART OF TRAVEL</div>
-    <div class="info h0"><h3>Спокій за результат</h3><p>Все, що вказано в турі, вже включено в ціну.<span class="more"> Офіційний договір, страхування і своя команда поруч — вам лишається тільки відчувати.</span></p><a href="#">Обрати подорож</a></div>
+    <div class="info h0"><h3>Спокій за результат</h3><p>Все, що вказано в турі, вже включено в ціну.<span class="more"> Офіційний договір, страхування і своя команда поруч — вам лишається тільки відчувати.</span></p><p class="quote">«Я завжди обираю найкраще — і для вас теж»<small>Артем, засновник</small></p><a href="#">Обрати подорож</a></div>
     <div class="menu h0"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a><a href="#">UA / EN</a><a class="pill" href="#">Залишити заявку</a></div>
     <div class="mmenu h0" style="display:none">Меню</div>
   </div>
@@ -87,10 +89,10 @@ body{background:#ECE4D7;color:var(--cream)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r3b"></script>
+<script src="r2.js?v=r3c"></script>
 <script>
 const $ = s => document.querySelector(s);
-const card = $('#card'), steam = $('#steam'), hand = $('#hand');
+const card = $('#card'), steam = $('#steam');
 let R = {};
 function layout(){
   const vw = innerWidth, vh = innerHeight, mob = vw < 860;
@@ -99,18 +101,15 @@ function layout(){
   const place = el => Object.assign(el.style, {left:r.x+'px', top:r.y+'px', width:r.w+'px', height:r.h+'px'});
   place($('#edge')); place($('#ui')); place($('#shadow')); $('#shadow').style.borderRadius = r.rad+'px'; place(card); card.style.borderRadius = r.rad+'px';
   const g = $('#glass');
-  if (mob) { const gy = Math.round(r.h*0.58); Object.assign(g.style, {left:r.x+'px', top:(r.y+gy)+'px', width:r.w+'px', height:(r.h-gy)+'px', borderRadius:`0 0 ${r.rad}px ${r.rad}px`, borderRight:'0', borderTop:'1px solid rgba(255,255,255,.5)'}); R.gy = gy; }
+  if (mob) { const gy = Math.round(r.h*0.44); Object.assign(g.style, {left:r.x+'px', top:(r.y+gy)+'px', width:r.w+'px', height:(r.h-gy)+'px', borderRadius:`0 0 ${r.rad}px ${r.rad}px`, borderRight:'0', borderTop:'1px solid rgba(255,255,255,.5)'}); R.gy = gy; }
   else { const pw = Math.round(r.w*0.38); Object.assign(g.style, {left:r.x+'px', top:r.y+'px', width:pw+'px', height:r.h+'px', borderRadius:`${r.rad}px 0 0 ${r.rad}px`}); R.pw = pw; $('#ui').style.setProperty('--pw', pw+'px'); }
-  // title geometry
-  const ts = mob ? Math.min(vw*0.15, 64) : r.w*0.089;
-  document.documentElement.style.setProperty('--tsize', ts+'px');
-  for (const id of ['tPhoto','tGlass']) {
-    const t = $('#'+id); const tx = mob ? r.x+22 : r.x + r.w*0.04, ty = mob ? r.y + R.gy - ts*1.62 : r.y + r.h*0.2;
-    Object.assign(t.style, {left:tx+'px', top:ty+'px', width:(r.w)+'px', height:(ts*2.2)+'px'});
-    // clip each copy to its side of the glass edge (coords relative to the title box)
-    if (mob) { const edgeY = r.y + R.gy - ty; t.style.clipPath = id==='tGlass' ? `inset(${edgeY}px 0 0 0)` : `inset(0 0 calc(100% - ${edgeY}px) 0)`; }
-    else { const edgeX = r.x + R.pw - tx; t.style.clipPath = id==='tGlass' ? `inset(0 calc(100% - ${edgeX}px) 0 0)` : `inset(0 0 0 ${edgeX}px)`; }
-  }
+  // title: one copy, fully on the glass
+  const t = $('#tGlass');
+  if (mob) { const ts = Math.min(vw*0.13, 56); document.documentElement.style.setProperty('--tsize', ts+'px');
+    Object.assign(t.style, {left:(r.x+22)+'px', top:(r.y+R.gy+20)+'px', width:(r.w-44)+'px', height:(ts*2)+'px'}); }
+  else { const ts = Math.min((R.pw - 80) / 5.4, r.h*0.13); document.documentElement.style.setProperty('--tsize', ts+'px');
+    Object.assign(t.style, {left:(r.x+40)+'px', top:(r.y+r.h*0.13)+'px', width:(R.pw-60)+'px', height:(ts*2)+'px'}); }
+  t.style.clipPath = 'none';
 }
 layout();
 // FLIP: the card sits at its final place; at the start it is scaled up (GPU transform) so the video fills the screen
@@ -127,8 +126,8 @@ tl.add(() => { steam.currentTime = 0; steam.play().catch(()=>{}); }, 0)
   .to('#mist', {opacity: 1, duration: .8, ease: 'power1.in'}, 1.95)
   // behind the mist: the hero is set up in its final place
   .add(() => { gsap.set(card, {x: 0, y: 0, scale: 1}); steam.style.display = 'none'; settled = true;
-               hand.currentTime = 0; hand.play().catch(()=>{}); }, 2.75)
-  .set('#hand', {opacity: 1}, 2.75)
+               }, 2.75)
+  .set('#photo', {opacity: 1}, 2.75)
   .set('#bg, #edge, #tint, #shadow', {opacity: 1}, 2.75)
   .to('#mist', {opacity: 0, duration: 1.0, ease: 'power1.out'}, 2.8)
   .set('#glass', {display: 'block'}, 3.1)
