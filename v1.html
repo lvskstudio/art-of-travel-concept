@@ -7,7 +7,7 @@
 <title>Варіант 1 · Крізь букву A — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2a">
+<link rel="stylesheet" href="r2.css?v=r2b">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
@@ -79,7 +79,7 @@ h1 .gold{color:var(--gold)}
 <body>
 <main class="hero" id="hero">
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r2a" poster="assets/r2/montage-poster.jpg?v=r2a" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r2b" poster="assets/r2/montage-poster.jpg?v=r2b" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -94,7 +94,6 @@ h1 .gold{color:var(--gold)}
       <p class="sub hidden0">Авторські групові тури з увагою до кожної деталі — і свої люди поруч.</p>
       <a class="cta hidden0" href="#">Обрати подорож <i>→</i></a>
     </div>
-    <div class="mprog hidden0">Нарізка з наших турів<div class="bars"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div></div>
     <div class="values hidden0">
       <div><svg viewBox="0 0 30 30" fill="none" stroke="currentColor"><circle cx="15" cy="15" r="14" opacity=".6"/><path d="M9 20l5-9 3 5 2-3 3 7z"/></svg>Авторські маршрути</div>
       <div><svg viewBox="0 0 30 30" fill="none" stroke="currentColor"><circle cx="15" cy="15" r="14" opacity=".6"/><circle cx="12" cy="13" r="2.5"/><circle cx="18.5" cy="13" r="2.5"/><path d="M8 21c1-3 7-3 8 0M14 21c1-3 7-3 8 0"/></svg>Маленькі групи</div>
@@ -114,12 +113,11 @@ h1 .gold{color:var(--gold)}
 <div class="intro-text" id="introText">
   <div class="name">THE ART OF TRAVEL</div>
   <div class="slogan">Відкривай · Відчувай · Надихайся</div>
-  <div class="prog"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
 </div>
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r2a"></script>
+<script src="r2.js?v=r2b"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv');
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;           // a thick point on the A's right leg
@@ -148,31 +146,26 @@ function cardInset(){
 }
 addEventListener('resize', () => { S = sizes(); if (stage.classList.contains('masked')) applyMask(); else stage.style.clipPath = cardInset(); });
 
+// One continuous move: the A never stands still — it drifts towards the viewer from the first frame,
+// slowly at first, then faster, until the camera passes through the letter into the footage.
 const tl = gsap.timeline({paused: true});
-tl.from(stage, {opacity: 0, duration: .9, ease: 'power2.out'})
-  .from('#introText > *', {opacity: 0, y: 14, stagger: .12, duration: .7, ease: 'power2.out'}, .25)
-  .to('#introText .prog b', {scaleX: 1, duration: .55, stagger: .55, ease: 'none'}, .5)
-  .to('#introText', {opacity: 0, duration: .45}, 2.6)
-  // fly through the A
-  .to(st, {k: 1, a: 1, duration: 1.35, ease: 'power3.in', onUpdate: applyMask}, 2.75)
-  .to('#intro', {opacity: 0, duration: .35}, 3.85)
-  .add(() => { stage.classList.remove('masked'); stage.style.webkitMaskImage = stage.style.maskImage = 'none'; stage.style.clipPath = 'inset(0px 0px 0px 0px round 0px)'; }, 4.1)
-  // the video settles into the hero card
-  .to(stage, {clipPath: () => cardInset(), duration: 1.0, ease: 'power3.inOut'}, 4.12)
-  .to('#shade', {opacity: 1, duration: .8}, 4.4)
-  .set('#intro', {display: 'none'}, 4.2)
-  .to('.nav', {opacity: 1, duration: .6}, 4.7)
-  .from('h1 em', {yPercent: 110, duration: .9, stagger: .14, ease: 'power3.out'}, 4.8)
-  .to('.sub, .cta', {opacity: 1, duration: .6, stagger: .1}, 5.3)
-  .to('.values, .mprog', {opacity: 1, duration: .6}, 5.4)
-  .fromTo('.card', {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: .8, stagger: .1, ease: 'power3.out'}, 5.3)
-  .to('.arrows', {opacity: 1, duration: .5}, 5.8);
-// progress bars follow the montage
-const bars = document.querySelectorAll('.mprog .bars b'), cuts = [0, 2.9, 5.9, 8.9, 11.4];
-video.addEventListener('timeupdate', () => {
-  const t = video.currentTime;
-  bars.forEach((b, i) => { const p = (t - cuts[i]) / (cuts[i + 1] - cuts[i]); b.style.transform = `scaleX(${Math.max(0, Math.min(1, p))})`; });
-});
+tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
+  .fromTo(st, {k: -0.06}, {k: 1, duration: 2.7, ease: 'power3.in', onUpdate: applyMask}, 0)
+  .fromTo(st, {a: 0}, {a: 1, duration: 2.7, ease: 'power4.in', immediateRender: false}, 0)
+  .from('#introText > *', {opacity: 0, y: 10, stagger: .1, duration: .5, ease: 'power2.out'}, .15)
+  .to('#introText', {opacity: 0, y: 24, duration: .5, ease: 'power2.in'}, 1.05)
+  .to('#intro', {opacity: 0, duration: .3}, 2.45)
+  .add(() => { stage.classList.remove('masked'); stage.style.webkitMaskImage = stage.style.maskImage = 'none'; stage.style.clipPath = 'inset(0px 0px 0px 0px round 0px)'; }, 2.72)
+  .set('#intro', {display: 'none'}, 2.75)
+  // the footage settles into the hero card
+  .to(stage, {clipPath: () => cardInset(), duration: .9, ease: 'power3.inOut'}, 2.75)
+  .to('#shade', {opacity: 1, duration: .7}, 2.95)
+  .to('.nav', {opacity: 1, duration: .5}, 3.2)
+  .from('h1 em', {yPercent: 110, duration: .8, stagger: .12, ease: 'power3.out'}, 3.25)
+  .to('.sub, .cta', {opacity: 1, duration: .5, stagger: .08}, 3.65)
+  .to('.values', {opacity: 1, duration: .5}, 3.75)
+  .fromTo('.card', {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: .7, stagger: .08, ease: 'power3.out'}, 3.6)
+  .to('.arrows', {opacity: 1, duration: .4}, 4.0);
 R2.run(tl, {waitFor: [video]});
 </script>
 </body>

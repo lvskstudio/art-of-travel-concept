@@ -7,11 +7,11 @@
 <title>Варіант 3 · Кружка і скло — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2a">
+<link rel="stylesheet" href="r2.css?v=r2b">
 <style>
 body{background:var(--navy-deep);color:var(--cream)}
 .hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden}
-.bg{position:absolute;inset:-60px;background:url(assets/r2/mug-hand-poster.jpg?v=r2a) center/cover;filter:blur(40px);opacity:0}
+.bg{position:absolute;inset:-60px;background:url(assets/r2/mug-hand-poster.jpg?v=r2b) center/cover;filter:blur(40px);opacity:0}
 .bg::after{content:"";position:absolute;inset:0;background:rgba(2,26,82,.55)}
 /* the card: full screen during the intro, then a rounded glass card */
 .card{position:absolute;inset:0;z-index:5;will-change:clip-path}
@@ -63,8 +63,8 @@ body{background:var(--navy-deep);color:var(--cream)}
 <main class="hero">
   <div class="bg" id="bg"></div>
   <div class="card" id="card">
-    <video id="steam" src="assets/r2/mug-steam.mp4?v=r2a" poster="assets/r2/mug-steam-poster.jpg?v=r2a" muted playsinline preload="auto"></video>
-    <video id="hand" src="assets/r2/mug-hand.mp4?v=r2a" poster="assets/r2/mug-hand-poster.jpg?v=r2a" muted playsinline loop preload="auto"></video>
+    <video id="steam" src="assets/r2/mug-steam.mp4?v=r2b" poster="assets/r2/mug-steam-poster.jpg?v=r2b" muted playsinline preload="auto"></video>
+    <video id="hand" src="assets/r2/mug-hand.mp4?v=r2b" poster="assets/r2/mug-hand-poster.jpg?v=r2b" muted playsinline loop preload="auto"></video>
     <div class="tint" id="tint"></div>
   </div>
   <div class="glass" id="glass"></div>
@@ -84,7 +84,7 @@ body{background:var(--navy-deep);color:var(--cream)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r2a"></script>
+<script src="r2.js?v=r2b"></script>
 <script>
 const $ = s => document.querySelector(s);
 const card = $('#card'), steam = $('#steam'), hand = $('#hand');
