@@ -7,7 +7,7 @@
 <title>Варіант 1 · Крізь букву A — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r3a">
+<link rel="stylesheet" href="r2.css?v=r3b">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:640px;overflow:hidden}
@@ -37,13 +37,13 @@ body{background:var(--bone);color:var(--navy)}
 .lang{font-size:13px;opacity:.9}
 .burger{display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(243,235,221,.6);place-items:center}
 .burger span{display:block;width:16px;height:1.5px;background:var(--cream);box-shadow:0 5px 0 var(--cream),0 -5px 0 var(--cream)}
-.copy{position:absolute;left:56px;top:clamp(84px,11vh,112px);max-width:560px}
-h1{font:400 clamp(42px,5.3vw,76px)/1.02 var(--serif);letter-spacing:-.005em}
+.copy{position:absolute;left:56px;top:clamp(88px,12vh,120px);max-width:680px}
+h1{font:500 clamp(54px,7.2vw,112px)/.96 var(--serif);text-shadow:0 2px 30px rgba(1,16,47,.3);letter-spacing:-.005em}
 h1 span{display:block;overflow:hidden}
 h1 span em{display:block;font-style:normal}
 h1 .gold{color:var(--gold)}
-.sub{margin-top:20px;font-size:15px;line-height:1.55;opacity:.9;max-width:430px}
-.perks{margin-top:14px;font-size:12px;letter-spacing:.05em;opacity:.78}
+.sub{margin-top:24px;font-size:17px;line-height:1.5;opacity:.95;max-width:470px}
+.perks{margin-top:14px;font-size:13px;letter-spacing:.05em;opacity:.85}
 .cta{margin-top:22px;display:inline-flex;align-items:center;gap:14px;background:var(--navy);color:var(--cream);font-weight:600;font-size:14px;padding:8px 8px 8px 24px;border-radius:40px}
 .cta i{width:34px;height:34px;border-radius:50%;background:rgba(243,235,221,.14);display:grid;place-items:center;font-style:normal}
 .values{position:absolute;right:28px;bottom:26px;display:flex;gap:30px;font-size:12px}
@@ -53,12 +53,12 @@ h1 .gold{color:var(--gold)}
 .mprog .bars{display:flex;gap:8px;margin-top:10px}
 .mprog .bars i{width:44px;height:2px;background:rgba(243,235,221,.35);position:relative;overflow:hidden}
 .mprog .bars i b{position:absolute;inset:0;background:var(--cream);transform:scaleX(0);transform-origin:left}
-.cards{position:absolute;z-index:85;left:96px;bottom:92px;display:flex;gap:16px}
-.card{width:clamp(200px,19.5vw,280px);aspect-ratio:280/212;border-radius:18px;overflow:hidden;position:relative;border:3px solid var(--bone);box-shadow:0 18px 40px rgba(1,16,47,.25);color:var(--cream)}
+.cards{position:absolute;z-index:85;right:96px;bottom:92px;display:flex;gap:14px}
+.card{width:clamp(170px,15.5vw,236px);aspect-ratio:280/212;border-radius:18px;overflow:hidden;position:relative;border:3px solid var(--bone);box-shadow:0 18px 40px rgba(1,16,47,.25);color:var(--cream)}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
 .card:hover img{transform:scale(1.06)}
 .card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(1,16,47,.65),rgba(1,16,47,0) 60%)}
-.card b{position:absolute;z-index:2;left:16px;bottom:14px;font:400 24px/1.02 var(--serif)}
+.card b{position:absolute;z-index:2;left:14px;bottom:12px;font:500 21px/1.02 var(--serif)}
 .card small{position:absolute;z-index:2;right:16px;bottom:16px;font-size:11px;opacity:.8}
 .arrows{position:absolute;z-index:85;left:calc(96px + 3 * clamp(200px,19.5vw,280px) + 64px);bottom:108px;display:flex;gap:12px}
 .arrows button{width:40px;height:40px;border-radius:50%;background:var(--olive);color:var(--bone);display:grid;place-items:center;font-size:14px}
@@ -82,7 +82,7 @@ h1 .gold{color:var(--gold)}
 <body>
 <main class="hero" id="hero">
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r3a" poster="assets/r2/montage-poster.jpg?v=r3a" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r3b" poster="assets/r2/montage-poster.jpg?v=r3b" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -115,7 +115,7 @@ h1 .gold{color:var(--gold)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r3a"></script>
+<script src="r2.js?v=r3b"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv');
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;           // a thick point on the A's right leg

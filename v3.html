@@ -7,7 +7,7 @@
 <title>Варіант 3 · Кружка і скло — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r3a">
+<link rel="stylesheet" href="r2.css?v=r3b">
 <style>
 body{background:#ECE4D7;color:var(--cream)}
 .hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden}
@@ -36,8 +36,8 @@ body{background:#ECE4D7;color:var(--cream)}
 .soc{left:40px;top:66px;display:flex;gap:10px}
 .soc a{width:30px;height:30px;border-radius:50%;border:1px solid rgba(2,26,82,.8);display:grid;place-items:center;font:600 10px/1 var(--sans);color:var(--navy)}
 .info{left:40px;bottom:44px;width:min(370px,calc(var(--pw) - 80px));color:var(--navy)}
-.info h3{font:600 22px/1.2 var(--sans)}
-.info p{margin-top:12px;font-size:15px;line-height:1.55;opacity:.9}
+.info h3{font:500 clamp(30px,3.1vw,46px)/1.08 var(--geo);letter-spacing:-.01em}
+.info p{margin-top:14px;font-size:16px;line-height:1.5;opacity:.92}
 .info a{margin-top:24px;display:inline-block;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);padding:18px 34px;border-radius:30px}
 .menu{right:32px;top:30px;display:flex;align-items:center;gap:34px;font:500 14px/1 var(--sans);color:#fff;text-shadow:0 1px 12px rgba(2,26,82,.55)}
 .menu .pill{background:var(--cream);color:var(--navy);text-shadow:none;font-weight:600;padding:13px 20px;border-radius:30px}
@@ -56,7 +56,7 @@ body{background:#ECE4D7;color:var(--cream)}
   .soc,.menu,.slider,.pager span{display:none}
   .mmenu{display:block!important;right:22px;top:20px;font-size:13px}
   .info{left:22px;right:22px;bottom:30px;width:auto}
-  .info h3{font-size:18px}.info p{font-size:14px}.info .more{display:none}
+  .info h3{font-size:28px}.info p{font-size:14px}.info .more{display:none}
   .pager{display:none}
   .edge{border-radius:28px}
   #hand{object-position:70% 50%}
@@ -67,8 +67,8 @@ body{background:#ECE4D7;color:var(--cream)}
 <main class="hero">
   <div class="bg" id="bg"></div>
   <div class="card" id="card">
-    <video id="steam" src="assets/r2/mug-steam.mp4?v=r3a" poster="assets/r2/mug-steam-poster.jpg?v=r3a" muted playsinline preload="auto"></video>
-    <video id="hand" src="assets/r2/mug-hand.mp4?v=r3a" muted playsinline preload="auto"></video>
+    <video id="steam" src="assets/r2/mug-steam.mp4?v=r3b" poster="assets/r2/mug-steam-poster.jpg?v=r3b" muted playsinline preload="auto"></video>
+    <video id="hand" src="assets/r2/mug-hand.mp4?v=r3b" muted playsinline preload="auto"></video>
     <div class="tint" id="tint"></div>
   </div>
   <div class="glass" id="glass"></div>
@@ -87,7 +87,7 @@ body{background:#ECE4D7;color:var(--cream)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r3a"></script>
+<script src="r2.js?v=r3b"></script>
 <script>
 const $ = s => document.querySelector(s);
 const card = $('#card'), steam = $('#steam'), hand = $('#hand');
