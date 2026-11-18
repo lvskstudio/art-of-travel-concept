@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники + каньйон — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&family=Montserrat:wght@200;300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r2c">
+<link rel="stylesheet" href="r2.css?v=r2d">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -124,8 +124,8 @@ const $ = s => document.querySelector(s);
 const tris = $('#tris'), reveal = $('#reveal'), video = $('#cv');
 const mob = innerWidth < 860;
 // real drone footage: wide crop for desktop, full vertical for phones
-video.src = mob ? 'assets/r2/canyon-tall.mp4?v=r2c' : 'assets/r2/canyon-wide.mp4?v=r2c';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r2c' : 'assets/r2/canyon-wide-poster.jpg?v=r2c';
+video.src = mob ? 'assets/r2/canyon-tall.mp4?v=r2d' : 'assets/r2/canyon-wide.mp4?v=r2d';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r2d' : 'assets/r2/canyon-wide-poster.jpg?v=r2d';
 
 // each piece gets its own box (so its photo is framed for it), clipped to its triangle
 const boxes = [[25,0,50,50,'50% 0,100% 100%,0 100%'],[0,50,50,50,'50% 0,100% 100%,0 100%'],[50,50,50,50,'50% 0,100% 100%,0 100%'],[25,50,50,50,'0 0,100% 0,50% 100%']];
