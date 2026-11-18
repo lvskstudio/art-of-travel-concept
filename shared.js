@@ -27,6 +27,7 @@ window.autoIntro = function (tl, delay) {
   var evs = ['wheel', 'touchstart', 'keydown', 'mousedown'];
   function off() { evs.forEach(function (e) { removeEventListener(e, skip); }); }
   evs.forEach(function (e) { addEventListener(e, skip, { passive: true }); });
-  tl.eventCallback('onComplete', finish);
+  var prev = tl.eventCallback('onComplete');
+  tl.eventCallback('onComplete', function () { finish(); if (prev) prev(); });
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { clearTimeout(timer); tl.progress(1); finish(); }
 };
