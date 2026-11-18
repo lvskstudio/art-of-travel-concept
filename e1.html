@@ -9,38 +9,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <link rel="stylesheet" href="story.css">
-<style>.story{--bg:#F4E3C7;--bg-a:rgba(244,227,199,.92)}</style>
+<style>.story{--bg:#F4E3C7}</style>
 </head>
 <body data-variant="e1">
-<section class="story" data-tone="light">
+<section class="story">
   <video src="assets/story-mug.mp4" poster="assets/story-mug-poster.jpg" muted playsinline preload="auto"></video>
-  <div class="shade light"></div><div class="shade dark"></div>
-  <header class="nav">
-    <div class="brand"><img src="assets/mark-gold.png" alt="">THE ART OF TRAVEL</div>
-    <nav class="menu"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про мене</a><a href="#">Відгуки</a><a href="#">Контакти</a></nav>
-    <div class="right"><span>UA / EN</span><a class="btn sm" href="#">Залишити заявку</a></div>
-  </header>
-  <div class="text">
-    <div class="ch-num">01 / 04</div>
-    <h1 class="ch-title">Перша кава</h1>
-    <p class="ch-sub">Ранок, з якого починається подорож</p>
-    <a class="btn ch-cta" href="#">Обрати подорож &nbsp;→</a>
-  </div>
-  <div class="dots" aria-label="Глави"><button aria-label="Глава 1"></button><button aria-label="Глава 2"></button><button aria-label="Глава 3"></button><button aria-label="Глава 4"></button></div>
-  <div class="controls">
-    <button class="arrow go-prev" aria-label="Назад"><svg viewBox="0 0 20 20" fill="none"><path d="M12.5 4 6.5 10l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <button class="arrow go-next" aria-label="Далі"><svg viewBox="0 0 20 20" fill="none"><path d="m7.5 4 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="shade"></div>
+  <div class="hero">
+    <header class="nav">
+      <div class="brand"><img src="assets/mark-cream.png" alt="">THE ART OF TRAVEL</div>
+      <nav class="menu"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про мене</a><a href="#">Відгуки</a><a href="#">Контакти</a></nav>
+      <div class="right"><span>UA / EN</span><a class="btn sm" href="#">Залишити заявку</a></div>
+    </header>
+    <div class="eyebrow">Авторські групові тури · сезон 2027</div>
+    <h1 class="h1">Твоя подорож<br>починається тут</h1>
+    <p class="sub">Маленькі групи, свої люди поруч і маршрут, продуманий до кожної деталі.</p>
+    <div class="ctas"><a class="btn" href="#">Обрати подорож &nbsp;→</a><a class="btn ghost" href="#">Календар 2027</a></div>
   </div>
 </section>
 <script src="shared.js"></script>
 <script src="story.js"></script>
-<script>
-initStory({ hold: 2.6, tone: 'light', chapters: [
-  { t: 0,     title: 'Перша кава',          sub: 'Ранок, з якого починається подорож' },
-  { t: 1.9,   title: 'Ще мить — і в путь',   sub: 'Думки вже там, де хмари' },
-  { t: 3.85,  title: 'Попереду — гори',      sub: 'Маршрут, продуманий до деталей' },
-  { t: 11.55, title: 'Твоя подорож чекає',   sub: 'Авторські групові тури з увагою до кожної деталі', tone: 'dark' }
-] });
-</script>
+<script>initStory();</script>
 </body>
 </html>
