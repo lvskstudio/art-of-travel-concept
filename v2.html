@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники + каньйон — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&family=Montserrat:wght@200;300;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r3c">
+<link rel="stylesheet" href="r2.css?v=r3d">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -22,7 +22,7 @@ body{background:var(--navy);color:var(--cream)}
 .intro-name b{display:block;font:400 clamp(18px,1.8vw,26px)/1 var(--serif);letter-spacing:.3em;padding-left:.3em}
 .intro-name small{display:block;margin-top:14px;font:500 10px/1 var(--sans);letter-spacing:.32em;color:var(--bone);opacity:.7}
 /* reveal: the mountain opens onto the canyon video */
-.reveal{position:absolute;inset:0;z-index:1}
+.reveal{position:absolute;top:0;right:0;bottom:0;width:min(56.25vh,46vw);z-index:1;overflow:hidden}
 .backdrop{position:absolute;inset:0;z-index:3;background:var(--navy)}
 .shards{position:absolute;inset:0;z-index:4;pointer-events:none}
 .shard{position:absolute;background:var(--navy);will-change:transform}
@@ -48,10 +48,11 @@ body{background:var(--navy);color:var(--cream)}
 .burger{display:none;width:44px;height:44px;border-radius:50%;background:var(--gold);place-items:center}
 .burger span{display:block;width:18px;height:2px;background:var(--navy);box-shadow:0 6px 0 var(--navy),0 -6px 0 var(--navy)}
 .explore{position:absolute;left:64px;top:calc(clamp(110px,16vh,150px) + 9.3vw + 4px);font:500 12px/1 var(--sans);letter-spacing:.3em;color:var(--gold)}
-.left{position:absolute;left:60px;bottom:72px;max-width:720px;text-shadow:0 1px 18px rgba(2,26,82,.45)}
-.left h2{font:400 clamp(48px,5.8vw,88px)/.95 var(--serif);text-transform:uppercase;white-space:nowrap;letter-spacing:-.005em}
+.left{position:absolute;left:clamp(32px,4.5vw,72px);top:110px;bottom:64px;right:calc(min(56.25vh,46vw) + clamp(32px,4.5vw,72px));display:flex;flex-direction:column;justify-content:center}
+.left h2{font:400 clamp(52px,6.6vw,118px)/.94 var(--serif);text-transform:uppercase;letter-spacing:-.01em}
 .left h2 em{font-style:normal;color:var(--gold)}
-.left p{margin-top:18px;font-size:16px;line-height:1.5;opacity:.92;max-width:380px}
+.left p{margin-top:26px;font-size:18px;line-height:1.5;opacity:.9;max-width:460px}
+.left .cta{align-self:flex-start}
 .cta{margin-top:28px;display:inline-flex;align-items:center;gap:16px;background:var(--olive);color:var(--cream);font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:9px 9px 9px 24px;border-radius:40px}
 .cta i{width:34px;height:34px;border-radius:50%;border:1px solid rgba(243,235,221,.5);display:grid;place-items:center;font-style:normal;letter-spacing:0}
 .count{position:absolute;left:60px;bottom:48px;display:flex;gap:24px;font:500 11px/1 var(--sans)}
@@ -77,7 +78,8 @@ body{background:var(--navy);color:var(--cream)}
   .title{top:22%;font-size:17.5vw;line-height:.95;white-space:normal}
   .title span{display:block}
   .explore{left:0;right:0;top:calc(22% - 30px);text-align:center;font-size:10px;letter-spacing:.24em}
-  .left{left:22px;right:22px;bottom:44px}
+  .reveal{inset:0;width:auto}
+  .left{left:22px;right:22px;top:auto;bottom:44px;display:block;text-shadow:0 1px 18px rgba(2,26,82,.45)}
   .left h2{font-size:48px;line-height:1;text-transform:none;white-space:normal}
   .left p{font-size:14px;margin-top:10px}.left .more{display:none}
   .tour{display:none}
@@ -123,8 +125,8 @@ const $ = s => document.querySelector(s);
 const tris = $('#tris'), reveal = $('#reveal'), video = $('#cv'), fly = $('#fly');
 const mob = innerWidth < 860;
 // real drone footage: wide crop for desktop, full vertical for phones
-video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r3c' : 'assets/r2/canyon-wide.mp4?v=r3c';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r3c' : 'assets/r2/canyon-wide-poster.jpg?v=r3c';
+video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r3d' : 'assets/r2/canyon-tall.mp4?v=r3d';
+video.poster = 'assets/r2/canyon-tall-poster.jpg?v=r3d';
 // robust playback: muted inline autoplay, retried when data arrives and on the first touch/click
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;

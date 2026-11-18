@@ -4,138 +4,97 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Варіант 3 · Кружка і скло — The Art of Travel</title>
+<title>Варіант 3 · Кружка — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r3c">
+<link rel="stylesheet" href="r2.css?v=r3d">
 <style>
-body{background:#ECE4D7;color:var(--cream)}
-.hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden}
-.bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,#F4EEE4,#E6DCCC);opacity:0}
-/* the card: full screen during the intro, then a rounded glass card */
-.card{position:absolute;z-index:5;overflow:hidden;transform-origin:50% 50%;will-change:transform;-webkit-mask-image:-webkit-radial-gradient(white,black)}
-.shadow{position:absolute;z-index:4;border-radius:36px;box-shadow:0 30px 80px rgba(70,52,30,.28),0 6px 18px rgba(70,52,30,.12);opacity:0}
-.card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;opacity:0}
-#steam{transform-origin:50% 26%;will-change:transform}
-.mist{position:absolute;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#F4EEE4,#E6DCCC);opacity:0;pointer-events:none}
-.tint{position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,26,82,.5),rgba(2,26,82,0) 45%),rgba(2,26,82,.12);opacity:0}
-.edge{position:absolute;z-index:9;border:1.2px solid rgba(255,255,255,.55);border-radius:36px;pointer-events:none;opacity:0}
-.glass{position:absolute;z-index:6;background:rgba(232,221,200,.46);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);border-right:1px solid rgba(255,255,255,.5);display:none;opacity:0}
-/* split title: same text twice, each clipped to one side of the glass edge */
-.ttl{position:absolute;z-index:7;pointer-events:none}
-.ttl div{font:500 var(--tsize)/1 var(--serif);white-space:nowrap;position:absolute;left:0;letter-spacing:.01em}
-.ttl .l2{top:calc(var(--tsize) * .98)}
-.ttl.on-photo{color:#fff}
-.ttl.on-glass{color:var(--navy)}
-/* card UI */
-.ui{position:absolute;z-index:8}
-.ui > *{position:absolute}
+body{background:#EFE7DA;color:var(--navy)}
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;background:radial-gradient(circle at 30% 40%,#F6F0E6,#E9DFD0)}
+/* intro: the steam video full screen, the camera drifts into the steam */
+.intro{position:absolute;inset:0;z-index:40;overflow:hidden;background:#EDE5D8}
+.intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 26%;will-change:transform}
+.mist{position:absolute;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#F6F0E6,#E7DDCE);opacity:0;pointer-events:none}
+/* hero: big type on the left, the real photo in a tall arch on the right */
+.arch{position:absolute;z-index:2;right:clamp(24px,5vw,80px);top:clamp(92px,12vh,120px);bottom:0;width:min(40vw,64vh);border-radius:999px 999px 0 0;overflow:hidden;box-shadow:0 30px 80px rgba(70,52,30,.22)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 70%;transform:scale(1.06);will-change:transform}
+.nav{position:absolute;z-index:10;left:clamp(24px,4.5vw,72px);right:clamp(24px,4.5vw,72px);top:28px;display:flex;align-items:center;justify-content:space-between}
+.logo{height:56px}
+.links{display:flex;gap:34px;font:500 14px/1 var(--sans)}
+.links a:hover{color:var(--gold)}
+.nr{display:flex;align-items:center;gap:22px;font:500 14px/1 var(--sans)}
+.pill{background:var(--navy);color:var(--cream);font-weight:600;padding:14px 22px;border-radius:30px}
+.pill:hover{background:var(--olive)}
+.burger{display:none;width:42px;height:42px;border-radius:50%;background:var(--navy);place-items:center}
+.burger span{display:block;width:16px;height:1.5px;background:var(--cream);box-shadow:0 5px 0 var(--cream),0 -5px 0 var(--cream)}
+.copy{position:absolute;z-index:5;left:clamp(24px,4.5vw,72px);top:120px;bottom:56px;right:calc(min(40vw,64vh) + clamp(24px,5vw,80px) + 48px);display:flex;flex-direction:column;justify-content:center}
+.kicker{font:500 12px/1 var(--sans);letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+h1{margin-top:22px;font:500 clamp(60px,8vw,140px)/.9 var(--serif);letter-spacing:-.015em}
+h1 span{display:block;overflow:hidden}
+h1 em{display:block;font-style:normal}
+.sub{margin-top:28px;max-width:470px;font-size:18px;line-height:1.55;opacity:.85}
+.row{margin-top:34px;display:flex;align-items:center;gap:34px;flex-wrap:wrap}
+.cta{display:inline-flex;align-items:center;gap:16px;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);padding:10px 10px 10px 28px;border-radius:40px}
+.cta i{width:38px;height:38px;border-radius:50%;background:rgba(232,221,200,.18);display:grid;place-items:center;font-style:normal}
+.quote{padding-left:16px;border-left:1px solid var(--gold);font:400 19px/1.3 var(--serif);max-width:300px}
+.quote small{display:block;margin-top:6px;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.6}
 .h0{opacity:0}
-.brand{display:none;left:40px;top:38px;font:500 12px/1 var(--sans);letter-spacing:.25em;color:var(--navy)}
-.soc{left:40px;top:66px;display:flex;gap:10px}
-.soc a{width:30px;height:30px;border-radius:50%;border:1px solid rgba(2,26,82,.8);display:grid;place-items:center;font:600 10px/1 var(--sans);color:var(--navy)}
-.info{left:40px;bottom:44px;width:min(370px,calc(var(--pw) - 80px));color:var(--navy)}
-.info h3{font:500 clamp(36px,3.6vw,54px)/1.02 var(--serif)}
-.quote{margin-top:18px;padding-left:16px;border-left:1px solid var(--gold);font:400 18px/1.35 var(--serif);color:var(--navy)}
-.quote small{display:block;margin-top:6px;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
-.info p{margin-top:14px;font-size:16px;line-height:1.5;opacity:.92}
-.info a{margin-top:24px;display:inline-block;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);padding:18px 34px;border-radius:30px}
-.menu{right:32px;top:30px;display:flex;align-items:center;gap:34px;font:500 14px/1 var(--sans);color:#fff;text-shadow:0 1px 12px rgba(2,26,82,.55)}
-.menu .pill{background:var(--cream);color:var(--navy);text-shadow:none;font-weight:600;padding:13px 20px;border-radius:30px}
-.menu .pill:hover{background:var(--gold);color:var(--navy)}
-.menu a:hover{color:var(--gold)}
-.slider{right:44px;top:28%;height:44%;width:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
-.slider::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.6)}
-.slider i{position:relative;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent}
-.slider .dn{border-top:12px solid #fff}.slider .up{border-bottom:12px solid #fff}
-.slider b{position:relative;width:15px;height:15px;background:var(--gold);transform:rotate(45deg)}
-.pager{right:40px;bottom:44px;display:flex;align-items:center;gap:14px;font-size:13px}
-.pager span{margin-right:40px;opacity:.85}
-.pager button{width:66px;height:32px;border-radius:4px;border:1px solid rgba(255,255,255,.5);background:rgba(232,221,200,.16);color:#fff;font-size:11px}
 @media (max-width:860px){
-  .brand{display:block;left:22px;top:24px;color:var(--cream);font-size:10px}
-  .soc,.menu,.slider,.pager span{display:none}
-  .mmenu{display:block!important;right:22px;top:20px;font-size:13px}
-  .info{left:22px;right:22px;bottom:30px;width:auto}
-  .info h3{font-size:28px}.info p{font-size:14px}.info .more{display:none}
-  .pager{display:none}
-  .edge{border-radius:28px}
-  #photo{inset:auto;top:-52%;left:0;width:100%;height:140%;object-position:56% 50%}
-  .quote{display:none}
+  .nav{left:18px;right:18px;top:16px}.links,.nr .lang,.pill{display:none}.burger{display:grid}
+  .logo{height:44px}
+  .arch{left:18px;right:18px;top:76px;bottom:auto;height:46%;width:auto}
+  .copy{left:20px;right:20px;top:auto;bottom:28px;display:block}
+  .kicker{font-size:10px}
+  h1{margin-top:12px;font-size:58px}
+  .sub{margin-top:14px;font-size:15px}.sub .more{display:none}
+  .row{margin-top:20px}.quote{display:none}
 }
 </style>
 </head>
 <body>
 <main class="hero">
-  <div class="bg" id="bg"></div>
-  <div class="card" id="card">
-    <video id="steam" src="assets/r2/mug-steam.mp4?v=r3c" poster="assets/r2/mug-steam-poster.jpg?v=r3c" muted playsinline preload="auto"></video>
-    <img id="photo" src="assets/r2/mug-real.jpg?v=r3c" alt="Фірмова кружка The Art of Travel на тлі льодовикової лагуни">
-    <div class="tint" id="tint"></div>
+  <nav class="nav h0">
+    <img class="logo" src="assets/logo-navy.png" alt="The Art of Travel">
+    <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
+    <div class="nr"><span class="lang">UA / EN</span><a class="pill" href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span></button></div>
+  </nav>
+  <div class="arch h0" id="arch"><img src="assets/r2/mug-grass.jpg?v=r3d" alt="Фірмова кружка The Art of Travel у горах"></div>
+  <div class="copy">
+    <div class="kicker h0">The Art of Travel · авторські тури</div>
+    <h1><span><em>Спокій</em></span><span><em>за результат</em></span></h1>
+    <p class="sub h0">Все, що вказано в турі, вже включено в ціну.<span class="more"> Офіційний договір, страхування і своя команда поруч — вам лишається тільки відчувати.</span></p>
+    <div class="row h0">
+      <a class="cta" href="#">Обрати подорож <i>→</i></a>
+      <p class="quote">«Я завжди обираю найкраще — і для вас теж»<small>Артем, засновник</small></p>
+    </div>
   </div>
-  <div class="glass" id="glass"></div>
+
+  <div class="intro" id="intro">
+    <video id="steam" src="assets/r2/mug-steam.mp4?v=r3d" poster="assets/r2/mug-steam-poster.jpg?v=r3d" muted playsinline preload="auto"></video>
+  </div>
   <div class="mist" id="mist"></div>
-  <div class="ttl on-glass h0" id="tGlass"><div class="l1">THE ART</div><div class="l2">OF TRAVEL</div></div>
-  <div class="edge" id="edge"></div>
-  <div class="shadow" id="shadow"></div>
-  <div class="ui" id="ui">
-    <div class="brand h0">THE ART OF TRAVEL</div>
-    <div class="info h0"><h3>Спокій за результат</h3><p>Все, що вказано в турі, вже включено в ціну.<span class="more"> Офіційний договір, страхування і своя команда поруч — вам лишається тільки відчувати.</span></p><p class="quote">«Я завжди обираю найкраще — і для вас теж»<small>Артем, засновник</small></p><a href="#">Обрати подорож</a></div>
-    <div class="menu h0"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a><a href="#">UA / EN</a><a class="pill" href="#">Залишити заявку</a></div>
-    <div class="mmenu h0" style="display:none">Меню</div>
-  </div>
 </main>
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r3c"></script>
+<script src="r2.js?v=r3d"></script>
 <script>
-const $ = s => document.querySelector(s);
-const card = $('#card'), steam = $('#steam');
-let R = {};
-function layout(){
-  const vw = innerWidth, vh = innerHeight, mob = vw < 860;
-  const r = mob ? {x:12, y:56, w:vw-24, h:vh-56-24, rad:28} : {x:Math.round(vw*0.07), y:Math.round(vh*0.12), w:Math.round(vw*0.86), h:Math.round(vh*0.76), rad:36};
-  R = {...r, mob, vw, vh};
-  const place = el => Object.assign(el.style, {left:r.x+'px', top:r.y+'px', width:r.w+'px', height:r.h+'px'});
-  place($('#edge')); place($('#ui')); place($('#shadow')); $('#shadow').style.borderRadius = r.rad+'px'; place(card); card.style.borderRadius = r.rad+'px';
-  const g = $('#glass');
-  if (mob) { const gy = Math.round(r.h*0.44); Object.assign(g.style, {left:r.x+'px', top:(r.y+gy)+'px', width:r.w+'px', height:(r.h-gy)+'px', borderRadius:`0 0 ${r.rad}px ${r.rad}px`, borderRight:'0', borderTop:'1px solid rgba(255,255,255,.5)'}); R.gy = gy; }
-  else { const pw = Math.round(r.w*0.38); Object.assign(g.style, {left:r.x+'px', top:r.y+'px', width:pw+'px', height:r.h+'px', borderRadius:`${r.rad}px 0 0 ${r.rad}px`}); R.pw = pw; $('#ui').style.setProperty('--pw', pw+'px'); }
-  // title: one copy, fully on the glass
-  const t = $('#tGlass');
-  if (mob) { const ts = Math.min(vw*0.13, 56); document.documentElement.style.setProperty('--tsize', ts+'px');
-    Object.assign(t.style, {left:(r.x+22)+'px', top:(r.y+R.gy+20)+'px', width:(r.w-44)+'px', height:(ts*2)+'px'}); }
-  else { const ts = Math.min((R.pw - 80) / 5.4, r.h*0.13); document.documentElement.style.setProperty('--tsize', ts+'px');
-    Object.assign(t.style, {left:(r.x+40)+'px', top:(r.y+r.h*0.13)+'px', width:(R.pw-60)+'px', height:(ts*2)+'px'}); }
-  t.style.clipPath = 'none';
-}
-layout();
-// FLIP: the card sits at its final place; at the start it is scaled up (GPU transform) so the video fills the screen
-const coverState = () => ({x: R.vw/2 - (R.x + R.w/2), y: R.vh/2 - (R.y + R.h/2), scale: Math.max(R.vw/R.w, R.vh/R.h) * 1.002});
-gsap.set(card, coverState());
-addEventListener('resize', () => { layout(); if (!settled) gsap.set(card, coverState()); });
-let settled = false;
+const steam = document.getElementById('steam');
 const tl = gsap.timeline({paused: true});
-// steam only (cut before the AI mountains appear). The camera drifts into the steam,
-// the screen fills with soft mist, and out of it the hero appears.
+// the steam rises; the camera drifts into it; soft mist; out of the mist — the hero
 tl.add(() => { steam.currentTime = 0; steam.play().catch(()=>{}); }, 0)
   .from(steam, {opacity: 0, duration: .5}, 0)
   .to(steam, {scale: 2.1, duration: 2.75, ease: 'power2.in'}, 0)
   .to('#mist', {opacity: 1, duration: .8, ease: 'power1.in'}, 1.95)
-  // behind the mist: the hero is set up in its final place
-  .add(() => { gsap.set(card, {x: 0, y: 0, scale: 1}); steam.style.display = 'none'; settled = true;
-               }, 2.75)
-  .set('#photo', {opacity: 1}, 2.75)
-  .set('#bg, #edge, #tint, #shadow', {opacity: 1}, 2.75)
+  .set('#intro', {display: 'none'}, 2.75)
+  .set('#arch', {opacity: 1}, 2.75)
   .to('#mist', {opacity: 0, duration: 1.0, ease: 'power1.out'}, 2.8)
-  .set('#glass', {display: 'block'}, 3.1)
-  .to('#glass', {opacity: 1, duration: .8, ease: 'power1.out'}, 3.1)
-  .fromTo('.ttl', {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 3.3)
-  .to('.brand, .soc, .menu, .mmenu', {opacity: 1, duration: .6}, 3.6)
-  .to('.info', {opacity: 1, duration: .7}, 3.7)
-;
+  .to('#arch img', {scale: 1, duration: 1.6, ease: 'power3.out'}, 2.75)
+  .from('h1 em', {yPercent: 110, duration: .9, stagger: .12, ease: 'power3.out'}, 3.05)
+  .to('.kicker', {opacity: 1, duration: .6}, 3.0)
+  .to('.nav', {opacity: 1, duration: .6}, 3.3)
+  .to('.sub', {opacity: 1, duration: .6}, 3.5)
+  .to('.row', {opacity: 1, duration: .6}, 3.65);
 R2.run(tl, {waitFor: [steam]});
 </script>
 </body>
