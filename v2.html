@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Варіант 2 · Трикутники — The Art of Travel</title>
+<title>Варіант Б — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r6a">
+<link rel="stylesheet" href="r2.css?v=r6b">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -106,8 +106,8 @@ body{background:var(--navy);color:var(--cream)}
 const $ = s => document.querySelector(s);
 const tris = $('#tris'), video = $('#cv'), fly = $('#fly');
 const mob = innerWidth < 860;
-video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r6a' : 'assets/r2/canyon-wide.mp4?v=r6a';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r6a' : 'assets/r2/canyon-wide-poster.jpg?v=r6a';
+video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r6b' : 'assets/r2/canyon-wide.mp4?v=r6b';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r6b' : 'assets/r2/canyon-wide-poster.jpg?v=r6b';
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;
 const playVideo = () => { wantPlay = true; const p = video.play(); if (p) p.catch(() => {}); };
