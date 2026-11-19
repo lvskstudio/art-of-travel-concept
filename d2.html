@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Варіант D · Глибина — The Art of Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r5a">
+<style>
+body{background:#DDE3EA;color:var(--navy)}
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;background:#DDE3EA}
+/* the photo and the cut-out mountain share one geometry; the title sits between them */
+.ph{position:absolute;left:-5.56vw;top:-6.46vw;width:111.1vw;aspect-ratio:3/2;background-size:cover;background-position:center;will-change:transform}
+.photo{background-image:url(assets/dolomites.jpg)}
+.cut{background-image:url(assets/dolomites-cut.webp);z-index:3}
+.fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(244,245,246,.4),rgba(244,245,246,.6) 50%,rgba(244,245,246,.35))}
+.title{position:absolute;left:0;right:0;top:11vw;z-index:2;text-align:center;font:300 8.6vw/1 var(--serif);white-space:nowrap;will-change:transform}
+.shade{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(180deg,transparent 45%,rgba(2,16,40,.55)),radial-gradient(60% 55% at 16% 92%,rgba(2,16,40,.55),rgba(2,16,40,.2) 55%,transparent 100%);opacity:0}
+.intro-s{position:absolute;left:0;right:0;top:calc(50vh + 6vw);z-index:5;text-align:center;font:500 12px/1 var(--sans);letter-spacing:.4em;opacity:0}
+.nav{position:absolute;z-index:6;top:22px;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);height:72px;display:flex;align-items:center;justify-content:space-between}
+.links{display:flex;gap:30px;font:500 13px/1 var(--sans)}
+.links a:hover{color:var(--gold)}
+.logo{position:absolute;left:50%;top:-6px;height:82px;transform:translateX(-50%)}
+.nr{display:flex;align-items:center;gap:18px}
+.lang{font:500 11px/1 var(--sans);letter-spacing:.14em;opacity:.55}
+.pill{background:var(--navy);color:var(--cream);font:600 13px/1 var(--sans);padding:14px 22px;border-radius:999px}
+.burger{display:none;width:42px;height:42px;border-radius:50%;background:var(--navy);flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.burger span{width:16px;height:1.5px;background:var(--cream)}
+.copy{position:absolute;z-index:5;left:clamp(20px,4.2vw,60px);bottom:clamp(40px,8vh,80px);color:var(--cream)}
+.copy h2{font:300 clamp(46px,min(5.4vw,9vh),88px)/.98 var(--serif)}
+.copy p{margin-top:16px;font-size:17px;opacity:.9}
+.cta{display:inline-block;margin-top:24px;background:var(--cream);color:var(--navy);font:600 14px/1 var(--sans);padding:17px 30px;border-radius:999px}
+.cta:hover{background:var(--gold)}
+.h0{opacity:0}
+@media (max-width:860px){
+  .links,.pill,.lang{display:none}.burger{display:flex}
+  .logo{height:56px;left:20px;transform:none;top:4px}
+  .nav{justify-content:flex-end}
+  .ph{left:-60vw;width:220vw;top:-4vw}
+  .title{top:22vw;font-size:15.5vw;white-space:normal;line-height:.95}
+  .copy h2{font-size:42px}
+}
+</style>
+</head>
+<body>
+<main class="hero">
+  <div class="ph photo"></div>
+  <div class="fog"></div>
+  <h1 class="title"><span>THE ART OF TRAVEL</span></h1>
+  <div class="ph cut"></div>
+  <div class="shade"></div>
+  <div class="intro-s">EXPLORE &nbsp;·&nbsp; EXPERIENCE &nbsp;·&nbsp; INSPIRE</div>
+  <nav class="nav h0">
+    <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
+    <img class="logo" src="assets/logo-navy.png" alt="The Art of Travel">
+    <div class="nr"><a class="lang" href="#">EN</a><a class="pill" href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
+  </nav>
+  <div class="copy h0">
+    <h2>Спокій<br>за результат</h2>
+    <p>Авторські групові тури, які залишають слід.</p>
+    <a class="cta" href="#">Обрати подорож</a>
+  </div>
+</main>
+<button class="replay">↻ Інтро ще раз</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="r2.js?v=r5a"></script>
+<script>
+const title = document.querySelector('.title');
+const titleY0 = () => innerHeight * .44 - title.offsetTop - title.offsetHeight / 2;
+gsap.set('.ph', {y: () => innerWidth * .16, scale: 1.08, transformOrigin: '50% 30%'});
+gsap.set('.photo', {filter: 'blur(6px) saturate(1.15) contrast(1.06)'});
+gsap.set('.cut', {opacity: 0, filter: 'blur(6px) saturate(1.15) contrast(1.06)'});
+gsap.set(title, {y: titleY0, opacity: 0});
+const tl = gsap.timeline({paused: true});
+// light haze with the name, then the mountain rises in front of the title — no mouse movement
+tl.to(title, {opacity: 1, duration: .8}, 0)
+  .to('.intro-s', {opacity: .75, duration: .6}, .3)
+  .to('.intro-s', {opacity: 0, duration: .4}, 1.2)
+  .to('.fog', {opacity: 0, duration: 1, ease: 'power1.out'}, 1.2)
+  .to('.photo', {filter: 'blur(0px) saturate(1.15) contrast(1.06)', duration: 1}, 1.2)
+  .to('.cut', {opacity: 1, filter: 'blur(0px) saturate(1.15) contrast(1.06)', duration: .7}, 1.4)
+  .to('.ph', {y: 0, scale: 1, duration: 1.8, ease: 'power3.out'}, 1.3)
+  .to(title, {y: 0, duration: 1.4, ease: 'power3.inOut'}, 1.4)
+  .to('.shade', {opacity: 1, duration: .8}, 2.2)
+  .to('.nav', {opacity: 1, duration: .6}, 2.5)
+  .fromTo('.copy', {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: .8, ease: 'power3.out'}, 2.6);
+R2.run(tl, {startDelay: 100, waitFor: []});
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Варіант A · Щоденник експедиції — The Art of Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Manrope:wght@400;500;600&family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r5a">
+<style>
+:root{--paper:#F3EBDC;--ink:#1B2433}
+body{background:var(--paper);color:var(--cream)}
+.hero{position:relative;height:100vh;height:100svh;min-height:640px;overflow:hidden;background:var(--navy)}
+/* hero: real footage + the diary on top */
+.bg{position:absolute;inset:0;z-index:1}
+.bg video{width:100%;height:100%;object-fit:cover}
+.bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,16,40,.72),rgba(2,16,40,.25) 52%,rgba(2,16,40,.05)),linear-gradient(180deg,rgba(2,16,40,.45),transparent 20%)}
+.nav{position:absolute;z-index:4;top:24px;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between}
+.logo{height:56px}
+.links{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;gap:34px;font:500 14px/1 var(--sans);text-shadow:0 1px 10px rgba(2,16,40,.5)}
+.links a:hover{color:var(--gold)}
+.nr{display:flex;align-items:center;gap:18px}
+.lang{font:500 11px/1 var(--sans);letter-spacing:.14em;opacity:.55}
+.lang:hover{opacity:1}
+.pill{background:var(--paper);color:var(--navy);font:600 13px/1 var(--sans);padding:14px 22px;border-radius:999px}
+.burger{display:none;width:42px;height:42px;border-radius:50%;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.burger span{width:16px;height:1.5px;background:var(--navy)}
+.copy{position:absolute;z-index:4;left:clamp(20px,4.2vw,62px);top:22vh;max-width:760px}
+.note{font:400 40px/1 'Caveat',cursive;color:var(--gold);transform:rotate(-3deg);transform-origin:left}
+h1{margin-top:14px;font:400 clamp(60px,min(7.6vw,12vh),116px)/.96 'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.005em}
+h1 span{display:block;overflow:hidden}
+h1 em{display:block;font-style:normal}
+.sub{margin-top:24px;font-size:18px;line-height:1.5;opacity:.9;max-width:440px}
+.cta{display:inline-block;margin-top:30px;background:var(--paper);color:var(--navy);font:600 15px/1 var(--sans);padding:18px 32px;border-radius:999px}
+.cta:hover{background:var(--gold)}
+.pol{position:absolute;z-index:3;width:clamp(170px,min(18vw,28vh),280px);background:#FBF8F1;padding:13px 13px 0;box-shadow:0 18px 38px rgba(0,0,0,.35)}
+.pol img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.pol p{font:400 30px/1 'Caveat',cursive;color:var(--ink);text-align:center;padding:12px 0 16px}
+.pol::after{content:"";position:absolute;top:-13px;left:50%;width:86px;height:28px;margin-left:-43px;background:rgba(233,223,198,.85);transform:rotate(-4deg)}
+.p1{left:59vw;top:16vh;transform:rotate(6deg)}
+.p2{left:78vw;top:30vh;transform:rotate(-6deg)}
+.p3{left:61vw;top:54vh;transform:rotate(-3deg)}
+/* intro: line-art mountains drawn on paper, then the paper tears open */
+.paper{position:absolute;left:-3vw;width:106vw;background:var(--paper);z-index:10;will-change:transform}
+.paper-top{top:-2vh;height:56vh;z-index:11}
+.paper-top::after{content:"";position:absolute;left:0;right:0;top:100%;margin-top:-2px;height:9.5vw;background:url(assets/torn-bottom.png) top/100% 100% no-repeat}
+.paper-bottom{top:51vh;height:53vh}
+.paper-bottom::before{content:"";position:absolute;left:0;right:0;bottom:100%;margin-bottom:-2px;height:9.5vw;background:url(assets/torn-top.png) bottom/100% 100% no-repeat}
+.mtn{position:absolute;left:50%;bottom:14vh;width:min(54vw,720px);transform:translateX(-50%);clip-path:inset(0 100% 0 0)}
+.ptitle{position:absolute;left:0;right:0;bottom:5vh;text-align:center;font:400 26px/1 'Oswald',sans-serif;letter-spacing:.32em;color:var(--navy);opacity:0}
+.pslogan{position:absolute;left:0;right:0;top:9vh;text-align:center;font:400 42px/1 'Caveat',cursive;color:var(--gold);transform:rotate(-2deg);opacity:0}
+.h0{opacity:0}
+@media (max-width:860px){
+  .links,.pill,.lang{display:none}.burger{display:flex}
+  .logo{height:44px}
+  .copy{left:20px;right:20px;top:auto;bottom:40px}
+  .note{font-size:30px}h1{font-size:50px}.sub{font-size:15px}
+  .pol{width:42vw}.p1{left:auto;right:6vw;top:14vh}.p2,.p3{display:none}
+  .mtn{width:86vw;bottom:10vh}.ptitle{font-size:18px}.pslogan{font-size:32px}
+}
+</style>
+</head>
+<body>
+<main class="hero">
+  <div class="bg"><video id="v" muted playsinline preload="auto"></video></div>
+  <nav class="nav h0">
+    <img class="logo" src="assets/logo-cream.png" alt="The Art of Travel">
+    <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
+    <div class="nr"><a class="lang" href="#">EN</a><a class="pill" href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
+  </nav>
+  <div class="copy">
+    <div class="note h0">Explore. Experience. Inspire.</div>
+    <h1><span><em>Подорожі,</em></span><span><em>які хочеться</em></span><span><em>розповідати</em></span></h1>
+    <p class="sub h0">Авторські групові тури, які залишають слід.</p>
+    <a class="cta h0" href="#">Обрати подорож</a>
+  </div>
+  <div class="pol p1 h0"><img src="assets/r2/pol-ice.jpg" alt=""><p>Ісландія</p></div>
+  <div class="pol p2 h0"><img src="assets/r2/pol-peaks2.jpg" alt=""><p>Доломіти</p></div>
+  <div class="pol p3 h0"><img src="assets/r2/pol-cliffs.jpg" alt=""><p>Тенерифе</p></div>
+
+  <div class="paper paper-top">
+    <img class="mtn" src="assets/mountains-navy.png" alt="">
+    <div class="ptitle">THE ART OF TRAVEL</div>
+  </div>
+  <div class="paper paper-bottom"><div class="pslogan">Explore. Experience. Inspire.</div></div>
+</main>
+<button class="replay">↻ Інтро ще раз</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="r2.js?v=r5a"></script>
+<script>
+const v = document.getElementById('v'), mob = innerWidth < 860;
+v.src = mob ? 'assets/r2/surf-m.mp4?v=r5a' : 'assets/r2/surf.mp4?v=r5a'; v.poster = 'assets/r2/surf-poster.jpg?v=r5a';
+v.muted = true; v.setAttribute('playsinline', ''); v.load();
+const play = () => { const p = v.play(); if (p) p.catch(() => {}); };
+v.addEventListener('canplay', () => { if (started && v.paused) play(); });
+let started = false;
+gsap.set('.pol', {y: -240});
+const tl = gsap.timeline({paused: true});
+// the line-art mountains are drawn right away
+tl.to('.mtn', {clipPath: 'inset(0 0% 0 0)', duration: 1.5, ease: 'power2.inOut'}, 0)
+  .to('.ptitle', {opacity: 1, duration: .6}, .9)
+  .to('.pslogan', {opacity: 1, duration: .6}, 1.1)
+  // the paper tears open — under it the real footage is already playing
+  .add(() => { started = true; v.currentTime = 0; play(); }, 1.7)
+  .to('.paper-top', {yPercent: -125, rotation: -3, ease: 'power3.in', duration: 1.2}, 1.9)
+  .to('.paper-bottom', {yPercent: 125, rotation: 2.5, ease: 'power3.in', duration: 1.2}, 1.9)
+  .from('.bg', {scale: 1.1, duration: 2.2, ease: 'power2.out'}, 1.9)
+  .set('.paper', {display: 'none'}, 3.15)
+  .to('.nav', {opacity: 1, duration: .6}, 2.8)
+  .to('.note', {opacity: 1, duration: .6}, 2.8)
+  .from('h1 em', {yPercent: 110, duration: .8, stagger: .12, ease: 'power3.out'}, 2.9)
+  .to('.sub, .cta', {opacity: 1, duration: .6, stagger: .1}, 3.3)
+  .to('.p1', {y: 0, opacity: 1, duration: .7, ease: 'back.out(1.4)'}, 3.2)
+  .to('.p2', {y: 0, opacity: 1, duration: .7, ease: 'back.out(1.4)'}, 3.4)
+  .to('.p3', {y: 0, opacity: 1, duration: .7, ease: 'back.out(1.4)'}, 3.6);
+R2.run(tl, {startDelay: 150, waitFor: []});
+</script>
+</body>
+</html>
