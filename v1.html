@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Варіант А — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r6b">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r7a">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -15,6 +15,7 @@ body{background:var(--bone);color:var(--navy)}
 .stage{position:absolute;inset:0;z-index:60;overflow:hidden;will-change:clip-path}
 .stage video{width:100%;height:100%;object-fit:cover}
 .stage .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,16,47,.5) 0%,rgba(1,16,47,0) 20%),linear-gradient(90deg,rgba(1,16,47,.6) 0%,rgba(1,16,47,.22) 45%,rgba(1,16,47,0) 70%),linear-gradient(0deg,rgba(1,16,47,.45),rgba(1,16,47,0) 40%);opacity:0}
+#goldA{position:fixed;inset:0;z-index:61;background:url(assets/mark-gold.png) no-repeat;pointer-events:none}
 .stage.masked{-webkit-mask-image:url(assets/mark-cream.png);mask-image:url(assets/mark-cream.png);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .intro{position:fixed;inset:0;z-index:50;background:var(--navy)}
 .intro-text{position:fixed;left:0;right:0;z-index:70;text-align:center;color:var(--cream);pointer-events:none}
@@ -52,7 +53,11 @@ h1 .gold{color:var(--gold)}
 .shot i{width:28px;height:1px;background:var(--gold)}
 .shot span{transition:opacity .45s}
 /* overlapping cards + side block */
-.cards{position:absolute;z-index:85;left:96px;bottom:68px;display:flex;gap:14px}
+.cards{position:absolute;z-index:85;left:96px;bottom:24px;display:flex;gap:34px;align-items:flex-end}
+.pol{display:block;width:clamp(160px,min(16vw,24vh),232px);background:#FBF8F1;padding:12px 12px 0;box-shadow:0 16px 34px rgba(1,16,47,.32);position:relative}
+.pol img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.pol p{font:400 30px/1 "Caveat",cursive;color:#1B2433;text-align:center;padding:10px 0 14px}
+.pol::after{content:"";position:absolute;top:-12px;left:50%;width:80px;height:26px;margin-left:-40px;background:rgba(233,223,198,.85)}
 .card{width:clamp(180px,min(18vw,28vh),260px);aspect-ratio:272/208;border-radius:18px;overflow:hidden;position:relative;border:3px solid var(--bone);box-shadow:0 18px 40px rgba(1,16,47,.22);color:var(--cream)}
 .card img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
 .card:hover img{transform:scale(1.06)}
@@ -85,14 +90,15 @@ h1 .gold{color:var(--gold)}
 </head>
 <body>
 <main class="hero" id="hero">
+  <div id="goldA"></div>
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r6b" poster="assets/r2/montage-poster.jpg?v=r6b" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r7a" poster="assets/r2/montage-poster.jpg?v=r7a" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
   <div class="ui" id="ui">
     <nav class="nav h0">
-      <a class="brand" href="#"><img src="assets/logo-cream.png" alt="The Art of Travel"></a>
+      <a class="brand" href="#"><img src="assets/logo-gold.png" alt="The Art of Travel"></a>
       <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
       <div class="right"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
     </nav>
@@ -104,9 +110,9 @@ h1 .gold{color:var(--gold)}
   </div>
 
   <div class="cards">
-    <a class="card h0" href="#"><img src="assets/r2/card-peaks.jpg" alt=""><b>Гірські<br>маршрути</b></a>
-    <a class="card h0" href="#"><img src="assets/r2/cliffs.jpg" alt=""><b>Океан<br>і скелі</b></a>
-    <a class="card h0" href="#"><img src="assets/r2/card-falls.jpg" alt=""><b>Північна<br>природа</b></a>
+    <a class="pol h0" href="#"><img src="assets/r2/pol-ice.jpg" alt="Ісландія"><p>Ісландія</p></a>
+    <a class="pol h0" href="#"><img src="assets/r2/pol-peaks2.jpg" alt="Доломіти"><p>Доломіти</p></a>
+    <a class="pol h0" href="#"><img src="assets/r2/pol-cliffs.jpg" alt="Тенерифе"><p>Тенерифе</p></a>
   </div>
 </main>
 
@@ -115,14 +121,14 @@ h1 .gold{color:var(--gold)}
   <div class="name">THE ART OF TRAVEL</div>
   <div class="slogan">Відкривай · Відчувай · Надихайся</div>
 </div>
-<img class="flymark" id="flymark" src="assets/logo-cream.png" alt="" style="position:fixed;z-index:200;object-fit:contain;opacity:0;pointer-events:none">
+<img class="flymark" id="flymark" src="assets/logo-gold.png" alt="" style="position:fixed;z-index:200;object-fit:contain;opacity:0;pointer-events:none">
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r6b"></script>
+<script src="r2.js?v=r7a"></script>
 <script>
-const stage = document.getElementById('stage'), video = document.getElementById('mv');
-if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r6b';
+const stage = document.getElementById('stage'), video = document.getElementById('mv'), goldA = document.getElementById('goldA');
+if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r7a';
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
 const st = {k: 0, a: 0};
 let W0, W1;
@@ -140,15 +146,19 @@ function applyMask(){
   const ax = 0.5 + (AX - 0.5) * st.a, ay = 0.5 + (AY - 0.5) * st.a;
   stage.style.webkitMaskSize = stage.style.maskSize = `${W}px ${H}px`;
   stage.style.webkitMaskPosition = stage.style.maskPosition = `${S.vw / 2 - ax * W}px ${S.cy - ay * H}px`;
+  goldA.style.backgroundSize = `${W}px ${H}px`; goldA.style.backgroundPosition = `${S.vw / 2 - ax * W}px ${S.cy - ay * H}px`;
 }
 applyMask();
 const cardInset = () => innerWidth < 860 ? 'inset(12px 12px 12px 12px round 22px)' : 'inset(24px 32px 200px 32px round 28px)';
 addEventListener('resize', () => { S = sizes(); if (stage.classList.contains('masked')) applyMask(); else stage.style.clipPath = cardInset(); });
 
+gsap.set('.pol', {rotation: i => [4, -3, 2.5][i]});
 const tl = gsap.timeline({paused: true});
 tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
   .fromTo(st, {k: -0.06}, {k: 1, duration: 2.7, ease: 'power3.in', onUpdate: applyMask}, 0)
   .fromTo(st, {a: 0}, {a: 1, duration: 2.7, ease: 'power4.in', immediateRender: false}, 0)
+  .to(goldA, {opacity: 0, duration: 1.0, ease: 'power1.inOut'}, .95)
+  .set(goldA, {display: 'none'}, 2.0)
   .from('#introText > *', {opacity: 0, y: 10, stagger: .1, duration: .5, ease: 'power2.out'}, .15)
   .to('#introText', {opacity: 0, y: 24, duration: .5, ease: 'power2.in'}, 1.05)
   .to('#intro', {opacity: 0, duration: .3}, 2.45)
@@ -163,7 +173,7 @@ tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
   .to('.nav', {opacity: 1, duration: .5}, 3.2)
   .from('h1 em', {yPercent: 110, duration: .8, stagger: .12, ease: 'power3.out'}, 3.25)
   .to('.sub, .cta', {opacity: 1, duration: .5, stagger: .08}, 3.65)
-  .fromTo('.card', {opacity: 0, y: 40}, {opacity: 1, y: 0, duration: .7, stagger: .08, ease: 'power3.out'}, 3.6)
+  .fromTo('.pol', {opacity: 0, y: -60}, {opacity: 1, y: 0, duration: .7, stagger: .12, ease: 'back.out(1.4)'}, 3.6)
 ;
 R2.run(tl, {waitFor: [video]});
 </script>
