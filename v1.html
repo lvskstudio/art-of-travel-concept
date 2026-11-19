@@ -7,7 +7,7 @@
 <title>Варіант А — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r9c">
+<link rel="stylesheet" href="r2.css?v=r9d">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -115,13 +115,13 @@ h1 .gold{color:var(--gold)}
 .t-nav button{width:58px;height:58px;border-radius:50%;border:1px solid rgba(2,26,82,.35);font-size:20px;color:var(--navy);transition:opacity .3s}
 .t-nav button.next{background:var(--navy);color:var(--bone);border-color:var(--navy)}
 .t-nav button:disabled{opacity:.3;cursor:default}
-.track{margin:40px -14px 0;padding:34px 14px 10px;display:flex;gap:70px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.track{margin:24px -14px 0;padding:60px 14px 14px;display:flex;gap:70px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
 .track::-webkit-scrollbar{display:none}
 .tour{flex:0 0 calc((100% - 140px) / 3);scroll-snap-align:start}
 .tour .pol{width:100%;padding:4.3% 4.3% 0;box-shadow:none;border:1px solid rgba(2,26,82,.07);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .tour:nth-child(3n+1) .pol{transform:rotate(-2deg)}.tour:nth-child(3n+2) .pol{transform:rotate(1.5deg)}.tour:nth-child(3n) .pol{transform:rotate(-1deg)}
 .tour .pol:hover{transform:rotate(0) translateY(-8px)}
-.tour .pol::after{width:32%;height:auto;aspect-ratio:120/34;margin-left:-16%;top:-4.2%}
+.tour .pol::after{width:32%;height:auto;aspect-ratio:120/34;margin-left:-16%;top:-4.6%;background:rgba(203,152,70,.42);box-shadow:inset 0 0 0 1px rgba(203,152,70,.18)}
 .tour .pol p{font-size:clamp(34px,3vw,44px);padding:14px 0 2px}
 .tour .pol .d{font:400 clamp(22px,1.95vw,28px)/1 "Caveat",cursive;color:#1B2433;opacity:.68;text-align:center;padding:4px 0 22px}
 .tour .pol .star{position:absolute;right:7%;top:8%;background:var(--gold);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:20px}
@@ -135,7 +135,7 @@ h1 .gold{color:var(--gold)}
 .why p{margin-top:22px;font-size:16px;line-height:1.65;opacity:.88}
 .why .mark{width:48px;margin:90px auto 0}
 /* 3 · how the trip goes — the plane flies along a gold route; each step lights up at its point and stays */
-.flight{position:relative;height:340vh;background:var(--bone)}
+.flight{position:relative;height:380vh;background:var(--bone)}
 .fl-in{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .fl-in .lbl{position:absolute;left:80px;top:90px}
 .route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
@@ -146,7 +146,7 @@ h1 .gold{color:var(--gold)}
 .st.r{text-align:right}
 .st small{display:block;font:600 13px/1 var(--sans);letter-spacing:.2em;color:var(--gold)}
 .st h3{margin-top:14px;font:400 clamp(36px,3.1vw,46px)/1 var(--serif)}
-.plane{position:absolute;left:0;top:0;width:clamp(170px,17vw,260px);filter:drop-shadow(10px 20px 16px rgba(20,24,44,.2));will-change:transform}
+.plane{position:absolute;left:0;top:0;width:clamp(260px,26vw,400px);filter:drop-shadow(10px 20px 16px rgba(20,24,44,.2));will-change:transform}
 .fl-cta{position:absolute;right:80px;bottom:80px;background:var(--navy);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:22px 42px;border-radius:40px;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .5s,transform .5s}
 .fl-cta.on{opacity:1;transform:none;pointer-events:auto}
 @media (max-width:1100px) and (min-width:861px){ .tour{flex-basis:calc((100% - 70px) / 2)} .t-top{grid-template-columns:1fr} }
@@ -162,7 +162,7 @@ h1 .gold{color:var(--gold)}
   .pick{display:table;margin:4px 0}
   .wish .go{width:100%;margin-top:30px;padding:20px}
   .t-bar{margin-top:0}
-  .track{margin:50px -24px 0;padding:30px 24px 10px;gap:28px;scroll-padding-left:24px}
+  .track{margin:34px -24px 0;padding:46px 24px 12px;gap:28px;scroll-padding-left:24px}
   .tour{flex-basis:282px}
   .tour .pol p{font-size:34px;padding:10px 0 0}
   .tour .pol .d{font-size:22px;padding:3px 0 16px}
@@ -179,7 +179,7 @@ h1 .gold{color:var(--gold)}
   .pt{width:14px;height:14px;margin:-7px 0 0 -7px}.pt.on{box-shadow:0 0 0 8px rgba(203,152,70,.14)}
   .st{width:auto;right:20px}.st.r{text-align:left}
   .st small{font-size:11px}.st h3{font-size:32px;margin-top:10px}
-  .plane{width:120px}
+  .plane{width:180px}
   .fl-cta{right:auto;left:112px;bottom:auto;padding:18px 30px;font-size:13px}
 }
 </style>
@@ -188,7 +188,7 @@ h1 .gold{color:var(--gold)}
 <main class="hero" id="hero">
   <div id="goldA"></div>
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r9c" poster="assets/r2/montage-poster.jpg?v=r9c" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r9d" poster="assets/r2/montage-poster.jpg?v=r9d" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -272,10 +272,10 @@ h1 .gold{color:var(--gold)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r9c"></script>
+<script src="r2.js?v=r9d"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv'), goldA = document.getElementById('goldA');
-if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r9c';
+if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r9d';
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
 const st = {k: 0, a: 0};
 let W0, W1;
@@ -422,28 +422,34 @@ render(TOURS);
     at.forEach((u, i) => { const [x, y] = pos(u); pts[i].style.left = x + 'px'; pts[i].style.top = y + 'px';
       sts[i].style.left = (x + lab[i][0]) + 'px'; sts[i].style.top = (y + lab[i][1]) + 'px'; });
     if (mob) cta.style.top = (pos(3)[1] + 84) + 'px'; else cta.style.top = '';
-    G = {segs, at, mob};
+    const e = segs[segs.length - 1][3], pw = plane.offsetWidth;
+    const exit = !mob ? [e, [e[0] + 140, e[1] - 30], [W + pw * .3, -pw * .2], [W + pw * 1.2, -pw * .9]]
+                      : [e, [e[0] + 40, e[1] + 70], [W * .7, H + pw * .1], [W + pw, H + pw * .9]];
+    G = {segs, at, mob, exit};
   }
   function frame(){
     if (!G) layout();
-    const {segs, at, mob} = G, U = segs.length;
+    const {segs, at, mob, exit} = G, U = segs.length;
     const r = fl.getBoundingClientRect(), total = fl.offsetHeight - stage.offsetHeight;
     const p = Math.min(Math.max(-r.top / total, 0), 1);
-    const u = Math.min(U, Math.max(0, (p - .04) / .82) * U);
+    const uu = Math.min(1, Math.max(0, (p - .04) / .86)) * (U + .9);   // last 0.9 = flying off the screen
+    const u = Math.min(U, uu);
     const i = Math.min(U - 1, Math.floor(u)), t = u - i;
     const done = segs.slice(0, i), ahead = segs.slice(i + 1);
     if (t > 0 && t < 1) { const [a, b] = split(segs[i], t); done.push(a); ahead.unshift(b); } else if (t >= 1) done.push(segs[i]); else ahead.unshift(segs[i]);
     rDone.setAttribute('d', d(done)); rAhead.setAttribute('d', d(ahead));
-    const [x, y] = bez(segs[i], t), [dx, dy] = der(segs[i], Math.min(.999, Math.max(.001, t)));
+    let seg = segs[i], tt = t;
+    if (uu > U) { seg = exit; tt = Math.min(1, (uu - U) / .9); }
+    const [x, y] = bez(seg, tt), [dx, dy] = der(seg, Math.min(.999, Math.max(.001, tt)));
     plane.style.transform = `translate(${x - plane.offsetWidth / 2}px, ${y - plane.offsetHeight / 2}px) rotate(${Math.atan2(dy, dx)}rad)`;
     at.forEach((a, k) => { const on = u >= a - .02; pts[k].classList.toggle('on', on); sts[k].classList.toggle('on', on); });
-    cta.classList.toggle('on', p > .9);
+    cta.classList.toggle('on', uu > U + .35);
   }
   let busy = false;
   const tick = () => { if (busy) return; busy = true; requestAnimationFrame(() => { frame(); busy = false; }); };
   addEventListener('scroll', tick, {passive: true});
   addEventListener('resize', () => { layout(); tick(); });
-  plane.complete ? frame() : plane.addEventListener('load', frame);
+  const go = () => { layout(); frame(); }; plane.complete ? go() : plane.addEventListener('load', go);
 })();
 
 R2.run(tl, {waitFor: [video]});
