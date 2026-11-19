@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r4b">
+<link rel="stylesheet" href="r2.css?v=r4c">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -36,17 +36,21 @@ body{background:var(--navy);color:var(--cream)}
 .nav{position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);top:26px;display:flex;align-items:center;justify-content:space-between}
 .links{display:flex;gap:30px;font:400 13px/1 var(--sans)}
 .links a:hover{color:var(--gold)}
-.logo{position:absolute;left:50%;top:-8px;transform:translateX(-50%);width:58px;opacity:0}
+.logo{position:absolute;left:50%;top:-12px;transform:translateX(-50%);width:86px;opacity:0}
 .nr{display:flex;gap:10px;align-items:center}
 .nr a{border:1px solid rgba(243,235,221,.7);font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:9px 12px}
 .nr a:hover{background:var(--cream);color:var(--navy)}
+.nr a.lang{border:0;padding:9px 6px;opacity:.55}
+.nr a.lang:hover{background:none;color:var(--cream);opacity:1}
 .burger{display:none;width:40px;height:40px;border:1px solid rgba(243,235,221,.7);place-items:center}
 .burger span{display:block;width:16px;height:1.5px;background:var(--cream);box-shadow:0 5px 0 var(--cream),0 -5px 0 var(--cream)}
-.center{position:absolute;left:0;right:0;top:34%;text-align:center}
+.center{position:absolute;left:0;right:0;top:30%;text-align:center}
 .center .sub{font:300 clamp(13px,1.15vw,16px)/1 var(--sans);letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;opacity:.9}
-.center h1{margin-top:22px;font:200 clamp(34px,4.7vw,76px)/1.05 var(--sans);letter-spacing:.01em;text-transform:uppercase;text-shadow:0 2px 30px rgba(2,26,82,.35)}
+.center h1{margin-top:24px;font:200 clamp(40px,5.8vw,96px)/1.02 var(--sans);letter-spacing:.01em;text-transform:uppercase;text-shadow:0 2px 30px rgba(2,26,82,.35)}
 .center h1 b{font-weight:800}
-.center p{margin:18px auto 0;max-width:520px;font:400 15px/1.55 var(--sans);opacity:.9}
+.center p{margin:22px auto 0;max-width:560px;font:400 18px/1.5 var(--sans);opacity:.92;text-shadow:0 1px 16px rgba(2,26,82,.45)}
+.perks{position:absolute;left:0;right:0;bottom:40px;display:flex;justify-content:center;align-items:center;gap:22px;font:400 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.perks i{width:28px;height:1px;background:rgba(243,235,221,.6)}
 .center .btn{display:inline-block;margin-top:28px;border:1px solid rgba(243,235,221,.85);font:500 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:16px 30px}
 .center .btn:hover{background:var(--cream);color:var(--navy)}
 .center .down{display:block;margin:22px auto 0;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid rgba(243,235,221,.8)}
@@ -56,12 +60,12 @@ body{background:var(--navy);color:var(--cream)}
 .row i.o::after{content:"";position:absolute;inset:0;background:var(--navy);clip-path:inherit;transform:scale(.965)}
 @media (max-width:860px){
   .nav{left:18px;right:18px;top:16px}.links,.nr a{display:none}.burger{display:grid}
-  .nav::before{content:"UA / EN";font:500 12px/40px var(--sans)}
-  .logo{width:44px;top:-2px}
+  .nav::before{content:"EN";font:500 11px/40px var(--sans);letter-spacing:.14em;opacity:.55}
+  .logo{width:48px;top:-4px}
   .center{top:20%;bottom:auto;padding:0 18px}
   .center .sub{font-size:11px;letter-spacing:.3em}
   .center h1{font-size:34px}
-  .center p,.center .down{display:none}
+  .center p,.center .down,.perks{display:none}
   .center .btn{margin-top:20px;padding:14px 22px}
 }
 </style>
@@ -71,7 +75,6 @@ body{background:var(--navy);color:var(--cream)}
   <div class="reveal" id="reveal"><video id="cv" muted playsinline preload="auto"></video></div>
   <div class="shards" id="shards"></div>
   <div class="backdrop" id="backdrop"></div>
-  <div class="pale" id="pale">explore</div>
   <div class="strip" id="s1" style="background:#9DB0AC"></div>
   <div class="strip" id="s2" style="background:#D8D0C1"></div>
   <div class="tris" id="tris">
@@ -86,11 +89,12 @@ body{background:var(--navy);color:var(--cream)}
     <nav class="nav h0">
       <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
       <img class="logo" src="assets/logo-cream.png" alt="The Art of Travel">
-      <div class="nr"><a href="#">UA / EN</a><a href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span></button></div>
+      <div class="nr"><a class="lang" href="#">EN</a><a href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span></button></div>
     </nav>
     <div class="center">
       <div class="sub h0">Авторські групові тури</div>
       <h1 class="h0">Подорож, що залишає <b>слід</b></h1>
+      <p class="h0">Авторські маршрути, маленькі групи і жодних доплат на місці.</p>
       <a class="btn h0" href="#">Обрати подорож</a>
     </div>
   </div>
@@ -103,8 +107,8 @@ body{background:var(--navy);color:var(--cream)}
 const $ = s => document.querySelector(s);
 const tris = $('#tris'), video = $('#cv'), fly = $('#fly');
 const mob = innerWidth < 860;
-video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r4b' : 'assets/r2/canyon-wide.mp4?v=r4b';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r4b' : 'assets/r2/canyon-wide-poster.jpg?v=r4b';
+video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r4c' : 'assets/r2/canyon-wide.mp4?v=r4c';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r4c' : 'assets/r2/canyon-wide-poster.jpg?v=r4c';
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;
 const playVideo = () => { wantPlay = true; const p = video.play(); if (p) p.catch(() => {}); };
@@ -122,7 +126,6 @@ function layout(){
   pieces.forEach((p, i) => { const [x,y,w,h,poly] = boxes[i];
     Object.assign(p.style, {left: `calc(${x}% + ${gap}px)`, top: `calc(${y}% + ${gap}px)`, width: `calc(${w}% - ${gap*2}px)`, height: `calc(${h}% - ${gap*2}px)`, clipPath: `polygon(${poly})`}); });
   $('#iname').style.top = (cy + H/2 + 36) + 'px';
-  $('#pale').style.top = (cy - vw*0.11) + 'px';
   const sw = L*0.16; Object.assign($('#s1').style, {left:(cx - L*0.18)+'px', width:sw+'px'}); Object.assign($('#s2').style, {left:(cx + L*0.06)+'px', width:sw*.8+'px'});
 }
 layout();
@@ -145,7 +148,6 @@ const tl = gsap.timeline({paused: true});
 const from = [[0,-1],[-1,.5],[1,.5],[0,1.1]];
 pieces.forEach((t,i) => tl.from(t, {x: from[i][0]*innerWidth*0.55, y: from[i][1]*innerHeight*0.6, rotation: [0,-30,30,180][i], opacity: 0, duration: .85, ease: 'power3.out'}, i*0.07));
 tl.fromTo(tris, {scale: .94}, {scale: 1.08, duration: 1.65, ease: 'none'}, 0)
-  .from('#pale', {opacity: 0, scale: .92, duration: 1.2, ease: 'power2.out'}, 0)
   .from('#s1', {yPercent: -100, duration: .9, ease: 'power3.out'}, .1)
   .from('#s2', {yPercent: 100, duration: .9, ease: 'power3.out'}, .18)
   .from('#iname > *', {opacity: 0, y: 10, stagger: .1, duration: .5}, .5)
@@ -154,7 +156,7 @@ tl.fromTo(tris, {scale: .94}, {scale: 1.08, duration: 1.65, ease: 'none'}, 0)
       gsap.set(fly, {left: innerWidth/2 - w0/2, top: n.top - 6, width: w0, height: h0}); }, 1.2)
   .to(fly, {opacity: 1, duration: .35}, 1.25)
   .add(() => { video.currentTime = 0; playVideo(); }, 1.55)
-  .to('#pale, #s1, #s2', {opacity: 0, duration: .5}, 1.6)
+  .to('#s1, #s2', {opacity: 0, duration: .5}, 1.6)
   .set('#backdrop', {opacity: 0}, 1.62);
 const out = [[0,-1],[-1,.35],[1,.35],[0,1]];
 pieces.forEach((t,i) => tl.to(t, {x: out[i][0]*innerWidth*0.75, y: out[i][1]*innerHeight*0.8, rotation: [0,-40,40,25][i], opacity: 0, duration: 1.05, ease: 'power2.in'}, 1.62 + i*0.04));
@@ -170,7 +172,7 @@ tl.add(() => {
   .to('.nav', {opacity: 1, duration: .5}, 3.0)
   .fromTo('.center .sub', {opacity: 0, letterSpacing: '.8em'}, {opacity: .9, letterSpacing: '.42em', duration: 1.1, ease: 'power3.out'}, 2.8)
   .fromTo('.center h1', {opacity: 0, y: 26}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 2.95)
-  .to('.center .btn', {opacity: 1, duration: .6}, 3.3)
+  .to('.center p, .center .btn', {opacity: 1, duration: .6, stagger: .08}, 3.3)
 ;
 const fast = () => { if (tl.progress() < 1) tl.timeScale(6); };
 ['wheel','touchstart','keydown','pointerdown'].forEach(e => addEventListener(e, fast, {passive: true, once: true}));
