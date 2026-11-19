@@ -7,7 +7,7 @@
 <title>Варіант А — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r8a">
+<link rel="stylesheet" href="r2.css?v=r9c">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -93,43 +93,39 @@ h1 .gold{color:var(--gold)}
 
 /* ================= below the hero: blocks 1–3 ================= */
 .wrap{max-width:1440px;margin:0 auto;padding:0 80px}
-.lbl{font:600 12px/1 var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
-.btn-o{display:inline-flex;gap:12px;align-items:center;border:1px solid rgba(2,26,82,.55);color:var(--navy);font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:16px 30px;border-radius:40px;transition:background .3s,color .3s}
+.lbl{font:600 13px/1 var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+.btn-o{display:inline-flex;gap:12px;align-items:center;border:1px solid rgba(2,26,82,.5);color:var(--navy);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:19px 34px;border-radius:40px;transition:background .3s,color .3s}
 .btn-o:hover{background:var(--navy);color:var(--bone)}
 .btn-o.mob,.swipe{display:none}
-/* 1 · nearest tours (HAVEN: heading + "plan your escape" widget over a photo) */
-.tours{padding:150px 0 120px}
-.t-top{display:grid;grid-template-columns:minmax(0,470px) 1fr;gap:40px;align-items:center}
-.t-top h2{margin-top:22px;font:400 clamp(52px,5.6vw,80px)/.96 var(--serif);letter-spacing:-.005em}
-.t-top .lead{margin-top:26px;font-size:17px;line-height:1.6;opacity:.78;max-width:380px}
-.t-top .btn-o{margin-top:34px}
-.t-media{position:relative;padding-left:180px}
-.t-photo{width:100%;aspect-ratio:620/450;border-radius:24px;object-fit:cover}
-.finder{position:absolute;left:0;top:46px;width:316px;background:#F7F2E8;border-radius:20px;padding:20px;box-shadow:0 18px 44px rgba(8,18,51,.16);display:flex;flex-direction:column;gap:12px}
-.finder .fh{display:flex;align-items:center;gap:14px;margin-bottom:2px}
-.finder .fh img{width:58px;height:58px;border-radius:10px;object-fit:cover}
-.finder .fh b{font:500 27px/1 var(--serif)}
-.field{position:relative;display:block;background:rgba(255,255,255,.85);border-radius:12px;padding:12px 40px 12px 16px;cursor:pointer}
-.field span{display:block;font:500 11px/1 var(--sans);opacity:.55}
-.field select{appearance:none;-webkit-appearance:none;border:0;background:none;font:600 15px/1.2 var(--sans);color:var(--navy);width:100%;margin-top:6px;cursor:pointer;outline:none}
-.field::after{content:"⌄";position:absolute;right:16px;top:15px;font-size:18px;opacity:.6;pointer-events:none}
-.finder .go{background:var(--olive);color:var(--bone);font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:18px;border-radius:40px;transition:background .3s}
-.finder .go:hover{background:var(--navy)}
-.t-bar{margin-top:80px;display:flex;justify-content:flex-end;align-items:center;gap:12px}
-.t-bar .count{font:600 12px/1 var(--sans);letter-spacing:.14em;opacity:.55;margin-right:10px}
-.t-bar button{width:46px;height:46px;border-radius:50%;border:1px solid rgba(2,26,82,.4);font-size:16px;color:var(--navy);transition:opacity .3s,background .3s}
-.t-bar button.next{background:var(--navy);color:var(--bone);border-color:var(--navy)}
-.t-bar button:disabled{opacity:.3;cursor:default}
-.track{margin:24px -10px 0;padding:26px 10px 44px;display:flex;gap:30px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+/* 1 · nearest tours — large flat polaroids, the filter is a sentence */
+.tours{padding:150px 0 130px}
+.t-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.t-top h2{margin-top:26px;font:400 clamp(64px,6.7vw,104px)/.94 var(--serif);letter-spacing:-.005em}
+.t-top .lead{margin-top:30px;font-size:19px;line-height:1.6;opacity:.8;max-width:440px}
+.wish{padding-top:34px}
+.wish p{font:400 clamp(40px,3.6vw,56px)/1.25 var(--serif)}
+.pick{position:relative;display:inline-block;color:var(--gold);font-weight:500;border-bottom:1.5px solid rgba(203,152,70,.7);line-height:1.1;margin-right:.35em;cursor:pointer;white-space:nowrap}
+.pick::after{content:"";display:inline-block;width:.32em;height:.32em;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-.2em) rotate(45deg);margin-left:.3em}
+.pick select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:16px}
+.wish .go{margin-top:34px;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:22px 46px;border-radius:40px;transition:background .3s}
+.wish .go:hover{background:var(--navy)}
+.t-bar{margin-top:70px;display:flex;justify-content:space-between;align-items:center}
+.t-nav{display:flex;align-items:center;gap:14px}
+.t-nav .count{font:600 14px/1 var(--sans);letter-spacing:.14em;opacity:.6;margin-right:14px}
+.t-nav button{width:58px;height:58px;border-radius:50%;border:1px solid rgba(2,26,82,.35);font-size:20px;color:var(--navy);transition:opacity .3s}
+.t-nav button.next{background:var(--navy);color:var(--bone);border-color:var(--navy)}
+.t-nav button:disabled{opacity:.3;cursor:default}
+.track{margin:40px -14px 0;padding:34px 14px 10px;display:flex;gap:70px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
 .track::-webkit-scrollbar{display:none}
-.tour{flex:0 0 232px;scroll-snap-align:start}
-.tour .pol{width:232px;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
-.tour:nth-child(5n+1) .pol{transform:rotate(-3deg)}.tour:nth-child(5n+2) .pol{transform:rotate(2.5deg)}.tour:nth-child(5n+3) .pol{transform:rotate(-1.5deg)}.tour:nth-child(5n+4) .pol{transform:rotate(3deg)}.tour:nth-child(5n) .pol{transform:rotate(-2deg)}
-.tour .pol:hover{transform:rotate(0) translateY(-10px);box-shadow:0 26px 44px rgba(1,16,47,.34)}
-.tour .pol p{padding:12px 0 2px}
-.tour .pol .d{font:400 22px/1 "Caveat",cursive;color:#1B2433;opacity:.7;text-align:center;padding:4px 0 16px}
-.tour .pol .star{position:absolute;right:12px;top:20px;background:var(--gold);color:#fff;font:600 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:20px}
-.tour .price{margin-top:24px;font:500 14px/1.4 var(--sans);opacity:.75}
+.tour{flex:0 0 calc((100% - 140px) / 3);scroll-snap-align:start}
+.tour .pol{width:100%;padding:4.3% 4.3% 0;box-shadow:none;border:1px solid rgba(2,26,82,.07);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.tour:nth-child(3n+1) .pol{transform:rotate(-2deg)}.tour:nth-child(3n+2) .pol{transform:rotate(1.5deg)}.tour:nth-child(3n) .pol{transform:rotate(-1deg)}
+.tour .pol:hover{transform:rotate(0) translateY(-8px)}
+.tour .pol::after{width:32%;height:auto;aspect-ratio:120/34;margin-left:-16%;top:-4.2%}
+.tour .pol p{font-size:clamp(34px,3vw,44px);padding:14px 0 2px}
+.tour .pol .d{font:400 clamp(22px,1.95vw,28px)/1 "Caveat",cursive;color:#1B2433;opacity:.68;text-align:center;padding:4px 0 22px}
+.tour .pol .star{position:absolute;right:7%;top:8%;background:var(--gold);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:20px}
+.tour .price{margin-top:30px;font:500 17px/1.4 var(--sans);opacity:.78}
 /* 2 · why us (NAVY ref: gold spaced capitals) */
 .why{background:var(--navy);color:var(--bone);padding:120px 0 90px}
 .why h2{text-align:center;font:500 clamp(34px,3.4vw,48px)/1 var(--serif);letter-spacing:.32em;color:var(--gold);padding-left:.32em}
@@ -138,54 +134,53 @@ h1 .gold{color:var(--gold)}
 .why h3::after{content:"";display:block;width:36px;height:1px;background:rgba(203,152,70,.8);margin-top:18px}
 .why p{margin-top:22px;font-size:16px;line-height:1.65;opacity:.88}
 .why .mark{width:48px;margin:90px auto 0}
-/* 3 · how the trip goes — the plane wipes one step into the next while you scroll */
-.flight{position:relative;height:420vh;background:var(--bone)}
+/* 3 · how the trip goes — the plane flies along a gold route; each step lights up at its point and stays */
+.flight{position:relative;height:340vh;background:var(--bone)}
 .fl-in{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.cloud{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.92),rgba(255,255,255,.5) 55%,rgba(255,255,255,0));will-change:transform}
-.fl-lbl{position:absolute;left:0;right:0;top:26%;text-align:center;font:500 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.6}
-.steps{position:absolute;left:0;right:0;top:calc(26% + 48px)}
-.step{position:absolute;left:0;right:0;text-align:center;font:400 clamp(50px,6.4vw,96px)/1.02 var(--serif);letter-spacing:-.005em;padding:0 6vw;will-change:clip-path}
-.route{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
-.plane{position:absolute;left:0;top:0;width:min(58vw,840px);filter:drop-shadow(18px 34px 26px rgba(20,24,44,.22));will-change:transform}
-.prog{position:absolute;left:50%;bottom:14%;width:min(864px,70vw);transform:translateX(-50%);height:10px}
-.prog::before{content:"";position:absolute;left:5px;right:5px;top:4.5px;height:1px;background:rgba(203,152,70,.6)}
-.prog i{position:absolute;top:0;width:10px;height:10px;border-radius:50%;border:1px solid var(--gold);background:var(--bone);transition:background .4s}
-.prog i.on{background:var(--gold)}
-.fl-count{position:absolute;left:0;right:0;bottom:calc(14% - 44px);text-align:center;font:600 11px/1 var(--sans);letter-spacing:.2em;color:var(--gold)}
-.fl-cta{position:absolute;left:50%;top:calc(26% + 290px);transform:translateX(-50%);background:var(--navy);color:var(--bone);font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:18px 34px;border-radius:40px;opacity:0;pointer-events:none;transition:opacity .4s}
-.fl-cta.on{opacity:1;pointer-events:auto}
+.fl-in .lbl{position:absolute;left:80px;top:90px}
+.route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.pt{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;border:1.5px solid var(--gold);background:var(--bone);transition:background .4s,box-shadow .4s}
+.pt.on{background:var(--gold);box-shadow:0 0 0 9px rgba(203,152,70,.14)}
+.st{position:absolute;width:380px;opacity:.22;transform:translateY(10px);transition:opacity .6s,transform .6s}
+.st.on{opacity:1;transform:none}
+.st.r{text-align:right}
+.st small{display:block;font:600 13px/1 var(--sans);letter-spacing:.2em;color:var(--gold)}
+.st h3{margin-top:14px;font:400 clamp(36px,3.1vw,46px)/1 var(--serif)}
+.plane{position:absolute;left:0;top:0;width:clamp(170px,17vw,260px);filter:drop-shadow(10px 20px 16px rgba(20,24,44,.2));will-change:transform}
+.fl-cta{position:absolute;right:80px;bottom:80px;background:var(--navy);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:22px 42px;border-radius:40px;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .5s,transform .5s}
+.fl-cta.on{opacity:1;transform:none;pointer-events:auto}
+@media (max-width:1100px) and (min-width:861px){ .tour{flex-basis:calc((100% - 70px) / 2)} .t-top{grid-template-columns:1fr} }
 @media (max-width:860px){
   .wrap{padding:0 24px}
   .tours{padding:76px 0 80px}
-  .t-top{grid-template-columns:1fr;gap:30px}
-  .t-top h2{font-size:54px;margin-top:18px}
-  .t-top .lead{font-size:15px;margin-top:18px}
-  .t-top .btn-o{display:none}
-  .t-media{padding-left:0}
-  .t-photo{aspect-ratio:342/220;border-radius:20px}
-  .finder{position:relative;left:auto;top:auto;width:auto;margin:-74px 16px 0;padding:18px;gap:10px}
-  .finder .fh b{font-size:25px}.finder .fh img{width:50px;height:50px}
-  .t-bar{display:none}
-  .track{margin:40px -24px 0;padding:20px 24px 36px;gap:22px;scroll-padding-left:24px}
-  .tour{flex-basis:168px}
-  .tour .pol{width:168px;padding:9px 9px 0}
-  .tour .pol p{font-size:22px;padding:8px 0 0}
-  .tour .pol .d{font-size:16px;padding:3px 0 11px}
-  .tour .pol::after{width:56px;height:18px;margin-left:-28px;top:-9px}
-  .tour .price{font-size:12px;margin-top:18px}
-  .swipe{display:block;text-align:center;font:400 20px/1 "Caveat",cursive;opacity:.5;margin-top:4px}
-  .btn-o.mob{display:flex;justify-content:center;margin-top:30px}
+  .t-top{grid-template-columns:1fr;gap:0}
+  .t-top h2{font-size:58px;margin-top:18px}
+  .t-top .lead{font-size:15px;margin-top:20px}
+  .t-bar .btn-o,.t-nav{display:none}
+  .wish{padding-top:44px}
+  .wish p{font-size:36px;line-height:1.3}
+  .pick{display:table;margin:4px 0}
+  .wish .go{width:100%;margin-top:30px;padding:20px}
+  .t-bar{margin-top:0}
+  .track{margin:50px -24px 0;padding:30px 24px 10px;gap:28px;scroll-padding-left:24px}
+  .tour{flex-basis:282px}
+  .tour .pol p{font-size:34px;padding:10px 0 0}
+  .tour .pol .d{font-size:22px;padding:3px 0 16px}
+  .tour .price{font-size:14px;margin-top:22px}
+  .swipe{display:block;text-align:center;font:400 22px/1 "Caveat",cursive;opacity:.5;margin-top:22px}
+  .btn-o.mob{display:flex;justify-content:center;margin-top:30px;font-size:14px}
   .why{padding:66px 0 64px}
   .why h2{font-size:32px;letter-spacing:.26em;padding-left:.26em}
   .why-grid{grid-template-columns:1fr;gap:42px;margin-top:58px}
   .why h3{font-size:22px;letter-spacing:.2em}.why h3::after{margin-top:14px}
   .why p{font-size:15px;margin-top:16px}
   .why .mark{margin-top:64px;width:46px}
-  .fl-lbl{top:24%}.steps{top:calc(24% + 42px)}
-  .step{font-size:44px}
-  .plane{width:84vw}
-  .fl-cta{top:calc(24% + 200px)}
-  .prog{width:80vw}
+  .fl-in .lbl{left:24px;top:56px;font-size:11px}
+  .pt{width:14px;height:14px;margin:-7px 0 0 -7px}.pt.on{box-shadow:0 0 0 8px rgba(203,152,70,.14)}
+  .st{width:auto;right:20px}.st.r{text-align:left}
+  .st small{font-size:11px}.st h3{font-size:32px;margin-top:10px}
+  .plane{width:120px}
+  .fl-cta{right:auto;left:112px;bottom:auto;padding:18px 30px;font-size:13px}
 }
 </style>
 </head>
@@ -193,7 +188,7 @@ h1 .gold{color:var(--gold)}
 <main class="hero" id="hero">
   <div id="goldA"></div>
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r8a" poster="assets/r2/montage-poster.jpg?v=r8a" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r9c" poster="assets/r2/montage-poster.jpg?v=r9c" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -225,19 +220,16 @@ h1 .gold{color:var(--gold)}
         <div class="lbl">Календар 2027</div>
         <h2>Найближчі<br>подорожі</h2>
         <p class="lead">Групи до 8 людей. Усе з програми вже в ціні, окремо — лише переліт та обіди.</p>
-        <a class="btn-o" href="#">Весь календар 2027 <span>→</span></a>
       </div>
-      <div class="t-media">
-        <img class="t-photo" src="assets/dolomites.jpg" alt="Доломіти">
-        <form class="finder" id="finder" onsubmit="return false">
-          <div class="fh"><img src="assets/tours/madeira.jpg" alt=""><b>Обрати<br>подорож</b></div>
-          <label class="field"><span>Місяць</span><select id="fMonth"></select></label>
-          <label class="field"><span>Напрям</span><select id="fCountry"></select></label>
-          <button class="go" id="fGo" type="submit">Показати тури</button>
-        </form>
-      </div>
+      <form class="wish" id="finder" onsubmit="return false">
+        <p>Хочу поїхати<br><label class="pick"><span id="fMonthT">будь-коли</span><select id="fMonth" aria-label="Місяць"></select></label><label class="pick"><span id="fCountryT">куди завгодно</span><select id="fCountry" aria-label="Напрям"></select></label></p>
+        <button class="go" id="fGo" type="submit">Показати тури</button>
+      </form>
     </div>
-    <div class="t-bar"><span class="count" id="tCount"></span><button class="prev" id="tPrev" aria-label="Назад">←</button><button class="next" id="tNext" aria-label="Далі">→</button></div>
+    <div class="t-bar">
+      <a class="btn-o" href="#">Весь календар 2027 <span>→</span></a>
+      <div class="t-nav"><span class="count" id="tCount"></span><button class="prev" id="tPrev" aria-label="Назад">←</button><button class="next" id="tNext" aria-label="Далі">→</button></div>
+    </div>
     <div class="track" id="track"></div>
     <div class="swipe">← гортати →</div>
     <a class="btn-o mob" href="#">Весь календар 2027 <span>→</span></a>
@@ -258,25 +250,16 @@ h1 .gold{color:var(--gold)}
 </section>
 
 <section class="flight" id="flight">
-  <div class="fl-in">
-    <div class="cloud" style="left:62%;top:9%;width:30vw;height:13vw"></div>
-    <div class="cloud" style="left:30%;top:24%;width:36vw;height:15vw"></div>
-    <div class="cloud" style="left:80%;top:38%;width:27vw;height:11vw"></div>
-    <div class="cloud" style="left:28%;top:56%;width:24vw;height:10vw"></div>
-    <div class="cloud" style="left:8%;top:72%;width:20vw;height:8vw"></div>
-    <div class="cloud" style="left:56%;top:80%;width:22vw;height:9vw"></div>
-    <div class="fl-lbl">Як проходить подорож</div>
-    <div class="steps">
-      <h3 class="step">Виліт з будь-якої<br>точки світу</h3>
-      <h3 class="step">Зустріч<br>в аеропорту</h3>
-      <h3 class="step">Трансфер до першої<br>локації</h3>
-      <h3 class="step">Перший вечір<br>разом</h3>
-    </div>
-    <svg class="route" id="route" preserveAspectRatio="none"><path id="routePath" fill="none" stroke="#CB9846" stroke-width="1.6" stroke-dasharray="2 7" stroke-linecap="round"/></svg>
+  <div class="fl-in" id="flIn">
+    <div class="lbl">Як проходить подорож</div>
+    <svg class="route" id="route"><path id="rAhead" fill="none" stroke="#CB9846" stroke-opacity=".6" stroke-width="1.6" stroke-dasharray="2 9" stroke-linecap="round"/><path id="rDone" fill="none" stroke="#CB9846" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <i class="pt"></i><i class="pt"></i><i class="pt"></i><i class="pt"></i>
+    <div class="st"><small>01</small><h3>Виліт з будь-якої<br>точки світу</h3></div>
+    <div class="st"><small>02</small><h3>Зустріч<br>в аеропорту</h3></div>
+    <div class="st"><small>03</small><h3>Трансфер до<br>першої локації</h3></div>
+    <div class="st r"><small>04</small><h3>Перший вечір<br>разом</h3></div>
     <img class="plane" id="plane" src="assets/plane-cut.png" alt="">
     <a class="fl-cta" id="flCta" href="#tours">Обрати подорож</a>
-    <div class="prog" id="prog"><i></i><i></i><i></i><i></i></div>
-    <div class="fl-count" id="flCount">01 — 04</div>
   </div>
 </section>
 
@@ -289,10 +272,10 @@ h1 .gold{color:var(--gold)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r8a"></script>
+<script src="r2.js?v=r9c"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv'), goldA = document.getElementById('goldA');
-if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r8a';
+if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r9c';
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
 const st = {k: 0, a: 0};
 let W0, W1;
@@ -369,12 +352,13 @@ const TOURS = [
   ['Норвегія','2027-11-22','2027-11-28',7,1750,'tromso']
 ].map(([country,from,to,days,price,img,special]) => ({country,from:new Date(from),to:new Date(to),days,price,img,special}));
 const GEN = ['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
-const NOM = ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'];
+const LOC = ['у січні','у лютому','у березні','у квітні','у травні','у червні','у липні','у серпні','у вересні','у жовтні','у листопаді','у грудні'];
+const TO = {'Тенеріфе':'на Тенеріфе','Мадейра':'на Мадейру','Ісландія':'до Ісландії','Азори':'на Азори','Доломіти':'у Доломіти','Швейцарія':'до Швейцарії','Норвегія':'до Норвегії','Лофотени':'на Лофотени','Сардинія':'на Сардинію'};
 const fmtDates = t => t.from.getMonth() === t.to.getMonth()
   ? `${t.from.getDate()}–${t.to.getDate()} ${GEN[t.to.getMonth()]}`
   : `${t.from.getDate()} ${GEN[t.from.getMonth()]} – ${t.to.getDate()} ${GEN[t.to.getMonth()]}`;
 const track = document.getElementById('track'), fMonth = document.getElementById('fMonth'), fCountry = document.getElementById('fCountry');
-const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidth : 232) + parseFloat(getComputedStyle(track).columnGap || 30);
+const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidth : 380) + parseFloat(getComputedStyle(track).columnGap || 70);
 let shown = TOURS;
 function render(list){
   shown = list;
@@ -382,9 +366,9 @@ function render(list){
   track.scrollLeft = 0; updateBar();
 }
 function updateBar(){
-  const step = STEP(), first = Math.round(track.scrollLeft / step), vis = Math.max(1, Math.floor((track.clientWidth - 20 + 30) / step));
+  const step = STEP(), first = Math.round(track.scrollLeft / step), vis = Math.max(1, Math.round((track.clientWidth - 28 + parseFloat(getComputedStyle(track).columnGap)) / step));
   const last = Math.min(shown.length, first + vis), pad = n => String(n).padStart(2, '0');
-  document.getElementById('tCount').textContent = `${pad(first + 1)} — ${pad(last)} з ${shown.length}`;
+  document.getElementById('tCount').textContent = `${pad(first + 1)} — ${pad(last)}  з  ${shown.length}`;
   document.getElementById('tPrev').disabled = first <= 0;
   document.getElementById('tNext').disabled = last >= shown.length;
 }
@@ -392,15 +376,17 @@ track.addEventListener('scroll', () => requestAnimationFrame(updateBar), {passiv
 addEventListener('resize', updateBar);
 document.getElementById('tPrev').onclick = () => track.scrollBy({left: -STEP()});
 document.getElementById('tNext').onclick = () => track.scrollBy({left: STEP()});
-// finder: month first, the direction list only offers places that exist in that month
+// sentence filter: «Хочу поїхати [у травні] [на Азори]» — the place list only offers what exists in that month
 const months = [...new Set(TOURS.map(t => t.from.getMonth()))];
-fMonth.innerHTML = '<option value="">Усі місяці</option>' + months.map(m => `<option value="${m}">${NOM[m]} 2027</option>`).join('');
+fMonth.innerHTML = '<option value="">будь-коли</option>' + months.map(m => `<option value="${m}">${LOC[m]}</option>`).join('');
+const syncText = () => { document.getElementById('fMonthT').textContent = fMonth.options[fMonth.selectedIndex].text; document.getElementById('fCountryT').textContent = fCountry.options[fCountry.selectedIndex].text; };
 function fillCountries(){
   const keep = fCountry.value, m = fMonth.value;
   const list = [...new Set(TOURS.filter(t => m === '' || t.from.getMonth() == m).map(t => t.country))];
-  fCountry.innerHTML = '<option value="">Усі напрями</option>' + list.map(c => `<option${c === keep ? ' selected' : ''}>${c}</option>`).join('');
+  fCountry.innerHTML = '<option value="">куди завгодно</option>' + list.map(c => `<option value="${c}"${c === keep ? ' selected' : ''}>${TO[c] || c}</option>`).join('');
+  syncText();
 }
-fMonth.onchange = fillCountries; fillCountries();
+fMonth.onchange = fillCountries; fCountry.onchange = syncText; fillCountries();
 document.getElementById('finder').addEventListener('submit', () => {
   const m = fMonth.value, c = fCountry.value;
   render(TOURS.filter(t => (m === '' || t.from.getMonth() == m) && (c === '' || t.country === c)));
@@ -408,48 +394,55 @@ document.getElementById('finder').addEventListener('submit', () => {
 });
 render(TOURS);
 
-// ================= block 3 · the plane flies through the steps while you scroll =================
+// ================= block 3 · the plane flies along the gold route =================
 (() => {
-  const fl = document.getElementById('flight'), plane = document.getElementById('plane'), steps = [...document.querySelectorAll('.step')];
-  const dots = [...document.querySelectorAll('#prog i')], count = document.getElementById('flCount'), cta = document.getElementById('flCta');
-  const route = document.getElementById('route'), path = document.getElementById('routePath'), clouds = [...document.querySelectorAll('.cloud')];
-  const ease = x => x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
-  dots.forEach((d, i) => d.style.left = `calc(${i / 3 * 100}% - ${i / 3 * 10}px)`);
+  const fl = document.getElementById('flight'), stage = document.getElementById('flIn'), plane = document.getElementById('plane');
+  const rDone = document.getElementById('rDone'), rAhead = document.getElementById('rAhead'), cta = document.getElementById('flCta');
+  const pts = [...stage.querySelectorAll('.pt')], sts = [...stage.querySelectorAll('.st')];
+  const bez = (s, t) => { const u = 1 - t; return [0, 1].map(k => u*u*u*s[0][k] + 3*u*u*t*s[1][k] + 3*u*t*t*s[2][k] + t*t*t*s[3][k]); };
+  const der = (s, t) => { const u = 1 - t; return [0, 1].map(k => 3*u*u*(s[1][k]-s[0][k]) + 6*u*t*(s[2][k]-s[1][k]) + 3*t*t*(s[3][k]-s[2][k])); };
+  const split = (s, t) => { const L = (a, b) => [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t]; const a=L(s[0],s[1]), b=L(s[1],s[2]), c=L(s[2],s[3]), d=L(a,b), e=L(b,c), f=L(d,e); return [[s[0],a,d,f],[f,e,c,s[3]]]; };
+  const d = segs => segs.length ? `M ${segs[0][0]} ` + segs.map(s => `C ${s[1]} ${s[2]} ${s[3]}`).join(' ') : '';
+  let G;   // geometry for the current screen
+  function layout(){
+    const W = stage.offsetWidth, H = stage.offsetHeight, mob = W < 860;
+    let segs, at, lab;
+    if (!mob) {
+      const X = x => x / 1440 * W, Y = y => y / 900 * H;
+      segs = [[[90,760],[400,790],[470,500],[720,490]], [[720,490],[980,480],[1050,200],[1360,170]]].map(s => s.map(([x, y]) => [X(x), Y(y)]));
+      at = [.12, .82, 1.32, 1.93];
+      lab = [[-10, -205], [-40, 40], [30, 40], [-380, 40]];
+    } else {
+      const P = [160, 340, 520, 700].map(y => [52, y / 844 * H]);
+      segs = [0, 1, 2].map(i => [P[i], [P[i][0] + 46, P[i][1] + 60 * H / 844], [P[i+1][0] - 46, P[i+1][1] - 60 * H / 844], P[i+1]]);
+      at = [0, 1, 2, 3];
+      lab = P.map(() => [60, -30]);
+    }
+    const pos = u => { const i = Math.min(segs.length - 1, Math.floor(u)); return bez(segs[i], u - i); };
+    at.forEach((u, i) => { const [x, y] = pos(u); pts[i].style.left = x + 'px'; pts[i].style.top = y + 'px';
+      sts[i].style.left = (x + lab[i][0]) + 'px'; sts[i].style.top = (y + lab[i][1]) + 'px'; });
+    if (mob) cta.style.top = (pos(3)[1] + 84) + 'px'; else cta.style.top = '';
+    G = {segs, at, mob};
+  }
   function frame(){
-    const vw = innerWidth, vh = fl.querySelector('.fl-in').offsetHeight, mob = vw < 860;
-    const r = fl.getBoundingClientRect(), total = fl.offsetHeight - vh;
-    const p = Math.min(Math.max(-r.top / total, 0), 1) * 4;           // 0 … 4
-    const pw = plane.offsetWidth, ph = plane.offsetHeight, py = vh * (mob ? .52 : .55);
-    // 0–0.6: the plane comes in from the left and waits half-visible; then three passes 0.6–1.6, 1.6–2.6, 2.6–3.6
-    let x, from, to, k;
-    if (p < .6) { k = 0; x = -pw + ease(p / .6) * pw * .62; from = 0; to = 0; }
-    else if (p < 3.6) { k = Math.floor(p - .6) + 1; const q = ease((p - .6) % 1 || (p >= 3.6 ? 1 : 0));
-      const start = k === 1 ? -pw * .38 : -pw; x = start + q * (vw + pw * .2 - start); from = k - 1; to = k; }
-    else { k = 4; x = vw + pw; from = 3; to = 3; }
-    const bob = Math.sin(p * 3.2) * (mob ? 6 : 10), rot = mob ? -10 : Math.sin(p * 3.2) * 1.2;
-    plane.style.transform = `translate(${x}px, ${py - ph / 2 + bob}px) rotate(${rot}deg)`;
-    // the text changes "behind the wing": left of the plane's middle is the new step, right of it — the old one
-    const wipe = Math.max(0, Math.min(vw, x + pw * .5));
-    steps.forEach((s, i) => {
-      let clip = 'inset(0 0 0 100%)';
-      if (from === to && i === to) clip = 'inset(0 0 0 0)';
-      else if (i === from) clip = `inset(0 0 0 ${wipe}px)`;
-      else if (i === to) clip = `inset(0 ${vw - wipe}px 0 0)`;
-      s.style.clipPath = s.style.webkitClipPath = clip;
-    });
-    // gold dashed route behind the tail
-    route.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
-    const tail = x + pw * .08, ty = py + bob, amp = mob ? 18 : 34;
-    path.setAttribute('d', (tail <= 0 || k === 4) ? '' : `M 0 ${ty + amp} C ${tail * .35} ${ty - amp}, ${tail * .65} ${ty + amp * .6}, ${tail} ${ty}`);
-    clouds.forEach((c, i) => c.style.transform = `translateX(${-p * (12 + i * 7)}px)`);
-    const cur = Math.min(3, p < 3.6 ? (x + pw * .5 > vw * .5 && from !== to ? to : from) : 3);
-    dots.forEach((d, i) => d.classList.toggle('on', i <= cur));
-    count.textContent = `0${cur + 1} — 04`;
-    cta.classList.toggle('on', p >= 3.62);
+    if (!G) layout();
+    const {segs, at, mob} = G, U = segs.length;
+    const r = fl.getBoundingClientRect(), total = fl.offsetHeight - stage.offsetHeight;
+    const p = Math.min(Math.max(-r.top / total, 0), 1);
+    const u = Math.min(U, Math.max(0, (p - .04) / .82) * U);
+    const i = Math.min(U - 1, Math.floor(u)), t = u - i;
+    const done = segs.slice(0, i), ahead = segs.slice(i + 1);
+    if (t > 0 && t < 1) { const [a, b] = split(segs[i], t); done.push(a); ahead.unshift(b); } else if (t >= 1) done.push(segs[i]); else ahead.unshift(segs[i]);
+    rDone.setAttribute('d', d(done)); rAhead.setAttribute('d', d(ahead));
+    const [x, y] = bez(segs[i], t), [dx, dy] = der(segs[i], Math.min(.999, Math.max(.001, t)));
+    plane.style.transform = `translate(${x - plane.offsetWidth / 2}px, ${y - plane.offsetHeight / 2}px) rotate(${Math.atan2(dy, dx)}rad)`;
+    at.forEach((a, k) => { const on = u >= a - .02; pts[k].classList.toggle('on', on); sts[k].classList.toggle('on', on); });
+    cta.classList.toggle('on', p > .9);
   }
   let busy = false;
   const tick = () => { if (busy) return; busy = true; requestAnimationFrame(() => { frame(); busy = false; }); };
-  addEventListener('scroll', tick, {passive: true}); addEventListener('resize', tick);
+  addEventListener('scroll', tick, {passive: true});
+  addEventListener('resize', () => { layout(); tick(); });
   plane.complete ? frame() : plane.addEventListener('load', frame);
 })();
 
