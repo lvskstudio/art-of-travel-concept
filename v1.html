@@ -7,7 +7,7 @@
 <title>Варіант А — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r9d">
+<link rel="stylesheet" href="r2.css?v=r10b">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -97,19 +97,27 @@ h1 .gold{color:var(--gold)}
 .btn-o{display:inline-flex;gap:12px;align-items:center;border:1px solid rgba(2,26,82,.5);color:var(--navy);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:19px 34px;border-radius:40px;transition:background .3s,color .3s}
 .btn-o:hover{background:var(--navy);color:var(--bone)}
 .btn-o.mob,.swipe{display:none}
-/* 1 · nearest tours — large flat polaroids, the filter is a sentence */
-.tours{padding:150px 0 130px}
-.t-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.t-top h2{margin-top:26px;font:400 clamp(64px,6.7vw,104px)/.94 var(--serif);letter-spacing:-.005em}
-.t-top .lead{margin-top:30px;font-size:19px;line-height:1.6;opacity:.8;max-width:440px}
-.wish{padding-top:34px}
-.wish p{font:400 clamp(40px,3.6vw,56px)/1.25 var(--serif)}
-.pick{position:relative;display:inline-block;color:var(--gold);font-weight:500;border-bottom:1.5px solid rgba(203,152,70,.7);line-height:1.1;margin-right:.35em;cursor:pointer;white-space:nowrap}
-.pick::after{content:"";display:inline-block;width:.32em;height:.32em;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-.2em) rotate(45deg);margin-left:.3em}
-.pick select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:16px}
-.wish .go{margin-top:34px;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:22px 46px;border-radius:40px;transition:background .3s}
+/* 1 · nearest tours — faint mountains behind the heading, photo + gold line frame with the choice (ref) */
+.tours{position:relative;padding:130px 0 60px;overflow:hidden}
+.t-mtn{position:absolute;left:0;top:0;width:100%;opacity:.17;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply;pointer-events:none}
+.t-head{position:relative;text-align:center}
+.t-head h2{margin-top:26px;font:400 clamp(64px,7.5vw,112px)/1 var(--serif);letter-spacing:-.005em}
+.t-head .lead{margin:26px auto 0;font-size:19px;line-height:1.6;opacity:.8;max-width:520px}
+.t-pick{position:relative;margin-top:110px;height:600px}
+.t-ph{position:absolute;z-index:1;left:40px;top:0;width:460px;height:600px;object-fit:cover}
+.t-frame{position:absolute;left:340px;right:40px;top:90px;height:420px;border:1.5px solid rgba(203,152,70,.9);pointer-events:none}
+.wish{position:absolute;left:560px;right:80px;top:140px}
+.wish > p{font:400 clamp(44px,4.2vw,60px)/1 var(--serif)}
+.flds{margin-top:40px;display:flex;align-items:stretch;gap:40px}
+.flds i{width:1px;background:rgba(203,152,70,.6)}
+.fld{position:relative;display:block;cursor:pointer;min-width:0}
+.fld small{display:block;font:600 12px/1 var(--sans);letter-spacing:.24em;color:var(--gold)}
+.fld b{display:inline-block;margin-top:12px;font:500 clamp(32px,2.9vw,42px)/1.1 var(--serif);border-bottom:1px solid rgba(2,26,82,.25);padding-right:40px;position:relative;white-space:nowrap}
+.fld b::after{content:"";position:absolute;right:8px;top:.32em;width:11px;height:11px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg)}
+.fld select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:16px}
+.wish .go{margin-top:44px;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:23px 52px;border-radius:40px;transition:background .3s}
 .wish .go:hover{background:var(--navy)}
-.t-bar{margin-top:70px;display:flex;justify-content:space-between;align-items:center}
+.t-bar{margin-top:110px;display:flex;justify-content:space-between;align-items:center}
 .t-nav{display:flex;align-items:center;gap:14px}
 .t-nav .count{font:600 14px/1 var(--sans);letter-spacing:.14em;opacity:.6;margin-right:14px}
 .t-nav button{width:58px;height:58px;border-radius:50%;border:1px solid rgba(2,26,82,.35);font-size:20px;color:var(--navy);transition:opacity .3s}
@@ -126,8 +134,11 @@ h1 .gold{color:var(--gold)}
 .tour .pol .d{font:400 clamp(22px,1.95vw,28px)/1 "Caveat",cursive;color:#1B2433;opacity:.68;text-align:center;padding:4px 0 22px}
 .tour .pol .star{position:absolute;right:7%;top:8%;background:var(--gold);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:20px}
 .tour .price{margin-top:30px;font:500 17px/1.4 var(--sans);opacity:.78}
+/* the real Dolomites ridge rises out of the navy block */
+.ridge{display:block;line-height:0;background:linear-gradient(180deg,var(--bone) 0 37%,var(--navy) 37%)}
+.ridge img{width:100%;height:auto;display:block}
 /* 2 · why us (NAVY ref: gold spaced capitals) */
-.why{background:var(--navy);color:var(--bone);padding:120px 0 90px}
+.why{background:var(--navy);color:var(--bone);padding:10px 0 90px}
 .why h2{text-align:center;font:500 clamp(34px,3.4vw,48px)/1 var(--serif);letter-spacing:.32em;color:var(--gold);padding-left:.32em}
 .why-grid{margin-top:84px;display:grid;grid-template-columns:repeat(4,1fr);gap:58px}
 .why h3{font:600 25px/1 var(--serif);letter-spacing:.22em;color:var(--gold)}
@@ -149,19 +160,24 @@ h1 .gold{color:var(--gold)}
 .plane{position:absolute;left:0;top:0;width:clamp(260px,26vw,400px);filter:drop-shadow(10px 20px 16px rgba(20,24,44,.2));will-change:transform}
 .fl-cta{position:absolute;right:80px;bottom:80px;background:var(--navy);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:22px 42px;border-radius:40px;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .5s,transform .5s}
 .fl-cta.on{opacity:1;transform:none;pointer-events:auto}
-@media (max-width:1100px) and (min-width:861px){ .tour{flex-basis:calc((100% - 70px) / 2)} .t-top{grid-template-columns:1fr} }
+@media (max-width:1100px) and (min-width:861px){ .tour{flex-basis:calc((100% - 70px) / 2)} .t-ph{width:340px;height:480px}.t-pick{height:480px}.t-frame{left:240px;top:60px;height:360px}.wish{left:400px;top:100px;right:40px}.flds{gap:24px} }
 @media (max-width:860px){
   .wrap{padding:0 24px}
-  .tours{padding:76px 0 80px}
-  .t-top{grid-template-columns:1fr;gap:0}
-  .t-top h2{font-size:58px;margin-top:18px}
-  .t-top .lead{font-size:15px;margin-top:20px}
+  .tours{padding:70px 0 40px}
+  .t-mtn{top:20px;width:180%;left:-40%}
+  .t-head h2{font-size:56px;line-height:.95;margin-top:18px}
+  .t-head .lead{font-size:15px;margin-top:18px}
   .t-bar .btn-o,.t-nav{display:none}
-  .wish{padding-top:44px}
-  .wish p{font-size:36px;line-height:1.3}
-  .pick{display:table;margin:4px 0}
+  .t-pick{height:auto;margin-top:50px}
+  .t-ph{position:relative;left:auto;width:78%;height:300px}
+  .t-frame{left:14%;right:0;top:220px;height:auto;bottom:-24px}
+  .wish{position:relative;left:auto;right:auto;top:auto;margin:40px 0 0 calc(14% + 24px);padding-right:20px}
+  .wish > p{font-size:38px}
+  .flds{flex-direction:column;gap:22px;margin-top:26px}
+  .flds i{display:none}
+  .fld b{font-size:30px;padding-right:34px}
   .wish .go{width:100%;margin-top:30px;padding:20px}
-  .t-bar{margin-top:0}
+  .t-bar{margin-top:40px}
   .track{margin:34px -24px 0;padding:46px 24px 12px;gap:28px;scroll-padding-left:24px}
   .tour{flex-basis:282px}
   .tour .pol p{font-size:34px;padding:10px 0 0}
@@ -169,7 +185,7 @@ h1 .gold{color:var(--gold)}
   .tour .price{font-size:14px;margin-top:22px}
   .swipe{display:block;text-align:center;font:400 22px/1 "Caveat",cursive;opacity:.5;margin-top:22px}
   .btn-o.mob{display:flex;justify-content:center;margin-top:30px;font-size:14px}
-  .why{padding:66px 0 64px}
+  .why{padding:6px 0 64px}
   .why h2{font-size:32px;letter-spacing:.26em;padding-left:.26em}
   .why-grid{grid-template-columns:1fr;gap:42px;margin-top:58px}
   .why h3{font-size:22px;letter-spacing:.2em}.why h3::after{margin-top:14px}
@@ -188,7 +204,7 @@ h1 .gold{color:var(--gold)}
 <main class="hero" id="hero">
   <div id="goldA"></div>
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r9d" poster="assets/r2/montage-poster.jpg?v=r9d" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r10b" poster="assets/r2/montage-poster.jpg?v=r10b" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -214,15 +230,23 @@ h1 .gold{color:var(--gold)}
 
 
 <section class="tours" id="tours">
+  <img class="t-mtn" src="assets/ridge-fade.png" alt="">
   <div class="wrap">
-    <div class="t-top">
-      <div>
-        <div class="lbl">Календар 2027</div>
-        <h2>Найближчі<br>подорожі</h2>
-        <p class="lead">Групи до 8 людей. Усе з програми вже в ціні, окремо — лише переліт та обіди.</p>
-      </div>
+    <div class="t-head">
+      <div class="lbl">Календар 2027</div>
+      <h2>Найближчі подорожі</h2>
+      <p class="lead">Групи до 8 людей. Усе з програми вже в ціні, окремо — лише переліт та обіди.</p>
+    </div>
+    <div class="t-pick">
+      <img class="t-ph" src="assets/r2/card-falls.jpg" alt="">
+      <div class="t-frame"></div>
       <form class="wish" id="finder" onsubmit="return false">
-        <p>Хочу поїхати<br><label class="pick"><span id="fMonthT">будь-коли</span><select id="fMonth" aria-label="Місяць"></select></label><label class="pick"><span id="fCountryT">куди завгодно</span><select id="fCountry" aria-label="Напрям"></select></label></p>
+        <p>Хочу поїхати</p>
+        <div class="flds">
+          <label class="fld"><small>Коли</small><b id="fMonthT">будь-коли</b><select id="fMonth" aria-label="Коли"></select></label>
+          <i></i>
+          <label class="fld"><small>Куди</small><b id="fCountryT">куди завгодно</b><select id="fCountry" aria-label="Куди"></select></label>
+        </div>
         <button class="go" id="fGo" type="submit">Показати тури</button>
       </form>
     </div>
@@ -235,6 +259,7 @@ h1 .gold{color:var(--gold)}
     <a class="btn-o mob" href="#">Весь календар 2027 <span>→</span></a>
   </div>
 </section>
+<div class="ridge"><img src="assets/ridge-fade.png" alt="Доломіти"></div>
 
 <section class="why">
   <div class="wrap">
@@ -272,10 +297,10 @@ h1 .gold{color:var(--gold)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r9d"></script>
+<script src="r2.js?v=r10b"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv'), goldA = document.getElementById('goldA');
-if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r9d';
+if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r10b';
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
 const st = {k: 0, a: 0};
 let W0, W1;
