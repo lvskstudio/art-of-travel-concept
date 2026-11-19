@@ -7,7 +7,7 @@
 <title>Варіант А — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r7b">
+<link rel="stylesheet" href="r2.css?v=r8a">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -90,13 +90,110 @@ h1 .gold{color:var(--gold)}
   .pol::after{width:48px;height:16px;margin-left:-24px;top:-8px}
   .stage .shade{background:linear-gradient(0deg,rgba(1,16,47,.8) 0%,rgba(1,16,47,.25) 60%,rgba(1,16,47,.35) 100%)}
 }
+
+/* ================= below the hero: blocks 1–3 ================= */
+.wrap{max-width:1440px;margin:0 auto;padding:0 80px}
+.lbl{font:600 12px/1 var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+.btn-o{display:inline-flex;gap:12px;align-items:center;border:1px solid rgba(2,26,82,.55);color:var(--navy);font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:16px 30px;border-radius:40px;transition:background .3s,color .3s}
+.btn-o:hover{background:var(--navy);color:var(--bone)}
+.btn-o.mob,.swipe{display:none}
+/* 1 · nearest tours (HAVEN: heading + "plan your escape" widget over a photo) */
+.tours{padding:150px 0 120px}
+.t-top{display:grid;grid-template-columns:minmax(0,470px) 1fr;gap:40px;align-items:center}
+.t-top h2{margin-top:22px;font:400 clamp(52px,5.6vw,80px)/.96 var(--serif);letter-spacing:-.005em}
+.t-top .lead{margin-top:26px;font-size:17px;line-height:1.6;opacity:.78;max-width:380px}
+.t-top .btn-o{margin-top:34px}
+.t-media{position:relative;padding-left:180px}
+.t-photo{width:100%;aspect-ratio:620/450;border-radius:24px;object-fit:cover}
+.finder{position:absolute;left:0;top:46px;width:316px;background:#F7F2E8;border-radius:20px;padding:20px;box-shadow:0 18px 44px rgba(8,18,51,.16);display:flex;flex-direction:column;gap:12px}
+.finder .fh{display:flex;align-items:center;gap:14px;margin-bottom:2px}
+.finder .fh img{width:58px;height:58px;border-radius:10px;object-fit:cover}
+.finder .fh b{font:500 27px/1 var(--serif)}
+.field{position:relative;display:block;background:rgba(255,255,255,.85);border-radius:12px;padding:12px 40px 12px 16px;cursor:pointer}
+.field span{display:block;font:500 11px/1 var(--sans);opacity:.55}
+.field select{appearance:none;-webkit-appearance:none;border:0;background:none;font:600 15px/1.2 var(--sans);color:var(--navy);width:100%;margin-top:6px;cursor:pointer;outline:none}
+.field::after{content:"⌄";position:absolute;right:16px;top:15px;font-size:18px;opacity:.6;pointer-events:none}
+.finder .go{background:var(--olive);color:var(--bone);font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:18px;border-radius:40px;transition:background .3s}
+.finder .go:hover{background:var(--navy)}
+.t-bar{margin-top:80px;display:flex;justify-content:flex-end;align-items:center;gap:12px}
+.t-bar .count{font:600 12px/1 var(--sans);letter-spacing:.14em;opacity:.55;margin-right:10px}
+.t-bar button{width:46px;height:46px;border-radius:50%;border:1px solid rgba(2,26,82,.4);font-size:16px;color:var(--navy);transition:opacity .3s,background .3s}
+.t-bar button.next{background:var(--navy);color:var(--bone);border-color:var(--navy)}
+.t-bar button:disabled{opacity:.3;cursor:default}
+.track{margin:24px -10px 0;padding:26px 10px 44px;display:flex;gap:30px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.tour{flex:0 0 232px;scroll-snap-align:start}
+.tour .pol{width:232px;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.tour:nth-child(5n+1) .pol{transform:rotate(-3deg)}.tour:nth-child(5n+2) .pol{transform:rotate(2.5deg)}.tour:nth-child(5n+3) .pol{transform:rotate(-1.5deg)}.tour:nth-child(5n+4) .pol{transform:rotate(3deg)}.tour:nth-child(5n) .pol{transform:rotate(-2deg)}
+.tour .pol:hover{transform:rotate(0) translateY(-10px);box-shadow:0 26px 44px rgba(1,16,47,.34)}
+.tour .pol p{padding:12px 0 2px}
+.tour .pol .d{font:400 22px/1 "Caveat",cursive;color:#1B2433;opacity:.7;text-align:center;padding:4px 0 16px}
+.tour .pol .star{position:absolute;right:12px;top:20px;background:var(--gold);color:#fff;font:600 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:20px}
+.tour .price{margin-top:24px;font:500 14px/1.4 var(--sans);opacity:.75}
+/* 2 · why us (NAVY ref: gold spaced capitals) */
+.why{background:var(--navy);color:var(--bone);padding:120px 0 90px}
+.why h2{text-align:center;font:500 clamp(34px,3.4vw,48px)/1 var(--serif);letter-spacing:.32em;color:var(--gold);padding-left:.32em}
+.why-grid{margin-top:84px;display:grid;grid-template-columns:repeat(4,1fr);gap:58px}
+.why h3{font:600 25px/1 var(--serif);letter-spacing:.22em;color:var(--gold)}
+.why h3::after{content:"";display:block;width:36px;height:1px;background:rgba(203,152,70,.8);margin-top:18px}
+.why p{margin-top:22px;font-size:16px;line-height:1.65;opacity:.88}
+.why .mark{width:48px;margin:90px auto 0}
+/* 3 · how the trip goes — the plane wipes one step into the next while you scroll */
+.flight{position:relative;height:420vh;background:var(--bone)}
+.fl-in{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.cloud{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.92),rgba(255,255,255,.5) 55%,rgba(255,255,255,0));will-change:transform}
+.fl-lbl{position:absolute;left:0;right:0;top:26%;text-align:center;font:500 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.6}
+.steps{position:absolute;left:0;right:0;top:calc(26% + 48px)}
+.step{position:absolute;left:0;right:0;text-align:center;font:400 clamp(50px,6.4vw,96px)/1.02 var(--serif);letter-spacing:-.005em;padding:0 6vw;will-change:clip-path}
+.route{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+.plane{position:absolute;left:0;top:0;width:min(58vw,840px);filter:drop-shadow(18px 34px 26px rgba(20,24,44,.22));will-change:transform}
+.prog{position:absolute;left:50%;bottom:14%;width:min(864px,70vw);transform:translateX(-50%);height:10px}
+.prog::before{content:"";position:absolute;left:5px;right:5px;top:4.5px;height:1px;background:rgba(203,152,70,.6)}
+.prog i{position:absolute;top:0;width:10px;height:10px;border-radius:50%;border:1px solid var(--gold);background:var(--bone);transition:background .4s}
+.prog i.on{background:var(--gold)}
+.fl-count{position:absolute;left:0;right:0;bottom:calc(14% - 44px);text-align:center;font:600 11px/1 var(--sans);letter-spacing:.2em;color:var(--gold)}
+.fl-cta{position:absolute;left:50%;top:calc(26% + 290px);transform:translateX(-50%);background:var(--navy);color:var(--bone);font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:18px 34px;border-radius:40px;opacity:0;pointer-events:none;transition:opacity .4s}
+.fl-cta.on{opacity:1;pointer-events:auto}
+@media (max-width:860px){
+  .wrap{padding:0 24px}
+  .tours{padding:76px 0 80px}
+  .t-top{grid-template-columns:1fr;gap:30px}
+  .t-top h2{font-size:54px;margin-top:18px}
+  .t-top .lead{font-size:15px;margin-top:18px}
+  .t-top .btn-o{display:none}
+  .t-media{padding-left:0}
+  .t-photo{aspect-ratio:342/220;border-radius:20px}
+  .finder{position:relative;left:auto;top:auto;width:auto;margin:-74px 16px 0;padding:18px;gap:10px}
+  .finder .fh b{font-size:25px}.finder .fh img{width:50px;height:50px}
+  .t-bar{display:none}
+  .track{margin:40px -24px 0;padding:20px 24px 36px;gap:22px;scroll-padding-left:24px}
+  .tour{flex-basis:168px}
+  .tour .pol{width:168px;padding:9px 9px 0}
+  .tour .pol p{font-size:22px;padding:8px 0 0}
+  .tour .pol .d{font-size:16px;padding:3px 0 11px}
+  .tour .pol::after{width:56px;height:18px;margin-left:-28px;top:-9px}
+  .tour .price{font-size:12px;margin-top:18px}
+  .swipe{display:block;text-align:center;font:400 20px/1 "Caveat",cursive;opacity:.5;margin-top:4px}
+  .btn-o.mob{display:flex;justify-content:center;margin-top:30px}
+  .why{padding:66px 0 64px}
+  .why h2{font-size:32px;letter-spacing:.26em;padding-left:.26em}
+  .why-grid{grid-template-columns:1fr;gap:42px;margin-top:58px}
+  .why h3{font-size:22px;letter-spacing:.2em}.why h3::after{margin-top:14px}
+  .why p{font-size:15px;margin-top:16px}
+  .why .mark{margin-top:64px;width:46px}
+  .fl-lbl{top:24%}.steps{top:calc(24% + 42px)}
+  .step{font-size:44px}
+  .plane{width:84vw}
+  .fl-cta{top:calc(24% + 200px)}
+  .prog{width:80vw}
+}
 </style>
 </head>
 <body>
 <main class="hero" id="hero">
   <div id="goldA"></div>
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r7b" poster="assets/r2/montage-poster.jpg?v=r7b" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r8a" poster="assets/r2/montage-poster.jpg?v=r8a" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -120,6 +217,69 @@ h1 .gold{color:var(--gold)}
   </div>
 </main>
 
+
+<section class="tours" id="tours">
+  <div class="wrap">
+    <div class="t-top">
+      <div>
+        <div class="lbl">Календар 2027</div>
+        <h2>Найближчі<br>подорожі</h2>
+        <p class="lead">Групи до 8 людей. Усе з програми вже в ціні, окремо — лише переліт та обіди.</p>
+        <a class="btn-o" href="#">Весь календар 2027 <span>→</span></a>
+      </div>
+      <div class="t-media">
+        <img class="t-photo" src="assets/dolomites.jpg" alt="Доломіти">
+        <form class="finder" id="finder" onsubmit="return false">
+          <div class="fh"><img src="assets/tours/madeira.jpg" alt=""><b>Обрати<br>подорож</b></div>
+          <label class="field"><span>Місяць</span><select id="fMonth"></select></label>
+          <label class="field"><span>Напрям</span><select id="fCountry"></select></label>
+          <button class="go" id="fGo" type="submit">Показати тури</button>
+        </form>
+      </div>
+    </div>
+    <div class="t-bar"><span class="count" id="tCount"></span><button class="prev" id="tPrev" aria-label="Назад">←</button><button class="next" id="tNext" aria-label="Далі">→</button></div>
+    <div class="track" id="track"></div>
+    <div class="swipe">← гортати →</div>
+    <a class="btn-o mob" href="#">Весь календар 2027 <span>→</span></a>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <h2>ЧОМУ З НАМИ</h2>
+    <div class="why-grid">
+      <div><h3>ЯКІСТЬ</h3><p>Обираємо найкраще: преміальні вілли, перевірені маршрути, авторська кухня від шефа.</p></div>
+      <div><h3>ВСЕ ВКЛЮЧЕНО</h3><p>Жодних доплат на місці. Окремо — лише переліт та обіди.</p></div>
+      <div><h3>БЕЗПЕКА</h3><p>Офіційний туроператор. Договір і страхування під активний відпочинок для кожного.</p></div>
+      <div><h3>СВОЇ ЛЮДИ</h3><p>Група до 8 людей. Своя тусовка і класні люди поруч.</p></div>
+    </div>
+    <img class="mark" src="assets/logo-gold.png" alt="">
+  </div>
+</section>
+
+<section class="flight" id="flight">
+  <div class="fl-in">
+    <div class="cloud" style="left:62%;top:9%;width:30vw;height:13vw"></div>
+    <div class="cloud" style="left:30%;top:24%;width:36vw;height:15vw"></div>
+    <div class="cloud" style="left:80%;top:38%;width:27vw;height:11vw"></div>
+    <div class="cloud" style="left:28%;top:56%;width:24vw;height:10vw"></div>
+    <div class="cloud" style="left:8%;top:72%;width:20vw;height:8vw"></div>
+    <div class="cloud" style="left:56%;top:80%;width:22vw;height:9vw"></div>
+    <div class="fl-lbl">Як проходить подорож</div>
+    <div class="steps">
+      <h3 class="step">Виліт з будь-якої<br>точки світу</h3>
+      <h3 class="step">Зустріч<br>в аеропорту</h3>
+      <h3 class="step">Трансфер до першої<br>локації</h3>
+      <h3 class="step">Перший вечір<br>разом</h3>
+    </div>
+    <svg class="route" id="route" preserveAspectRatio="none"><path id="routePath" fill="none" stroke="#CB9846" stroke-width="1.6" stroke-dasharray="2 7" stroke-linecap="round"/></svg>
+    <img class="plane" id="plane" src="assets/plane-cut.png" alt="">
+    <a class="fl-cta" id="flCta" href="#tours">Обрати подорож</a>
+    <div class="prog" id="prog"><i></i><i></i><i></i><i></i></div>
+    <div class="fl-count" id="flCount">01 — 04</div>
+  </div>
+</section>
+
 <div class="intro" id="intro"></div>
 <div class="intro-text" id="introText">
   <div class="name">THE ART OF TRAVEL</div>
@@ -129,10 +289,10 @@ h1 .gold{color:var(--gold)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r7b"></script>
+<script src="r2.js?v=r8a"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv'), goldA = document.getElementById('goldA');
-if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r7b';
+if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r8a';
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
 const st = {k: 0, a: 0};
 let W0, W1;
@@ -156,7 +316,7 @@ applyMask();
 const cardInset = () => innerWidth < 860 ? 'inset(12px 12px 12px 12px round 22px)' : 'inset(24px 32px 200px 32px round 28px)';
 addEventListener('resize', () => { S = sizes(); if (stage.classList.contains('masked')) applyMask(); else stage.style.clipPath = cardInset(); });
 
-gsap.set('.pol', {rotation: i => [4, -3, 2.5][i]});
+gsap.set('.cards .pol', {rotation: i => [4, -3, 2.5][i]});
 const tl = gsap.timeline({paused: true});
 tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
   .fromTo(st, {k: -0.06}, {k: 1, duration: 2.7, ease: 'power3.in', onUpdate: applyMask}, 0)
@@ -177,11 +337,11 @@ tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
   .to('.nav', {opacity: 1, duration: .5}, 3.2)
   .from('h1 em', {yPercent: 110, duration: .8, stagger: .12, ease: 'power3.out'}, 3.25)
   .to('.sub, .cta', {opacity: 1, duration: .5, stagger: .08}, 3.65)
-  .fromTo('.pol', {opacity: 0, y: -60}, {opacity: 1, y: 0, duration: .7, stagger: .12, ease: 'back.out(1.4)'}, 3.6)
+  .fromTo('.cards .pol', {opacity: 0, y: -60}, {opacity: 1, y: 0, duration: .7, stagger: .12, ease: 'back.out(1.4)'}, 3.6)
 ;
 // the polaroid of the place that is on screen right now lifts a little
 // (montage: 0–2.9 s Iceland canyon, then Tenerife ocean and cliffs; there is no Dolomites footage)
-const pols = document.querySelectorAll('.pol'); let polOn = -1, polsReady = false;
+const pols = document.querySelectorAll('.cards .pol'); let polOn = -1, polsReady = false;
 tl.add(() => { polsReady = true; });
 video.addEventListener('timeupdate', () => {
   if (!polsReady) return;
@@ -189,6 +349,110 @@ video.addEventListener('timeupdate', () => {
   if (i === polOn) return; polOn = i;
   pols.forEach((p, k) => gsap.to(p, {y: k === i ? -16 : 0, scale: k === i ? 1.06 : 1, boxShadow: k === i ? '0 26px 44px rgba(1,16,47,.42)' : '0 16px 34px rgba(1,16,47,.32)', duration: .6, ease: 'power2.out'}));
 });
+
+// ================= block 1 · nearest tours (calendar 2027 from Artem) =================
+const TOURS = [
+  ['Тенеріфе','2027-03-18','2027-03-25',8,1500,'tenerife'],
+  ['Мадейра','2027-04-11','2027-04-18',8,1500,'madeira'],
+  ['Ісландія','2027-05-18','2027-05-26',9,2200,'iceland-summer'],
+  ['Азори','2027-05-29','2027-06-05',8,1600,'azores'],
+  ['Доломіти','2027-06-10','2027-06-16',7,1650,'dolomites'],
+  ['Швейцарія','2027-06-17','2027-06-23',7,1650,'swiss'],
+  ['Норвегія','2027-07-05','2027-07-12',8,2000,'norway-1'],
+  ['Норвегія','2027-07-13','2027-07-20',8,2000,'norway-2'],
+  ['Лофотени','2027-08-20','2027-08-27',8,2100,'lofoten'],
+  ['Мадейра','2027-09-02','2027-09-09',8,1700,'madeira',true],
+  ['Доломіти','2027-09-17','2027-09-23',7,1650,'dolomites-2'],
+  ['Швейцарія','2027-09-24','2027-09-30',7,1650,'swiss-2'],
+  ['Сардинія','2027-10-05','2027-10-12',8,1650,'sardinia'],
+  ['Ісландія','2027-11-02','2027-11-08',7,1750,'iceland-aurora'],
+  ['Норвегія','2027-11-22','2027-11-28',7,1750,'tromso']
+].map(([country,from,to,days,price,img,special]) => ({country,from:new Date(from),to:new Date(to),days,price,img,special}));
+const GEN = ['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
+const NOM = ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'];
+const fmtDates = t => t.from.getMonth() === t.to.getMonth()
+  ? `${t.from.getDate()}–${t.to.getDate()} ${GEN[t.to.getMonth()]}`
+  : `${t.from.getDate()} ${GEN[t.from.getMonth()]} – ${t.to.getDate()} ${GEN[t.to.getMonth()]}`;
+const track = document.getElementById('track'), fMonth = document.getElementById('fMonth'), fCountry = document.getElementById('fCountry');
+const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidth : 232) + parseFloat(getComputedStyle(track).columnGap || 30);
+let shown = TOURS;
+function render(list){
+  shown = list;
+  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#"><img src="assets/tours/${t.img}.jpg" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price">${t.days} днів · ${t.price} € + переліт</div></div>`).join('');
+  track.scrollLeft = 0; updateBar();
+}
+function updateBar(){
+  const step = STEP(), first = Math.round(track.scrollLeft / step), vis = Math.max(1, Math.floor((track.clientWidth - 20 + 30) / step));
+  const last = Math.min(shown.length, first + vis), pad = n => String(n).padStart(2, '0');
+  document.getElementById('tCount').textContent = `${pad(first + 1)} — ${pad(last)} з ${shown.length}`;
+  document.getElementById('tPrev').disabled = first <= 0;
+  document.getElementById('tNext').disabled = last >= shown.length;
+}
+track.addEventListener('scroll', () => requestAnimationFrame(updateBar), {passive: true});
+addEventListener('resize', updateBar);
+document.getElementById('tPrev').onclick = () => track.scrollBy({left: -STEP()});
+document.getElementById('tNext').onclick = () => track.scrollBy({left: STEP()});
+// finder: month first, the direction list only offers places that exist in that month
+const months = [...new Set(TOURS.map(t => t.from.getMonth()))];
+fMonth.innerHTML = '<option value="">Усі місяці</option>' + months.map(m => `<option value="${m}">${NOM[m]} 2027</option>`).join('');
+function fillCountries(){
+  const keep = fCountry.value, m = fMonth.value;
+  const list = [...new Set(TOURS.filter(t => m === '' || t.from.getMonth() == m).map(t => t.country))];
+  fCountry.innerHTML = '<option value="">Усі напрями</option>' + list.map(c => `<option${c === keep ? ' selected' : ''}>${c}</option>`).join('');
+}
+fMonth.onchange = fillCountries; fillCountries();
+document.getElementById('finder').addEventListener('submit', () => {
+  const m = fMonth.value, c = fCountry.value;
+  render(TOURS.filter(t => (m === '' || t.from.getMonth() == m) && (c === '' || t.country === c)));
+  track.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
+render(TOURS);
+
+// ================= block 3 · the plane flies through the steps while you scroll =================
+(() => {
+  const fl = document.getElementById('flight'), plane = document.getElementById('plane'), steps = [...document.querySelectorAll('.step')];
+  const dots = [...document.querySelectorAll('#prog i')], count = document.getElementById('flCount'), cta = document.getElementById('flCta');
+  const route = document.getElementById('route'), path = document.getElementById('routePath'), clouds = [...document.querySelectorAll('.cloud')];
+  const ease = x => x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+  dots.forEach((d, i) => d.style.left = `calc(${i / 3 * 100}% - ${i / 3 * 10}px)`);
+  function frame(){
+    const vw = innerWidth, vh = fl.querySelector('.fl-in').offsetHeight, mob = vw < 860;
+    const r = fl.getBoundingClientRect(), total = fl.offsetHeight - vh;
+    const p = Math.min(Math.max(-r.top / total, 0), 1) * 4;           // 0 … 4
+    const pw = plane.offsetWidth, ph = plane.offsetHeight, py = vh * (mob ? .52 : .55);
+    // 0–0.6: the plane comes in from the left and waits half-visible; then three passes 0.6–1.6, 1.6–2.6, 2.6–3.6
+    let x, from, to, k;
+    if (p < .6) { k = 0; x = -pw + ease(p / .6) * pw * .62; from = 0; to = 0; }
+    else if (p < 3.6) { k = Math.floor(p - .6) + 1; const q = ease((p - .6) % 1 || (p >= 3.6 ? 1 : 0));
+      const start = k === 1 ? -pw * .38 : -pw; x = start + q * (vw + pw * .2 - start); from = k - 1; to = k; }
+    else { k = 4; x = vw + pw; from = 3; to = 3; }
+    const bob = Math.sin(p * 3.2) * (mob ? 6 : 10), rot = mob ? -10 : Math.sin(p * 3.2) * 1.2;
+    plane.style.transform = `translate(${x}px, ${py - ph / 2 + bob}px) rotate(${rot}deg)`;
+    // the text changes "behind the wing": left of the plane's middle is the new step, right of it — the old one
+    const wipe = Math.max(0, Math.min(vw, x + pw * .5));
+    steps.forEach((s, i) => {
+      let clip = 'inset(0 0 0 100%)';
+      if (from === to && i === to) clip = 'inset(0 0 0 0)';
+      else if (i === from) clip = `inset(0 0 0 ${wipe}px)`;
+      else if (i === to) clip = `inset(0 ${vw - wipe}px 0 0)`;
+      s.style.clipPath = s.style.webkitClipPath = clip;
+    });
+    // gold dashed route behind the tail
+    route.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
+    const tail = x + pw * .08, ty = py + bob, amp = mob ? 18 : 34;
+    path.setAttribute('d', (tail <= 0 || k === 4) ? '' : `M 0 ${ty + amp} C ${tail * .35} ${ty - amp}, ${tail * .65} ${ty + amp * .6}, ${tail} ${ty}`);
+    clouds.forEach((c, i) => c.style.transform = `translateX(${-p * (12 + i * 7)}px)`);
+    const cur = Math.min(3, p < 3.6 ? (x + pw * .5 > vw * .5 && from !== to ? to : from) : 3);
+    dots.forEach((d, i) => d.classList.toggle('on', i <= cur));
+    count.textContent = `0${cur + 1} — 04`;
+    cta.classList.toggle('on', p >= 3.62);
+  }
+  let busy = false;
+  const tick = () => { if (busy) return; busy = true; requestAnimationFrame(() => { frame(); busy = false; }); };
+  addEventListener('scroll', tick, {passive: true}); addEventListener('resize', tick);
+  plane.complete ? frame() : plane.addEventListener('load', frame);
+})();
+
 R2.run(tl, {waitFor: [video]});
 </script>
 </body>
