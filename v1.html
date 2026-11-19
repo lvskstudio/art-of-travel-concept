@@ -7,7 +7,7 @@
 <title>Варіант А — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r7a">
+<link rel="stylesheet" href="r2.css?v=r7b">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -83,7 +83,11 @@ h1 .gold{color:var(--gold)}
   .sub{font-size:14px}.sub .more{display:none}
   .values{left:18px;right:18px;bottom:22px;justify-content:space-between;gap:6px;font-size:10px}
   .values hr,.values svg{display:none}
-  .shot,.cards,.side{display:none}
+  .shot,.side{display:none}
+  .cards{left:50%;bottom:auto;top:118px;transform:translateX(-50%);gap:14px}
+  .pol{width:27vw;padding:7px 7px 0}
+  .pol p{font-size:20px;padding:6px 0 9px}
+  .pol::after{width:48px;height:16px;margin-left:-24px;top:-8px}
   .stage .shade{background:linear-gradient(0deg,rgba(1,16,47,.8) 0%,rgba(1,16,47,.25) 60%,rgba(1,16,47,.35) 100%)}
 }
 </style>
@@ -92,7 +96,7 @@ h1 .gold{color:var(--gold)}
 <main class="hero" id="hero">
   <div id="goldA"></div>
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r7a" poster="assets/r2/montage-poster.jpg?v=r7a" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r7b" poster="assets/r2/montage-poster.jpg?v=r7b" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -125,10 +129,10 @@ h1 .gold{color:var(--gold)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r7a"></script>
+<script src="r2.js?v=r7b"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv'), goldA = document.getElementById('goldA');
-if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r7a';
+if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r7b';
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
 const st = {k: 0, a: 0};
 let W0, W1;
@@ -175,6 +179,16 @@ tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
   .to('.sub, .cta', {opacity: 1, duration: .5, stagger: .08}, 3.65)
   .fromTo('.pol', {opacity: 0, y: -60}, {opacity: 1, y: 0, duration: .7, stagger: .12, ease: 'back.out(1.4)'}, 3.6)
 ;
+// the polaroid of the place that is on screen right now lifts a little
+// (montage: 0–2.9 s Iceland canyon, then Tenerife ocean and cliffs; there is no Dolomites footage)
+const pols = document.querySelectorAll('.pol'); let polOn = -1, polsReady = false;
+tl.add(() => { polsReady = true; });
+video.addEventListener('timeupdate', () => {
+  if (!polsReady) return;
+  const i = video.currentTime < 2.9 ? 0 : 2;
+  if (i === polOn) return; polOn = i;
+  pols.forEach((p, k) => gsap.to(p, {y: k === i ? -16 : 0, scale: k === i ? 1.06 : 1, boxShadow: k === i ? '0 26px 44px rgba(1,16,47,.42)' : '0 16px 34px rgba(1,16,47,.32)', duration: .6, ease: 'power2.out'}));
+});
 R2.run(tl, {waitFor: [video]});
 </script>
 </body>
