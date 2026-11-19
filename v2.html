@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r4a">
+<link rel="stylesheet" href="r2.css?v=r4b">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -27,15 +27,14 @@ body{background:var(--navy);color:var(--cream)}
 .shards{position:absolute;inset:0;z-index:2;pointer-events:none}
 .shard{position:absolute;background:var(--navy);will-change:transform}
 /* ---------- hero (slate landing): video on top, centred thin+bold headline, row of triangles ---------- */
-.reveal{position:absolute;left:0;right:0;top:0;height:70%;z-index:1;overflow:hidden}
+.reveal{position:absolute;inset:0;z-index:1;overflow:hidden}
 .reveal video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.reveal::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,26,82,.45) 0%,rgba(2,26,82,.12) 35%,rgba(2,26,82,.25) 70%,rgba(2,26,82,1) 100%)}
+.reveal::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,26,82,.38) 0%,rgba(2,26,82,.08) 30%,rgba(2,26,82,.08) 65%,rgba(2,26,82,.35) 100%)}
 .ui{position:absolute;inset:0;z-index:20;pointer-events:none}
 .ui > *{pointer-events:auto}
 .h0{opacity:0}
 .nav{position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);top:26px;display:flex;align-items:center;justify-content:space-between}
 .links{display:flex;gap:30px;font:400 13px/1 var(--sans)}
-.links a::after{content:" ▹";opacity:.7}
 .links a:hover{color:var(--gold)}
 .logo{position:absolute;left:50%;top:-8px;transform:translateX(-50%);width:58px;opacity:0}
 .nr{display:flex;gap:10px;align-items:center}
@@ -43,7 +42,7 @@ body{background:var(--navy);color:var(--cream)}
 .nr a:hover{background:var(--cream);color:var(--navy)}
 .burger{display:none;width:40px;height:40px;border:1px solid rgba(243,235,221,.7);place-items:center}
 .burger span{display:block;width:16px;height:1.5px;background:var(--cream);box-shadow:0 5px 0 var(--cream),0 -5px 0 var(--cream)}
-.center{position:absolute;left:0;right:0;top:19%;text-align:center}
+.center{position:absolute;left:0;right:0;top:34%;text-align:center}
 .center .sub{font:300 clamp(13px,1.15vw,16px)/1 var(--sans);letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;opacity:.9}
 .center h1{margin-top:22px;font:200 clamp(34px,4.7vw,76px)/1.05 var(--sans);letter-spacing:.01em;text-transform:uppercase;text-shadow:0 2px 30px rgba(2,26,82,.35)}
 .center h1 b{font-weight:800}
@@ -59,8 +58,7 @@ body{background:var(--navy);color:var(--cream)}
   .nav{left:18px;right:18px;top:16px}.links,.nr a{display:none}.burger{display:grid}
   .nav::before{content:"UA / EN";font:500 12px/40px var(--sans)}
   .logo{width:44px;top:-2px}
-  .reveal{height:76%}
-  .center{top:auto;bottom:30%;padding:0 18px}
+  .center{top:20%;bottom:auto;padding:0 18px}
   .center .sub{font-size:11px;letter-spacing:.3em}
   .center h1{font-size:34px}
   .center p,.center .down{display:none}
@@ -93,12 +91,9 @@ body{background:var(--navy);color:var(--cream)}
     <div class="center">
       <div class="sub h0">Авторські групові тури</div>
       <h1 class="h0">Подорож, що залишає <b>слід</b></h1>
-      <p class="h0">Маленькі групи, все включено в ціну і жодних доплат на місці. Офіційний договір і страхування для кожного.</p>
       <a class="btn h0" href="#">Обрати подорож</a>
-      <i class="down h0"></i>
     </div>
   </div>
-  <div class="row h0" id="row"></div>
 </main>
 <img id="fly" src="assets/logo-cream.png" alt="" style="position:fixed;z-index:200;object-fit:contain;opacity:0;pointer-events:none">
 <button class="replay">↻ Інтро ще раз</button>
@@ -108,8 +103,8 @@ body{background:var(--navy);color:var(--cream)}
 const $ = s => document.querySelector(s);
 const tris = $('#tris'), video = $('#cv'), fly = $('#fly');
 const mob = innerWidth < 860;
-video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r4a' : 'assets/r2/canyon-wide.mp4?v=r4a';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r4a' : 'assets/r2/canyon-wide-poster.jpg?v=r4a';
+video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r4b' : 'assets/r2/canyon-wide.mp4?v=r4b';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r4b' : 'assets/r2/canyon-wide-poster.jpg?v=r4b';
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;
 const playVideo = () => { wantPlay = true; const p = video.play(); if (p) p.catch(() => {}); };
@@ -119,12 +114,6 @@ video.load();
 
 const boxes = [[25,0,50,50,'50% 0,100% 100%,0 100%'],[0,50,50,50,'50% 0,100% 100%,0 100%'],[50,50,50,50,'50% 0,100% 100%,0 100%'],[25,50,50,50,'0 0,100% 0,50% 100%']];
 const pieces = document.querySelectorAll('.tri');
-// hero: a row of triangles — photos, then outlines (slate landing ref)
-const UP = 'polygon(50% 0,100% 100%,0 100%)', DN = 'polygon(0 0,100% 0,50% 100%)';
-const rowDef = mob ? [['t-falls',1],['t-peak',0],['t-ocean',1],[null,0],[null,1]] : [['t-falls',1],['t-peak',0],['t-ocean',1],['t-ice',0],[null,1],[null,0],[null,1]];
-const row = $('#row');
-rowDef.forEach(([img, up]) => { const i = document.createElement('i'); if (!img) i.className = 'o'; else i.style.backgroundImage = `url(assets/r2/${img}.jpg)`;
-  i.style.clipPath = up ? UP : DN; row.appendChild(i); });
 function layout(){
   const vw = innerWidth, vh = innerHeight;
   const H = Math.min(vh * (mob ? 0.5 : 0.7), vw * (mob ? 0.8 : 0.62) * 0.866), L = H / 0.866;
@@ -135,9 +124,6 @@ function layout(){
   $('#iname').style.top = (cy + H/2 + 36) + 'px';
   $('#pale').style.top = (cy - vw*0.11) + 'px';
   const sw = L*0.16; Object.assign($('#s1').style, {left:(cx - L*0.18)+'px', width:sw+'px'}); Object.assign($('#s2').style, {left:(cx + L*0.06)+'px', width:sw*.8+'px'});
-  const th = vh * (mob ? 0.15 : 0.22), tw = th * 1.155, ov = tw / 2 - 8;
-  row.querySelectorAll('i').forEach((t, k) => Object.assign(t.style, {width: tw+'px', height: th+'px', marginLeft: k ? (-ov)+'px' : 0}));
-  row.style.top = (vh * (mob ? 0.8 : 0.72)) + 'px';
 }
 layout();
 addEventListener('resize', layout);
@@ -184,9 +170,8 @@ tl.add(() => {
   .to('.nav', {opacity: 1, duration: .5}, 3.0)
   .fromTo('.center .sub', {opacity: 0, letterSpacing: '.8em'}, {opacity: .9, letterSpacing: '.42em', duration: 1.1, ease: 'power3.out'}, 2.8)
   .fromTo('.center h1', {opacity: 0, y: 26}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 2.95)
-  .to('.center p, .center .btn, .center .down', {opacity: 1, duration: .6, stagger: .08}, 3.3)
-  .set('#row', {opacity: 1}, 3.2)
-  .from('#row i', {y: 60, opacity: 0, duration: .8, stagger: .07, ease: 'power3.out'}, 3.2);
+  .to('.center .btn', {opacity: 1, duration: .6}, 3.3)
+;
 const fast = () => { if (tl.progress() < 1) tl.timeScale(6); };
 ['wheel','touchstart','keydown','pointerdown'].forEach(e => addEventListener(e, fast, {passive: true, once: true}));
 const imgs = ['t-peak','t-ocean','t-falls','t-ice'].map(n => new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = 'assets/r2/'+n+'.jpg'; }));
