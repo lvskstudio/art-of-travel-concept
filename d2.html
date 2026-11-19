@@ -7,7 +7,7 @@
 <title>Варіант D · Глибина — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r5c">
+<link rel="stylesheet" href="r2.css?v=r5d">
 <style>
 body{background:var(--navy);color:var(--navy)}
 .hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;background:var(--navy)}
@@ -16,7 +16,7 @@ body{background:var(--navy);color:var(--navy)}
 .photo{background-image:url(assets/dolomites.jpg)}
 .cut{background-image:url(assets/dolomites-cut.webp);z-index:3}
 .fog{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(244,245,246,.4),rgba(244,245,246,.6) 50%,rgba(244,245,246,.35))}
-.title{position:absolute;left:0;right:0;top:9.6vw;z-index:2;text-align:center;font:400 9.6vw/1 var(--serif);white-space:nowrap;will-change:transform}
+.title{position:absolute;left:0;right:0;top:8.2vw;z-index:2;text-align:center;font:500 9.9vw/1 var(--serif);letter-spacing:-.015em;white-space:nowrap;will-change:transform}
 .shade{position:absolute;inset:0;z-index:4;pointer-events:none;background:radial-gradient(55% 45% at 14% 96%,rgba(2,16,40,.5),rgba(2,16,40,.12) 60%,transparent 100%);opacity:0}
 .intro-s{position:absolute;left:0;right:0;top:calc(50vh + 6vw);z-index:5;text-align:center;font:500 12px/1 var(--sans);letter-spacing:.4em;opacity:0}
 .nav{position:absolute;z-index:6;top:22px;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);height:72px;display:flex;align-items:center;justify-content:space-between}
@@ -29,8 +29,8 @@ body{background:var(--navy);color:var(--navy)}
 .burger{display:flex;width:42px;height:42px;border-radius:50%;background:var(--navy);flex-direction:column;align-items:center;justify-content:center;gap:4px}
 .burger span{width:16px;height:1.5px;background:var(--cream)}
 .copy{position:absolute;z-index:5;left:clamp(20px,4.2vw,60px);bottom:clamp(40px,8vh,80px);color:var(--cream)}
-.copy h2{font:400 clamp(52px,min(6.6vw,11vh),112px)/.96 var(--serif);text-shadow:0 2px 24px rgba(2,16,40,.35)}
-.copy p{margin-top:18px;font-size:20px;opacity:.95;text-shadow:0 1px 14px rgba(2,16,40,.4)}
+.copy h2{font:500 clamp(56px,min(7.2vw,12vh),124px)/.94 var(--serif);letter-spacing:-.01em;text-shadow:0 2px 24px rgba(2,16,40,.35)}
+.copy p{margin-top:20px;font-size:21px;font-weight:500;opacity:.95;text-shadow:0 1px 14px rgba(2,16,40,.4)}
 .cta{display:inline-block;margin-top:24px;background:var(--cream);color:var(--navy);font:600 14px/1 var(--sans);padding:17px 30px;border-radius:999px}
 .cta:hover{background:var(--gold)}
 .h0{opacity:0}
@@ -39,8 +39,8 @@ body{background:var(--navy);color:var(--navy)}
   .logo{height:56px;left:20px;transform:none;top:4px}
   .nav{justify-content:flex-end}
   .ph{left:calc(50vw - 74svh);width:165svh;top:-6svh}
-  .title{top:19svh;font-size:15.5vw;white-space:normal;line-height:.95}
-  .copy h2{font-size:42px}
+  .title{top:18svh;font-size:17vw;white-space:normal;line-height:.95}
+  .copy h2{font-size:46px}
 }
 </style>
 </head>
@@ -56,7 +56,7 @@ body{background:var(--navy);color:var(--navy)}
     <div class="nr"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
   </nav>
   <div class="copy h0">
-    <h2>Спокій<br>за результат</h2>
+    <h2>Кожна подорож —<br>особлива</h2>
     <p>Авторські групові тури, які залишають слід.</p>
     <a class="cta" href="#">Обрати подорож</a>
   </div>
@@ -64,7 +64,7 @@ body{background:var(--navy);color:var(--navy)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r5c"></script>
+<script src="r2.js?v=r5d"></script>
 <script>
 const title = document.querySelector('.title');
 // intro: the camera starts close in the sky with the name, then pulls back —
