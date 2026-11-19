@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Варіант A · Щоденник експедиції — The Art of Travel</title>
+<title>Варіант 3 · Щоденник експедиції — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Manrope:wght@400;500;600&family=Oswald:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r5c">
+<link rel="stylesheet" href="r2.css?v=r6a">
 <style>
 :root{--paper:#F3EBDC;--ink:#1B2433}
 body{background:var(--paper);color:var(--cream)}
@@ -87,10 +87,10 @@ h1 em{display:block;font-style:normal}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r5c"></script>
+<script src="r2.js?v=r6a"></script>
 <script>
 const v = document.getElementById('v'), mob = innerWidth < 860;
-v.src = mob ? 'assets/r2/surf-m.mp4?v=r5c' : 'assets/r2/surf.mp4?v=r5c'; v.poster = 'assets/r2/surf-poster.jpg?v=r5c';
+v.src = mob ? 'assets/r2/surf-m.mp4?v=r6a' : 'assets/r2/surf.mp4?v=r6a'; v.poster = 'assets/r2/surf-poster.jpg?v=r6a';
 v.muted = true; v.setAttribute('playsinline', ''); v.load();
 const play = () => { const p = v.play(); if (p) p.catch(() => {}); };
 v.addEventListener('canplay', () => { if (started && v.paused) play(); });
