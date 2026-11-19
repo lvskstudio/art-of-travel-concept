@@ -7,7 +7,7 @@
 <title>Варіант A · Щоденник експедиції — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Manrope:wght@400;500;600&family=Oswald:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r5b">
+<link rel="stylesheet" href="r2.css?v=r5c">
 <style>
 :root{--paper:#F3EBDC;--ink:#1B2433}
 body{background:var(--paper);color:var(--cream)}
@@ -24,7 +24,7 @@ body{background:var(--paper);color:var(--cream)}
 .lang{font:500 11px/1 var(--sans);letter-spacing:.14em;opacity:.55}
 .lang:hover{opacity:1}
 .pill{background:var(--paper);color:var(--navy);font:600 13px/1 var(--sans);padding:14px 22px;border-radius:999px}
-.burger{display:none;width:42px;height:42px;border-radius:50%;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.burger{display:flex;width:42px;height:42px;border-radius:50%;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:4px}
 .burger span{width:16px;height:1.5px;background:var(--navy)}
 .copy{position:absolute;z-index:4;left:clamp(20px,4.2vw,62px);top:24vh;max-width:760px}
 .note{font:400 40px/1 'Caveat',cursive;color:var(--gold);transform:rotate(-3deg);transform-origin:left}
@@ -87,10 +87,10 @@ h1 em{display:block;font-style:normal}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r5b"></script>
+<script src="r2.js?v=r5c"></script>
 <script>
 const v = document.getElementById('v'), mob = innerWidth < 860;
-v.src = mob ? 'assets/r2/surf-m.mp4?v=r5b' : 'assets/r2/surf.mp4?v=r5b'; v.poster = 'assets/r2/surf-poster.jpg?v=r5b';
+v.src = mob ? 'assets/r2/surf-m.mp4?v=r5c' : 'assets/r2/surf.mp4?v=r5c'; v.poster = 'assets/r2/surf-poster.jpg?v=r5c';
 v.muted = true; v.setAttribute('playsinline', ''); v.load();
 const play = () => { const p = v.play(); if (p) p.catch(() => {}); };
 v.addEventListener('canplay', () => { if (started && v.paused) play(); });
