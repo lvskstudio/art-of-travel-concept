@@ -2,7 +2,6 @@
 window.R2 = {
   run(tl, {startDelay = 300, waitFor = []} = {}) {
     const fast = () => { if (tl.progress() < 1) tl.timeScale(7); };
-    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(e => window.addEventListener(e, fast, {passive: true, once: true}));
     const ready = Promise.race([
       Promise.all(waitFor.map(v => new Promise(r => {
         if (v.readyState >= 3) return r();

@@ -7,7 +7,7 @@
 <title>Варіант 1 · Крізь букву A — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r4d">
+<link rel="stylesheet" href="r2.css?v=r5b">
 <style>
 body{background:var(--bone);color:var(--navy)}
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -86,7 +86,7 @@ h1 .gold{color:var(--gold)}
 <body>
 <main class="hero" id="hero">
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r4d" poster="assets/r2/montage-poster.jpg?v=r4d" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" src="assets/r2/montage.mp4?v=r5b" poster="assets/r2/montage-poster.jpg?v=r5b" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -94,7 +94,7 @@ h1 .gold{color:var(--gold)}
     <nav class="nav h0">
       <a class="brand" href="#"><img src="assets/logo-cream.png" alt="The Art of Travel"></a>
       <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
-      <div class="right"><a class="lang" href="#">EN</a><a class="pill" href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
+      <div class="right"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
     </nav>
     <div class="copy">
       <h1><span><em>Відкривай.</em></span><span><em>Відчувай.</em></span><span><em class="gold">Надихайся.</em></span></h1>
@@ -119,10 +119,10 @@ h1 .gold{color:var(--gold)}
 <button class="replay">↻ Інтро ще раз</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="r2.js?v=r4d"></script>
+<script src="r2.js?v=r5b"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv');
-if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r4d';
+if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r5b';
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
 const st = {k: 0, a: 0};
 let W0, W1;

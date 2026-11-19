@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r4d">
+<link rel="stylesheet" href="r2.css?v=r5b">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -89,7 +89,7 @@ body{background:var(--navy);color:var(--cream)}
     <nav class="nav h0">
       <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
       <img class="logo" src="assets/logo-cream.png" alt="The Art of Travel">
-      <div class="nr"><a class="lang" href="#">EN</a><a href="#">Залишити заявку</a><button class="burger" aria-label="Меню"><span></span></button></div>
+      <div class="nr"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span></button></div>
     </nav>
     <div class="center">
       <div class="sub h0">Авторські групові тури</div>
@@ -106,8 +106,8 @@ body{background:var(--navy);color:var(--cream)}
 const $ = s => document.querySelector(s);
 const tris = $('#tris'), video = $('#cv'), fly = $('#fly');
 const mob = innerWidth < 860;
-video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r4d' : 'assets/r2/canyon-wide.mp4?v=r4d';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r4d' : 'assets/r2/canyon-wide-poster.jpg?v=r4d';
+video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r5b' : 'assets/r2/canyon-wide.mp4?v=r5b';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r5b' : 'assets/r2/canyon-wide-poster.jpg?v=r5b';
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;
 const playVideo = () => { wantPlay = true; const p = video.play(); if (p) p.catch(() => {}); };
@@ -174,7 +174,6 @@ tl.add(() => {
   .to('.center .btn', {opacity: 1, duration: .6}, 3.3)
 ;
 const fast = () => { if (tl.progress() < 1) tl.timeScale(6); };
-['wheel','touchstart','keydown','pointerdown'].forEach(e => addEventListener(e, fast, {passive: true, once: true}));
 const imgs = ['t-peak','t-ocean','t-falls','t-ice'].map(n => new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = 'assets/r2/'+n+'.jpg'; }));
 Promise.race([Promise.all(imgs), new Promise(r => setTimeout(r, 900))]).then(() => tl.play());
 const rp = $('.replay'); tl.eventCallback('onComplete', () => rp.classList.add('on')); rp.addEventListener('click', () => location.reload());
