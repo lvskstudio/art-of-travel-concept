@@ -7,7 +7,7 @@
 <title>Варіант 2 · Трикутники — The Art of Travel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="r2.css?v=r4c">
+<link rel="stylesheet" href="r2.css?v=r4d">
 <link rel="preload" as="image" href="assets/r2/t-peak.jpg">
 <link rel="preload" as="image" href="assets/r2/t-ocean.jpg">
 <link rel="preload" as="image" href="assets/r2/t-falls.jpg">
@@ -94,7 +94,6 @@ body{background:var(--navy);color:var(--cream)}
     <div class="center">
       <div class="sub h0">Авторські групові тури</div>
       <h1 class="h0">Подорож, що залишає <b>слід</b></h1>
-      <p class="h0">Авторські маршрути, маленькі групи і жодних доплат на місці.</p>
       <a class="btn h0" href="#">Обрати подорож</a>
     </div>
   </div>
@@ -107,8 +106,8 @@ body{background:var(--navy);color:var(--cream)}
 const $ = s => document.querySelector(s);
 const tris = $('#tris'), video = $('#cv'), fly = $('#fly');
 const mob = innerWidth < 860;
-video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r4c' : 'assets/r2/canyon-wide.mp4?v=r4c';
-video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r4c' : 'assets/r2/canyon-wide-poster.jpg?v=r4c';
+video.src = mob ? 'assets/r2/canyon-tall-m.mp4?v=r4d' : 'assets/r2/canyon-wide.mp4?v=r4d';
+video.poster = mob ? 'assets/r2/canyon-tall-poster.jpg?v=r4d' : 'assets/r2/canyon-wide-poster.jpg?v=r4d';
 video.muted = true; video.defaultMuted = true; video.setAttribute('muted', ''); video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', '');
 let wantPlay = false;
 const playVideo = () => { wantPlay = true; const p = video.play(); if (p) p.catch(() => {}); };
@@ -172,7 +171,7 @@ tl.add(() => {
   .to('.nav', {opacity: 1, duration: .5}, 3.0)
   .fromTo('.center .sub', {opacity: 0, letterSpacing: '.8em'}, {opacity: .9, letterSpacing: '.42em', duration: 1.1, ease: 'power3.out'}, 2.8)
   .fromTo('.center h1', {opacity: 0, y: 26}, {opacity: 1, y: 0, duration: .9, ease: 'power3.out'}, 2.95)
-  .to('.center p, .center .btn', {opacity: 1, duration: .6, stagger: .08}, 3.3)
+  .to('.center .btn', {opacity: 1, duration: .6}, 3.3)
 ;
 const fast = () => { if (tl.progress() < 1) tl.timeScale(6); };
 ['wheel','touchstart','keydown','pointerdown'].forEach(e => addEventListener(e, fast, {passive: true, once: true}));
