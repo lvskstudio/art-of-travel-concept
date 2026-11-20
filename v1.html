@@ -438,7 +438,7 @@ const TOURS = [
   ['Норвегія','2027-07-05','2027-07-12',8,2000,'norway-1'],
   ['Норвегія','2027-07-13','2027-07-20',8,2000,'norway-2'],
   ['Лофотени','2027-08-20','2027-08-27',8,2100,'lofoten'],
-  ['Мадейра','2027-09-02','2027-09-09',8,1700,'madeira',true],
+  ['Мадейра','2027-09-02','2027-09-09',8,1700,'madeira-2',true],
   ['Доломіти','2027-09-17','2027-09-23',7,1650,'dolomites-2'],
   ['Швейцарія','2027-09-24','2027-09-30',7,1650,'swiss-2'],
   ['Сардинія','2027-10-05','2027-10-12',8,1650,'sardinia'],
@@ -456,7 +456,7 @@ const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidt
 let shown = TOURS;
 function render(list){
   shown = list;
-  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#"><img src="assets/tours/${t.img}.jpg" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price">${t.days} днів · ${t.price} € + переліт</div></div>`).join('');
+  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#"><img src="assets/tours/${t.img}.jpg?v=r14a" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price">${t.days} днів · ${t.price} € + переліт</div></div>`).join('');
   track.scrollLeft = 0; updateBar();
 }
 function updateBar(){
