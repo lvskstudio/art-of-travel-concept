@@ -53,7 +53,16 @@ h1 .gold{color:var(--gold)}
 .shot i{width:28px;height:1px;background:var(--gold)}
 .shot span{transition:opacity .45s}
 /* overlapping cards + side block */
-.cards{position:absolute;z-index:85;left:96px;bottom:24px;display:flex;gap:34px;align-items:flex-end}
+.cards{position:absolute;z-index:85;right:72px;bottom:34px;width:clamp(230px,min(21vw,36vh),320px)}
+.cards .pol{width:100%;position:absolute;left:0;bottom:0}.cards::before{content:"";display:block;padding-top:118%}
+.cards .pol p{font-size:clamp(30px,2.6vw,40px)}
+.pb{position:absolute;inset:0;z-index:0;background:#FBF8F1;box-shadow:0 12px 26px rgba(1,16,47,.2)}
+.pb1{transform:rotate(7deg) translate(12px,4px)}
+.pmeta{position:absolute;z-index:85;right:calc(72px + clamp(230px,min(21vw,36vh),320px) + 54px);bottom:58px;display:flex;align-items:center;gap:16px;color:var(--navy)}
+.pmeta b{font:500 15px/1 var(--sans);color:var(--gold);letter-spacing:.06em}
+.pdots{display:flex;gap:9px}.pdots i{width:7px;height:7px;border-radius:50%;background:var(--navy);opacity:.22;transition:opacity .4s,background .4s}
+.pdots i.on{background:var(--gold);opacity:1}
+.pmeta em{font:600 11px/1 var(--sans);font-style:normal;letter-spacing:.22em;text-transform:uppercase}
 .pol{display:block;width:clamp(160px,min(16vw,24vh),232px);background:#FBF8F1;padding:12px 12px 0;box-shadow:0 16px 34px rgba(1,16,47,.32);position:relative}
 .pol img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
 .pol p{font:400 30px/1 "Caveat",cursive;color:#1B2433;text-align:center;padding:10px 0 14px}
@@ -84,8 +93,9 @@ h1 .gold{color:var(--gold)}
   .values{left:18px;right:18px;bottom:22px;justify-content:space-between;gap:6px;font-size:10px}
   .values hr,.values svg{display:none}
   .shot,.side{display:none}
-  .cards{left:50%;bottom:auto;top:118px;transform:translateX(-50%);gap:14px}
-  .pol{width:27vw;padding:7px 7px 0}
+  .cards{right:auto;left:50%;bottom:auto;top:104px;width:44vw;margin-left:-22vw}.pmeta{display:none}
+  .cards .pol p{font-size:24px}
+  .pol{width:27vw;padding:7px 7px 0}.cards .pol{width:100%;padding:8px 8px 0}
   .pol p{font-size:20px;padding:6px 0 9px}
   .pol::after{width:48px;height:16px;margin-left:-24px;top:-8px}
   .stage .shade{background:linear-gradient(0deg,rgba(1,16,47,.8) 0%,rgba(1,16,47,.25) 60%,rgba(1,16,47,.35) 100%)}
@@ -133,7 +143,10 @@ h1 .gold{color:var(--gold)}
 .tour .pol p{font-size:clamp(34px,3vw,44px);padding:14px 0 2px}
 .tour .pol .d{font:400 clamp(22px,1.95vw,28px)/1 "Caveat",cursive;color:#1B2433;opacity:.68;text-align:center;padding:4px 0 22px}
 .tour .pol .star{position:absolute;right:7%;top:8%;background:var(--gold);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:20px}
-.tour .price{margin-top:30px;font:500 17px/1.4 var(--sans);opacity:.78}
+.tour .price{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(203,152,70,.85);border-bottom:1px solid rgba(203,152,70,.85);padding:18px 0 16px;text-align:center}
+.tour .price div+div{border-left:1px solid rgba(203,152,70,.55)}
+.tour .price b{display:block;font:500 clamp(36px,3.1vw,46px)/1 var(--serif);color:var(--navy)}
+.tour .price small{display:block;margin-top:8px;font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.6}
 /* the real Dolomites ridge rises out of the navy block */
 .ridge{display:block;line-height:0;background:linear-gradient(180deg,var(--bone) 0 37%,var(--navy) 37%)}
 .ridge img{width:100%;height:auto;display:block}
@@ -146,7 +159,7 @@ h1 .gold{color:var(--gold)}
 .why p{margin-top:22px;font-size:16px;line-height:1.65;opacity:.88}
 .why .mark{width:48px;margin:90px auto 0}
 /* 3 · how we meet you — a big plane crosses the whole screen through the clouds; each pass changes the step */
-.flight{position:relative;height:420vh;background:var(--bone)}
+.flight{position:relative;height:330vh;background:var(--bone)}
 .fl-in{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .cloud{position:absolute;pointer-events:none;will-change:transform}
 .fl-lbl{position:absolute;left:0;right:0;top:12%;text-align:center;font:600 13px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.6}
@@ -154,7 +167,7 @@ h1 .gold{color:var(--gold)}
 .steps{position:absolute;left:0;right:0;top:27%}
 .step{position:absolute;left:0;right:0;text-align:center;font:400 clamp(54px,6.7vw,96px)/1.02 var(--serif);padding:0 5vw;opacity:0;will-change:transform,opacity}
 .plane{position:absolute;left:0;top:0;width:min(58vw,840px);z-index:3;filter:drop-shadow(18px 32px 24px rgba(20,24,44,.22));will-change:transform}
-.tl{position:absolute;left:50%;bottom:16%;width:min(864px,70vw);transform:translateX(-50%);height:12px}
+.tl{position:absolute;left:50%;bottom:16%;width:min(680px,60vw);transform:translateX(-50%);height:12px}
 .tl::before{content:"";position:absolute;left:6px;right:6px;top:5.5px;height:1px;background:rgba(203,152,70,.55)}
 .tl b{position:absolute;left:6px;top:5px;height:2px;background:var(--gold);width:0}
 .tl i{position:absolute;top:0;width:12px;height:12px;margin-left:-6px;border-radius:50%;border:1.5px solid var(--gold);background:var(--bone);transition:background .4s}
@@ -209,7 +222,7 @@ h1 .gold{color:var(--gold)}
   .tour{flex-basis:282px}
   .tour .pol p{font-size:34px;padding:10px 0 0}
   .tour .pol .d{font-size:22px;padding:3px 0 16px}
-  .tour .price{font-size:14px;margin-top:22px}
+  .tour .price{margin-top:22px;padding:14px 0 12px}.tour .price b{font-size:34px}.tour .price small{font-size:10px;margin-top:6px}
   .swipe{display:block;text-align:center;font:400 22px/1 "Caveat",cursive;opacity:.5;margin-top:22px}
   .btn-o.mob{display:flex;justify-content:center;margin-top:30px;font-size:14px}
   .why{padding:6px 0 64px}
@@ -279,13 +292,24 @@ h1 .gold{color:var(--gold)}
   .rv-btn{justify-self:stretch;justify-content:center;margin-top:46px;font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){.rp,.rp img,.rp .ph::after,.rp figcaption,.rv-q mark{transition:none!important}}
+/* about: a tall photo of the Dolomites behind the whole block; it melts into navy towards the end (like «Чому з нами») */
+.about{padding-top:31vw;background:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 2.2vw) top/100% 3vw no-repeat,url(assets/about-ridge.jpg?v=r17f) top/100% auto no-repeat,var(--navy)}
+/* text on the dark mountain (left), Artem's photo on the right covers the light sky */
+.about .ab-top{grid-template-columns:1fr 470px}
+.about .ab-head{grid-column:1}.about .ab-body{grid-column:1}
+.about .ab-ph{grid-column:2;margin-left:0;margin-right:50px}
+.about .ab-frame{left:auto;right:-50px}
+@media (max-width:860px){.about .ab-top{grid-template-columns:1fr}.about .ab-head,.about .ab-body,.about .ab-ph{grid-column:1}.about .ab-ph{margin:34px 42px 0 0}.about .ab-frame{right:-42px}}
+.about .ab-top{margin-top:0}
+.about .ab-head h2,.about .ab-body p,.about .ab-traits{text-shadow:0 1px 3px rgba(1,16,47,.35),0 2px 22px rgba(1,16,47,.55)}
+@media (max-width:860px){.about{padding-top:47vw;background:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 5vw) top/100% 6vw no-repeat,url(assets/about-ridge-m.jpg?v=r17f) top/100% auto no-repeat,var(--navy)}}
 </style>
 </head>
 <body>
 <main class="hero" id="hero">
   <div id="goldA"></div>
   <div class="stage masked" id="stage">
-    <video id="mv" src="assets/r2/montage.mp4?v=r13a" poster="assets/r2/montage-poster.jpg?v=r13a" muted playsinline loop autoplay preload="auto"></video>
+    <video id="mv" muted playsinline loop autoplay preload="auto"></video>
     <div class="shade" id="shade"></div>
   </div>
 
@@ -302,11 +326,12 @@ h1 .gold{color:var(--gold)}
     </div>
   </div>
 
-  <div class="cards">
-    <a class="pol h0" href="#"><img src="assets/r2/pol-ice.jpg" alt="Ісландія"><p>Ісландія</p></a>
-    <a class="pol h0" href="#"><img src="assets/r2/pol-peaks2.jpg" alt="Доломіти"><p>Доломіти</p></a>
-    <a class="pol h0" href="#"><img src="assets/r2/pol-cliffs.jpg" alt="Тенерифе"><p>Тенерифе</p></a>
+  <div class="cards" id="pstack">
+    <span class="pb pb1"></span>
+    <a class="pol ptop h0" id="pB" href="#tours"><img src="assets/tours/tenerife.jpg?v=r17a" alt="Тенеріфе"><p>Тенеріфе</p></a>
+    <a class="pol ptop h0" id="pA" href="#tours"><img src="assets/tours/dolomites.jpg?v=r17a" alt="Доломіти"><p>Доломіти</p></a>
   </div>
+  <div class="pmeta h0"><b id="pNum">01</b><span class="pdots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span><em id="pPlace">Доломіти · Тре Чіме</em></div>
 </main>
 
 
@@ -319,7 +344,7 @@ h1 .gold{color:var(--gold)}
       <p class="lead">Групи до 8 людей. Усе з програми вже в ціні, окремо — лише переліт та обіди.</p>
     </div>
     <div class="t-pick">
-      <img class="t-ph" src="assets/r2/card-falls.jpg" alt="">
+      <video class="t-ph" id="tVid" muted playsinline loop preload="none" poster="assets/r2/finder-poster.jpg?v=r17a"></video>
       <div class="t-frame"></div>
       <form class="wish" id="finder" onsubmit="return false">
         <p>Хочу поїхати</p>
@@ -364,24 +389,21 @@ h1 .gold{color:var(--gold)}
       <h3 class="step">Виліт з будь-якої<br>точки світу</h3>
       <h3 class="step">Зустріч<br>в аеропорту</h3>
       <h3 class="step">Трансфер до<br>першої локації</h3>
-      <h3 class="step">Перший вечір<br>разом</h3>
     </div>
     <div class="fl-end" id="flEnd"><p>А далі — програма по днях</p><a class="fl-cta" href="#tours">Обрати подорож</a></div>
     <img class="plane" id="plane" src="assets/plane-cut.png" alt="">
-    <div class="tl" id="tl"><b></b><i></i><i></i><i></i><i></i><span>Виліт</span><span>Зустріч</span><span>Трансфер</span><span>Перший вечір</span></div>
+    <div class="tl" id="tl"><b></b><i></i><i></i><i></i><span>Виліт</span><span>Зустріч</span><span>Трансфер</span></div>
   </div>
 </section>
 
 <section class="about" id="about">
-  <picture class="ab-band"><source media="(max-width:860px)" srcset="assets/about-mug-m.jpg"><img src="assets/about-mug.jpg" alt="Кружка The Art of Travel у каньйоні"></picture>
   <div class="wrap">
     <div class="ab-top">
-      <div class="ab-head"><div class="lbl">Про нас</div><h2>Привіт, я Артем —<br>давайте знайомитись!</h2></div>
+      <div class="ab-head"><h2>Привіт, я Артем —<br>давайте знайомитись!</h2></div>
       <div class="ab-ph"><i class="ab-frame"></i><img src="assets/artem-front.jpg" alt="Артем, засновник The Art of Travel" loading="lazy"></div>
       <div class="ab-body">
         <p>Народився я в невеличкому місті Шепетівка. Любов до подорожей проявлялась змалку: пам’ятаю, як у 6 років під час 14-годинної дороги на море відмовлявся спати й цілий час сидів на передньому сидінні біля батька, контролював дорогу та насолоджувався моментом.</p>
         <p>У 19 років я вирішив самостійно перелетіти через океан і спробувати пожити в Канаді — без знання мови. Розібрався спочатку за себе, а згодом допомагав адаптуватися й іншим.</p>
-        <p>Довгий час я працював кухарем — розумієте, до чого я? Готуватимемо з вами найкращі страви у наших турах.</p>
       </div>
     </div>
     <p class="ab-traits">НЕПОСИДЮЧІСТЬ · СМІЛИВІСТЬ · ЛЕГКІСТЬ НА ПІДЙОМ · ВИНАХІДЛИВІСТЬ<br>ОРГАНІЗОВАНІСТЬ · ВІДПОВІДАЛЬНІСТЬ · ДИСЦИПЛІНА · ПОЧУТТЯ ГУМОРУ</p>
@@ -420,7 +442,9 @@ h1 .gold{color:var(--gold)}
 <script src="r2.js?v=r13a"></script>
 <script>
 const stage = document.getElementById('stage'), video = document.getElementById('mv'), goldA = document.getElementById('goldA');
-if (innerWidth < 860) video.src = 'assets/r2/montage-m.mp4?v=r13a';
+// new hero montage straight from Artem's 4K originals: 1440p desktop / 1080×1920 mobile; HEVC where the browser can play it (sharper at a smaller size), H.264 otherwise
+{ const m = innerWidth < 860 ? 'm' : 'd', hevc = video.canPlayType('video/mp4; codecs="hvc1"') !== '';
+  video.poster = `assets/r2/hero-${m}-poster.jpg?v=r17a`; video.src = `assets/r2/hero-${m}${hevc ? '-hevc' : ''}.mp4?v=r17a`; }
 const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
 const st = {k: 0, a: 0};
 let W0, W1;
@@ -444,7 +468,8 @@ applyMask();
 const cardInset = () => innerWidth < 860 ? 'inset(12px 12px 12px 12px round 22px)' : 'inset(24px 32px 200px 32px round 28px)';
 addEventListener('resize', () => { S = sizes(); if (stage.classList.contains('masked')) applyMask(); else stage.style.clipPath = cardInset(); });
 
-gsap.set('.cards .pol', {rotation: i => [4, -3, 2.5][i]});
+gsap.set('#pA', {rotation: -2}); gsap.set('#pB', {rotation: 3});
+gsap.set('.cards .pb', {opacity: 0});
 const tl = gsap.timeline({paused: true});
 tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
   .fromTo(st, {k: -0.06}, {k: 1, duration: 2.7, ease: 'power3.in', onUpdate: applyMask}, 0)
@@ -465,17 +490,31 @@ tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
   .to('.nav', {opacity: 1, duration: .5}, 3.2)
   .from('h1 em', {yPercent: 110, duration: .8, stagger: .12, ease: 'power3.out'}, 3.25)
   .to('.sub, .cta', {opacity: 1, duration: .5, stagger: .08}, 3.65)
-  .fromTo('.cards .pol', {opacity: 0, y: -60}, {opacity: 1, y: 0, duration: .7, stagger: .12, ease: 'back.out(1.4)'}, 3.6)
+  .fromTo('.cards .pb, .cards .pol', {opacity: 0, y: -60}, {opacity: 1, y: 0, duration: .7, stagger: .12, ease: 'back.out(1.4)'}, 3.6)
+  .to('.pmeta', {opacity: 1, duration: .5}, 4.1)
 ;
-// the polaroid of the place that is on screen right now lifts a little
-// (montage: 0–2.9 s Iceland canyon, then Tenerife ocean and cliffs; there is no Dolomites footage)
-const pols = document.querySelectorAll('.cards .pol'); let polOn = -1, polsReady = false;
+// one polaroid on a little stack: the NEXT photo already lies under the top one, so a change never shows an empty print
+// scenes of 2.4 s: Dolomites, Tenerife, Norway, Iceland, Dolomites, Madeira
+const SCENES = [['Доломіти','Доломіти · Тре Чіме','assets/tours/dolomites.jpg'],['Тенеріфе','Тенеріфе · океан','assets/tours/tenerife.jpg'],
+  ['Норвегія','Норвегія · зима','assets/r2/pol-norway.jpg'],['Ісландія','Ісландія · дорога','assets/tours/iceland-summer.jpg'],
+  ['Доломіти','Доломіти · долина','assets/tours/dolomites-2.jpg'],['Мадейра','Мадейра · океан','assets/tours/madeira.jpg']];
+SCENES.forEach(s => { const im = new Image(); im.src = s[2] + '?v=r17a'; });
+const pNum = document.getElementById('pNum'), pPlace = document.getElementById('pPlace'), pDots = [...document.querySelectorAll('.pdots i')];
+let front = document.getElementById('pA'), back = document.getElementById('pB'), scOn = 0, polsReady = false;
+const fill = (el, sc) => { const s = SCENES[sc], im = el.querySelector('img'); im.src = s[2] + '?v=r17a'; im.alt = s[0]; el.querySelector('p').textContent = s[0]; };
 tl.add(() => { polsReady = true; });
 video.addEventListener('timeupdate', () => {
   if (!polsReady) return;
-  const i = video.currentTime < 2.9 ? 0 : 2;
-  if (i === polOn) return; polOn = i;
-  pols.forEach((p, k) => gsap.to(p, {y: k === i ? -16 : 0, scale: k === i ? 1.06 : 1, boxShadow: k === i ? '0 26px 44px rgba(1,16,47,.42)' : '0 16px 34px rgba(1,16,47,.32)', duration: .6, ease: 'power2.out'}));
+  const sc = Math.min(5, Math.floor((video.currentTime + .25) / 2.4));
+  if (sc === scOn) return; scOn = sc;
+  pNum.textContent = '0' + (sc + 1); pPlace.textContent = SCENES[sc][1]; pDots.forEach((d, i) => d.classList.toggle('on', i === sc));
+  if (back.querySelector('p').textContent !== SCENES[sc][0] || back.querySelector('img').src.indexOf(SCENES[sc][2]) < 0) fill(back, sc);
+  const f = front, b = back; front = b; back = f;
+  b.style.zIndex = 2; f.style.zIndex = 3;
+  gsap.to(b, {rotation: sc % 2 ? 2.5 : -2, duration: .5, ease: 'power2.out'});
+  gsap.to(f, {x: 90, y: -60, rotation: 16, opacity: 0, duration: .5, ease: 'power2.in', onComplete: () => {
+    f.style.zIndex = 1; fill(f, (sc + 1) % 6); gsap.set(f, {x: 0, y: 0, rotation: sc % 2 ? -3 : 4}); gsap.to(f, {opacity: 1, duration: .3});
+  }});
 });
 
 // ================= block 1 · nearest tours (calendar 2027 from Artem) =================
@@ -507,7 +546,7 @@ const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidt
 let shown = TOURS;
 function render(list){
   shown = list;
-  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#"><img src="assets/tours/${t.img}.jpg?v=r15a" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price">${t.days} днів · ${t.price} € + переліт</div></div>`).join('');
+  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#"><img src="assets/tours/${t.img}.jpg?v=r15a" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price"><div><b>${t.days}</b><small>днів</small></div><div><b>${String(t.price).replace(/\B(?=(\d{3})+$)/g, '\u202f')} €</b><small>+ переліт</small></div></div></div>`).join('');
   track.scrollLeft = 0; updateBar();
 }
 function updateBar(){
@@ -544,19 +583,19 @@ render(TOURS);
   const fl = document.getElementById('flight'), stage = document.getElementById('flIn'), plane = document.getElementById('plane');
   const steps = [...stage.querySelectorAll('.step')], num = document.getElementById('flNum'), end = document.getElementById('flEnd');
   const dots = [...stage.querySelectorAll('.tl i')], names = [...stage.querySelectorAll('.tl span')], bar = stage.querySelector('.tl b'), clouds = [...stage.querySelectorAll('.cloud')];
-  dots.forEach((d, i) => { d.style.left = `calc(6px + (100% - 12px) * ${i / 3})`; names[i].style.left = d.style.left; });
+  dots.forEach((d, i) => { d.style.left = `calc(6px + (100% - 12px) * ${i / 2})`; names[i].style.left = d.style.left; });
   const sm = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
   function frame(){
     const vw = stage.offsetWidth, vh = stage.offsetHeight, mob = vw < 860;
     const r = fl.getBoundingClientRect(), total = fl.offsetHeight - vh;
-    const p = Math.min(Math.max(-r.top / total, 0), 1) * 4;          // 0 … 4
+    const p = Math.min(Math.max(-r.top / total, 0), 1) * 3;          // 0 … 3
     const pw = plane.offsetWidth, ph = plane.offsetHeight;
-    // 0–0.5: the plane comes in and waits at the left edge; then three passes across the whole screen; after the last one it is gone
+    // 0–0.5: the plane comes in and waits at the left edge; then two passes across the whole screen; after the last one it is gone
     let x, from = 0, to = 0, q = 0, k = 0;
     if (p < .5) { x = -pw + sm(0, .5, p) * pw * .55; }
-    else if (p < 3.5) { k = Math.floor(p - .5) + 1; q = (p - .5) - (k - 1); const e = q * q * (3 - 2 * q);
+    else if (p < 2.5) { k = Math.floor(p - .5) + 1; q = (p - .5) - (k - 1); const e = q * q * (3 - 2 * q);
       const start = k === 1 ? -pw * .45 : -pw; x = start + e * (vw + pw * .15 - start); from = k - 1; to = k; }
-    else { x = vw + pw; from = 3; to = 3; q = 1; }
+    else { x = vw + pw; from = 2; to = 2; q = 1; }
     const ty = vh * (mob ? .33 : .38), bob = Math.sin(p * 3) * (mob ? 5 : 9);
     plane.style.transform = `translate(${x}px, ${ty - ph / 2 + bob}px) rotate(${mob ? 10 : Math.sin(p * 3) * 1.2}deg)`;
     // whole-text swap: the old step is pushed ahead and fades, the new one appears behind the wing
@@ -571,10 +610,10 @@ render(TOURS);
     num.textContent = '0' + (cur + 1);
     dots.forEach((d, i) => d.classList.toggle('on', i <= cur));
     names.forEach((n, i) => { n.classList.toggle('on', i === cur); n.classList.toggle('done', i < cur); });
-    bar.style.width = `calc((100% - 12px) * ${Math.min(1, (cur) / 3)})`;
+    bar.style.width = `calc((100% - 12px) * ${Math.min(1, (cur) / 2)})`;
     clouds.forEach((c, i) => { c.style.transform = `translateX(${-p * (14 + i * 9)}px)`;
       if (!c.dataset.w) c.dataset.w = parseFloat(c.style.width); c.style.width = (mob ? c.dataset.w * 2.3 : +c.dataset.w) + 'vw'; });
-    end.classList.toggle('on', p >= 3.62);
+    end.classList.toggle('on', p >= 2.62);
   }
   let busy = false;
   const tick = () => { if (busy) return; busy = true; requestAnimationFrame(() => { frame(); busy = false; }); };
@@ -586,6 +625,19 @@ render(TOURS);
 (() => {
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), {threshold: .35});
   document.querySelectorAll('.rv-pols, .rv-q').forEach(n => io.observe(n));
+})();
+
+// «Хочу поїхати»: its own vertical montage (Vestrahorn, waterfall, canyon, Madeira) in the photo frame; loads only when close, pauses off screen
+(() => {
+  const v = document.getElementById('tVid'); if (!v) return;
+  const hevc = v.canPlayType('video/mp4; codecs="hvc1"') !== '';
+  let loaded = false;
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {
+      if (!loaded) { loaded = true; v.src = `assets/r2/finder${hevc ? '-hevc' : ''}.mp4?v=r17b`; }
+      const pr = v.play(); if (pr) pr.catch(() => {});
+    } else v.pause();
+  }), {rootMargin: '300px 0px'}).observe(v);
 })();
 
 R2.run(tl, {waitFor: [video]});
