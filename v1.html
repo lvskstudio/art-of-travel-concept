@@ -303,6 +303,71 @@ h1 .gold{color:var(--gold)}
 .about .ab-top{margin-top:0}
 .about .ab-head h2,.about .ab-body p,.about .ab-traits{text-shadow:0 1px 3px rgba(1,16,47,.35),0 2px 22px rgba(1,16,47,.55)}
 @media (max-width:860px){.about{padding-top:47vw;background:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 5vw) top/100% 6vw no-repeat,url(assets/about-ridge-m.jpg?v=r17f) top/100% auto no-repeat,var(--navy)}}
+/* 6 · contacts — postcard to Artem (sends via Telegram) + light footer */
+.contacts{background:var(--bone);color:var(--navy);padding:140px 0 210px;overflow:hidden}
+.ct-grid{display:grid;grid-template-columns:440px 1fr;grid-template-rows:auto 1fr;column-gap:80px;align-items:start}
+.card-wrap{grid-column:2;grid-row:1 / span 2}.ct-list{grid-column:1;grid-row:2}
+.ct-head h2{margin-top:24px;font:400 clamp(46px,4.2vw,60px)/1.02 var(--serif)}
+.ct-head>p{margin-top:26px;font-size:17px;line-height:1.65;opacity:.75;max-width:380px}
+.ct-list{margin-top:46px}
+.ct-list a{display:block;padding:14px 0 12px;border-bottom:1px solid rgba(203,152,70,.55)}
+.ct-list small{display:block;font:600 10px/1 var(--sans);letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
+.ct-list b{display:block;margin-top:8px;font:400 26px/1.1 var(--serif);transition:color .3s}
+.ct-list a:hover b{color:var(--gold)}
+.ct-list a.mail b{font-size:22px}
+.card-wrap{position:relative;padding-top:10px}
+.pcard{position:relative;background:#FBF8F1;border:1px solid rgba(2,26,82,.07);padding:52px 52px 46px;transform:rotate(-1.2deg)}
+.pcard::before{content:"";position:absolute;top:-15px;left:50%;width:120px;height:30px;margin-left:-60px;background:rgba(203,152,70,.42);box-shadow:inset 0 0 0 1px rgba(203,152,70,.18)}
+.stamp{position:absolute;right:48px;top:42px;width:96px;padding:8px 8px 6px;background:var(--cream);outline:1.5px dashed var(--gold);outline-offset:-1px}
+.stamp img{width:100%;aspect-ratio:1;object-fit:cover}
+.stamp span{display:block;text-align:center;margin-top:5px;font:600 10px/1 var(--sans);letter-spacing:.2em;color:var(--gold)}
+.pmark{position:absolute;right:120px;top:70px;width:110px;height:110px;border-radius:50%;border:1.2px solid rgba(2,26,82,.35);display:grid;place-items:center;text-align:center;font:600 9px/1.5 var(--sans);letter-spacing:.18em;color:rgba(2,26,82,.45)}
+.pmark::before{content:"";position:absolute;right:70px;top:30px;width:100px;height:44px;background:repeating-linear-gradient(180deg,rgba(2,26,82,.3) 0 1.2px,transparent 1.2px 14px)}
+.pcard h3{font:400 50px/1 "Caveat",cursive;color:var(--navy);transform:rotate(-1deg)}
+.pl{display:flex;align-items:baseline;gap:12px;margin-top:30px;font:400 32px/1.2 "Caveat",cursive;color:#1B2433}
+.pl>span{opacity:.75;white-space:nowrap}
+.pl input,.pl select{flex:1;min-width:0;font:inherit;color:var(--navy);background:none;border:0;border-bottom:1px solid rgba(2,26,82,.3);padding:0 2px 2px;outline:0;border-radius:0;-webkit-appearance:none;appearance:none}
+.pl input::placeholder{color:#1B2433;opacity:.32}
+.pl input:focus,.pl select:focus{border-bottom-color:var(--gold)}
+.pl.name{max-width:calc(100% - 230px)}
+.pl.trip select{cursor:pointer;padding-right:26px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23021A52' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 4px center}
+.send{display:flex;align-items:center;gap:26px;margin-top:40px}
+.send button{background:var(--navy);color:var(--cream);font:600 14px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:23px 36px;border-radius:40px;white-space:nowrap;transition:background .3s}
+.send button:hover{background:var(--gold);color:var(--navy)}
+.send p{font-size:12px;line-height:1.5;opacity:.6;max-width:250px}
+.ct-pol{position:absolute;right:-40px;bottom:-190px;width:200px;margin:0;background:#FBF8F1;padding:10px 10px 0;border:1px solid rgba(2,26,82,.07);transform:rotate(6deg)}
+.ct-pol img{width:100%;aspect-ratio:1;object-fit:cover}
+.ct-pol figcaption{font:400 24px/1 "Caveat",cursive;color:#1B2433;text-align:center;padding:9px 0 11px}
+.toast{position:fixed;left:50%;bottom:28px;z-index:400;transform:translate(-50%,20px);background:var(--navy);color:var(--cream);font-size:14px;padding:15px 22px;border-radius:30px;opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.foot{background:var(--cream);color:var(--navy);border-top:1px solid rgba(203,152,70,.6);padding:80px 0 34px}
+.ft-grid{display:grid;grid-template-columns:1.7fr 1fr 1.2fr .6fr;gap:40px}
+.ft-brand{display:flex;gap:18px;align-items:flex-start}.ft-brand img{width:46px}
+.ft-brand b{display:block;font:500 22px/1 var(--serif);letter-spacing:.12em}.ft-brand span{display:block;margin-top:10px;font-size:13px;opacity:.65}
+.foot h4{font:600 10px/1 var(--sans);letter-spacing:.22em;color:var(--gold);margin-bottom:16px;text-transform:uppercase}
+.foot ul{list-style:none}.foot li+li{margin-top:12px}.foot li a{font-size:14px;opacity:.85}.foot li a:hover{color:var(--gold);opacity:1}
+.ft-bot{margin-top:70px;padding-top:22px;border-top:1px solid rgba(203,152,70,.45);display:flex;justify-content:space-between;font-size:12px;opacity:.55}
+@media (max-width:1100px) and (min-width:861px){.ct-grid{grid-template-columns:320px 1fr;column-gap:50px}.pcard{padding:44px 36px 40px}.ct-pol{display:none}}
+@media (max-width:860px){
+  .contacts{padding:70px 0 80px}
+  .ct-grid{grid-template-columns:1fr}
+  .ct-head h2{font-size:44px;margin-top:16px}.ct-head>p{font-size:15px}
+  .ct-list{margin-top:0;order:3;margin-top:50px}.ct-list b{font-size:24px}.ct-list a.mail b{font-size:19px}
+  .ct-grid{display:flex;flex-direction:column}
+  .card-wrap{margin-top:40px;order:2;min-width:0;width:100%}
+  .pl select,.pl input{width:100%;text-overflow:ellipsis}
+  .pcard{transform:none;padding:28px 22px 26px}
+  .stamp{position:static;width:80px;margin-left:auto}.pmark{right:96px;top:26px;width:86px;height:86px;font-size:8px}.pmark::before{right:56px;width:70px}
+  .pcard h3{font-size:38px;margin-top:20px}
+  .pl{font-size:25px;margin-top:22px;flex-wrap:wrap}.pl.name{max-width:none}
+  .send{flex-direction:column;align-items:stretch;gap:14px;margin-top:30px}.send button{padding:20px}.send p{max-width:none}
+  .ct-pol{display:none}
+  .foot{padding:50px 0 30px}.ft-grid{grid-template-columns:1fr 1fr;gap:34px 20px}.ft-brand{grid-column:1 / -1}
+  .ft-bot{flex-direction:column;gap:8px;margin-top:44px}
+}
+/* contacts background: Fanal fog forest (Madeira) — the fog melts into the bone of the block above, content starts in the lower fog */
+.contacts{padding-top:57vw!important;background:url(assets/ct-fog.jpg?v=r20f) top/100% auto no-repeat,var(--bone)!important}
+@media (max-width:860px){.contacts{padding-top:60vw!important;background-image:url(assets/ct-fog-m.jpg?v=r20f)!important}}
 </style>
 </head>
 <body>
@@ -316,7 +381,7 @@ h1 .gold{color:var(--gold)}
   <div class="ui" id="ui">
     <nav class="nav h0">
       <a class="brand" href="#"><img src="assets/logo-gold.png" alt="The Art of Travel"></a>
-      <div class="links"><a href="#">Тури</a><a href="#">Календар 2027</a><a href="#">Про нас</a><a href="#">Контакти</a></div>
+      <div class="links"><a href="#tours">Тури</a><a href="#tours">Календар 2027</a><a href="#about">Про нас</a><a href="reviews.html">Відгуки</a><a href="#contacts">Контакти</a></div>
       <div class="right"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
     </nav>
     <div class="copy">
@@ -430,6 +495,42 @@ h1 .gold{color:var(--gold)}
     <a class="btn-o rv-btn" href="reviews.html">Більше відгуків <span>→</span></a>
   </div>
 </section>
+
+<section class="contacts" id="contacts">
+  <div class="wrap ct-grid">
+    <div class="ct-head"><div class="lbl">Контакти</div><h2>Спланувати<br>подорож разом</h2><p>Напишіть Артему напряму в Telegram — він розповість деталі туру й відповість на всі питання.</p></div>
+    <div class="card-wrap">
+      <form class="pcard" id="pcard" autocomplete="on">
+        <div class="stamp"><img src="assets/tours/dolomites.jpg?v=r19b" alt=""><span>2027</span></div>
+        <div class="pmark">THE ART<br>OF TRAVEL</div>
+        <h3>Привіт, Артеме!</h3>
+        <label class="pl name"><span>Мене звати</span><input id="pName" name="name" placeholder="Олена" autocomplete="given-name"></label>
+        <label class="pl trip"><span>Хочу поїхати</span><select id="pTrip"></select></label>
+        <label class="pl"><span>І ще</span><input id="pWish" placeholder="хочу поїхати з подругою"></label>
+        <div class="send"><button type="submit">Надіслати в Telegram →</button><p>Відкриється чат з Артемом, а текст листівки скопіюється — просто вставте його.</p></div>
+      </form>
+      <figure class="ct-pol"><img src="assets/artem-front.jpg" alt="Артем" loading="lazy"><figcaption>до зустрічі!</figcaption></figure>
+    </div>
+    <div class="ct-list">
+      <a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener"><small>Telegram</small><b>@ArtemPoliakov15</b></a>
+      <a href="https://www.instagram.com/_the_art.of_travel_/" target="_blank" rel="noopener"><small>Instagram</small><b>@_the_art.of_travel_</b></a>
+      <a class="mail" href="mailto:biuro.theartoftravel@gmail.com"><small>Email</small><b>biuro.theartoftravel@gmail.com</b></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand"><img src="assets/logo-gold.png" alt="The Art of Travel"><div><b>THE ART OF TRAVEL</b><span>Відкривай · Відчувай · Надихайся</span></div></div>
+      <div><h4>Меню</h4><ul><li><a href="#tours">Тури</a></li><li><a href="#tours">Календар 2027</a></li><li><a href="#about">Про нас</a></li><li><a href="reviews.html">Відгуки</a></li><li><a href="#contacts">Контакти</a></li></ul></div>
+      <div><h4>На зв’язку</h4><ul><li><a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Telegram</a></li><li><a href="https://www.instagram.com/_the_art.of_travel_/" target="_blank" rel="noopener">Instagram</a></li><li><a href="mailto:biuro.theartoftravel@gmail.com">biuro.theartoftravel@gmail.com</a></li></ul></div>
+      <div><h4>Мова</h4><ul><li><a href="#">UA · EN</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>© 2026 The Art of Travel</span><span>Дизайн і розробка — LVSKSTUDIO</span></div>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
 <div class="intro" id="intro"></div>
 <div class="intro-text" id="introText">
   <div class="name">THE ART OF TRAVEL</div>
@@ -546,7 +647,7 @@ const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidt
 let shown = TOURS;
 function render(list){
   shown = list;
-  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#"><img src="assets/tours/${t.img}.jpg?v=r19b" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price"><div><b>${t.days}</b><small>днів</small></div><div><b>${String(t.price).replace(/\B(?=(\d{3})+$)/g, '\u202f')} €</b><small>+ переліт</small></div></div></div>`).join('');
+  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#contacts" data-i="${TOURS.indexOf(t)}"><img src="assets/tours/${t.img}.jpg?v=r19b" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price"><div><b>${t.days}</b><small>днів</small></div><div><b>${String(t.price).replace(/\B(?=(\d{3})+$)/g, '\u202f')} €</b><small>+ переліт</small></div></div></div>`).join('');
   track.scrollLeft = 0; updateBar();
 }
 function updateBar(){
@@ -639,6 +740,28 @@ render(TOURS);
     } else v.pause();
   }), {rootMargin: '300px 0px'}).observe(v);
 })();
+
+// contacts: the postcard becomes a ready message → copied, and Artem's Telegram chat opens (Telegram can't prefill a personal chat)
+(() => {
+  const sel = document.getElementById('pTrip'), form = document.getElementById('pcard'), toast = document.getElementById('toast');
+  sel.innerHTML = '<option value="">ще не вирішив(ла) — порадьте</option>' + TOURS.map((t, i) => `<option value="${i}">${TO[t.country] || t.country}, ${fmtDates(t)}${t.special ? ' (special)' : ''}</option>`).join('');
+  track.addEventListener('click', e => { const a = e.target.closest('a.pol[data-i]'); if (a) sel.value = a.dataset.i; });
+  const say = m => { toast.textContent = m; toast.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(() => toast.classList.remove('on'), 4200); };
+  const copy = txt => { let ok = false;
+    const ta = document.createElement('textarea'); ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length);
+    try { ok = document.execCommand('copy'); } catch (_) {} ta.remove();
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).catch(() => {});
+    return ok; };
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('pName').value.trim(), wish = document.getElementById('pWish').value.trim(), t = TOURS[sel.value];
+    const msg = ['Привіт, Артеме!', name && `Мене звати ${name}.`, t ? `Хочу поїхати ${TO[t.country] || t.country}, ${fmtDates(t)}.` : 'Хочу поїхати з вами в подорож — порадьте, будь ласка, тур.', wish && `І ще: ${wish}`].filter(Boolean).join(' ');
+    const ok = copy(msg);   // must happen right in the click, before the page loses focus
+    say(ok ? 'Текст листівки скопійовано — якщо його немає в чаті, просто вставте' : 'Відкриваємо чат з Артемом…');
+    const url = 'https://t.me/ArtemPoliakov15?text=' + encodeURIComponent(msg);
+    if (!window.open(url, '_blank')) window.location.href = url;   // new tab right in the click; same tab if it was blocked
+  });})();
 
 R2.run(tl, {waitFor: [video]});
 </script>

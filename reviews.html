@@ -59,7 +59,16 @@ body{background:var(--bone);color:var(--navy)}
 .cta p{margin-top:24px;font-size:18px;color:var(--bone);opacity:.85}
 .cta a{display:inline-block;margin-top:40px;background:var(--bone);color:var(--navy);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:24px 50px;border-radius:40px;transition:background .3s}
 .cta a:hover{background:var(--gold)}
+.foot{background:var(--cream);color:var(--navy);border-top:1px solid rgba(203,152,70,.6);padding:80px 0 34px}
+.ft-grid{display:grid;grid-template-columns:1.7fr 1fr 1.2fr .6fr;gap:40px}
+.ft-brand{display:flex;gap:18px;align-items:flex-start}.ft-brand img{width:46px}
+.ft-brand b{display:block;font:500 22px/1 var(--serif);letter-spacing:.12em}.ft-brand span{display:block;margin-top:10px;font-size:13px;opacity:.65}
+.foot h4{font:600 10px/1 var(--sans);letter-spacing:.22em;color:var(--gold);margin-bottom:16px;text-transform:uppercase}
+.foot ul{list-style:none}.foot li+li{margin-top:12px}.foot li a{font-size:14px;opacity:.85}.foot li a:hover{color:var(--gold);opacity:1}
+.ft-bot{margin-top:70px;padding-top:22px;border-top:1px solid rgba(203,152,70,.45);display:flex;justify-content:space-between;font-size:12px;opacity:.55}
 @media (max-width:860px){
+  .foot{padding:50px 0 30px}.ft-grid{grid-template-columns:1fr 1fr;gap:34px 20px}.ft-brand{grid-column:1 / -1}
+  .ft-bot{flex-direction:column;gap:8px;margin-top:44px}
   .wrap{padding:0 20px}
   .nav{padding:18px 20px 0}.links,.lang{display:none}.brand img{height:44px}
   .head{text-align:left;padding:60px 0 0}.head h1{font-size:50px;margin-top:16px}.head p{margin:20px 0 0;font-size:15px}
@@ -82,7 +91,7 @@ body{background:var(--bone);color:var(--navy)}
 <body>
 <nav class="nav">
   <a class="brand" href="v1.html"><img src="assets/logo-gold.png" alt="The Art of Travel"></a>
-  <div class="links"><a href="v1.html#tours">Тури</a><a href="v1.html#tours">Календар 2027</a><a href="v1.html#about">Про нас</a><a class="on" href="reviews.html">Відгуки</a><a href="#">Контакти</a></div>
+  <div class="links"><a href="v1.html#tours">Тури</a><a href="v1.html#tours">Календар 2027</a><a href="v1.html#about">Про нас</a><a class="on" href="reviews.html">Відгуки</a><a href="v1.html#contacts">Контакти</a></div>
   <div class="right"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
 </nav>
 
@@ -135,6 +144,17 @@ body{background:var(--bone);color:var(--navy)}
   <a href="v1.html#tours">Обрати подорож</a>
 </section>
 
+<footer class="foot">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand"><img src="assets/logo-gold.png" alt="The Art of Travel"><div><b>THE ART OF TRAVEL</b><span>Відкривай · Відчувай · Надихайся</span></div></div>
+      <div><h4>Меню</h4><ul><li><a href="v1.html#tours">Тури</a></li><li><a href="v1.html#tours">Календар 2027</a></li><li><a href="v1.html#about">Про нас</a></li><li><a href="reviews.html">Відгуки</a></li><li><a href="v1.html#contacts">Контакти</a></li></ul></div>
+      <div><h4>На зв’язку</h4><ul><li><a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Telegram</a></li><li><a href="https://www.instagram.com/_the_art.of_travel_/" target="_blank" rel="noopener">Instagram</a></li><li><a href="mailto:biuro.theartoftravel@gmail.com">biuro.theartoftravel@gmail.com</a></li></ul></div>
+      <div><h4>Мова</h4><ul><li><a href="#">UA · EN</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>© 2026 The Art of Travel</span><span>Дизайн і розробка — LVSKSTUDIO</span></div>
+  </div>
+</footer>
 <script>
 // polaroids develop and the gold line draws once, when each part comes into view
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), {threshold: .3});
