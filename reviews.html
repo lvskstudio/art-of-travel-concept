@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Відгуки — The Art of Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r13a">
+<style>
+body{background:var(--bone);color:var(--navy)}
+.wrap{max-width:1440px;margin:0 auto;padding:0 80px}
+.lbl{font:600 13px/1 var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+/* nav — same pieces as the home page, navy on bone */
+.nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:20px 28px 0}
+.brand img{height:54px;width:auto}
+.links{position:absolute;left:50%;top:44px;transform:translate(-50%,-50%);display:flex;gap:34px;font-size:13px}
+.links a{opacity:.85}.links a:hover,.links a.on{opacity:1;color:var(--gold)}
+.right{display:flex;gap:12px;align-items:center}
+.lang{font:500 11px/1 var(--sans);letter-spacing:.14em;opacity:.55;margin-right:10px}
+.burger{width:42px;height:42px;border-radius:50%;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.burger span{display:block;width:16px;height:1.5px;background:var(--bone)}
+/* header + wall of polaroids */
+.head{text-align:center;padding:110px 0 0}
+.head h1{margin-top:24px;font:400 clamp(56px,6.7vw,96px)/1 var(--serif)}
+.head p{margin:26px auto 0;max-width:620px;font-size:18px;line-height:1.6;opacity:.75}
+.wall{display:flex;justify-content:center;margin:80px auto 0;max-width:1180px;padding:0 20px}
+.wall .rp{position:relative;flex:0 0 19.5%;margin:0 -1%}
+.wall .rp:nth-child(even){margin-top:30px}
+.wall .rp{padding:clamp(8px,.85vw,12px) clamp(8px,.85vw,12px) 0}.wall .rp::after{top:-12px}
+/* polaroid that develops like instant film (same as the home page block) */
+.rp{margin:0;background:#FBF8F1;padding:4.6% 4.6% 0;border:1px solid rgba(2,26,82,.07);opacity:0;transform:translateY(-60px) rotate(var(--r,0deg));transition:opacity .5s ease var(--d,0s),transform .9s cubic-bezier(.3,1.5,.5,1) var(--d,0s)}
+.rp::after{content:"";position:absolute;top:-4.6%;left:34%;width:32%;aspect-ratio:120/34;background:rgba(203,152,70,.42);box-shadow:inset 0 0 0 1px rgba(203,152,70,.18)}
+.rp .ph{position:relative;aspect-ratio:1;overflow:hidden;background:#E4DED2}
+.rp img{width:100%;height:100%;object-fit:cover;filter:sepia(.7) saturate(.25) contrast(.65) brightness(1.15);transition:filter 3.2s ease calc(var(--d,0s) + .6s)}
+.rp .ph::after{content:"";position:absolute;inset:0;background:#E9E4D9;transition:opacity 2.4s ease calc(var(--d,0s) + .5s)}
+.rp figcaption{font:400 clamp(24px,2.2vw,34px)/1 "Caveat",cursive;color:#1B2433;text-align:center;padding:.42em 0 .5em;clip-path:inset(0 100% 0 0);transition:clip-path 1.1s ease calc(var(--d,0s) + 1.6s)}
+.on .rp,.rp.on{opacity:1;transform:translateY(0) rotate(var(--r,0deg))}
+.on .rp img,.rp.on img{filter:none}.on .rp .ph::after,.rp.on .ph::after{opacity:0}.on .rp figcaption,.rp.on figcaption{clip-path:inset(0 0 0 0)}
+.rp{position:relative}
+/* reviews: alternating rows, numbered, gold line between */
+.list{margin-top:110px}
+.rv{display:grid;grid-template-columns:minmax(0,700px) 1fr;column-gap:120px;align-items:start;border-top:1px solid rgba(203,152,70,.55);padding:110px 0;position:relative}
+.rv:nth-child(even){grid-template-columns:1fr minmax(0,700px)}
+.rv:nth-child(even) .rv-q{grid-column:2;grid-row:1}
+.rv:nth-child(even) .rv-p{grid-column:1;grid-row:1}
+.rv-n{position:absolute;right:0;top:40px;font:500 15px/1 var(--sans);letter-spacing:.06em;color:var(--gold)}
+.rv-q i{display:block;height:60px;font:400 140px/1 var(--serif);color:var(--gold);font-style:normal;overflow:hidden}
+.rv-q p{font:400 clamp(22px,1.95vw,28px)/1.42 var(--serif)}
+.rv-q p+p{margin-top:.8em}
+.rv-who{margin-top:26px;font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;opacity:.55}
+.rv-q mark{background:linear-gradient(var(--gold),var(--gold)) no-repeat 0 96%/0% 2px;color:inherit;padding-bottom:1px;transition:background-size 1.5s cubic-bezier(.6,.05,.3,1) .7s}
+.rv.on mark{background-size:100% 2px}
+.rv-p{max-width:380px;justify-self:center;width:100%;margin-top:30px}
+/* CTA */
+.cta{background:var(--navy);color:var(--cream);text-align:center;padding:130px 20px 140px}
+.cta h2{font:400 clamp(40px,4.2vw,60px)/1.05 var(--serif)}
+.cta p{margin-top:24px;font-size:18px;color:var(--bone);opacity:.85}
+.cta a{display:inline-block;margin-top:40px;background:var(--bone);color:var(--navy);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:24px 50px;border-radius:40px;transition:background .3s}
+.cta a:hover{background:var(--gold)}
+@media (max-width:860px){
+  .wrap{padding:0 20px}
+  .nav{padding:18px 20px 0}.links,.lang{display:none}.brand img{height:44px}
+  .head{text-align:left;padding:60px 0 0}.head h1{font-size:50px;margin-top:16px}.head p{margin:20px 0 0;font-size:15px}
+  .wall{margin-top:50px;flex-wrap:nowrap;justify-content:flex-start;overflow:hidden}
+  .wall .rp{flex-basis:46%;margin:0 -2%}.wall .rp:nth-child(n+3){display:none}.wall .rp:first-child{margin-left:4%}
+  .list{margin-top:60px}
+  .rv,.rv:nth-child(even){grid-template-columns:1fr;padding:50px 0 60px;border-top:0}
+  .rv::before{content:"";position:absolute;top:0;left:0;width:40px;height:1px;background:var(--gold)}
+  .rv:nth-child(even) .rv-q,.rv:nth-child(even) .rv-p{grid-column:1;grid-row:auto}
+  .rv-n{top:-6px}
+  .rv-q i{height:46px;font-size:104px}.rv-q p{font-size:20px}
+  .rv-who{font-size:10px;margin-top:20px}
+  .rv-p{max-width:240px;margin-top:44px}
+  .cta{padding:80px 20px 90px;text-align:left}.cta h2{font-size:38px}.cta p{font-size:15px}
+  .cta a{display:block;text-align:center;padding:21px}
+}
+@media (prefers-reduced-motion:reduce){.rp,.rp img,.rp .ph::after,.rp figcaption,.rv-q mark{transition:none!important}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="v1.html"><img src="assets/logo-gold.png" alt="The Art of Travel"></a>
+  <div class="links"><a href="v1.html#tours">Тури</a><a href="v1.html#tours">Календар 2027</a><a href="v1.html#about">Про нас</a><a class="on" href="reviews.html">Відгуки</a><a href="#">Контакти</a></div>
+  <div class="right"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
+</nav>
+
+<main class="wrap">
+  <header class="head">
+    <div class="lbl">Відгуки</div>
+    <h1>Історії після подорожі</h1>
+    <p>Слова людей, які вже подорожували з нами — без редагування, як вони їх написали.</p>
+  </header>
+
+  <div class="wall" id="wall">
+    <figure class="rp" style="--r:-5deg;--d:0s"><div class="ph"><img src="assets/reviews/iceland.jpg?v=r19a" alt="Ісландія"></div><figcaption>Ісландія</figcaption></figure>
+    <figure class="rp" style="--r:3deg;--d:.15s"><div class="ph"><img src="assets/reviews/madeira.jpg?v=r19a" alt="Мадейра"></div><figcaption>Мадейра</figcaption></figure>
+    <figure class="rp" style="--r:-2deg;--d:.3s"><div class="ph"><img src="assets/reviews/dolomites-5731.jpg?v=r19a" alt="Доломіти"></div><figcaption>Доломіти</figcaption></figure>
+    <figure class="rp" style="--r:4deg;--d:.45s"><div class="ph"><img src="assets/reviews/tenerife.jpg?v=r19a" alt="Тенеріфе"></div><figcaption>Тенеріфе</figcaption></figure>
+    <figure class="rp" style="--r:-3deg;--d:.6s"><div class="ph"><img src="assets/reviews/iceland-5426.jpg?v=r19a" alt="Ісландія"></div><figcaption>Ісландія</figcaption></figure>
+  </div>
+
+  <!-- to add a review: copy one <article class="rv"> block; rows alternate sides on their own -->
+  <section class="list">
+    <article class="rv">
+      <span class="rv-n">01</span>
+      <div class="rv-q"><i>“</i>
+        <p>Подорож з вами була максимально комфортною. Все <mark>продумане до найменших дрібниць</mark> і з максимальним комфортом. Дуже сподобалось поєднання активного і релаксного відпочинку. Коли ти встигаєш і побачити багато чудових краєвидів і так само відпочити на пляжі. Сподобалось вже включене харчування, яке між іншим було дуже смачне і продумане, а не просто щось куплене в супермаркеті. Приємно задоволений усією поїздкою, яка залишила багато емоцій і вражень!</p>
+        <div class="rv-who">Учасник подорожі</div></div>
+      <figure class="rp rv-p" style="--r:4deg"><div class="ph"><img src="assets/reviews/tenerife-5678.jpg?v=r19a" alt="Тенеріфе" loading="lazy"></div><figcaption>Тенеріфе</figcaption></figure>
+    </article>
+    <article class="rv">
+      <span class="rv-n">02</span>
+      <div class="rv-q"><i>“</i>
+        <p>Хочу подякувати за незабутню подорож на Мадейру. Все було дуже класно та професійно продумано. Залишились тільки позитивні емоції, <mark>рада що обрала саме вас</mark>!</p>
+        <div class="rv-who">Учасниця туру на Мадейру</div></div>
+      <figure class="rp rv-p" style="--r:-4deg"><div class="ph"><img src="assets/reviews/madeira-9840.jpg?v=r19a" alt="Мадейра" loading="lazy"></div><figcaption>Мадейра</figcaption></figure>
+    </article>
+    <article class="rv">
+      <span class="rv-n">03</span>
+      <div class="rv-q"><i>“</i>
+        <p>Привіт! Хочу щиро подякувати за неймовірно організований тур! Мені все дуже сподобалося, починаючи від атмосфери та організації й закінчуючи маленькими деталями, які зробили нашу подорож особливо комфортною.</p>
+        <p>Окремо хочу відзначити харчування, це була величезна перевага! Було приємно, що не потрібно було постійно думати, де поїсти, щось шукати чи планувати самостійно. Ми просто могли насолоджуватися відпочинком, знаючи, що <mark>про нас подбають</mark>.</p>
+        <p>Відчувалося, що в організацію вкладено багато уваги та душі. Дякую за цю подорож, чудові враження, комфорт і турботу! Із задоволенням поїхала б з вами ще раз!</p>
+        <div class="rv-who">Учасниця подорожі</div></div>
+      <figure class="rp rv-p" style="--r:3deg"><div class="ph"><img src="assets/reviews/dolomites-4523.jpg?v=r19a" alt="Доломіти" loading="lazy"></div><figcaption>Доломіти</figcaption></figure>
+    </article>
+  </section>
+</main>
+
+<section class="cta">
+  <h2>Ваша історія може бути наступною</h2>
+  <p>Оберіть подорож у календарі 2027 — група до 8 людей.</p>
+  <a href="v1.html#tours">Обрати подорож</a>
+</section>
+
+<script>
+// polaroids develop and the gold line draws once, when each part comes into view
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), {threshold: .3});
+document.querySelectorAll('#wall, .rv').forEach(n => io.observe(n));
+// whatever is already on screen when the page opens starts right away
+addEventListener('load', () => document.querySelectorAll('#wall, .rv').forEach(n => { const r = n.getBoundingClientRect(); if (r.top < innerHeight * .85 && r.bottom > 0) { n.classList.add('on'); io.unobserve(n); } }));
+</script>
+</body>
+</html>
