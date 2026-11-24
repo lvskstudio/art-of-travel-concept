@@ -368,6 +368,39 @@ h1 .gold{color:var(--gold)}
 /* contacts background: Fanal fog forest (Madeira) — the fog melts into the bone of the block above, content starts in the lower fog */
 .contacts{padding-top:57vw!important;background:url(assets/ct-fog.jpg?v=r20f) top/100% auto no-repeat,var(--bone)!important}
 @media (max-width:860px){.contacts{padding-top:60vw!important;background-image:url(assets/ct-fog-m.jpg?v=r20f)!important}}
+/* 5½ · FAQ — Artem's 5 questions; Tenerife sea (his photo) melts into bone above, accordion with gold lines */
+.faq{background:url(assets/faq-sea.jpg?v=r21b) top/100% auto no-repeat,var(--bone);color:var(--navy);padding:71vw 0 120px}
+.fq-grid{display:grid;grid-template-columns:440px 1fr;column-gap:80px;align-items:start}
+.fq-side{position:sticky;top:110px}
+.fq-side h2{margin-top:24px;font:400 clamp(42px,3.9vw,56px)/1.04 var(--serif)}
+.fq-pol{display:block;width:290px;margin:56px 0 0 30px;background:#FBF8F1;padding:14px 14px 0;border:1px solid rgba(2,26,82,.07);transform:rotate(-4deg);position:relative}
+.fq-pol::after{content:"";position:absolute;top:-13px;left:50%;width:92px;height:26px;margin-left:-46px;background:rgba(203,152,70,.42)}
+.fq-pol img{width:100%;aspect-ratio:1;object-fit:cover}
+.fq-pol span{display:block;text-align:center;font:400 34px/1 "Caveat",cursive;color:#1B2433;padding:12px 0 16px}
+.fq-tg{display:inline-block;margin:26px 0 0 30px;font:600 13px/1 var(--sans);letter-spacing:.08em;border-bottom:1px solid currentColor;padding-bottom:4px}
+.fq-tg:hover{color:var(--gold)}
+.fq-list{border-top:1px solid rgba(203,152,70,.55)}
+.qa{border-bottom:1px solid rgba(203,152,70,.55)}
+.qa button{width:100%;display:grid;grid-template-columns:64px 1fr 30px;align-items:baseline;text-align:left;padding:30px 0 28px;color:var(--navy)}
+.qa button i{font:500 14px/1 var(--sans);font-style:normal;letter-spacing:.06em;color:var(--gold)}
+.qa button b{font:400 clamp(24px,2.2vw,32px)/1.15 var(--serif)}
+.qa button em{font:300 30px/1 var(--sans);font-style:normal;justify-self:end;transition:transform .35s}
+.qa.open button em{transform:rotate(45deg)}
+.qa .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.qa.open .a{grid-template-rows:1fr}
+.qa .a>div{overflow:hidden;padding-left:64px;padding-right:30px}
+.qa .a p,.qa .a li{font-size:16px;line-height:1.7;opacity:.82}
+.qa .a ul{list-style:none;margin:0 0 14px}.qa .a li{position:relative;padding-left:16px}.qa .a li::before{content:"";position:absolute;left:0;top:.75em;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.qa .a p:last-child,.qa .a ul:last-child{margin-bottom:32px}
+@media (max-width:860px){
+  .faq{background-image:url(assets/faq-sea-m.jpg?v=r21b);padding:66vw 0 70px}
+  .fq-grid{display:flex;flex-direction:column}
+  .fq-side{position:static;display:contents}
+  .fq-side>div{order:1}.fq-list{order:2;margin-top:34px}.fq-pol{order:3;width:220px;margin:50px auto 0}.fq-pol span{font-size:27px}.fq-tg{order:4;margin:22px auto 0}
+  .fq-side h2{font-size:42px;margin-top:16px}
+  .qa button{grid-template-columns:36px 1fr 26px;padding:22px 0 20px}.qa button b{font-size:23px}.qa button em{font-size:26px}
+  .qa .a>div{padding-left:36px;padding-right:0}.qa .a p,.qa .a li{font-size:14.5px}
+}
 </style>
 </head>
 <body>
@@ -493,6 +526,29 @@ h1 .gold{color:var(--gold)}
     <div class="rv-q rv1"><i>“</i><p>Подорож з вами була максимально комфортною. Все <mark>продумане до найменших дрібниць</mark> і з максимальним комфортом. Дуже сподобалось поєднання активного і релаксного відпочинку. Коли ти встигаєш і побачити багато чудових краєвидів і так само відпочити на пляжі. Сподобалось вже включене харчування, яке між іншим було дуже смачне і продумане, а не просто щось куплене в супермаркеті. Приємно задоволений усією поїздкою, яка залишила багато емоцій і вражень!</p><div class="rv-who">Учасник подорожі</div></div>
     <div class="rv-q rv2"><i>“</i><p>Хочу подякувати за незабутню подорож на Мадейру. Все було дуже класно та професійно продумано. Залишились тільки позитивні емоції, <mark>рада що обрала саме вас</mark>!</p><div class="rv-who">Учасниця туру на Мадейру</div></div>
     <a class="btn-o rv-btn" href="reviews.html">Більше відгуків <span>→</span></a>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap fq-grid">
+    <aside class="fq-side">
+      <div><div class="lbl">Питання</div><h2>Що варто знати<br>перед подорожжю</h2></div>
+      <a class="fq-pol" href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener"><img src="assets/faq-mug.jpg?v=r21b" alt="Кружка The Art of Travel в Ісландії" loading="lazy"><span>Пиши — відповім!</span></a>
+      <a class="fq-tg" href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Telegram Артема →</a>
+    </aside>
+    <div class="fq-list">
+      <div class="qa open"><button type="button" aria-expanded="true"><i>01</i><b>Що входить у вартість?</b><em>+</em></button><div class="a"><div>
+        <ul><li>Проживання у приватних віллах</li><li>Авторські сніданки та вечері</li><li>Транспорт на місці — приватний автомобіль високого класу і всі витрати, пов’язані з ним</li><li>Усі активності, вказані у турі</li><li>Персональна страховка для кожного учасника</li><li>Професійні фото з вибраних локацій</li></ul>
+        <p>Окремо оплачуються лише переліт і обіди (зазвичай ми обідаємо в місцевих закладах). Доплат на місці немає — якщо є додаткові витрати, ми попереджаємо про це ще до резервації.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><i>02</i><b>Я їду сам / сама. Чи буде мені комфортно?</b><em>+</em></button><div class="a"><div>
+        <p>Навіть не варто турбуватися. У нас збирається своя, максимально вайбова компанія. Більшість учасників подорожують самі — і контакт налагоджується миттєво.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><i>03</i><b>Де ми живемо і скільки людей у кімнаті?</b><em>+</em></button><div class="a"><div>
+        <p>У приватній віллі з великою територією, підібраній саме під цю подорож: на Мадейрі — з власним басейном, у Норвегії — з сауною та джакузі. У кімнаті — по 2 людини.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><i>04</i><b>Чи захищені учасники?</b><em>+</em></button><div class="a"><div>
+        <p>Безумовно. The Art of Travel — офіційно зареєстрована компанія. З кожним учасником ми підписуємо договір, де прописані всі наші обов’язки, а на час подорожі кожен отримує персональну страховку.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><i>05</i><b>Як зарезервувати місце?</b><em>+</em></button><div class="a"><div>
+        <p>Внесіть передоплату 30% від вартості туру — решту сплачуєте за 30 днів до початку подорожі. Після цього місце гарантовано ваше.</p></div></div></div>
+    </div>
   </div>
 </section>
 
@@ -647,7 +703,7 @@ const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidt
 let shown = TOURS;
 function render(list){
   shown = list;
-  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#contacts" data-i="${TOURS.indexOf(t)}"><img src="assets/tours/${t.img}.jpg?v=r19b" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price"><div><b>${t.days}</b><small>днів</small></div><div><b>${String(t.price).replace(/\B(?=(\d{3})+$)/g, '\u202f')} €</b><small>+ переліт</small></div></div></div>`).join('');
+  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#contacts" data-i="${TOURS.indexOf(t)}"><img src="assets/tours/${t.img}.jpg?v=r21a" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price"><div><b>${t.days}</b><small>днів</small></div><div><b>${String(t.price).replace(/\B(?=(\d{3})+$)/g, '\u202f')} €</b><small>+ переліт</small></div></div></div>`).join('');
   track.scrollLeft = 0; updateBar();
 }
 function updateBar(){
@@ -762,6 +818,13 @@ render(TOURS);
     const url = 'https://t.me/ArtemPoliakov15?text=' + encodeURIComponent(msg);
     if (!window.open(url, '_blank')) window.location.href = url;   // new tab right in the click; same tab if it was blocked
   });})();
+
+// FAQ: one answer open at a time
+document.querySelectorAll('.qa button').forEach(b => b.addEventListener('click', () => {
+  const q = b.parentElement, open = !q.classList.contains('open');
+  document.querySelectorAll('.qa.open').forEach(o => { o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded', 'false'); });
+  if (open) { q.classList.add('open'); b.setAttribute('aria-expanded', 'true'); }
+}));
 
 R2.run(tl, {waitFor: [video]});
 </script>
