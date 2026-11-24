@@ -189,6 +189,7 @@ h1 .gold{color:var(--gold)}
 .ab-head h2{margin-top:20px;font:400 clamp(44px,4.6vw,66px)/1.02 var(--serif)}
 .ab-body{grid-column:2;grid-row:2;max-width:620px}
 .ab-body p{margin-top:20px;font-size:17px;line-height:1.65;color:var(--bone);opacity:.85}
+.ab-traits i{font-style:normal}
 .ab-traits{margin-top:110px;text-align:center;font:600 clamp(16px,1.55vw,22px)/1.9 var(--serif);letter-spacing:.22em;color:var(--gold)}
 .ab-quote{max-width:960px;margin:70px auto 0;border-top:1px solid rgba(203,152,70,.45);border-bottom:1px solid rgba(203,152,70,.45);padding:54px 10px}
 .ab-quote div{display:flex;gap:40px;align-items:flex-start}.ab-quote div+div{margin-top:28px}
@@ -247,7 +248,10 @@ h1 .gold{color:var(--gold)}
   .ab-ph{margin:34px 0 0 42px}.ab-frame{left:-42px;top:32px}
   .ab-body p{font-size:15px;margin-top:16px}
   .ab-body{margin-top:36px}
-  .ab-traits{margin-top:46px;font-size:17px;letter-spacing:.18em;line-height:1.7;text-align:left}
+  /* phone: one quality per line, no dots — a clean column instead of a wrapped string */
+  .ab-traits{margin-top:46px;display:grid;grid-template-columns:1fr 1fr;column-gap:18px;font:600 12.5px/1.25 var(--serif);letter-spacing:.14em;text-align:left;border-top:1px solid rgba(203,152,70,.35)}
+  .ab-traits i,.ab-traits br{display:none}
+  .ab-traits span{padding:13px 0;border-bottom:1px solid rgba(203,152,70,.35)}
   .ab-quote{margin-top:40px;padding:30px 0}
   .ab-quote div{gap:16px}.ab-quote svg,.ab-quote img{flex-basis:28px;width:28px;height:28px}
   .ab-quote p{font-size:29px}
@@ -514,7 +518,7 @@ h1 .gold{color:var(--gold)}
         <p>У 19 років я вирішив самостійно перелетіти через океан і спробувати пожити в Канаді — без знання мови. Розібрався спочатку за себе, а згодом допомагав адаптуватися й іншим.</p>
       </div>
     </div>
-    <p class="ab-traits">НЕПОСИДЮЧІСТЬ · СМІЛИВІСТЬ · ЛЕГКІСТЬ НА ПІДЙОМ · ВИНАХІДЛИВІСТЬ<br>ОРГАНІЗОВАНІСТЬ · ВІДПОВІДАЛЬНІСТЬ · ДИСЦИПЛІНА · ПОЧУТТЯ ГУМОРУ</p>
+    <p class="ab-traits"><span>НЕПОСИДЮЧІСТЬ</span><i> · </i><span>СМІЛИВІСТЬ</span><i> · </i><span>ЛЕГКІСТЬ НА ПІДЙОМ</span><i> · </i><span>ВИНАХІДЛИВІСТЬ</span><br><span>ОРГАНІЗОВАНІСТЬ</span><i> · </i><span>ВІДПОВІДАЛЬНІСТЬ</span><i> · </i><span>ДИСЦИПЛІНА</span><i> · </i><span>ПОЧУТТЯ ГУМОРУ</span></p>
     <div class="ab-quote">
       <div><svg viewBox="0 0 40 40" fill="none" stroke="#CB9846" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M0 32 L13 9 L20 20 L26 12 L40 32"/></svg><p>У Канаді я зрозумів, що обожнюю гори.</p></div>
       <div><svg viewBox="0 0 40 40" fill="none" stroke="#CB9846" stroke-width="1.8" stroke-linecap="round"><path d="M0 24 C6 14 14 14 20 24 C26 34 34 34 40 24"/></svg><p>У Мексиці — що кайфую від моря.</p></div>
@@ -764,7 +768,7 @@ render(TOURS);
       const start = k === 1 ? -pw * .45 : -pw; x = start + e * (vw + pw * .15 - start); from = k - 1; to = k; }
     else { x = vw + pw; from = 2; to = 2; q = 1; }
     const ty = vh * (mob ? .33 : .38), bob = Math.sin(p * 3) * (mob ? 5 : 9);
-    plane.style.transform = `translate(${x}px, ${ty - ph / 2 + bob}px) rotate(${mob ? 10 : Math.sin(p * 3) * 1.2}deg)`;
+    plane.style.transform = `translate(${x}px, ${ty - ph / 2 + bob}px) rotate(${Math.sin(p * 3) * 1.2}deg)`;
     // whole-text swap: the old step is pushed ahead and fades, the new one appears behind the wing
     steps.forEach((s, i) => {
       let o = 0, dx = 0;
