@@ -546,7 +546,7 @@ const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidt
 let shown = TOURS;
 function render(list){
   shown = list;
-  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#"><img src="assets/tours/${t.img}.jpg?v=r18a" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price"><div><b>${t.days}</b><small>днів</small></div><div><b>${String(t.price).replace(/\B(?=(\d{3})+$)/g, '\u202f')} €</b><small>+ переліт</small></div></div></div>`).join('');
+  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="#"><img src="assets/tours/${t.img}.jpg?v=r19b" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price"><div><b>${t.days}</b><small>днів</small></div><div><b>${String(t.price).replace(/\B(?=(\d{3})+$)/g, '\u202f')} €</b><small>+ переліт</small></div></div></div>`).join('');
   track.scrollLeft = 0; updateBar();
 }
 function updateBar(){
