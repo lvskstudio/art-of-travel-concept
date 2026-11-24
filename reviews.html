@@ -163,5 +163,6 @@ document.querySelectorAll('#wall, .rv').forEach(n => io.observe(n));
 // whatever is already on screen when the page opens starts right away
 addEventListener('load', () => document.querySelectorAll('#wall, .rv').forEach(n => { const r = n.getBoundingClientRect(); if (r.top < innerHeight * .85 && r.bottom > 0) { n.classList.add('on'); io.unobserve(n); } }));
 </script>
+<script src="menu.js?v=r28a"></script>
 </body>
 </html>
