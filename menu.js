@@ -1,15 +1,18 @@
 // The Art of Travel — one menu for every page: the round burger opens a navy screen in the site's style.
 (() => {
-  const onHome = /(^|\/)v1\.html$/.test(location.pathname) || /\/$/.test(location.pathname) && document.getElementById('hero');
-  const H = onHome ? '' : 'v1.html';
-  const V = 'r28a';
+  const EN = document.documentElement.lang === 'en';
+  const X = EN ? '-en' : '';
+  const onHome = /(^|\/)v1(-en)?\.html$/.test(location.pathname) || /\/$/.test(location.pathname) && document.getElementById('hero');
+  const H = onHome ? '' : `v1${X}.html`;
+  const V = 'r29a';
+  const L = EN ? ['Tours', '2027 Calendar', 'About', 'Reviews', 'Contact', 'Menu', 'Close menu', 'Message Artem →']
+               : ['Тури', 'Календар 2027', 'Про нас', 'Відгуки', 'Контакти', 'Меню', 'Закрити меню', 'Написати Артему →'];
   const items = [
-    ['Тури', H + '#tours', 'assets/tours/dolomites.jpg', 'Доломіти'],
-    ['Календар 2027', 'calendar.html', 'assets/tours/iceland-summer.jpg', 'Ісландія'],
-    ['Про нас', H + '#about', 'assets/artem-front.jpg', 'Артем'],
-    ['Відгуки', 'reviews.html', 'assets/reviews/madeira.jpg', 'Мадейра'],
-    ['Контакти', H + '#contacts', 'assets/faq-mug.jpg', 'до зустрічі!'],
+    [L[0], H + '#tours'], [L[1], `calendar${X}.html`], [L[2], H + '#about'], [L[3], `reviews${X}.html`], [L[4], H + '#contacts'],
   ];
+  // the same page in the other language
+  const file = location.pathname.split('/').pop() || 'v1.html';
+  const other = EN ? file.replace('-en.html', '.html') : (/\.html$/.test(file) ? file.replace('.html', '-en.html') : 'v1-en.html');
   const css = `
   .mnu{position:fixed;inset:0;z-index:600;background:var(--navy);color:var(--cream);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s .45s}
   .mnu.on{opacity:1;visibility:visible;transition:opacity .45s ease}
@@ -34,7 +37,8 @@
   .mnu-foot{display:flex;align-items:center;justify-content:space-between;gap:30px;max-width:1440px;width:100%;margin:0 auto;padding:26px 80px 34px;border-top:1px solid rgba(203,152,70,.3)}
   .mnu-foot nav{display:flex;gap:30px;font:500 13px/1 var(--sans)}
   .mnu-foot nav a,.mnu-foot .lng a{color:var(--cream);opacity:.8;text-decoration:none}.mnu-foot nav a:hover{opacity:1;color:var(--gold)}
-  .mnu-foot .lng{font:500 12px/1 var(--sans);letter-spacing:.14em}
+  .mnu-foot .lng{font:500 12px/1 var(--sans);letter-spacing:.14em;color:rgba(243,235,221,.5)}
+  .mnu-foot .lng a[aria-current]{opacity:1;color:var(--gold)}
   .mnu-cta{background:var(--bone);color:var(--navy);font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:18px 28px;border-radius:40px;text-decoration:none;transition:background .3s}
   .mnu-cta:hover{background:var(--gold)}
   body.mnu-lock{overflow:hidden}
@@ -48,17 +52,17 @@
     .mnu-cta{text-align:center}
   }`;
   const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
-  const el = document.createElement('div'); el.className = 'mnu'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'Меню');
+  const el = document.createElement('div'); el.className = 'mnu'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', L[5]);
   el.innerHTML = `
     <img class="mnu-bg" src="assets/ridge-fade.png?v=${V}" alt="">
-    <div class="mnu-top"><a href="${H || 'v1.html'}"><img src="assets/logo-gold.png?v=${V}" alt="The Art of Travel"></a><button class="mnu-x" aria-label="Закрити меню"></button></div>
+    <div class="mnu-top"><a href="${H || `v1${X}.html`}"><img src="assets/logo-gold.png?v=${V}" alt="The Art of Travel"></a><button class="mnu-x" aria-label="${L[6]}"></button></div>
     <div class="mnu-body">
       <ul class="mnu-list">${items.map((it, i) => `<li><a href="${it[1]}" data-i="${i}"><i>0${i + 1}</i><b>${it[0]}</b></a></li>`).join('')}</ul>
     </div>
     <div class="mnu-foot">
       <nav><a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Telegram</a><a href="https://www.instagram.com/_the_art.of_travel_/" target="_blank" rel="noopener">Instagram</a><a href="mailto:biuro.theartoftravel@gmail.com">Email</a></nav>
-      <div class="lng"><a href="#">UA · EN</a></div>
-      <a class="mnu-cta" href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Написати Артему →</a>
+      <div class="lng">${EN ? `<a href="${other}">UA</a> · <a aria-current="true">EN</a>` : `<a aria-current="true">UA</a> · <a href="${other}">EN</a>`}</div>
+      <a class="mnu-cta" href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">${L[7]}</a>
     </div>`;
   document.body.appendChild(el);
   const links = [...el.querySelectorAll('.mnu-list a')];

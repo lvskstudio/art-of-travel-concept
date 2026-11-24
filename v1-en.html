@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Art of Travel — signature small-group tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r13a">
+<style>
+body{background:var(--bone);color:var(--navy)}
+.hero{position:relative;height:100vh;min-height:700px;overflow:hidden}
+/* video stage: full screen during the intro, then the rounded hero card (HAVEN) */
+.stage{position:absolute;inset:0;z-index:60;overflow:hidden;will-change:clip-path}
+.stage video{width:100%;height:100%;object-fit:cover}
+.stage .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,16,47,.5) 0%,rgba(1,16,47,0) 20%),linear-gradient(90deg,rgba(1,16,47,.6) 0%,rgba(1,16,47,.22) 45%,rgba(1,16,47,0) 70%),linear-gradient(0deg,rgba(1,16,47,.45),rgba(1,16,47,0) 40%);opacity:0}
+#goldA{position:fixed;inset:0;z-index:61;background:url(assets/mark-gold.png) no-repeat;pointer-events:none}
+.stage.masked{-webkit-mask-image:url(assets/mark-cream.png);mask-image:url(assets/mark-cream.png);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.intro{position:fixed;inset:0;z-index:50;background:var(--navy)}
+.intro-text{position:fixed;left:0;right:0;z-index:70;text-align:center;color:var(--cream);pointer-events:none}
+.intro-text .name{font:400 clamp(18px,1.9vw,27px)/1 var(--serif);letter-spacing:.3em}
+.intro-text .slogan{margin-top:16px;font:400 12px/1 var(--sans);letter-spacing:.22em;color:#CFC29F}
+/* card content */
+.ui{position:absolute;z-index:80;left:32px;right:32px;top:24px;height:calc(100% - 224px);color:var(--cream);pointer-events:none}
+.ui > *{pointer-events:auto}
+.nav{position:absolute;left:28px;right:28px;top:20px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:block;line-height:0}
+.brand img{height:54px;width:auto;opacity:0}
+.links{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;gap:34px;font-size:13px;text-shadow:0 1px 10px rgba(1,16,47,.55)}
+.links a{opacity:.92}.links a:hover{opacity:1;color:var(--gold)}
+.right{display:flex;gap:12px;align-items:center}
+.lang{font:500 11px/1 var(--sans);letter-spacing:.14em;opacity:.55;margin-right:10px}
+.lang:hover{opacity:1}
+.pill{background:var(--olive);color:var(--bone);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:14px 22px;border-radius:30px}
+.burger{width:42px;height:42px;border-radius:50%;background:var(--bone);display:flex;align-items:center;justify-content:center}
+.burger{flex-direction:column;gap:4px}
+.burger span{display:block;width:16px;height:1.5px;background:var(--navy)}
+.copy{position:absolute;left:62px;top:clamp(104px,15vh,150px);max-width:620px}
+h1{font:400 clamp(48px,min(6.6vw,10.5vh),104px)/.96 var(--serif);letter-spacing:-.01em}
+h1 span{display:block;overflow:hidden}
+h1 em{display:block;font-style:normal}
+h1 .gold{color:var(--gold)}
+.sub{margin-top:22px;font-size:16px;line-height:1.5;opacity:.92;max-width:360px}
+.cta{margin-top:26px;display:inline-block;background:var(--olive);color:var(--bone);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:17px 30px;border-radius:40px}
+.cta i{width:32px;height:32px;border-radius:50%;background:rgba(232,221,200,.16);display:grid;place-items:center;font-style:normal;letter-spacing:0}
+/* values row with icons, connected by thin lines (HAVEN: Tranquil — Authentic — Restorative) */
+.values{position:absolute;right:30px;bottom:26px;display:flex;align-items:center;gap:14px;font-size:12px}
+.values div{display:flex;align-items:center;gap:9px}
+.values svg{width:22px;height:22px}
+.values hr{width:34px;border:0;border-top:1px solid rgba(243,235,221,.6)}
+.shot{position:absolute;right:30px;top:96px;display:flex;align-items:center;gap:12px;font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:0}
+.shot i{width:28px;height:1px;background:var(--gold)}
+.shot span{transition:opacity .45s}
+/* overlapping cards + side block */
+.cards{position:absolute;z-index:85;right:72px;bottom:34px;width:clamp(230px,min(21vw,36vh),320px)}
+.cards .pol{width:100%;position:absolute;left:0;bottom:0}.cards::before{content:"";display:block;padding-top:118%}
+.cards .pol p{font-size:clamp(30px,2.6vw,40px)}
+.pb{position:absolute;inset:0;z-index:0;background:#FBF8F1;box-shadow:0 12px 26px rgba(1,16,47,.2)}
+.pb1{transform:rotate(7deg) translate(12px,4px)}
+.pmeta{position:absolute;z-index:85;right:calc(72px + clamp(230px,min(21vw,36vh),320px) + 54px);bottom:58px;display:flex;align-items:center;gap:16px;color:var(--navy)}
+.pmeta b{font:500 15px/1 var(--sans);color:var(--gold);letter-spacing:.06em}
+.pdots{display:flex;gap:9px}.pdots i{width:7px;height:7px;border-radius:50%;background:var(--navy);opacity:.22;transition:opacity .4s,background .4s}
+.pdots i.on{background:var(--gold);opacity:1}
+.pmeta em{font:600 11px/1 var(--sans);font-style:normal;letter-spacing:.22em;text-transform:uppercase}
+.pol{display:block;width:clamp(160px,min(16vw,24vh),232px);background:#FBF8F1;padding:12px 12px 0;box-shadow:0 16px 34px rgba(1,16,47,.32);position:relative}
+.pol img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.pol p{font:400 30px/1 "Caveat",cursive;color:#1B2433;text-align:center;padding:10px 0 14px}
+.pol::after{content:"";position:absolute;top:-12px;left:50%;width:80px;height:26px;margin-left:-40px;background:rgba(233,223,198,.85)}
+.card{width:clamp(180px,min(18vw,28vh),260px);aspect-ratio:272/208;border-radius:18px;overflow:hidden;position:relative;border:3px solid var(--bone);box-shadow:0 18px 40px rgba(1,16,47,.22);color:var(--cream)}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.card:hover img{transform:scale(1.06)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(1,16,47,.62),rgba(1,16,47,0) 60%)}
+.card b{position:absolute;z-index:2;left:16px;bottom:14px;font:400 23px/1.02 var(--serif)}
+.card small{position:absolute;z-index:2;right:16px;bottom:16px;font-size:12px;opacity:.9}
+.side{position:absolute;z-index:85;left:calc(96px + 3 * clamp(200px,19vw,272px) + 3 * 14px + 26px);right:40px;bottom:78px;color:var(--navy)}
+.side .arrows{display:flex;gap:10px;justify-content:flex-end;margin-bottom:22px}
+.side .arrows button{width:38px;height:38px;border-radius:50%;background:#fff;box-shadow:0 4px 14px rgba(1,16,47,.12);color:var(--navy);display:grid;place-items:center;font-size:13px}
+.side h3{font:600 14px/1.2 var(--sans)}
+.side p{margin-top:8px;font-size:13px;line-height:1.5;opacity:.75;max-width:250px}
+.side .badges{margin-top:14px;display:flex;align-items:center;gap:10px;font-size:11px;opacity:.85}
+.side .badges img{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--bone);margin-right:-16px}
+.side .badges span{margin-left:20px}
+.h0{opacity:0}
+@media (max-width:860px){
+  .hero{height:100svh;min-height:620px}
+  .ui{left:12px;right:12px;top:12px;height:calc(100% - 24px)}
+  .nav{left:18px;right:18px;top:18px}.links,.pill,.lang{display:none}
+  .brand img{height:44px}
+  .copy{left:22px;right:22px;top:auto;bottom:96px}
+  h1{font-size:54px}
+  .sub{font-size:14px}.sub .more{display:none}
+  .values{left:18px;right:18px;bottom:22px;justify-content:space-between;gap:6px;font-size:10px}
+  .values hr,.values svg{display:none}
+  .shot,.side{display:none}
+  .cards{right:auto;left:50%;bottom:auto;top:104px;width:44vw;margin-left:-22vw}.pmeta{display:none}
+  .cards .pol p{font-size:24px}
+  .pol{width:27vw;padding:7px 7px 0}.cards .pol{width:100%;padding:8px 8px 0}
+  .pol p{font-size:20px;padding:6px 0 9px}
+  .pol::after{width:48px;height:16px;margin-left:-24px;top:-8px}
+  .stage .shade{background:linear-gradient(0deg,rgba(1,16,47,.8) 0%,rgba(1,16,47,.25) 60%,rgba(1,16,47,.35) 100%)}
+}
+
+/* ================= below the hero: blocks 1–3 ================= */
+.wrap{max-width:1440px;margin:0 auto;padding:0 80px}
+.lbl{font:600 13px/1 var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+.btn-o{display:inline-flex;gap:12px;align-items:center;border:1px solid rgba(2,26,82,.5);color:var(--navy);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:19px 34px;border-radius:40px;transition:background .3s,color .3s}
+.btn-o:hover{background:var(--navy);color:var(--bone)}
+.btn-o.mob,.swipe{display:none}
+/* 1 · nearest tours — faint mountains behind the heading, photo + gold line frame with the choice (ref) */
+.tours{position:relative;padding:130px 0 60px;overflow:hidden}
+.t-mtn{position:absolute;left:0;top:0;width:100%;opacity:.17;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply;pointer-events:none}
+.t-head{position:relative;text-align:center}
+.t-head h2{margin-top:26px;font:400 clamp(64px,7.5vw,112px)/1 var(--serif);letter-spacing:-.005em}
+.t-head .lead{margin:26px auto 0;font-size:19px;line-height:1.6;opacity:.8;max-width:520px}
+.t-pick{position:relative;margin-top:110px;height:600px}
+.t-ph{position:absolute;z-index:1;left:40px;top:0;width:460px;height:600px;object-fit:cover}
+.t-frame{position:absolute;left:340px;right:40px;top:90px;height:420px;border:1.5px solid rgba(203,152,70,.9);pointer-events:none}
+.wish{position:absolute;left:560px;right:80px;top:140px}
+.wish > p{font:400 clamp(44px,4.2vw,60px)/1 var(--serif)}
+.flds{margin-top:40px;display:flex;align-items:stretch;gap:40px}
+.flds i{width:1px;background:rgba(203,152,70,.6)}
+.fld{position:relative;display:block;cursor:pointer;min-width:0}
+.fld small{display:block;font:600 12px/1 var(--sans);letter-spacing:.24em;color:var(--gold)}
+.fld b{display:inline-block;margin-top:12px;font:500 clamp(32px,2.9vw,42px)/1.1 var(--serif);border-bottom:1px solid rgba(2,26,82,.25);padding-right:40px;position:relative;white-space:nowrap}
+.fld b::after{content:"";position:absolute;right:8px;top:.32em;width:11px;height:11px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg)}
+.fld select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:16px}
+.wish .go{margin-top:44px;background:var(--olive);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:23px 52px;border-radius:40px;transition:background .3s}
+.wish .go:hover{background:var(--navy)}
+.t-bar{margin-top:110px;display:flex;justify-content:space-between;align-items:center}
+.t-nav{display:flex;align-items:center;gap:14px}
+.t-nav .count{font:600 14px/1 var(--sans);letter-spacing:.14em;opacity:.6;margin-right:14px}
+.t-nav button{width:58px;height:58px;border-radius:50%;border:1px solid rgba(2,26,82,.35);font-size:20px;color:var(--navy);transition:opacity .3s}
+.t-nav button.next{background:var(--navy);color:var(--bone);border-color:var(--navy)}
+.t-nav button:disabled{opacity:.3;cursor:default}
+.track{margin:24px -14px 0;padding:60px 14px 14px;display:flex;gap:70px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.tour{flex:0 0 calc((100% - 140px) / 3);scroll-snap-align:start}
+.tour .pol{width:100%;padding:4.3% 4.3% 0;box-shadow:none;border:1px solid rgba(2,26,82,.07);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.tour:nth-child(3n+1) .pol{transform:rotate(-2deg)}.tour:nth-child(3n+2) .pol{transform:rotate(1.5deg)}.tour:nth-child(3n) .pol{transform:rotate(-1deg)}
+.tour .pol:hover{transform:rotate(0) translateY(-8px)}
+.tour .pol::after{width:32%;height:auto;aspect-ratio:120/34;margin-left:-16%;top:-4.6%;background:rgba(203,152,70,.42);box-shadow:inset 0 0 0 1px rgba(203,152,70,.18)}
+.tour .pol p{font-size:clamp(34px,3vw,44px);padding:14px 0 2px}
+.tour .pol .d{font:400 clamp(22px,1.95vw,28px)/1 "Caveat",cursive;color:#1B2433;opacity:.68;text-align:center;padding:4px 0 22px}
+.tour .pol .star{position:absolute;right:7%;top:8%;background:var(--gold);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:20px}
+.tour .price{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(203,152,70,.85);border-bottom:1px solid rgba(203,152,70,.85);padding:18px 0 16px;text-align:center}
+.tour .price div+div{border-left:1px solid rgba(203,152,70,.55)}
+.tour .price b{display:block;font:500 clamp(36px,3.1vw,46px)/1 var(--serif);color:var(--navy)}
+.tour .price small{display:block;margin-top:8px;font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.6}
+/* the real Dolomites ridge rises out of the navy block */
+.ridge{display:block;line-height:0;background:linear-gradient(180deg,var(--bone) 0 37%,var(--navy) 37%)}
+.ridge img{width:100%;height:auto;display:block}
+/* 2 · why us (NAVY ref: gold spaced capitals) */
+.why{background:var(--navy);color:var(--bone);padding:10px 0 90px}
+.why h2{text-align:center;font:500 clamp(34px,3.4vw,48px)/1 var(--serif);letter-spacing:.32em;color:var(--gold);padding-left:.32em}
+.why-grid{margin-top:84px;display:grid;grid-template-columns:repeat(4,1fr);gap:58px}
+.why h3{font:600 25px/1 var(--serif);letter-spacing:.22em;color:var(--gold)}
+.why h3::after{content:"";display:block;width:36px;height:1px;background:rgba(203,152,70,.8);margin-top:18px}
+.why p{margin-top:22px;font-size:16px;line-height:1.65;opacity:.88}
+.why .mark{width:48px;margin:90px auto 0}
+/* 3 · how we meet you — a big plane crosses the whole screen through the clouds; each pass changes the step */
+.flight{position:relative;height:330vh;background:var(--bone)}
+.fl-in{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.cloud{position:absolute;pointer-events:none;will-change:transform}
+.fl-lbl{position:absolute;left:0;right:0;top:12%;text-align:center;font:600 13px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.6}
+.fl-num{position:absolute;left:0;right:0;top:calc(12% + 34px);text-align:center;font:400 clamp(44px,3.9vw,56px)/1 var(--serif);color:var(--gold)}
+.steps{position:absolute;left:0;right:0;top:27%}
+.step{position:absolute;left:0;right:0;text-align:center;font:400 clamp(54px,6.7vw,96px)/1.02 var(--serif);padding:0 5vw;opacity:0;will-change:transform,opacity}
+.plane{position:absolute;left:0;top:0;width:min(58vw,840px);z-index:3;filter:drop-shadow(18px 32px 24px rgba(20,24,44,.22));will-change:transform}
+.tl{position:absolute;left:50%;bottom:16%;width:min(680px,60vw);transform:translateX(-50%);height:12px}
+.tl::before{content:"";position:absolute;left:6px;right:6px;top:5.5px;height:1px;background:rgba(203,152,70,.55)}
+.tl b{position:absolute;left:6px;top:5px;height:2px;background:var(--gold);width:0}
+.tl i{position:absolute;top:0;width:12px;height:12px;margin-left:-6px;border-radius:50%;border:1.5px solid var(--gold);background:var(--bone);transition:background .4s}
+.tl i.on{background:var(--gold)}
+.tl span{position:absolute;top:30px;width:160px;margin-left:-80px;text-align:center;font:500 14px/1.2 var(--sans);opacity:.35;transition:opacity .4s,font-weight .4s}
+.tl span.done{opacity:.6}.tl span.on{opacity:1;font-weight:600}
+.fl-end{position:absolute;left:0;right:0;top:calc(27% + clamp(150px,17.5vw,260px));text-align:center;opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s;pointer-events:none}
+.fl-end p{font:400 clamp(30px,2.8vw,40px)/1.1 var(--serif);opacity:.8}
+.fl-cta{display:inline-block;margin-top:26px;background:var(--navy);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:22px 42px;border-radius:40px}
+.fl-end.on{opacity:1;transform:none;pointer-events:auto}
+/* 4 · about — mug in the canyon (soft fade from the block above), then Artem on navy */
+.about{background:var(--navy);color:var(--cream);padding-bottom:120px}
+.ab-band{display:block;line-height:0}.ab-band img{width:100%;height:auto;display:block}
+.ab-top{position:relative;margin-top:-40px;display:grid;grid-template-columns:470px 1fr;grid-template-rows:auto 1fr;column-gap:100px;align-items:start}
+.ab-head{grid-column:2;grid-row:1}
+.ab-ph{grid-column:1;grid-row:1 / span 2;position:relative;margin-left:50px}
+.ab-ph img{position:relative;z-index:1;width:100%;aspect-ratio:470/630;object-fit:cover;display:block}
+.ab-frame{position:absolute;left:-50px;top:60px;width:100%;height:100%;border:1.5px solid rgba(203,152,70,.9)}
+.ab-head h2{margin-top:20px;font:400 clamp(44px,4.6vw,66px)/1.02 var(--serif)}
+.ab-body{grid-column:2;grid-row:2;max-width:620px}
+.ab-body p{margin-top:20px;font-size:17px;line-height:1.65;color:var(--bone);opacity:.85}
+.ab-traits{margin-top:110px;text-align:center;font:600 clamp(16px,1.55vw,22px)/1.9 var(--serif);letter-spacing:.22em;color:var(--gold)}
+.ab-quote{max-width:960px;margin:70px auto 0;border-top:1px solid rgba(203,152,70,.45);border-bottom:1px solid rgba(203,152,70,.45);padding:54px 10px}
+.ab-quote div{display:flex;gap:40px;align-items:flex-start}.ab-quote div+div{margin-top:28px}
+.ab-quote svg,.ab-quote img{flex:0 0 40px;width:40px;height:40px;margin-top:6px;object-fit:contain}
+.ab-quote p{font:400 clamp(30px,3.2vw,46px)/1.1 var(--serif)}
+.ab-trips{text-align:center;margin-top:62px}.ab-trips p{margin-top:16px;font:400 clamp(22px,2.1vw,30px)/1.4 var(--serif);opacity:.9}
+.ab-end{text-align:center;margin-top:100px}
+.ab-end h3{font:400 clamp(36px,3.9vw,56px)/1.06 var(--serif)}
+.ab-end p{margin-top:26px;font-size:18px;color:var(--bone);opacity:.85}
+.ab-cta{display:inline-block;margin-top:30px;background:var(--bone);color:var(--navy);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:23px 46px;border-radius:40px;transition:background .3s}
+.ab-cta:hover{background:var(--gold)}
+@media (max-width:1100px) and (min-width:861px){ .track{gap:40px}.tour{flex-basis:calc((100% - 80px) / 3)} .t-ph{width:340px;height:480px}.t-pick{height:480px}.t-frame{left:240px;top:60px;height:360px}.wish{left:400px;top:100px;right:40px}.flds{gap:24px} }
+@media (max-width:860px){
+  .wrap{padding:0 24px}
+  .tours{padding:70px 0 40px}
+  .t-mtn{top:20px;width:180%;left:-40%}
+  .t-head h2{font-size:56px;line-height:.95;margin-top:18px}
+  .t-head .lead{font-size:15px;margin-top:18px}
+  .t-bar .btn-o,.t-nav{display:none}
+  .t-pick{height:auto;margin-top:50px}
+  .t-ph{position:relative;left:auto;width:78%;height:300px}
+  .t-frame{left:14%;right:0;top:220px;height:auto;bottom:-24px}
+  .wish{position:relative;left:auto;right:auto;top:auto;margin:40px 0 0 calc(14% + 24px);padding-right:20px}
+  .wish > p{font-size:38px}
+  .flds{flex-direction:column;gap:22px;margin-top:26px}
+  .flds i{display:none}
+  .fld b{font-size:30px;padding-right:34px}
+  .wish .go{width:100%;margin-top:30px;padding:20px}
+  .t-bar{margin-top:40px}
+  .track{margin:34px -24px 0;padding:46px 24px 12px;gap:28px;scroll-padding-left:24px}
+  .tour{flex-basis:282px}
+  .tour .pol p{font-size:34px;padding:10px 0 0}
+  .tour .pol .d{font-size:22px;padding:3px 0 16px}
+  .tour .price{margin-top:22px;padding:14px 0 12px}.tour .price b{font-size:34px}.tour .price small{font-size:10px;margin-top:6px}
+  .swipe{display:block;text-align:center;font:400 22px/1 "Caveat",cursive;opacity:.5;margin-top:22px}
+  .btn-o.mob{display:flex;justify-content:center;margin-top:30px;font-size:14px}
+  .why{padding:6px 0 64px}
+  .why h2{font-size:32px;letter-spacing:.26em;padding-left:.26em}
+  .why-grid{grid-template-columns:1fr;gap:42px;margin-top:58px}
+  .why h3{font-size:22px;letter-spacing:.2em}.why h3::after{margin-top:14px}
+  .why p{font-size:15px;margin-top:16px}
+  .why .mark{margin-top:64px;width:46px}
+  .fl-lbl{top:13%;font-size:11px}
+  .fl-num{font-size:40px;top:calc(13% + 26px)}
+  .steps{top:26%}
+  .step{font-size:44px}
+  .plane{width:84vw}
+  .tl{width:82vw;bottom:12%}
+  .tl span{font-size:11px;width:90px;margin-left:-45px;top:24px}
+  .fl-end{top:calc(26% + 116px)}.fl-end p{font-size:26px}
+  .fl-cta{margin-top:18px;padding:18px 30px;font-size:13px}
+  .about{padding-bottom:70px}
+  .ab-top{margin-top:-20px;grid-template-columns:1fr;column-gap:0}
+  .ab-head,.ab-ph,.ab-body{grid-column:1;grid-row:auto}
+  .ab-head h2{font-size:40px;margin-top:14px}
+  .ab-ph{margin:34px 0 0 42px}.ab-frame{left:-42px;top:32px}
+  .ab-body p{font-size:15px;margin-top:16px}
+  .ab-body{margin-top:36px}
+  .ab-traits{margin-top:46px;font-size:17px;letter-spacing:.18em;line-height:1.7;text-align:left}
+  .ab-quote{margin-top:40px;padding:30px 0}
+  .ab-quote div{gap:16px}.ab-quote svg,.ab-quote img{flex-basis:28px;width:28px;height:28px}
+  .ab-quote p{font-size:29px}
+  .ab-trips{text-align:left;margin-top:40px}.ab-trips p{font-size:24px}
+  .ab-end{text-align:left;margin-top:50px}.ab-end h3{font-size:36px}.ab-end p{font-size:15px}
+  .ab-cta{display:block;text-align:center;padding:20px}
+}
+/* 5 · reviews — two reviews, polaroids develop like instant film, gold line draws under the key phrase */
+.reviews{background:var(--bone);color:var(--navy);padding:130px 0 140px;overflow:hidden}
+.rv-grid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);grid-template-areas:"head pols" "rv1 pols" "btn rv2";column-gap:110px;align-items:start}
+.rv-head{grid-area:head}.rv-head h2{margin-top:24px;font:400 clamp(52px,4.5vw,66px)/1 var(--serif)}
+.rv1{grid-area:rv1;margin-top:34px}.rv2{grid-area:rv2;margin-top:10px;max-width:520px}
+.rv-btn{grid-area:btn;margin-top:66px;justify-self:start}
+.rv-q i{display:block;height:58px;font:400 130px/1 var(--serif);color:var(--gold);font-style:normal;overflow:hidden}
+.rv-q p{font:400 clamp(22px,1.75vw,25px)/1.45 var(--serif)}
+.rv-who{margin-top:26px;font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;opacity:.55}
+.rv-q mark{background:linear-gradient(var(--gold),var(--gold)) no-repeat 0 96%/0% 2px;color:inherit;padding-bottom:1px;transition:background-size 1.5s cubic-bezier(.6,.05,.3,1) .7s}
+.rv-q.on mark{background-size:100% 2px}
+.rv-pols{grid-area:pols;position:relative;aspect-ratio:610/690;margin-bottom:30px}
+.rp{position:absolute;margin:0;background:#FBF8F1;padding:4.6% 4.6% 0;border:1px solid rgba(2,26,82,.07);opacity:0;transform:translateY(-70px) rotate(var(--r));transition:opacity .5s ease var(--d),transform .9s cubic-bezier(.3,1.5,.5,1) var(--d)}
+.rp::after{content:"";position:absolute;top:-4.6%;left:34%;width:32%;aspect-ratio:120/34;background:rgba(203,152,70,.42);box-shadow:inset 0 0 0 1px rgba(203,152,70,.18)}
+.rp .ph{position:relative;aspect-ratio:1;overflow:hidden;background:#E4DED2}
+.rp img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.7) saturate(.25) contrast(.65) brightness(1.15);transition:filter 3.2s ease calc(var(--d) + .6s)}
+.rp .ph::after{content:"";position:absolute;inset:0;background:#E9E4D9;transition:opacity 2.4s ease calc(var(--d) + .5s)}
+.rp figcaption{font:400 clamp(26px,2.3vw,34px)/1 "Caveat",cursive;color:#1B2433;text-align:center;padding:.42em 0 .5em;clip-path:inset(0 100% 0 0);transition:clip-path 1.1s ease calc(var(--d) + 1.6s)}
+.rv-pols.on .rp{opacity:1;transform:translateY(0) rotate(var(--r))}
+.rv-pols.on .rp img{filter:none}.rv-pols.on .rp .ph::after{opacity:0}.rv-pols.on .rp figcaption{clip-path:inset(0 0 0 0)}
+.rp-m{left:50%;top:-3%;width:49%;--r:4deg;--d:0s}
+.rp-t{left:4%;top:15%;width:60%;--r:-3deg;--d:.25s}
+.rp-i{left:59%;top:53%;width:40%;--r:6deg;--d:.5s}
+@media (max-width:860px){
+  .reviews{padding:70px 0 80px}
+  .rv-grid{grid-template-columns:1fr;grid-template-areas:"head" "pols" "rv1" "rv2" "btn"}
+  .rv-head h2{font-size:42px;margin-top:16px}
+  .rv-pols{aspect-ratio:350/290;margin:40px 0 0}
+  .rp-m{left:47%;top:0;width:48%}.rp-t{left:3%;top:9%;width:58%}.rp-i{display:none}
+  .rp figcaption{font-size:22px}
+  .rv-q i{height:44px;font-size:100px}.rv-q p{font-size:20px}
+  .rv1{margin-top:10px}.rv2{margin-top:44px;padding-top:40px;position:relative}
+  .rv2::before{content:"";position:absolute;top:0;left:0;width:40px;height:1px;background:var(--gold)}
+  .rv-who{font-size:10px;margin-top:20px}
+  .rv-btn{justify-self:stretch;justify-content:center;margin-top:46px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){.rp,.rp img,.rp .ph::after,.rp figcaption,.rv-q mark{transition:none!important}}
+/* about: a tall photo of the Dolomites behind the whole block; it melts into navy towards the end (like «Чому з нами») */
+.about{padding-top:31vw;background:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 2.2vw) top/100% 3vw no-repeat,url(assets/about-ridge.jpg?v=r17f) top/100% auto no-repeat,var(--navy)}
+/* text on the dark mountain (left), Artem's photo on the right covers the light sky */
+.about .ab-top{grid-template-columns:1fr 470px}
+.about .ab-head{grid-column:1}.about .ab-body{grid-column:1}
+.about .ab-ph{grid-column:2;margin-left:0;margin-right:50px}
+.about .ab-frame{left:auto;right:-50px}
+@media (max-width:860px){.about .ab-top{grid-template-columns:1fr}.about .ab-head,.about .ab-body,.about .ab-ph{grid-column:1}.about .ab-ph{margin:34px 42px 0 0}.about .ab-frame{right:-42px}}
+.about .ab-top{margin-top:0}
+.about .ab-head h2,.about .ab-body p,.about .ab-traits{text-shadow:0 1px 3px rgba(1,16,47,.35),0 2px 22px rgba(1,16,47,.55)}
+@media (max-width:860px){.about{padding-top:47vw;background:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 5vw) top/100% 6vw no-repeat,url(assets/about-ridge-m.jpg?v=r17f) top/100% auto no-repeat,var(--navy)}}
+/* 6 · contacts — postcard to Artem (sends via Telegram) + light footer */
+.contacts{background:var(--bone);color:var(--navy);padding:140px 0 210px;overflow:hidden}
+.ct-grid{display:grid;grid-template-columns:440px 1fr;grid-template-rows:auto 1fr;column-gap:80px;align-items:start}
+.card-wrap{grid-column:2;grid-row:1 / span 2}.ct-list{grid-column:1;grid-row:2}
+.ct-head h2{margin-top:24px;font:400 clamp(46px,4.2vw,60px)/1.02 var(--serif)}
+.ct-head>p{margin-top:26px;font-size:17px;line-height:1.65;opacity:.75;max-width:380px}
+.ct-list{margin-top:46px}
+.ct-list a{display:block;padding:14px 0 12px;border-bottom:1px solid rgba(203,152,70,.55)}
+.ct-list small{display:block;font:600 10px/1 var(--sans);letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
+.ct-list b{display:block;margin-top:8px;font:400 26px/1.1 var(--serif);transition:color .3s}
+.ct-list a:hover b{color:var(--gold)}
+.ct-list a.mail b{font-size:22px}
+.card-wrap{position:relative;padding-top:10px}
+.pcard{position:relative;background:#FBF8F1;border:1px solid rgba(2,26,82,.07);padding:52px 52px 46px;transform:rotate(-1.2deg)}
+.pcard::before{content:"";position:absolute;top:-15px;left:50%;width:120px;height:30px;margin-left:-60px;background:rgba(203,152,70,.42);box-shadow:inset 0 0 0 1px rgba(203,152,70,.18)}
+.stamp{position:absolute;right:48px;top:42px;width:96px;padding:8px 8px 6px;background:var(--cream);outline:1.5px dashed var(--gold);outline-offset:-1px}
+.stamp img{width:100%;aspect-ratio:1;object-fit:cover}
+.stamp span{display:block;text-align:center;margin-top:5px;font:600 10px/1 var(--sans);letter-spacing:.2em;color:var(--gold)}
+.pmark{position:absolute;right:120px;top:70px;width:110px;height:110px;border-radius:50%;border:1.2px solid rgba(2,26,82,.35);display:grid;place-items:center;text-align:center;font:600 9px/1.5 var(--sans);letter-spacing:.18em;color:rgba(2,26,82,.45)}
+.pmark::before{content:"";position:absolute;right:70px;top:30px;width:100px;height:44px;background:repeating-linear-gradient(180deg,rgba(2,26,82,.3) 0 1.2px,transparent 1.2px 14px)}
+.pcard h3{font:400 50px/1 "Caveat",cursive;color:var(--navy);transform:rotate(-1deg)}
+.pl{display:flex;align-items:baseline;gap:12px;margin-top:30px;font:400 32px/1.2 "Caveat",cursive;color:#1B2433}
+.pl>span{opacity:.75;white-space:nowrap}
+.pl input,.pl select{flex:1;min-width:0;font:inherit;color:var(--navy);background:none;border:0;border-bottom:1px solid rgba(2,26,82,.3);padding:0 2px 2px;outline:0;border-radius:0;-webkit-appearance:none;appearance:none}
+.pl input::placeholder{color:#1B2433;opacity:.32}
+.pl input:focus,.pl select:focus{border-bottom-color:var(--gold)}
+.pl.name{max-width:calc(100% - 230px)}
+.pl.trip select{cursor:pointer;padding-right:26px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23021A52' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 4px center}
+.send{display:flex;align-items:center;gap:26px;margin-top:40px}
+.send button{background:var(--navy);color:var(--cream);font:600 14px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:23px 36px;border-radius:40px;white-space:nowrap;transition:background .3s}
+.send button:hover{background:var(--gold);color:var(--navy)}
+.send p{font-size:12px;line-height:1.5;opacity:.6;max-width:250px}
+.ct-pol{position:absolute;right:-40px;bottom:-190px;width:200px;margin:0;background:#FBF8F1;padding:10px 10px 0;border:1px solid rgba(2,26,82,.07);transform:rotate(6deg)}
+.ct-pol img{width:100%;aspect-ratio:1;object-fit:cover}
+.ct-pol figcaption{font:400 24px/1 "Caveat",cursive;color:#1B2433;text-align:center;padding:9px 0 11px}
+.toast{position:fixed;left:50%;bottom:28px;z-index:400;transform:translate(-50%,20px);background:var(--navy);color:var(--cream);font-size:14px;padding:15px 22px;border-radius:30px;opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.foot{background:var(--cream);color:var(--navy);border-top:1px solid rgba(203,152,70,.6);padding:80px 0 34px}
+.ft-grid{display:grid;grid-template-columns:1.7fr 1fr 1.2fr .6fr;gap:40px}
+.ft-brand{display:flex;gap:18px;align-items:flex-start}.ft-brand img{width:46px}
+.ft-brand b{display:block;font:500 22px/1 var(--serif);letter-spacing:.12em}.ft-brand span{display:block;margin-top:10px;font-size:13px;opacity:.65}
+.foot h4{font:600 10px/1 var(--sans);letter-spacing:.22em;color:var(--gold);margin-bottom:16px;text-transform:uppercase}
+.foot ul{list-style:none}.foot li+li{margin-top:12px}.foot li a{font-size:14px;opacity:.85}.foot li a:hover{color:var(--gold);opacity:1}
+.ft-bot{margin-top:70px;padding-top:22px;border-top:1px solid rgba(203,152,70,.45);display:flex;justify-content:space-between;font-size:12px;opacity:.55}
+@media (max-width:1100px) and (min-width:861px){.ct-grid{grid-template-columns:320px 1fr;column-gap:50px}.pcard{padding:44px 36px 40px}.ct-pol{display:none}}
+@media (max-width:860px){
+  .contacts{padding:70px 0 80px}
+  .ct-grid{grid-template-columns:1fr}
+  .ct-head h2{font-size:44px;margin-top:16px}.ct-head>p{font-size:15px}
+  .ct-list{margin-top:0;order:3;margin-top:50px}.ct-list b{font-size:24px}.ct-list a.mail b{font-size:19px}
+  .ct-grid{display:flex;flex-direction:column}
+  .card-wrap{margin-top:40px;order:2;min-width:0;width:100%}
+  .pl select,.pl input{width:100%;text-overflow:ellipsis}
+  .pcard{transform:none;padding:28px 22px 26px}
+  .stamp{position:static;width:80px;margin-left:auto}.pmark{right:96px;top:26px;width:86px;height:86px;font-size:8px}.pmark::before{right:56px;width:70px}
+  .pcard h3{font-size:38px;margin-top:20px}
+  .pl{font-size:25px;margin-top:22px;flex-wrap:wrap}.pl.name{max-width:none}
+  .send{flex-direction:column;align-items:stretch;gap:14px;margin-top:30px}.send button{padding:20px}.send p{max-width:none}
+  .ct-pol{display:none}
+  .foot{padding:50px 0 30px}.ft-grid{grid-template-columns:1fr 1fr;gap:34px 20px}.ft-brand{grid-column:1 / -1}
+  .ft-bot{flex-direction:column;gap:8px;margin-top:44px}
+}
+/* contacts background: Fanal fog forest (Madeira) — the fog melts into the bone of the block above, content starts in the lower fog */
+.contacts{padding-top:34vw!important;background:url(assets/ct-fog.jpg?v=r27a) top/100% auto no-repeat,var(--bone)!important}
+@media (max-width:860px){.contacts{padding-top:40vw!important;background-image:url(assets/ct-fog-m.jpg?v=r27a)!important}}
+/* 5½ · FAQ — Artem's 5 questions; Tenerife sea (his photo) melts into bone above, accordion with gold lines */
+.faq{background:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 2.4vw) top/100% 3vw no-repeat,url(assets/faq-sea.jpg?v=r27a) top/100% auto no-repeat,var(--navy);color:var(--cream);padding:50vw 0 130px}
+/* FAQ on navy, like «Чому з нами» / «Про нас» */
+.faq .fq-side h2{color:var(--cream)}
+.faq .fq-list,.faq .qa{border-color:rgba(203,152,70,.45)}
+.faq .qa button{color:var(--cream)}
+.faq .qa .a p,.faq .qa .a li{color:var(--bone);opacity:.85}
+.faq .fq-tg{color:var(--cream)}.faq .fq-tg:hover{color:var(--gold)}
+.fq-grid{display:grid;grid-template-columns:440px 1fr;column-gap:80px;align-items:start}
+.fq-side{position:sticky;top:110px}
+.fq-side h2{margin-top:24px;font:400 clamp(42px,3.9vw,56px)/1.04 var(--serif)}
+.fq-pol{display:block;width:290px;margin:56px 0 0 30px;background:#FBF8F1;padding:14px 14px 0;border:1px solid rgba(2,26,82,.07);transform:rotate(-4deg);position:relative}
+.fq-pol::after{content:"";position:absolute;top:-13px;left:50%;width:92px;height:26px;margin-left:-46px;background:rgba(203,152,70,.42)}
+.fq-pol img{width:100%;aspect-ratio:1;object-fit:cover}
+.fq-pol span{display:block;text-align:center;font:400 34px/1 "Caveat",cursive;color:#1B2433;padding:12px 0 16px}
+.fq-tg{display:inline-block;margin:26px 0 0 30px;font:600 13px/1 var(--sans);letter-spacing:.08em;border-bottom:1px solid currentColor;padding-bottom:4px}
+.fq-tg:hover{color:var(--gold)}
+.fq-list{border-top:1px solid rgba(203,152,70,.55)}
+.qa{border-bottom:1px solid rgba(203,152,70,.55)}
+.qa button{width:100%;display:grid;grid-template-columns:64px 1fr 30px;align-items:baseline;text-align:left;padding:30px 0 28px;color:var(--navy)}
+.qa button i{font:500 14px/1 var(--sans);font-style:normal;letter-spacing:.06em;color:var(--gold)}
+.qa button b{font:400 clamp(24px,2.2vw,32px)/1.15 var(--serif)}
+.qa button em{font:300 30px/1 var(--sans);font-style:normal;justify-self:end;transition:transform .35s}
+.qa.open button em{transform:rotate(45deg)}
+.qa .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.qa.open .a{grid-template-rows:1fr}
+.qa .a>div{overflow:hidden;padding-left:64px;padding-right:30px}
+.qa .a p,.qa .a li{font-size:16px;line-height:1.7;opacity:.82}
+.qa .a ul{list-style:none;margin:0 0 14px}.qa .a li{position:relative;padding-left:16px}.qa .a li::before{content:"";position:absolute;left:0;top:.75em;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.qa .a p:last-child,.qa .a ul:last-child{margin-bottom:32px}
+@media (max-width:860px){
+  .faq{background-image:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 5vw),url(assets/faq-sea-m.jpg?v=r27a);background-size:100% 6vw,100% auto;padding:50vw 0 80px}
+  .fq-grid{display:flex;flex-direction:column}
+  .fq-side{position:static;display:contents}
+  .fq-side>div{order:1}.fq-list{order:2;margin-top:34px}.fq-pol{order:3;width:220px;margin:50px auto 0}.fq-pol span{font-size:27px}.fq-tg{order:4;margin:22px auto 0}
+  .fq-side h2{font-size:42px;margin-top:16px}
+  .qa button{grid-template-columns:36px 1fr 26px;padding:22px 0 20px}.qa button b{font-size:23px}.qa button em{font-size:26px}
+  .qa .a>div{padding-left:36px;padding-right:0}.qa .a p,.qa .a li{font-size:14.5px}
+}
+/* navy footer closes the page, like the navy blocks above */
+.foot{background:var(--navy);color:var(--cream);border-top:0}
+.foot .ft-bot{border-top-color:rgba(203,152,70,.3)}
+.foot li a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+<main class="hero" id="hero">
+  <div id="goldA"></div>
+  <div class="stage masked" id="stage">
+    <video id="mv" muted playsinline loop autoplay preload="auto"></video>
+    <div class="shade" id="shade"></div>
+  </div>
+
+  <div class="ui" id="ui">
+    <nav class="nav h0">
+      <a class="brand" href="#"><img src="assets/logo-gold.png" alt="The Art of Travel"></a>
+      <div class="links"><a href="#tours">Tours</a><a href="calendar-en.html">2027 Calendar</a><a href="#about">About</a><a href="reviews-en.html">Reviews</a><a href="#contacts">Contact</a></div>
+      <div class="right"><a class="lang" href="v1.html">UA</a><button class="burger" aria-label="Menu"><span></span><span></span><span></span></button></div>
+    </nav>
+    <div class="copy">
+      <h1><span><em>Explore.</em></span><span><em>Experience.</em></span><span><em class="gold">Inspire.</em></span></h1>
+      <p class="sub h0">Signature small-group tours that leave a mark.</p>
+      <a class="cta h0" href="#">Choose your trip</a>
+    </div>
+  </div>
+
+  <div class="cards" id="pstack">
+    <span class="pb pb1"></span>
+    <a class="pol ptop h0" id="pB" href="#tours"><img src="assets/tours/tenerife.jpg?v=r17a" alt="Tenerife"><p>Tenerife</p></a>
+    <a class="pol ptop h0" id="pA" href="#tours"><img src="assets/tours/dolomites.jpg?v=r17a" alt="Dolomites"><p>Dolomites</p></a>
+  </div>
+  <div class="pmeta h0"><b id="pNum">01</b><span class="pdots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span><em id="pPlace">Dolomites · Tre Cime</em></div>
+</main>
+
+
+<section class="tours" id="tours">
+  <img class="t-mtn" src="assets/ridge-fade.png" alt="">
+  <div class="wrap">
+    <div class="t-head">
+      <div class="lbl">2027 Calendar</div>
+      <h2>Upcoming trips</h2>
+      <p class="lead">Groups of up to 8. Everything in the programme is included — only flights and lunches are extra.</p>
+    </div>
+    <div class="t-pick">
+      <video class="t-ph" id="tVid" muted playsinline loop preload="none" poster="assets/r2/finder-poster.jpg?v=r17a"></video>
+      <div class="t-frame"></div>
+      <form class="wish" id="finder" onsubmit="return false">
+        <p>I want to go</p>
+        <div class="flds">
+          <label class="fld"><small>When</small><b id="fMonthT">anytime</b><select id="fMonth" aria-label="When"></select></label>
+          <i></i>
+          <label class="fld"><small>Where</small><b id="fCountryT">anywhere</b><select id="fCountry" aria-label="Where"></select></label>
+        </div>
+        <button class="go" id="fGo" type="submit">Show trips</button>
+      </form>
+    </div>
+    <div class="t-bar">
+      <a class="btn-o" href="calendar-en.html">Full 2027 calendar <span>→</span></a>
+      <div class="t-nav"><span class="count" id="tCount"></span><button class="prev" id="tPrev" aria-label="Back">←</button><button class="next" id="tNext" aria-label="Next">→</button></div>
+    </div>
+    <div class="track" id="track"></div>
+    <div class="swipe">← swipe →</div>
+    <a class="btn-o mob" href="calendar-en.html">Full 2027 calendar <span>→</span></a>
+  </div>
+</section>
+<div class="ridge"><img src="assets/ridge-fade.png" alt="Dolomites"></div>
+
+<section class="why">
+  <div class="wrap">
+    <h2>WHY US</h2>
+    <div class="why-grid">
+      <div><h3>QUALITY</h3><p>We choose only the best: premium villas, proven routes and signature chef-made meals.</p></div>
+      <div><h3>ALL INCLUSIVE</h3><p>No extra payments on site. Only flights and lunches are separate.</p></div>
+      <div><h3>SAFETY</h3><p>A licensed tour operator. A contract and active-travel insurance for everyone.</p></div>
+      <div><h3>YOUR PEOPLE</h3><p>Groups of up to 8. Your own crew and great people around you.</p></div>
+    </div>
+    <img class="mark" src="assets/logo-gold.png" alt="">
+  </div>
+</section>
+
+<section class="flight" id="flight">
+  <div class="fl-in" id="flIn">
+    <img class="cloud" src="assets/clouds/cloud1.png" alt="" style="left:62%;top:4%;width:30vw"><img class="cloud" src="assets/clouds/cloud2.png" alt="" style="left:26%;top:22%;width:34vw"><img class="cloud" src="assets/clouds/cloud3.png" alt="" style="left:78%;top:34%;width:26vw"><img class="cloud" src="assets/clouds/cloud4.png" alt="" style="left:24%;top:58%;width:22vw"><img class="cloud" src="assets/clouds/cloud5.png" alt="" style="left:2%;top:70%;width:20vw"><img class="cloud" src="assets/clouds/cloud1.png" alt="" style="left:54%;top:74%;width:22vw">
+    <div class="fl-lbl">How we welcome you</div>
+    <div class="fl-num" id="flNum">01</div>
+    <div class="steps">
+      <h3 class="step">Fly in from<br>anywhere in the world</h3>
+      <h3 class="step">Meet-up<br>at the airport</h3>
+      <h3 class="step">Transfer to<br>the first location</h3>
+    </div>
+    <div class="fl-end" id="flEnd"><p>Then — the day-by-day programme</p><a class="fl-cta" href="#tours">Choose your trip</a></div>
+    <img class="plane" id="plane" src="assets/plane-cut.png" alt="">
+    <div class="tl" id="tl"><b></b><i></i><i></i><i></i><span>Flight</span><span>Meet-up</span><span>Transfer</span></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="ab-top">
+      <div class="ab-head"><h2>Hi, I’m Artem —<br>let’s get acquainted!</h2></div>
+      <div class="ab-ph"><i class="ab-frame"></i><img src="assets/artem-front.jpg" alt="Artem, founder of The Art of Travel" loading="lazy"></div>
+      <div class="ab-body">
+        <p>I was born in Shepetivka, a small town in Ukraine. My love of travel showed early: I remember being six on a 14-hour drive to the sea, refusing to sleep and sitting up front next to my dad the whole way — watching the road and enjoying the moment.</p>
+        <p>At 19 I decided to fly across the ocean on my own and try living in Canada — without speaking the language. First I figured things out for myself, and later I helped others settle in too.</p>
+      </div>
+    </div>
+    <p class="ab-traits">RESTLESSNESS · COURAGE · ALWAYS UP FOR IT · RESOURCEFULNESS<br>ORGANISATION · RESPONSIBILITY · DISCIPLINE · SENSE OF HUMOUR</p>
+    <div class="ab-quote">
+      <div><svg viewBox="0 0 40 40" fill="none" stroke="#CB9846" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M0 32 L13 9 L20 20 L26 12 L40 32"/></svg><p>In Canada I realised I love the mountains.</p></div>
+      <div><svg viewBox="0 0 40 40" fill="none" stroke="#CB9846" stroke-width="1.8" stroke-linecap="round"><path d="M0 24 C6 14 14 14 20 24 C26 34 34 34 40 24"/></svg><p>In Mexico — that I’m crazy about the sea.</p></div>
+      <div><img src="assets/logo-gold.png" alt=""><p>In Madeira — that nothing beats the two together.</p></div>
+    </div>
+    <div class="ab-trips"><div class="lbl">8 trips behind me</div><p>Mexico · Niagara · Banff · Madeira · Tenerife · Norway · Iceland · Dolomites</p></div>
+    <div class="ab-end"><h3>Isn’t that the perfect mix<br>for the person behind your dream trip?</h3><p>It’s up to you — join us and see for yourself.</p><a class="ab-cta" href="#tours">Choose your trip</a></div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap rv-grid">
+    <div class="rv-head"><div class="lbl">Reviews</div><h2>What people say<br>after the trip</h2></div>
+    <div class="rv-pols">
+      <figure class="rp rp-m"><div class="ph"><img src="assets/reviews/madeira.jpg?v=r15a" alt="Madeira" loading="lazy"></div><figcaption>Madeira</figcaption></figure>
+      <figure class="rp rp-t"><div class="ph"><img src="assets/reviews/tenerife.jpg?v=r15a" alt="Tenerife" loading="lazy"></div><figcaption>Tenerife</figcaption></figure>
+      <figure class="rp rp-i"><div class="ph"><img src="assets/reviews/iceland.jpg?v=r15a" alt="Iceland" loading="lazy"></div><figcaption>Iceland</figcaption></figure>
+    </div>
+    <div class="rv-q rv1"><i>“</i><p>Travelling with you was as comfortable as it gets. Everything was <mark>thought through down to the smallest detail</mark>, with comfort in mind. I loved the mix of active and relaxed time — you get to see so many amazing views and still have time on the beach. I liked that meals were already included, and they were really tasty and well thought out, not just something from a supermarket. I’m really happy with the whole trip — it left me with so many emotions and impressions!</p><div class="rv-who">Traveller</div></div>
+    <div class="rv-q rv2"><i>“</i><p>Thank you for an unforgettable trip to Madeira. Everything was great and professionally planned. Only positive emotions — <mark>so glad I chose you</mark>!</p><div class="rv-who">Madeira tour traveller</div></div>
+    <a class="btn-o rv-btn" href="reviews-en.html">More reviews <span>→</span></a>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap fq-grid">
+    <aside class="fq-side">
+      <div><div class="lbl">Questions</div><h2>Good to know<br>before you go</h2></div>
+      <a class="fq-pol" href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener"><img src="assets/faq-mug.jpg?v=r21b" alt="The Art of Travel mug in Iceland" loading="lazy"><span>Message me — I’ll reply!</span></a>
+      <a class="fq-tg" href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Artem’s Telegram →</a>
+    </aside>
+    <div class="fq-list">
+      <div class="qa open"><button type="button" aria-expanded="true"><i>01</i><b>What’s included in the price?</b><em>+</em></button><div class="a"><div>
+        <ul><li>Stays in private villas</li><li>Signature breakfasts and dinners</li><li>Local transport — a premium private car and all its costs</li><li>All activities listed in the tour</li><li>Personal insurance for every traveller</li><li>Professional photos at selected locations</li></ul>
+        <p>Only flights and lunches are paid separately (we usually have lunch at local spots). No extra payments on site — if there are any additional costs, we tell you before you book.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><i>02</i><b>I’m travelling solo. Will I feel comfortable?</b><em>+</em></button><div class="a"><div>
+        <p>Don’t worry about it at all. We bring together a great crowd with the best vibe. Most of our travellers come solo — and everyone connects right away.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><i>03</i><b>Where do we stay, and how many people per room?</b><em>+</em></button><div class="a"><div>
+        <p>In a private villa with plenty of space, chosen for each trip: in Madeira — with its own pool, in Norway — with a sauna and jacuzzi. Two people per room.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><i>04</i><b>Are travellers protected?</b><em>+</em></button><div class="a"><div>
+        <p>Absolutely. The Art of Travel is an officially registered company. We sign a contract with every traveller that sets out all our obligations, and everyone gets personal insurance for the whole trip.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><i>05</i><b>How do I book a spot?</b><em>+</em></button><div class="a"><div>
+        <p>Pay a 30% deposit of the tour price — the rest is due 30 days before departure. After that, your spot is guaranteed.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contacts" id="contacts">
+  <div class="wrap ct-grid">
+    <div class="ct-head"><div class="lbl">Contact</div><h2>Let’s plan<br>your trip together</h2><p>Message Artem directly on Telegram — he’ll share the tour details and answer all your questions.</p></div>
+    <div class="card-wrap">
+      <form class="pcard" id="pcard" autocomplete="on">
+        <div class="stamp"><img src="assets/tours/dolomites.jpg?v=r19b" alt=""><span>2027</span></div>
+        <div class="pmark">THE ART<br>OF TRAVEL</div>
+        <h3>Hi Artem!</h3>
+        <label class="pl name"><span>My name is</span><input id="pName" name="name" placeholder="Emma" autocomplete="given-name"></label>
+        <label class="pl trip"><span>I want to go</span><select id="pTrip"></select></label>
+        <label class="pl"><span>Also</span><input id="pWish" placeholder="travelling with a friend"></label>
+        <div class="send"><button type="submit">Send via Telegram →</button><p>A chat with Artem will open and your postcard text will be copied — just paste it.</p></div>
+      </form>
+      <figure class="ct-pol"><img src="assets/artem-front.jpg" alt="Artem" loading="lazy"><figcaption>see you soon!</figcaption></figure>
+    </div>
+    <div class="ct-list">
+      <a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener"><small>Telegram</small><b>@ArtemPoliakov15</b></a>
+      <a href="https://www.instagram.com/_the_art.of_travel_/" target="_blank" rel="noopener"><small>Instagram</small><b>@_the_art.of_travel_</b></a>
+      <a class="mail" href="mailto:biuro.theartoftravel@gmail.com"><small>Email</small><b>biuro.theartoftravel@gmail.com</b></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand"><img src="assets/logo-gold.png" alt="The Art of Travel"><div><b>THE ART OF TRAVEL</b><span>Explore · Experience · Inspire</span></div></div>
+      <div><h4>Menu</h4><ul><li><a href="#tours">Tours</a></li><li><a href="calendar-en.html">2027 Calendar</a></li><li><a href="#about">About</a></li><li><a href="reviews-en.html">Reviews</a></li><li><a href="#contacts">Contact</a></li></ul></div>
+      <div><h4>Get in touch</h4><ul><li><a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Telegram</a></li><li><a href="https://www.instagram.com/_the_art.of_travel_/" target="_blank" rel="noopener">Instagram</a></li><li><a href="mailto:biuro.theartoftravel@gmail.com">biuro.theartoftravel@gmail.com</a></li></ul></div>
+      <div><h4>Language</h4><ul><li><a href="v1.html">UA</a> · <a href="#" aria-current="true">EN</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>© 2026 The Art of Travel</span><span>Design &amp; development — LVSKSTUDIO</span></div>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+<div class="intro" id="intro"></div>
+<div class="intro-text" id="introText">
+  <div class="name">THE ART OF TRAVEL</div>
+  <div class="slogan">Explore · Experience · Inspire</div>
+</div>
+<img class="flymark" id="flymark" src="assets/logo-gold.png" alt="" style="position:fixed;z-index:200;object-fit:contain;opacity:0;pointer-events:none">
+<button class="replay">↻ Replay intro</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="r2.js?v=r13a"></script>
+<script>
+const stage = document.getElementById('stage'), video = document.getElementById('mv'), goldA = document.getElementById('goldA');
+// new hero montage straight from Artem's 4K originals: 1440p desktop / 1080×1920 mobile; HEVC where the browser can play it (sharper at a smaller size), H.264 otherwise
+{ const m = innerWidth < 860 ? 'm' : 'd', hevc = video.canPlayType('video/mp4; codecs="hvc1"') !== '';
+  video.poster = `assets/r2/hero-${m}-poster.jpg?v=r17a`; video.src = `assets/r2/hero-${m}${hevc ? '-hevc' : ''}.mp4?v=r17a`; }
+const MW = 426, MH = 388, AX = 0.634, AY = 0.624;
+const st = {k: 0, a: 0};
+let W0, W1;
+function sizes(){
+  const vw = innerWidth, vh = innerHeight, mob = vw < 860;
+  W0 = Math.min(mob ? vw * 0.72 : vh * 0.62 * MW / MH, 560);
+  W1 = Math.hypot(vw, vh) / 0.0535 * 1.15;
+  const cy = mob ? vh * 0.42 : vh * 0.45;
+  document.getElementById('introText').style.top = (cy + W0 * MH / MW / 2 + 34) + 'px';
+  return {vw, vh, cy, mob};
+}
+let S = sizes();
+function applyMask(){
+  const W = W0 * Math.pow(W1 / W0, st.k), H = W * MH / MW;
+  const ax = 0.5 + (AX - 0.5) * st.a, ay = 0.5 + (AY - 0.5) * st.a;
+  stage.style.webkitMaskSize = stage.style.maskSize = `${W}px ${H}px`;
+  stage.style.webkitMaskPosition = stage.style.maskPosition = `${S.vw / 2 - ax * W}px ${S.cy - ay * H}px`;
+  goldA.style.backgroundSize = `${W}px ${H}px`; goldA.style.backgroundPosition = `${S.vw / 2 - ax * W}px ${S.cy - ay * H}px`;
+}
+applyMask();
+const cardInset = () => innerWidth < 860 ? 'inset(12px 12px 12px 12px round 22px)' : 'inset(24px 32px 200px 32px round 28px)';
+addEventListener('resize', () => { S = sizes(); if (stage.classList.contains('masked')) applyMask(); else stage.style.clipPath = cardInset(); });
+
+gsap.set('#pA', {rotation: -2}); gsap.set('#pB', {rotation: 3});
+gsap.set('.cards .pb', {opacity: 0});
+const tl = gsap.timeline({paused: true});
+tl.from(stage, {opacity: 0, duration: .5, ease: 'power1.out'}, 0)
+  .fromTo(st, {k: -0.06}, {k: 1, duration: 2.7, ease: 'power3.in', onUpdate: applyMask}, 0)
+  .fromTo(st, {a: 0}, {a: 1, duration: 2.7, ease: 'power4.in', immediateRender: false}, 0)
+  .to(goldA, {opacity: 0, duration: 1.0, ease: 'power1.inOut'}, .95)
+  .set(goldA, {display: 'none'}, 2.0)
+  .from('#introText > *', {opacity: 0, y: 10, stagger: .1, duration: .5, ease: 'power2.out'}, .15)
+  .to('#introText', {opacity: 0, y: 24, duration: .5, ease: 'power2.in'}, 1.05)
+  .to('#intro', {opacity: 0, duration: .3}, 2.45)
+  .add(() => { stage.classList.remove('masked'); stage.style.webkitMaskImage = stage.style.maskImage = 'none'; stage.style.clipPath = 'inset(0px 0px 0px 0px round 0px)'; }, 2.72)
+  .set('#intro', {display: 'none'}, 2.75)
+  .to(stage, {clipPath: () => cardInset(), duration: .9, ease: 'power3.inOut'}, 2.75)
+  .to('#shade', {opacity: 1, duration: .7}, 2.95)
+  .add(() => { const fm = document.getElementById('flymark'), t = document.querySelector('.brand img').getBoundingClientRect(), w0 = Math.min(110, innerWidth*.24), h0 = w0*604/569;
+      gsap.set(fm, {left: innerWidth/2 - w0/2, top: innerHeight/2 - h0/2, width: w0, height: h0, opacity: 0});
+      gsap.timeline().to(fm, {opacity: 1, duration: .25}).to(fm, {left: t.left, top: t.top, width: t.width, height: t.height, duration: .9, ease: 'power3.inOut'}, .15)
+        .set('.brand img', {opacity: 1}).set(fm, {opacity: 0}); }, 2.95)
+  .to('.nav', {opacity: 1, duration: .5}, 3.2)
+  .from('h1 em', {yPercent: 110, duration: .8, stagger: .12, ease: 'power3.out'}, 3.25)
+  .to('.sub, .cta', {opacity: 1, duration: .5, stagger: .08}, 3.65)
+  .fromTo('.cards .pb, .cards .pol', {opacity: 0, y: -60}, {opacity: 1, y: 0, duration: .7, stagger: .12, ease: 'back.out(1.4)'}, 3.6)
+  .to('.pmeta', {opacity: 1, duration: .5}, 4.1)
+;
+// one polaroid on a little stack: the NEXT photo already lies under the top one, so a change never shows an empty print
+// scenes of 2.4 s: Dolomites, Tenerife, Norway, Iceland, Dolomites, Madeira
+const SCENES = [['Dolomites','Dolomites · Tre Cime','assets/tours/dolomites.jpg'],['Tenerife','Tenerife · ocean','assets/tours/tenerife.jpg'],
+  ['Norway','Norway · winter','assets/r2/pol-norway.jpg'],['Iceland','Iceland · road','assets/tours/iceland-summer.jpg'],
+  ['Dolomites','Dolomites · valley','assets/tours/dolomites-2.jpg'],['Madeira','Madeira · ocean','assets/tours/madeira.jpg']];
+SCENES.forEach(s => { const im = new Image(); im.src = s[2] + '?v=r17a'; });
+const pNum = document.getElementById('pNum'), pPlace = document.getElementById('pPlace'), pDots = [...document.querySelectorAll('.pdots i')];
+let front = document.getElementById('pA'), back = document.getElementById('pB'), scOn = 0, polsReady = false;
+const fill = (el, sc) => { const s = SCENES[sc], im = el.querySelector('img'); im.src = s[2] + '?v=r17a'; im.alt = s[0]; el.querySelector('p').textContent = s[0]; };
+tl.add(() => { polsReady = true; });
+video.addEventListener('timeupdate', () => {
+  if (!polsReady) return;
+  const sc = Math.min(5, Math.floor((video.currentTime + .25) / 2.4));
+  if (sc === scOn) return; scOn = sc;
+  pNum.textContent = '0' + (sc + 1); pPlace.textContent = SCENES[sc][1]; pDots.forEach((d, i) => d.classList.toggle('on', i === sc));
+  if (back.querySelector('p').textContent !== SCENES[sc][0] || back.querySelector('img').src.indexOf(SCENES[sc][2]) < 0) fill(back, sc);
+  const f = front, b = back; front = b; back = f;
+  b.style.zIndex = 2; f.style.zIndex = 3;
+  gsap.to(b, {rotation: sc % 2 ? 2.5 : -2, duration: .5, ease: 'power2.out'});
+  gsap.to(f, {x: 90, y: -60, rotation: 16, opacity: 0, duration: .5, ease: 'power2.in', onComplete: () => {
+    f.style.zIndex = 1; fill(f, (sc + 1) % 6); gsap.set(f, {x: 0, y: 0, rotation: sc % 2 ? -3 : 4}); gsap.to(f, {opacity: 1, duration: .3});
+  }});
+});
+
+// ================= block 1 · nearest tours (calendar 2027 from Artem) =================
+const TOURS = [
+  ['Tenerife','2027-03-18','2027-03-25',8,1500,'tenerife',false,'tour-tenerife-en.html'],
+  ['Madeira','2027-04-11','2027-04-18',8,1500,'madeira',false,'tour-madeira-en.html'],
+  ['Iceland','2027-05-18','2027-05-26',9,2200,'iceland-summer',false,'tour-iceland-en.html'],
+  ['Azores','2027-05-29','2027-06-05',8,1600,'azores',false,'tour-azores-en.html'],
+  ['Dolomites','2027-06-10','2027-06-16',7,1650,'dolomites',false,'tour-dolomites-en.html'],
+  ['Switzerland','2027-06-17','2027-06-23',7,1650,'swiss',false,'tour-swiss-en.html'],
+  ['Norway','2027-07-05','2027-07-12',8,2000,'norway-1',false,'tour-norway-en.html'],
+  ['Norway','2027-07-13','2027-07-20',8,2000,'norway-2',false,'tour-norway-2-en.html'],
+  ['Lofoten','2027-08-20','2027-08-27',8,2100,'lofoten',false,'tour-lofoten-en.html'],
+  ['Madeira','2027-09-02','2027-09-09',8,1700,'madeira-2',true],
+  ['Dolomites','2027-09-17','2027-09-23',7,1650,'dolomites-2',false,'tour-dolomites-2-en.html'],
+  ['Switzerland','2027-09-24','2027-09-30',7,1650,'swiss-2',false,'tour-swiss-2-en.html'],
+  ['Sardinia','2027-10-05','2027-10-12',8,1650,'sardinia',false,'tour-sardinia-en.html'],
+  ['Iceland','2027-11-02','2027-11-08',7,1750,'iceland-aurora',false,'tour-iceland-aurora-en.html'],
+  ['Norway','2027-11-22','2027-11-28',7,1750,'tromso',false,'tour-tromso-en.html']
+].map(([country,from,to,days,price,img,special,page]) => ({country,from:new Date(from),to:new Date(to),days,price,img,special,page}));
+const GEN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const LOC = ['in January','in February','in March','in April','in May','in June','in July','in August','in September','in October','in November','in December'];
+const TO = {'Tenerife':'to Tenerife','Madeira':'to Madeira','Iceland':'to Iceland','Azores':'to the Azores','Dolomites':'to the Dolomites','Switzerland':'to Switzerland','Norway':'to Norway','Lofoten':'to Lofoten','Sardinia':'to Sardinia'};
+const fmtDates = t => t.from.getMonth() === t.to.getMonth()
+  ? `${t.from.getDate()}–${t.to.getDate()} ${GEN[t.to.getMonth()]}`
+  : `${t.from.getDate()} ${GEN[t.from.getMonth()]} – ${t.to.getDate()} ${GEN[t.to.getMonth()]}`;
+const track = document.getElementById('track'), fMonth = document.getElementById('fMonth'), fCountry = document.getElementById('fCountry');
+const STEP = () => (track.firstElementChild ? track.firstElementChild.offsetWidth : 380) + parseFloat(getComputedStyle(track).columnGap || 70);
+let shown = TOURS;
+function render(list){
+  shown = list;
+  track.innerHTML = list.map(t => `<div class="tour"><a class="pol" href="${t.page || '#contacts'}" data-i="${TOURS.indexOf(t)}"><img src="assets/tours/${t.img}.jpg?v=r21a" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmtDates(t)}</div></a><div class="price"><div><b>${t.days}</b><small>days</small></div><div><b>${String(t.price).replace(/\B(?=(\d{3})+$)/g, '\u202f')} €</b><small>+ flights</small></div></div></div>`).join('');
+  track.scrollLeft = 0; updateBar();
+}
+function updateBar(){
+  const step = STEP(), first = Math.round(track.scrollLeft / step), vis = Math.max(1, Math.round((track.clientWidth - 28 + parseFloat(getComputedStyle(track).columnGap)) / step));
+  const last = Math.min(shown.length, first + vis), pad = n => String(n).padStart(2, '0');
+  document.getElementById('tCount').textContent = `${pad(first + 1)} — ${pad(last)}  of  ${shown.length}`;
+  document.getElementById('tPrev').disabled = first <= 0;
+  document.getElementById('tNext').disabled = last >= shown.length;
+}
+track.addEventListener('scroll', () => requestAnimationFrame(updateBar), {passive: true});
+addEventListener('resize', updateBar);
+document.getElementById('tPrev').onclick = () => track.scrollBy({left: -STEP()});
+document.getElementById('tNext').onclick = () => track.scrollBy({left: STEP()});
+// sentence filter: «Хочу поїхати [у травні] [на Азори]» — the place list only offers what exists in that month
+const months = [...new Set(TOURS.map(t => t.from.getMonth()))];
+fMonth.innerHTML = '<option value="">anytime</option>' + months.map(m => `<option value="${m}">${LOC[m]}</option>`).join('');
+const syncText = () => { document.getElementById('fMonthT').textContent = fMonth.options[fMonth.selectedIndex].text; document.getElementById('fCountryT').textContent = fCountry.options[fCountry.selectedIndex].text; };
+function fillCountries(){
+  const keep = fCountry.value, m = fMonth.value;
+  const list = [...new Set(TOURS.filter(t => m === '' || t.from.getMonth() == m).map(t => t.country))];
+  fCountry.innerHTML = '<option value="">anywhere</option>' + list.map(c => `<option value="${c}"${c === keep ? ' selected' : ''}>${TO[c] || c}</option>`).join('');
+  syncText();
+}
+fMonth.onchange = fillCountries; fCountry.onchange = syncText; fillCountries();
+document.getElementById('finder').addEventListener('submit', () => {
+  const m = fMonth.value, c = fCountry.value;
+  render(TOURS.filter(t => (m === '' || t.from.getMonth() == m) && (c === '' || t.country === c)));
+  track.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
+render(TOURS);
+
+// ================= block 3 · a big plane crosses the screen through the clouds; each pass changes the step =================
+(() => {
+  const fl = document.getElementById('flight'), stage = document.getElementById('flIn'), plane = document.getElementById('plane');
+  const steps = [...stage.querySelectorAll('.step')], num = document.getElementById('flNum'), end = document.getElementById('flEnd');
+  const dots = [...stage.querySelectorAll('.tl i')], names = [...stage.querySelectorAll('.tl span')], bar = stage.querySelector('.tl b'), clouds = [...stage.querySelectorAll('.cloud')];
+  dots.forEach((d, i) => { d.style.left = `calc(6px + (100% - 12px) * ${i / 2})`; names[i].style.left = d.style.left; });
+  const sm = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+  function frame(){
+    const vw = stage.offsetWidth, vh = stage.offsetHeight, mob = vw < 860;
+    const r = fl.getBoundingClientRect(), total = fl.offsetHeight - vh;
+    const p = Math.min(Math.max(-r.top / total, 0), 1) * 3;          // 0 … 3
+    const pw = plane.offsetWidth, ph = plane.offsetHeight;
+    // 0–0.5: the plane comes in and waits at the left edge; then two passes across the whole screen; after the last one it is gone
+    let x, from = 0, to = 0, q = 0, k = 0;
+    if (p < .5) { x = -pw + sm(0, .5, p) * pw * .55; }
+    else if (p < 2.5) { k = Math.floor(p - .5) + 1; q = (p - .5) - (k - 1); const e = q * q * (3 - 2 * q);
+      const start = k === 1 ? -pw * .45 : -pw; x = start + e * (vw + pw * .15 - start); from = k - 1; to = k; }
+    else { x = vw + pw; from = 2; to = 2; q = 1; }
+    const ty = vh * (mob ? .33 : .38), bob = Math.sin(p * 3) * (mob ? 5 : 9);
+    plane.style.transform = `translate(${x}px, ${ty - ph / 2 + bob}px) rotate(${mob ? 10 : Math.sin(p * 3) * 1.2}deg)`;
+    // whole-text swap: the old step is pushed ahead and fades, the new one appears behind the wing
+    steps.forEach((s, i) => {
+      let o = 0, dx = 0;
+      if (from === to) { o = i === to ? 1 : 0; }
+      else if (i === from) { o = 1 - sm(.18, .55, q); dx = q * (mob ? 50 : 160); }
+      else if (i === to) { o = sm(.45, .85, q); dx = -(1 - sm(.45, 1, q)) * (mob ? 24 : 60); }
+      s.style.opacity = o; s.style.transform = `translateX(${dx}px)`;
+    });
+    const cur = from === to ? to : (q > .5 ? to : from);
+    num.textContent = '0' + (cur + 1);
+    dots.forEach((d, i) => d.classList.toggle('on', i <= cur));
+    names.forEach((n, i) => { n.classList.toggle('on', i === cur); n.classList.toggle('done', i < cur); });
+    bar.style.width = `calc((100% - 12px) * ${Math.min(1, (cur) / 2)})`;
+    clouds.forEach((c, i) => { c.style.transform = `translateX(${-p * (14 + i * 9)}px)`;
+      if (!c.dataset.w) c.dataset.w = parseFloat(c.style.width); c.style.width = (mob ? c.dataset.w * 2.3 : +c.dataset.w) + 'vw'; });
+    end.classList.toggle('on', p >= 2.62);
+  }
+  let busy = false;
+  const tick = () => { if (busy) return; busy = true; requestAnimationFrame(() => { frame(); busy = false; }); };
+  addEventListener('scroll', tick, {passive: true}); addEventListener('resize', tick);
+  plane.complete ? frame() : plane.addEventListener('load', frame);
+})();
+
+// reviews: polaroids drop and develop, gold line draws under the key phrase — once, when seen
+(() => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), {threshold: .35});
+  document.querySelectorAll('.rv-pols, .rv-q').forEach(n => io.observe(n));
+})();
+
+// «Хочу поїхати»: its own vertical montage (Vestrahorn, waterfall, canyon, Madeira) in the photo frame; loads only when close, pauses off screen
+(() => {
+  const v = document.getElementById('tVid'); if (!v) return;
+  const hevc = v.canPlayType('video/mp4; codecs="hvc1"') !== '';
+  let loaded = false;
+  new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {
+      if (!loaded) { loaded = true; v.src = `assets/r2/finder${hevc ? '-hevc' : ''}.mp4?v=r17b`; }
+      const pr = v.play(); if (pr) pr.catch(() => {});
+    } else v.pause();
+  }), {rootMargin: '300px 0px'}).observe(v);
+})();
+
+// contacts: the postcard becomes a ready message → copied, and Artem's Telegram chat opens (Telegram can't prefill a personal chat)
+(() => {
+  const sel = document.getElementById('pTrip'), form = document.getElementById('pcard'), toast = document.getElementById('toast');
+  sel.innerHTML = '<option value="">not sure yet — recommend one</option>' + TOURS.map((t, i) => `<option value="${i}">${TO[t.country] || t.country}, ${fmtDates(t)}${t.special ? ' (special)' : ''}</option>`).join('');
+  track.addEventListener('click', e => { const a = e.target.closest('a.pol[data-i]'); if (a) sel.value = a.dataset.i; });
+  const say = m => { toast.textContent = m; toast.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(() => toast.classList.remove('on'), 4200); };
+  const copy = txt => { let ok = false;
+    const ta = document.createElement('textarea'); ta.value = txt; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length);
+    try { ok = document.execCommand('copy'); } catch (_) {} ta.remove();
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).catch(() => {});
+    return ok; };
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('pName').value.trim(), wish = document.getElementById('pWish').value.trim(), t = TOURS[sel.value];
+    const msg = ['Hi Artem!', name && `My name is ${name}.`, t ? `I’d like to go ${TO[t.country] || t.country}, ${fmtDates(t)}.` : 'I’d love to travel with you — could you recommend a tour?', wish && `Also: ${wish}`].filter(Boolean).join(' ');
+    const ok = copy(msg);   // must happen right in the click, before the page loses focus
+    say(ok ? 'Postcard text copied — if it isn’t in the chat, just paste it' : 'Opening the chat with Artem…');
+    const url = 'https://t.me/ArtemPoliakov15?text=' + encodeURIComponent(msg);
+    if (!window.open(url, '_blank')) window.location.href = url;   // new tab right in the click; same tab if it was blocked
+  });})();
+
+// FAQ: one answer open at a time
+document.querySelectorAll('.qa button').forEach(b => b.addEventListener('click', () => {
+  const q = b.parentElement, open = !q.classList.contains('open');
+  document.querySelectorAll('.qa.open').forEach(o => { o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded', 'false'); });
+  if (open) { q.classList.add('open'); b.setAttribute('aria-expanded', 'true'); }
+}));
+
+R2.run(tl, {waitFor: [video]});
+</script>
+<script src="menu.js?v=r29a"></script>
+</body>
+</html>
