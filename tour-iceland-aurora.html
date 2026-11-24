@@ -33,7 +33,7 @@ body{background:var(--bone);color:var(--navy)}
 .book span{font-size:13px;opacity:.6}
 .hv{position:relative;margin-top:40px}
 .hv::before{content:"";position:absolute;left:50px;top:50px;right:-50px;bottom:-50px;border:1.5px solid var(--gold)}
-.hv video{position:relative;width:100%;aspect-ratio:3/4;object-fit:cover;background:#cfc6b4}
+.hv video,.hv img{position:relative;width:100%;aspect-ratio:3/4;object-fit:cover;background:#cfc6b4;display:block}
 /* photo bands from Artem's Madeira photos, melting into bone */
 .band{width:100%;height:37.5vw;background:var(--bg) top/100% auto no-repeat}
 .b1{margin-top:40px}
@@ -135,18 +135,18 @@ body{background:var(--bone);color:var(--navy)}
     <div class="facts"><div><b>7</b><small>днів</small></div><div><b>1&#8239;750 €</b><small>+ переліт</small></div><div><b>до 8</b><small>людей у групі</small></div></div>
     <div class="book"><a href="#book">Забронювати місце →</a><span>Передоплата 30% — і місце ваше</span></div>
   </div>
-  <div class="hv"><video id="hv" muted playsinline loop autoplay preload="auto" poster="assets/tour/iceland-aurora-poster.jpg?v=r23a"></video></div>
+  <div class="hv"><img src="assets/tour/iceland-aurora-hero.jpg?v=r23a" alt="Ісландія"></div>
 </header>
 
-<div class="band b1" style="--bg:url(assets/tour/iceland-band2.jpg?v=r23a);--bgm:url(assets/tour/iceland-band2-m.jpg?v=r23a)" aria-hidden="true"></div>
+<div class="band b1" style="--bg:url(assets/tour/icew-band1.jpg?v=r23a);--bgm:url(assets/tour/icew-band1-m.jpg?v=r23a)" aria-hidden="true"></div>
 
 <section class="wrap prog">
   <div class="lbl">Програма</div>
   <h2>7 днів полювання за північним сяйвом</h2>
-  <div class="mstrip"><figure style="--r:4deg"><img src="assets/tour/iceland-5723.jpg?v=r23a" alt="Ісландія — Кратер Керід" loading="lazy"><figcaption>Кратер Керід</figcaption></figure><figure style="--r:-3deg"><img src="assets/tour/iceland-5599.jpg?v=r23a" alt="Ісландія — Скоугафосс" loading="lazy"><figcaption>Скоугафосс</figcaption></figure><figure style="--r:3deg"><img src="assets/tour/iceland-5710.jpg?v=r23a" alt="Ісландія — Йокульсарлон" loading="lazy"><figcaption>Йокульсарлон</figcaption></figure><figure style="--r:-4deg"><img src="assets/tour/iceland-5606.jpg?v=r23a" alt="Ісландія — Каньйон Фьядраргльювур" loading="lazy"><figcaption>Каньйон Фьядраргльювур</figcaption></figure></div>
+  <div class="mstrip"><figure style="--r:4deg"><img src="assets/tour/icew-aurora.jpg?v=r23a" alt="Ісландія — Північне сяйво" loading="lazy"><figcaption>Північне сяйво</figcaption></figure><figure style="--r:-3deg"><img src="assets/tour/iceland-5723.jpg?v=r23a" alt="Ісландія — Кратер Керід" loading="lazy"><figcaption>Кратер Керід</figcaption></figure><figure style="--r:-3deg"><img src="assets/tour/iceland-5599.jpg?v=r23a" alt="Ісландія — Скоугафосс" loading="lazy"><figcaption>Скоугафосс</figcaption></figure><figure style="--r:3deg"><img src="assets/tour/icew-diamond.jpg?v=r23a" alt="Ісландія — Діамантовий пляж" loading="lazy"><figcaption>Діамантовий пляж</figcaption></figure><figure style="--r:-4deg"><img src="assets/tour/icew-reynis.jpg?v=r23a" alt="Ісландія — Рейнісфьяра" loading="lazy"><figcaption>Рейнісфьяра</figcaption></figure></div>
   <div class="pgrid">
     <div class="days" id="days"><span class="fill" id="fill"></span>
-      <article class="day" data-ph=""><i class="dot"></i><div class="dn"><small>День</small><b>01</b></div><div class="dt"><h3>Приліт, півострів Рейкʼянес і перше сяйво</h3><ul><li>Приліт і трансфер до вілли</li><li>Авторська вечеря та знайомство</li><li>Перше полювання за північним сяйвом поблизу бази</li></ul></div></article>
+      <article class="day" data-ph="0"><i class="dot"></i><div class="dn"><small>День</small><b>01</b></div><div class="dt"><h3>Приліт, півострів Рейкʼянес і перше сяйво</h3><ul><li>Приліт і трансфер до вілли</li><li>Авторська вечеря та знайомство</li><li>Перше полювання за північним сяйвом поблизу бази</li></ul></div></article>
       <article class="day" data-ph="1"><i class="dot"></i><div class="dn"><small>День</small><b>02</b></div><div class="dt"><h3>Золоте Кільце і кратер Керід</h3><ul><li>Тінгвеллір — розкол між тектонічними плитами Америки та Євразії</li><li>Гейзер Строкюр (виверження кожні 6–10 хвилин) і двоступеневий Гюдльфосс</li><li>Кратер Керід з бірюзовим озером</li><li>Нічна зйомка сяйва над геотермальними ландшафтами</li></ul></div></article>
       <article class="day" data-ph=""><i class="dot"></i><div class="dn"><small>День</small><b>03</b></div><div class="dt"><h3>Гаряча річка Рейкʼядалур</h3><ul><li>Трекінг у долину парів і купання в природній гарячій річці серед засніжених гір</li><li>Обід у місцевому закладі, переїзд з зупинками</li><li>Вечеря на віллі і полювання за сяйвом</li></ul></div></article>
       <article class="day" data-ph="3"><i class="dot"></i><div class="dn"><small>День</small><b>04</b></div><div class="dt"><h3>Водоспади Півдня і переїзд на базу №2</h3><ul><li>Сельяландсфосс — прохід за водяною стіною — і прихований Гльювурабуї</li><li>60-метровий Скоугафосс і секретний Квернуфосс без натовпів</li><li>Сяйво над чорними лавовими полями</li></ul></div></article>
@@ -154,11 +154,11 @@ body{background:var(--bone);color:var(--navy)}
       <article class="day" data-ph="5"><i class="dot"></i><div class="dn"><small>День</small><b>06</b></div><div class="dt"><h3>Каньйон Фьядраргльювур і чорний пляж</h3><ul><li>100-метровий закручений каньйон Фьядраргльювур</li><li>Мис Дірхолаей з камʼяною аркою в океані</li><li>Чорний пляж Рейнісфьяра, фінальна вечеря і нічна зйомка сяйва</li></ul></div></article>
       <article class="day" data-ph=""><i class="dot"></i><div class="dn"><small>День</small><b>07</b></div><div class="dt"><h3>Дорога вздовж Атлантики</h3><ul><li>Неспішний сніданок і підсумки подорожі</li><li>Панорамний переїзд до аеропорту, виліт додому</li></ul></div></article>
     </div>
-    <aside class="stick"><div class="stack"><span class="sb"></span><figure class="sp on" data-k="1" style="--r:4deg"><img src="assets/tour/iceland-5723.jpg?v=r23a" alt="Ісландія — Кратер Керід" loading="lazy"><figcaption>Ісландія · Кратер Керід</figcaption></figure><figure class="sp" data-k="3" style="--r:-3deg"><img src="assets/tour/iceland-5599.jpg?v=r23a" alt="Ісландія — Скоугафосс" loading="lazy"><figcaption>Ісландія · Скоугафосс</figcaption></figure><figure class="sp" data-k="4" style="--r:3deg"><img src="assets/tour/iceland-5710.jpg?v=r23a" alt="Ісландія — Йокульсарлон" loading="lazy"><figcaption>Ісландія · Йокульсарлон</figcaption></figure><figure class="sp" data-k="5" style="--r:-4deg"><img src="assets/tour/iceland-5606.jpg?v=r23a" alt="Ісландія — Каньйон Фьядраргльювур" loading="lazy"><figcaption>Ісландія · Каньйон Фьядраргльювур</figcaption></figure></div></aside>
+    <aside class="stick"><div class="stack"><span class="sb"></span><figure class="sp on" data-k="0" style="--r:4deg"><img src="assets/tour/icew-aurora.jpg?v=r23a" alt="Ісландія — Північне сяйво" loading="lazy"><figcaption>Ісландія · Північне сяйво</figcaption></figure><figure class="sp" data-k="1" style="--r:-3deg"><img src="assets/tour/iceland-5723.jpg?v=r23a" alt="Ісландія — Кратер Керід" loading="lazy"><figcaption>Ісландія · Кратер Керід</figcaption></figure><figure class="sp" data-k="3" style="--r:-3deg"><img src="assets/tour/iceland-5599.jpg?v=r23a" alt="Ісландія — Скоугафосс" loading="lazy"><figcaption>Ісландія · Скоугафосс</figcaption></figure><figure class="sp" data-k="4" style="--r:3deg"><img src="assets/tour/icew-diamond.jpg?v=r23a" alt="Ісландія — Діамантовий пляж" loading="lazy"><figcaption>Ісландія · Діамантовий пляж</figcaption></figure><figure class="sp" data-k="5" style="--r:-4deg"><img src="assets/tour/icew-reynis.jpg?v=r23a" alt="Ісландія — Рейнісфьяра" loading="lazy"><figcaption>Ісландія · Рейнісфьяра</figcaption></figure></div></aside>
   </div>
 </section>
 
-<div class="band b2" style="--bg:url(assets/tour/iceland-band3.jpg?v=r23a);--bgm:url(assets/tour/iceland-band3-m.jpg?v=r23a)" aria-hidden="true"></div>
+<div class="band b2" style="--bg:url(assets/tour/icew-band2.jpg?v=r23a);--bgm:url(assets/tour/icew-band2-m.jpg?v=r23a)" aria-hidden="true"></div>
 
 <section class="wrap inc">
   <div><div class="lbl">Що входить у вартість</div><ul>
@@ -167,10 +167,10 @@ body{background:var(--bone);color:var(--navy)}
     <p class="note">Доплат на місці немає. Резерв — передоплата 30%, решта за 30 днів до старту.</p></div>
 </section>
 
-<section class="cta" id="book" style="--bg:url(assets/tour/iceland-cta.jpg?v=r23a);--bgm:url(assets/tour/iceland-cta-m.jpg?v=r23a)">
+<section class="cta" id="book" style="--bg:url(assets/tour/icew-cta.jpg?v=r23a);--bgm:url(assets/tour/icew-cta-m.jpg?v=r23a)">
   <div class="wrap">
     <div><h2>Хочете до Ісландії?</h2><p>Заповніть листівку — і вона полетить Артему в Telegram.</p>
-      <figure class="apol"><img src="assets/tour/iceland-mug.jpg?v=r23a" alt="Ісландія" loading="lazy"><span>до зустрічі в Ісландії!</span></figure></div>
+      <figure class="apol"><img src="assets/tour/icew-bye.jpg?v=r23a" alt="Ісландія" loading="lazy"><span>до зустрічі в Ісландії!</span></figure></div>
     <form class="pcard" id="pcard">
       <h3>Привіт, Артеме!</h3>
       <label class="pl"><span>Мене звати</span><input id="pName" placeholder="Олена" autocomplete="given-name"></label>
@@ -200,11 +200,11 @@ body{background:var(--bone);color:var(--navy)}
 </footer>
 <div class="toast" id="toast"></div>
 <script>
-const hv = document.getElementById('hv'); hv.src = 'assets/tour/iceland-aurora' + (hv.canPlayType('video/mp4; codecs="hvc1"') !== '' ? '-hevc' : '') + '.mp4?v=r23a';
+
 // timeline: the gold line fills as you scroll; the polaroid on the right follows the day you are reading
 const sps = [...document.querySelectorAll('.sp')], daysEl = document.getElementById('days'), fill = document.getElementById('fill'), days = [...document.querySelectorAll('.day')];
 function tl(){ const r = daysEl.getBoundingClientRect(), mid = innerHeight * .6, h = Math.min(Math.max(mid - r.top, 0), r.height - 20);
-  fill.style.height = h + 'px'; let ph = '1';
+  fill.style.height = h + 'px'; let ph = '0';
   days.forEach(d => { const on = d.getBoundingClientRect().top < mid; d.classList.toggle('on', on); if (on && d.dataset.ph) ph = d.dataset.ph; });
   sps.forEach(x => x.classList.toggle('on', x.dataset.k === ph)); }
 let busy = false; addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(() => { tl(); busy = false; }); } }, {passive: true}); addEventListener('resize', tl); tl();

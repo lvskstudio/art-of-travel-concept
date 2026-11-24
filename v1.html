@@ -366,10 +366,16 @@ h1 .gold{color:var(--gold)}
   .ft-bot{flex-direction:column;gap:8px;margin-top:44px}
 }
 /* contacts background: Fanal fog forest (Madeira) — the fog melts into the bone of the block above, content starts in the lower fog */
-.contacts{padding-top:57vw!important;background:url(assets/ct-fog.jpg?v=r20f) top/100% auto no-repeat,var(--bone)!important}
-@media (max-width:860px){.contacts{padding-top:60vw!important;background-image:url(assets/ct-fog-m.jpg?v=r20f)!important}}
+.contacts{padding-top:34vw!important;background:url(assets/ct-fog.jpg?v=r27a) top/100% auto no-repeat,var(--bone)!important}
+@media (max-width:860px){.contacts{padding-top:40vw!important;background-image:url(assets/ct-fog-m.jpg?v=r27a)!important}}
 /* 5½ · FAQ — Artem's 5 questions; Tenerife sea (his photo) melts into bone above, accordion with gold lines */
-.faq{background:url(assets/faq-sea.jpg?v=r21b) top/100% auto no-repeat,var(--bone);color:var(--navy);padding:71vw 0 120px}
+.faq{background:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 2.4vw) top/100% 3vw no-repeat,url(assets/faq-sea.jpg?v=r27a) top/100% auto no-repeat,var(--navy);color:var(--cream);padding:50vw 0 130px}
+/* FAQ on navy, like «Чому з нами» / «Про нас» */
+.faq .fq-side h2{color:var(--cream)}
+.faq .fq-list,.faq .qa{border-color:rgba(203,152,70,.45)}
+.faq .qa button{color:var(--cream)}
+.faq .qa .a p,.faq .qa .a li{color:var(--bone);opacity:.85}
+.faq .fq-tg{color:var(--cream)}.faq .fq-tg:hover{color:var(--gold)}
 .fq-grid{display:grid;grid-template-columns:440px 1fr;column-gap:80px;align-items:start}
 .fq-side{position:sticky;top:110px}
 .fq-side h2{margin-top:24px;font:400 clamp(42px,3.9vw,56px)/1.04 var(--serif)}
@@ -393,7 +399,7 @@ h1 .gold{color:var(--gold)}
 .qa .a ul{list-style:none;margin:0 0 14px}.qa .a li{position:relative;padding-left:16px}.qa .a li::before{content:"";position:absolute;left:0;top:.75em;width:5px;height:5px;border-radius:50%;background:var(--gold)}
 .qa .a p:last-child,.qa .a ul:last-child{margin-bottom:32px}
 @media (max-width:860px){
-  .faq{background-image:url(assets/faq-sea-m.jpg?v=r21b);padding:66vw 0 70px}
+  .faq{background-image:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,0) 5vw),url(assets/faq-sea-m.jpg?v=r27a);background-size:100% 6vw,100% auto;padding:50vw 0 80px}
   .fq-grid{display:flex;flex-direction:column}
   .fq-side{position:static;display:contents}
   .fq-side>div{order:1}.fq-list{order:2;margin-top:34px}.fq-pol{order:3;width:220px;margin:50px auto 0}.fq-pol span{font-size:27px}.fq-tg{order:4;margin:22px auto 0}
@@ -401,6 +407,10 @@ h1 .gold{color:var(--gold)}
   .qa button{grid-template-columns:36px 1fr 26px;padding:22px 0 20px}.qa button b{font-size:23px}.qa button em{font-size:26px}
   .qa .a>div{padding-left:36px;padding-right:0}.qa .a p,.qa .a li{font-size:14.5px}
 }
+/* navy footer closes the page, like the navy blocks above */
+.foot{background:var(--navy);color:var(--cream);border-top:0}
+.foot .ft-bot{border-top-color:rgba(203,152,70,.3)}
+.foot li a:hover{color:var(--gold)}
 </style>
 </head>
 <body>
@@ -679,18 +689,18 @@ const TOURS = [
   ['Тенеріфе','2027-03-18','2027-03-25',8,1500,'tenerife',false,'tour-tenerife.html'],
   ['Мадейра','2027-04-11','2027-04-18',8,1500,'madeira',false,'tour-madeira.html'],
   ['Ісландія','2027-05-18','2027-05-26',9,2200,'iceland-summer',false,'tour-iceland.html'],
-  ['Азори','2027-05-29','2027-06-05',8,1600,'azores'],
+  ['Азори','2027-05-29','2027-06-05',8,1600,'azores',false,'tour-azores.html'],
   ['Доломіти','2027-06-10','2027-06-16',7,1650,'dolomites',false,'tour-dolomites.html'],
-  ['Швейцарія','2027-06-17','2027-06-23',7,1650,'swiss'],
-  ['Норвегія','2027-07-05','2027-07-12',8,2000,'norway-1'],
-  ['Норвегія','2027-07-13','2027-07-20',8,2000,'norway-2'],
-  ['Лофотени','2027-08-20','2027-08-27',8,2100,'lofoten'],
+  ['Швейцарія','2027-06-17','2027-06-23',7,1650,'swiss',false,'tour-swiss.html'],
+  ['Норвегія','2027-07-05','2027-07-12',8,2000,'norway-1',false,'tour-norway.html'],
+  ['Норвегія','2027-07-13','2027-07-20',8,2000,'norway-2',false,'tour-norway-2.html'],
+  ['Лофотени','2027-08-20','2027-08-27',8,2100,'lofoten',false,'tour-lofoten.html'],
   ['Мадейра','2027-09-02','2027-09-09',8,1700,'madeira-2',true],
   ['Доломіти','2027-09-17','2027-09-23',7,1650,'dolomites-2',false,'tour-dolomites-2.html'],
-  ['Швейцарія','2027-09-24','2027-09-30',7,1650,'swiss-2'],
-  ['Сардинія','2027-10-05','2027-10-12',8,1650,'sardinia'],
+  ['Швейцарія','2027-09-24','2027-09-30',7,1650,'swiss-2',false,'tour-swiss-2.html'],
+  ['Сардинія','2027-10-05','2027-10-12',8,1650,'sardinia',false,'tour-sardinia.html'],
   ['Ісландія','2027-11-02','2027-11-08',7,1750,'iceland-aurora',false,'tour-iceland-aurora.html'],
-  ['Норвегія','2027-11-22','2027-11-28',7,1750,'tromso']
+  ['Норвегія','2027-11-22','2027-11-28',7,1750,'tromso',false,'tour-tromso.html']
 ].map(([country,from,to,days,price,img,special,page]) => ({country,from:new Date(from),to:new Date(to),days,price,img,special,page}));
 const GEN = ['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
 const LOC = ['у січні','у лютому','у березні','у квітні','у травні','у червні','у липні','у серпні','у вересні','у жовтні','у листопаді','у грудні'];
