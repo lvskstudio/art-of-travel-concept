@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Календар подорожей 2027 — The Art of Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="r2.css?v=r13a">
+<style>
+body{background:var(--bone);color:var(--navy)}
+.wrap{max-width:1440px;margin:0 auto;padding:0 80px}
+.lbl{font:600 13px/1 var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+/* nav — same pieces as the home page, navy on bone */
+.nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:20px 28px 0}
+.brand img{height:54px;width:auto}
+.links{position:absolute;left:50%;top:44px;transform:translate(-50%,-50%);display:flex;gap:34px;font-size:13px}
+.links a{opacity:.85}.links a:hover,.links a.on{opacity:1;color:var(--gold)}
+.right{display:flex;gap:12px;align-items:center}
+.lang{font:500 11px/1 var(--sans);letter-spacing:.14em;opacity:.55;margin-right:10px}
+.burger{width:42px;height:42px;border-radius:50%;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.burger span{display:block;width:16px;height:1.5px;background:var(--bone)}
+
+/* header: faint mountains behind the title, like «Найближчі подорожі» */
+.head{position:relative;text-align:center;padding:110px 0 0;overflow:hidden}
+.head .mtn{position:absolute;left:0;top:0;width:100%;opacity:.17;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply;pointer-events:none}
+.head>*:not(.mtn){position:relative}
+.head h1{margin-top:24px;font:400 clamp(60px,7.4vw,108px)/1 var(--serif)}
+.head p{margin:26px auto 0;max-width:600px;font-size:18px;line-height:1.6;opacity:.78}
+/* country filter */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:46px}
+.chips button{font:600 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:13px 20px;border-radius:40px;border:1px solid rgba(2,26,82,.35);color:var(--navy);transition:background .3s,color .3s,border-color .3s}
+.chips button:hover{border-color:var(--navy)}
+.chips button.on{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+/* months flow like a wall calendar: each month = gold line + its name + its tours */
+.months{display:flex;flex-wrap:wrap;justify-content:center;gap:70px 56px;margin:80px 0 0}
+.month{display:flex;flex-direction:column}
+.month.hide{display:none}
+.month>h2{border-top:1px solid rgba(203,152,70,.85);padding-top:16px;margin-bottom:46px;display:flex;align-items:baseline;justify-content:space-between;gap:20px;font:400 32px/1 var(--serif)}
+.month>h2 small{font:600 11px/1 var(--sans);letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.row{display:flex;gap:40px}
+.tour{width:250px}
+.tour.hide{display:none}
+.pol{display:block;position:relative;background:#FBF8F1;padding:4.3% 4.3% 0;border:1px solid rgba(2,26,82,.07);color:inherit;text-decoration:none;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.tour:nth-child(3n+1) .pol{transform:rotate(-2deg)}.tour:nth-child(3n+2) .pol{transform:rotate(1.5deg)}.tour:nth-child(3n) .pol{transform:rotate(-1deg)}
+.pol:hover{transform:rotate(0) translateY(-8px)!important}
+.pol::after{content:"";position:absolute;left:50%;width:32%;aspect-ratio:120/34;margin-left:-16%;top:-4.6%;background:rgba(203,152,70,.42);box-shadow:inset 0 0 0 1px rgba(203,152,70,.18)}
+.pol img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+.pol p{font:400 34px/1 "Caveat",cursive;color:#1B2433;text-align:center;padding:14px 0 2px}
+.pol .d{font:400 22px/1 "Caveat",cursive;color:#1B2433;opacity:.68;text-align:center;padding:4px 0 22px}
+.pol .star{position:absolute;right:7%;top:8%;background:var(--gold);color:#fff;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:20px}
+.price{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(203,152,70,.85);border-bottom:1px solid rgba(203,152,70,.85);padding:16px 0 14px;text-align:center}
+.price div+div{border-left:1px solid rgba(203,152,70,.55)}
+.price b{display:block;font:500 32px/1 var(--serif)}
+.price small{display:block;margin-top:8px;font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.6}
+/* CTA */
+.cta{background:var(--navy);color:var(--cream);text-align:center;padding:120px 20px 130px}
+.cta h2{font:400 clamp(40px,4.2vw,60px)/1.05 var(--serif)}
+.cta p{margin:22px auto 0;max-width:520px;font-size:18px;line-height:1.6;color:var(--bone);opacity:.85}
+.cta a{display:inline-block;margin-top:38px;background:var(--bone);color:var(--navy);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:24px 46px;border-radius:40px;text-decoration:none;transition:background .3s}
+.cta a:hover{background:var(--gold)}
+.foot{background:var(--cream);color:var(--navy);border-top:1px solid rgba(203,152,70,.6);padding:80px 0 34px}
+.ft-grid{display:grid;grid-template-columns:1.7fr 1fr 1.2fr .6fr;gap:40px}
+.ft-brand{display:flex;gap:18px;align-items:flex-start}.ft-brand img{width:46px}
+.ft-brand b{display:block;font:500 22px/1 var(--serif);letter-spacing:.12em}.ft-brand span{display:block;margin-top:10px;font-size:13px;opacity:.65}
+.foot h4{font:600 10px/1 var(--sans);letter-spacing:.22em;color:var(--gold);margin-bottom:16px;text-transform:uppercase}
+.foot ul{list-style:none}.foot li+li{margin-top:12px}.foot li a{font-size:14px;opacity:.85}.foot li a:hover{color:var(--gold);opacity:1}
+.ft-bot{margin-top:70px;padding-top:22px;border-top:1px solid rgba(203,152,70,.45);display:flex;justify-content:space-between;font-size:12px;opacity:.55}
+.foot{background:var(--navy);color:var(--cream);border-top:1px solid rgba(203,152,70,.3)}.foot .ft-bot{border-top-color:rgba(203,152,70,.3)}
+@media (max-width:1240px) and (min-width:861px){.tour{width:210px}.row{gap:30px}.months{gap:60px 40px}}
+@media (max-width:860px){
+  .wrap{padding:0 20px}.nav{padding:18px 20px 0}.links,.lang{display:none}.brand img{height:44px}
+  .head{text-align:left;padding-top:60px}.head .mtn{width:200%;left:-50%;top:30px}.head h1{font-size:52px}.head p{margin:18px 0 0;font-size:15px}
+  .chips{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;margin:30px -20px 0;padding:0 20px 6px}.chips button{flex:0 0 auto}
+  .months{display:block;margin-top:50px}.month{margin-bottom:56px}.month>h2{font-size:28px;margin-bottom:34px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:40px 18px}.tour{width:auto}
+  .pol p{font-size:24px;padding:10px 0 0}.pol .d{font-size:17px;padding:3px 0 14px}.pol .star{font-size:9px;padding:5px 8px}
+  .price{margin-top:18px;padding:11px 0 9px}.price b{font-size:22px}.price small{font-size:8px;letter-spacing:.14em;margin-top:5px}
+  .cta{padding:80px 20px 90px;text-align:left}.cta h2{font-size:38px}.cta p{margin:18px 0 0;font-size:15px}.cta a{display:block;text-align:center;padding:21px}
+  .foot{padding:50px 0 30px}.ft-grid{grid-template-columns:1fr 1fr;gap:34px 20px}.ft-brand{grid-column:1 / -1}.ft-bot{flex-direction:column;gap:8px;margin-top:44px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="v1.html"><img src="assets/logo-gold.png" alt="The Art of Travel"></a>
+  <div class="links"><a href="v1.html#tours">Тури</a><a class="on" href="calendar.html">Календар 2027</a><a href="v1.html#about">Про нас</a><a href="reviews.html">Відгуки</a><a href="v1.html#contacts">Контакти</a></div>
+  <div class="right"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
+</nav>
+<main class="wrap">
+  <header class="head">
+    <img class="mtn" src="assets/ridge-fade.png" alt="">
+    <div class="lbl">Календар 2027</div>
+    <h1>Подорожі 2027</h1>
+    <p>15 подорожей з березня по листопад. У кожній — група до 8 людей і все включено, крім перельоту та обідів.</p>
+    <div class="chips" id="chips"></div>
+  </header>
+  <section class="months" id="months"></section>
+</main>
+
+<section class="cta">
+  <h2>Не знайшли свою дату?</h2>
+  <p>Напишіть Артему — розповість, які тури ще плануються, і допоможе обрати.</p>
+  <a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Написати Артему →</a>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand"><img src="assets/logo-gold.png" alt="The Art of Travel"><div><b>THE ART OF TRAVEL</b><span>Відкривай · Відчувай · Надихайся</span></div></div>
+      <div><h4>Меню</h4><ul><li><a href="v1.html#tours">Тури</a></li><li><a href="calendar.html">Календар 2027</a></li><li><a href="v1.html#about">Про нас</a></li><li><a href="reviews.html">Відгуки</a></li><li><a href="v1.html#contacts">Контакти</a></li></ul></div>
+      <div><h4>На зв’язку</h4><ul><li><a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener">Telegram</a></li><li><a href="https://www.instagram.com/_the_art.of_travel_/" target="_blank" rel="noopener">Instagram</a></li><li><a href="mailto:biuro.theartoftravel@gmail.com">biuro.theartoftravel@gmail.com</a></li></ul></div>
+      <div><h4>Мова</h4><ul><li><a href="#">UA · EN</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>© 2026 The Art of Travel</span><span>Дизайн і розробка — LVSKSTUDIO</span></div>
+  </div>
+</footer>
+<script>
+const TOURS = [
+  ['Тенеріфе','2027-03-18','2027-03-25',8,1500,'tenerife','tour-tenerife.html'],
+  ['Мадейра','2027-04-11','2027-04-18',8,1500,'madeira','tour-madeira.html'],
+  ['Ісландія','2027-05-18','2027-05-26',9,2200,'iceland-summer','tour-iceland.html'],
+  ['Азори','2027-05-29','2027-06-05',8,1600,'azores','tour-azores.html'],
+  ['Доломіти','2027-06-10','2027-06-16',7,1650,'dolomites','tour-dolomites.html'],
+  ['Швейцарія','2027-06-17','2027-06-23',7,1650,'swiss','tour-swiss.html'],
+  ['Норвегія','2027-07-05','2027-07-12',8,2000,'norway-1','tour-norway.html'],
+  ['Норвегія','2027-07-13','2027-07-20',8,2000,'norway-2','tour-norway-2.html'],
+  ['Лофотени','2027-08-20','2027-08-27',8,2100,'lofoten','tour-lofoten.html'],
+  ['Мадейра','2027-09-02','2027-09-09',8,1700,'madeira-2','v1.html#contacts',true],
+  ['Доломіти','2027-09-17','2027-09-23',7,1650,'dolomites-2','tour-dolomites-2.html'],
+  ['Швейцарія','2027-09-24','2027-09-30',7,1650,'swiss-2','tour-swiss-2.html'],
+  ['Сардинія','2027-10-05','2027-10-12',8,1650,'sardinia','tour-sardinia.html'],
+  ['Ісландія','2027-11-02','2027-11-08',7,1750,'iceland-aurora','tour-iceland-aurora.html'],
+  ['Норвегія','2027-11-22','2027-11-28',7,1750,'tromso','tour-tromso.html']
+].map(([country,from,to,days,price,img,page,special]) => ({country,from:new Date(from),to:new Date(to),days,price,img,page,special}));
+const MON = ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'];
+const GEN = ['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
+const fmt = t => t.from.getMonth() === t.to.getMonth() ? `${t.from.getDate()}–${t.to.getDate()} ${GEN[t.to.getMonth()]}` : `${t.from.getDate()} ${GEN[t.from.getMonth()]} – ${t.to.getDate()} ${GEN[t.to.getMonth()]}`;
+const money = n => String(n).replace(/\B(?=(\d{3})+$)/g, '\u202f');
+const byMonth = {}; TOURS.forEach(t => (byMonth[t.from.getMonth()] ||= []).push(t));
+const plural = n => n === 1 ? 'подорож' : (n < 5 ? 'подорожі' : 'подорожей');
+document.getElementById('months').innerHTML = Object.keys(byMonth).map(m => `<div class="month" data-m="${m}"><h2>${MON[m]}<small>${byMonth[m].length} ${plural(byMonth[m].length)}</small></h2><div class="row">` +
+  byMonth[m].map(t => `<div class="tour" data-c="${t.country}"><a class="pol" href="${t.page}"><img src="assets/tours/${t.img}.jpg?v=r21a" alt="${t.country}" loading="lazy">${t.special ? '<span class="star">special</span>' : ''}<p>${t.country}</p><div class="d">${fmt(t)}</div></a><div class="price"><div><b>${t.days}</b><small>днів</small></div><div><b>${money(t.price)} €</b><small>+ переліт</small></div></div></div>`).join('') + '</div></div>').join('');
+// country chips
+const countries = [...new Set(TOURS.map(t => t.country))];
+const chips = document.getElementById('chips');
+chips.innerHTML = ['Усі', ...countries].map((c, i) => `<button type="button" class="${i ? '' : 'on'}" data-c="${i ? c : ''}">${c}</button>`).join('');
+chips.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+  chips.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); const c = b.dataset.c;
+  document.querySelectorAll('.tour').forEach(t => t.classList.toggle('hide', !!c && t.dataset.c !== c));
+  document.querySelectorAll('.month').forEach(m => m.classList.toggle('hide', !m.querySelector('.tour:not(.hide)'))); });
+</script>
+<script src="menu.js?v=r28a"></script>
+</body>
+</html>

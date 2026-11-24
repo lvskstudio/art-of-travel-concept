@@ -5,7 +5,7 @@
   const V = 'r28a';
   const items = [
     ['Тури', H + '#tours', 'assets/tours/dolomites.jpg', 'Доломіти'],
-    ['Календар 2027', H + '#tours', 'assets/tours/iceland-summer.jpg', 'Ісландія'],
+    ['Календар 2027', 'calendar.html', 'assets/tours/iceland-summer.jpg', 'Ісландія'],
     ['Про нас', H + '#about', 'assets/artem-front.jpg', 'Артем'],
     ['Відгуки', 'reviews.html', 'assets/reviews/madeira.jpg', 'Мадейра'],
     ['Контакти', H + '#contacts', 'assets/faq-mug.jpg', 'до зустрічі!'],
