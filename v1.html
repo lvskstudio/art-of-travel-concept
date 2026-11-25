@@ -17,7 +17,7 @@ body{background:var(--bone);color:var(--navy)}
 .stage .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,16,47,.5) 0%,rgba(1,16,47,0) 20%),linear-gradient(90deg,rgba(1,16,47,.6) 0%,rgba(1,16,47,.22) 45%,rgba(1,16,47,0) 70%),linear-gradient(0deg,rgba(1,16,47,.45),rgba(1,16,47,0) 40%);opacity:0}
 #goldA{position:fixed;inset:0;z-index:61;background:url(assets/mark-gold.png) no-repeat;pointer-events:none}
 .stage.masked{-webkit-mask-image:url(assets/mark-cream.png);mask-image:url(assets/mark-cream.png);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-.intro{position:fixed;inset:0;z-index:50;background:var(--navy)}
+.intro{position:fixed;inset:0;z-index:50;background:var(--navy-deep)}
 .intro-text{position:fixed;left:0;right:0;z-index:70;text-align:center;color:var(--cream);pointer-events:none}
 .intro-text .name{font:400 clamp(18px,1.9vw,27px)/1 var(--serif);letter-spacing:.3em}
 .intro-text .slogan{margin-top:16px;font:400 12px/1 var(--sans);letter-spacing:.22em;color:#CFC29F}
@@ -460,7 +460,7 @@ h1 .gold{color:var(--gold)}
     <div class="copy">
       <h1><span><em>Відкривай.</em></span><span><em>Відчувай.</em></span><span><em class="gold">Надихайся.</em></span></h1>
       <p class="sub h0">Авторські групові тури, які залишають слід.</p>
-      <a class="cta h0" href="#">Обрати подорож</a>
+      <a class="cta h0" href="calendar.html">Обрати подорож</a>
     </div>
   </div>
 
@@ -699,7 +699,14 @@ SCENES.forEach(s => { const im = new Image(); im.src = s[2] + '?v=r17a'; });
 const pNum = document.getElementById('pNum'), pPlace = document.getElementById('pPlace'), pDots = [...document.querySelectorAll('.pdots i')];
 let front = document.getElementById('pA'), back = document.getElementById('pB'), scOn = 0, polsReady = false;
 const fill = (el, sc) => { const s = SCENES[sc], im = el.querySelector('img'); im.src = s[2] + '?v=r17a'; im.alt = s[0]; el.querySelector('p').textContent = s[0]; };
-tl.add(() => { polsReady = true; });
+// the video starts with the page, so by the time the polaroids drop in it may already be on scene 2+:
+// right before they appear, put the photo of the CURRENT scene on top (and the next one under it) — no Dolomites over Tenerife
+tl.add(() => {
+  const sc = Math.min(5, Math.floor((video.currentTime + .25) / 2.4)); scOn = sc;
+  fill(front, sc); fill(back, (sc + 1) % 6);
+  pNum.textContent = '0' + (sc + 1); pPlace.textContent = SCENES[sc][1]; pDots.forEach((d, i) => d.classList.toggle('on', i === sc));
+  polsReady = true;
+}, 3.55);
 video.addEventListener('timeupdate', () => {
   if (!polsReady) return;
   const sc = Math.min(5, Math.floor((video.currentTime + .25) / 2.4));
