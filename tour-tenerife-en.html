@@ -47,6 +47,16 @@ body{background:var(--bone);color:var(--navy)}
 .inc-bg{margin-top:-2px;color:var(--cream);background:linear-gradient(180deg,var(--navy) calc(100% - 150px),var(--bone));padding-bottom:150px}
 .inc-bg .inc li{opacity:.9}.inc-bg .inc .no li::before{color:var(--cream)}
 .inc-logo{display:block;width:62px;height:auto;margin:0 auto}
+/* photo wall «What it looks like»: polaroids drop in one by one (like the reviews wall) */
+.gal{padding:110px 0 120px}
+.gal-h{text-align:center}.gal-h h2{margin-top:22px;font:400 clamp(48px,5vw,76px)/1 var(--serif)}
+.gal-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 60px;max-width:1100px;margin:70px auto 0}
+.gp{position:relative;margin:0;background:#FBF8F1;padding:14px 14px 0;border:1px solid rgba(2,26,82,.07);box-shadow:0 16px 36px rgba(2,26,82,.12);transform:translateY(-50px) rotate(var(--r));opacity:0;transition:opacity .6s ease var(--d),transform .9s cubic-bezier(.3,1.4,.5,1) var(--d)}
+.gp:nth-child(3n+2){margin-top:46px}
+.gal-wall.on .gp{opacity:1;transform:rotate(var(--r))}
+.gal-wall.on .gp:hover{transform:rotate(0) translateY(-6px);transition-delay:0s;z-index:2}
+.gp img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.gp figcaption{font:400 26px/1.1 "Caveat",cursive;color:#1B2433;text-align:center;padding:12px 6px 14px}
 /* program timeline */
 .prog{margin-top:0;position:relative}
 .prog h2{margin-top:22px;font:400 clamp(44px,4.3vw,62px)/1.04 var(--serif)}
@@ -121,6 +131,7 @@ body{background:var(--bone);color:var(--navy)}
   .pgrid{display:block;margin-top:34px}.stick{display:none}.day{grid-template-columns:1fr}.day+.day{margin-top:44px}.dot{left:-37px}.dn{display:flex;align-items:baseline;gap:10px}.dn b{font-size:40px;margin:0}
   .dt h3{font-size:25px;margin-top:8px}.dt li{font-size:14.5px}
   .mstrip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:30px -20px 0;padding:18px 24px 14px}.mstrip figure{flex:0 0 190px;scroll-snap-align:start;margin:0;background:#FBF8F1;padding:9px 9px 0;transform:rotate(var(--r))}.mstrip img{width:100%;aspect-ratio:1;object-fit:cover}.mstrip figcaption{font:400 20px/1.1 'Caveat',cursive;text-align:center;padding:8px 4px 10px;color:#1B2433}
+  .gal{padding:70px 0 80px}.gal-h h2{font-size:44px}.gal-wall{grid-template-columns:1fr 1fr;gap:26px 18px;margin-top:40px}.gp{padding:8px 8px 0}.gp:nth-child(3n+2){margin-top:0}.gp:nth-child(even){margin-top:30px}.gp:nth-child(9){display:none}.gp figcaption{font-size:19px;padding:8px 4px 10px}
   .inc{grid-template-columns:1fr;row-gap:50px;padding-bottom:60px}.inc-bg{padding-bottom:110px;background:linear-gradient(180deg,var(--navy) calc(100% - 110px),var(--bone))}.inc-logo{width:52px}.inc li{font-size:15px}.inc .note{font-size:21px}
   .cta{padding:90px 0 100px}.cta::before{background:linear-gradient(180deg,rgba(232,221,200,.9) 0,rgba(232,221,200,.55) 40%,rgba(232,221,200,.25) 100%)}.cta .wrap{grid-template-columns:1fr;row-gap:40px}.cta h2{font-size:40px}.apol{display:none}
   .pcard{transform:none;padding:30px 22px 26px}.pcard h3{font-size:38px}.pl{font-size:24px;flex-wrap:wrap}
@@ -243,6 +254,7 @@ body{background:var(--bone);color:var(--navy)}
 <script>
 const hv = document.getElementById('hv'); hv.src = 'assets/tour/tenerife' + (hv.canPlayType('video/mp4; codecs="hvc1"') !== '' ? '-hevc' : '') + '.mp4?v=r23a';
 // timeline: the gold line fills as you scroll; the polaroid on the right follows the day you are reading
+document.querySelectorAll('.gal-wall').forEach(w => { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { w.classList.add('on'); io.disconnect(); } }), {threshold: .12}); io.observe(w); });
 const sps = [...document.querySelectorAll('.sp')], daysEl = document.getElementById('days'), fill = document.getElementById('fill'), days = [...document.querySelectorAll('.day')];
 function tl(){ const r = daysEl.getBoundingClientRect(), mid = innerHeight * .6, h = Math.min(Math.max(mid - r.top, 0), r.height - 20);
   fill.style.height = h + 'px'; let ph = '2';
