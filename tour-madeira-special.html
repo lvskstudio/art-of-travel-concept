@@ -148,7 +148,10 @@ body{background:var(--bone);color:var(--navy)}
 .m-bell svg{width:18px;height:18px}
 .m-bell .off{display:none}.m-bell.muted .on{display:none}.m-bell.muted .off{display:block}
 .m-bell.muted{background:var(--gold);border-color:var(--gold);color:var(--navy)}
-.m-text{position:absolute;left:56px;bottom:56px;right:56px;color:var(--cream)}
+/* readable text: a soft dark pool under the copy (bottom-left) + a light shadow on the letters */
+.m-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70%;background:linear-gradient(0deg,rgba(1,16,47,.82) 0,rgba(1,16,47,.55) 40%,rgba(1,16,47,0) 100%);pointer-events:none;opacity:var(--txt,0)}
+.m-text{position:absolute;z-index:2;left:56px;bottom:56px;right:56px;color:var(--cream);text-shadow:0 2px 18px rgba(1,16,47,.55)}
+.m-text .lbl{color:#E3B866}
 .m-text .lbl{opacity:0;transform:translateY(14px)}
 .m-text h1{margin-top:20px;font:400 clamp(64px,8vw,128px)/.95 var(--serif);opacity:0;transform:translateY(24px)}
 .m-text h1 em{font-style:normal;color:var(--gold)}
@@ -293,9 +296,10 @@ body{background:var(--bone);color:var(--navy)}
     const calm = ease(cl((p - 0.1) / 0.5));
     photo.style.filter = `blur(${(1 - calm) * 7}px) saturate(${0.65 + calm * 0.35})`;
     photo.style.transform = `scale(${1.08 - calm * 0.08})`;
-    dim.style.opacity = 1 - calm * 0.15;
+    dim.style.opacity = 1 - calm * 0.7;
     const muted = p > 0.56; bell.classList.toggle('muted', muted); bellT.textContent = muted ? 'Без звуку' : 'Звук увімкнено';
     hint.style.opacity = (1 - cl(p / 0.06)) * 0.85;
+    sec.querySelector('.m-card').style.setProperty('--txt', ease(cl((p - 0.55) / 0.2)));
     txt.forEach((el, i) => { const q = ease(cl((p - 0.62 - i * 0.08) / 0.14)); el.style.opacity = q; el.style.transform = `translateY(${(1 - q) * (i === 1 ? 24 : 14)}px)`; });
   }
   let busy = false; addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(() => { frame(); busy = false; }); } }, {passive: true});
