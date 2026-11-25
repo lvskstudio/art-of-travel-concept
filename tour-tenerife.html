@@ -44,7 +44,7 @@ body{background:var(--bone);color:var(--navy)}
 .b2{margin-top:40px;position:relative}
 /* «Що входить у вартість» on navy, like «Чому з нами» on the home page: the photo melts into navy, the block fades back to bone */
 .b2::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,26,82,0) 30%,rgba(2,26,82,.6) 64%,var(--navy) 96%)}
-.inc-bg{margin-top:-2px;color:var(--cream);background:linear-gradient(180deg,var(--navy) calc(100% - 150px),var(--bone));padding-bottom:150px}
+.inc-bg{margin-top:-2px;color:var(--cream);background:linear-gradient(180deg,var(--navy) calc(100% - 240px),#0d2560 calc(100% - 200px),#3c4a72 calc(100% - 150px),#8e90a0 calc(100% - 95px),#cdc5b6 calc(100% - 40px),var(--bone) 100%);padding-bottom:220px}
 .inc-bg .inc li{opacity:.9}.inc-bg .inc .no li::before{color:var(--cream)}
 .inc-logo{display:block;width:62px;height:auto;margin:0 auto}
 /* photo wall «Як це виглядає»: polaroids drop in one by one (like the reviews wall) */
@@ -90,7 +90,9 @@ body{background:var(--bone);color:var(--navy)}
 /* CTA: postcard over Artem's fog cliff */
 .cta{position:relative;background:var(--bg) center/cover no-repeat,var(--bone);padding:150px 0 160px}
 .cta::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(232,221,200,.9) 0,rgba(232,221,200,.72) 34%,rgba(232,221,200,0) 60%)}
-.cta .wrap{position:relative;display:grid;grid-template-columns:1fr 480px;column-gap:60px;align-items:start}
+/* the postcard photo melts in from bone at the top and back into bone at the bottom — no hard edge under the navy block */
+.cta::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,var(--bone) 0,rgba(232,221,200,.9) 9%,rgba(232,221,200,.5) 20%,rgba(232,221,200,0) 36%,rgba(232,221,200,0) 72%,rgba(232,221,200,.7) 90%,var(--bone) 100%)}
+.cta .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 480px;column-gap:60px;align-items:start}
 .cta h2{font:400 clamp(44px,4.3vw,62px)/1.04 var(--serif)}.cta .wrap>div>p{margin-top:20px;font-size:17px;opacity:.78;max-width:420px}
 .apol{display:block;width:210px;margin:44px 0 0 30px;background:#FBF8F1;padding:10px 10px 0;transform:rotate(-5deg);border:1px solid rgba(2,26,82,.07)}
 .apol img{width:100%;aspect-ratio:1;object-fit:cover}.apol span{display:block;text-align:center;font:400 22px/1 "Caveat",cursive;color:#1B2433;padding:10px 0 12px}
@@ -132,11 +134,85 @@ body{background:var(--bone);color:var(--navy)}
   .dt h3{font-size:25px;margin-top:8px}.dt li{font-size:14.5px}
   .mstrip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:30px -20px 0;padding:18px 24px 14px}.mstrip figure{flex:0 0 190px;scroll-snap-align:start;margin:0;background:#FBF8F1;padding:9px 9px 0;transform:rotate(var(--r))}.mstrip img{width:100%;aspect-ratio:1;object-fit:cover}.mstrip figcaption{font:400 20px/1.1 'Caveat',cursive;text-align:center;padding:8px 4px 10px;color:#1B2433}
   .gal{padding:70px 0 80px}.gal-h h2{font-size:44px}.gal-wall{grid-template-columns:1fr 1fr;gap:26px 18px;margin-top:40px}.gp{padding:8px 8px 0}.gp:nth-child(3n+2){margin-top:0}.gp:nth-child(even){margin-top:30px}.gp:nth-child(9){display:none}.gp figcaption{font-size:19px;padding:8px 4px 10px}
-  .inc{grid-template-columns:1fr;row-gap:50px;padding-bottom:60px}.inc-bg{padding-bottom:110px;background:linear-gradient(180deg,var(--navy) calc(100% - 110px),var(--bone))}.inc-logo{width:52px}.inc li{font-size:15px}.inc .note{font-size:21px}
+  .inc{grid-template-columns:1fr;row-gap:50px;padding-bottom:60px}.inc-bg{padding-bottom:160px;background:linear-gradient(180deg,var(--navy) calc(100% - 170px),#0d2560 calc(100% - 140px),#3c4a72 calc(100% - 105px),#8e90a0 calc(100% - 65px),#cdc5b6 calc(100% - 28px),var(--bone) 100%)}.inc-logo{width:52px}.inc li{font-size:15px}.inc .note{font-size:21px}
   .cta{padding:90px 0 100px}.cta::before{background:linear-gradient(180deg,rgba(232,221,200,.9) 0,rgba(232,221,200,.55) 40%,rgba(232,221,200,.25) 100%)}.cta .wrap{grid-template-columns:1fr;row-gap:40px}.cta h2{font-size:40px}.apol{display:none}
   .pcard{transform:none;padding:30px 22px 26px}.pcard h3{font-size:38px}.pl{font-size:24px;flex-wrap:wrap}
   .more{padding-top:70px;padding-bottom:80px}.more-row{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 4px 10px;margin:40px -20px 0;padding-left:24px}.mt{flex:0 0 240px;scroll-snap-align:start}
   .foot{padding:50px 0 30px}.ft-grid{grid-template-columns:1fr 1fr;gap:34px 20px}.ft-brand{grid-column:1 / -1}.ft-bot{flex-direction:column;gap:8px;margin-top:44px}
+}
+
+/* ===== v2 hero: like the home page — a full-screen rounded video card, title over it, polaroids on the right ===== */
+.th{padding:14px 32px 0}
+.th-card{position:relative;height:calc(100vh - 110px);min-height:600px;border-radius:28px;overflow:hidden;background:#1d2a3e}
+.th-card video,.th-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.th-pic img{animation:thkb 20s ease-in-out infinite alternate}
+@keyframes thkb{from{transform:scale(1.08)}to{transform:scale(1)}}
+.th-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,16,47,.62) 0,rgba(1,16,47,.25) 45%,rgba(1,16,47,0) 70%),linear-gradient(0deg,rgba(1,16,47,.55),rgba(1,16,47,0) 45%)}
+.th-back{position:absolute;left:56px;top:40px;color:var(--cream);font:500 13px/1 var(--sans);letter-spacing:.06em;opacity:.85}.th-back:hover{opacity:1;color:var(--gold)}
+.th-text{position:absolute;left:56px;bottom:64px;color:var(--cream)}
+.th-text .lbl{color:#E3B866}
+.th-text h1{margin-top:18px;margin-left:-6px;font:400 clamp(96px,11vw,180px)/.9 var(--serif)}
+.th-dates{margin-top:14px;font:400 clamp(30px,2.6vw,40px)/1 "Caveat",cursive;color:var(--cream)}
+.th-text>*{opacity:0;transform:translateY(18px);animation:thrise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.th-text h1{animation-delay:.1s}.th-dates{animation-delay:.22s}
+@keyframes thrise{to{opacity:1;transform:none}}
+.th-stack{position:absolute;right:72px;top:50%;width:clamp(230px,21vw,320px);aspect-ratio:.84;transform:translateY(-54%)}
+.th-pol{position:absolute;inset:0;margin:0;background:#FBF8F1;padding:6% 6% 0;box-shadow:0 22px 50px rgba(1,16,47,.35);transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.th-pol::before{content:"";position:absolute;left:50%;top:-12px;width:38%;height:26px;transform:translateX(-50%) rotate(-2deg);background:rgba(219,190,140,.75)}
+.th-pol img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.th-pol figcaption{padding:10px 4px 0;text-align:center;font:400 clamp(22px,1.9vw,28px)/1 "Caveat",cursive;color:#1B2433}
+.th-pol.a{transform:rotate(-2deg);z-index:2}.th-pol.b{transform:rotate(3deg);z-index:1}
+.th-pol.out{transform:translate(90px,-60px) rotate(16deg);opacity:0}
+.th-meta{position:absolute;right:72px;bottom:44px;display:flex;align-items:center;gap:14px;color:var(--cream);font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.th-dots{display:flex;gap:6px}.th-dots i{width:6px;height:6px;border-radius:50%;border:1px solid currentColor;opacity:.7}.th-dots i.on{background:var(--gold);border-color:var(--gold);opacity:1}
+.th-facts{display:flex;align-items:center;justify-content:space-between;gap:40px;margin-top:40px}
+.th-facts .facts{margin:0;flex:1;max-width:620px}.th-facts .book{margin:0}
+.th-quote{margin-top:70px}.th-q{max-width:760px;font:400 clamp(26px,2.4vw,34px)/1.3 var(--serif)}.th-q small{display:block;margin-top:14px;font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+/* ===== v2 transition: the home «ridge → navy» — a real ridge with the sky cut out, melting into navy ===== */
+.ridge-n{height:40.6vw;margin-top:20px;background:var(--bg) top/100% auto no-repeat,linear-gradient(180deg,var(--bone) 0 50%,var(--navy) 50%)}
+.ridge-n + .inc-bg{margin-top:-1px}
+@media (max-width:860px){
+  .th{padding:12px 12px 0}
+  .th-card{height:calc(100svh - 96px);min-height:560px;border-radius:22px}
+  .th-back{left:22px;top:22px}
+  .th-text{left:22px;right:22px;bottom:34px}
+  .th-text h1{font-size:min(84px,calc((100vw - 64px) / (var(--n) * .5)))}.th-dates{font-size:30px}
+  .th-stack{right:auto;left:50%;top:92px;width:54vw;transform:translateX(-50%)}
+  .th-meta{display:none}
+  .th-facts{flex-direction:column;align-items:stretch;gap:26px;margin-top:28px}
+  .th-quote{margin-top:44px}.th-q{font-size:24px}
+  .ridge-n{height:65.6vw;background-image:var(--bgm)}
+}
+/* ===== v2 programme: big day cards you swipe through ===== */
+.prog2{padding:110px 0 30px;background:var(--mtn) center 30px/100% auto no-repeat}
+.p2-head{text-align:center}.p2-head h2{margin-top:24px;font:400 clamp(56px,6vw,96px)/1 var(--serif)}
+.p2-bar{margin-top:90px;display:flex;align-items:center;justify-content:space-between}
+.p2-count{font:600 14px/1 var(--sans);letter-spacing:.14em;opacity:.6}
+.p2-swipe{display:none;font:400 24px/1 "Caveat",cursive;opacity:.7}
+.p2-nav{display:flex;gap:14px}
+.p2-nav button{width:58px;height:58px;border-radius:50%;border:1px solid rgba(2,26,82,.35);font-size:20px;color:var(--navy);transition:opacity .3s}
+.p2-nav button.next{background:var(--navy);color:var(--bone);border-color:var(--navy)}
+.p2-nav button:disabled{opacity:.3;cursor:default}
+.p2-track{display:flex;gap:56px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;margin:20px -16px 0;padding:46px 16px 24px}
+.p2-track::-webkit-scrollbar{display:none}
+.dcard{flex:0 0 calc((100% - 112px) / 3);scroll-snap-align:start}
+.dpol{position:relative;margin:0;background:#FBF8F1;padding:14px 14px 0;border:1px solid rgba(2,26,82,.07);box-shadow:0 18px 40px rgba(2,26,82,.12);transform:rotate(var(--r))}
+.dpol::before{content:"";position:absolute;left:50%;top:-13px;width:34%;height:28px;transform:translateX(-50%) rotate(-2deg);background:rgba(219,190,140,.72)}
+.dpol img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.dpol figcaption{padding:12px 6px 16px;text-align:center;font:400 28px/1 "Caveat",cursive;color:#1B2433}
+.dtx{margin-top:34px;padding:0 4px}
+.dn{display:flex;align-items:baseline;gap:12px}.dn small{font:600 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}.dn b{font:400 54px/1 var(--serif);color:var(--gold)}
+.dtx h3{margin-top:10px;font:400 30px/1.15 var(--serif)}
+.dtx ul{list-style:none;margin-top:16px}
+.dtx li{position:relative;padding-left:18px;font-size:15px;line-height:1.55;opacity:.85}.dtx li+li{margin-top:8px}
+.dtx li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+@media (max-width:860px){
+  .prog2{padding:70px 0 10px;background-size:200% auto;background-position:center 30px}
+  .p2-head{text-align:left}.p2-head h2{font-size:44px}
+  .p2-bar{margin-top:36px}.p2-nav{display:none}.p2-swipe{display:block}
+  .p2-track{gap:24px;margin:10px -20px 0;padding:36px 20px 14px;scroll-padding-left:20px}
+  .dcard{flex-basis:80vw}
+  .dpol figcaption{font-size:24px}.dn b{font-size:44px}.dtx h3{font-size:26px}.dtx li{font-size:14.5px}
 }
 </style>
 <!-- seo -->
@@ -170,44 +246,29 @@ body{background:var(--bone);color:var(--navy)}
 <nav class="nav">
   <a class="brand" href="v1.html"><img src="assets/logo-gold.png" alt="The Art of Travel" width="569" height="604"></a>
   <div class="links"><a href="v1.html#tours">Тури</a><a href="calendar.html">Календар 2027</a><a href="v1.html#about">Про нас</a><a href="reviews.html">Відгуки</a><a href="v1.html#contacts">Контакти</a></div>
-  <div class="right"><a class="lang" href="tour-tenerife-en.html">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
+  <div class="right"><a class="lang" href="#">EN</a><button class="burger" aria-label="Меню"><span></span><span></span><span></span></button></div>
 </nav>
 
-<header class="wrap hero">
-  <div>
-    <a class="back" href="v1.html#tours">← Усі тури</a>
-    <div class="lbl">Календар 2027 · Іспанія · Канарські острови</div>
-    <h1>Тенеріфе</h1>
-    <div class="dates">18–25 березня 2027</div>
-    
-    <div class="facts"><div><b>8</b><small>днів</small></div><div><b>1&#8239;500 €</b><small>+ переліт</small></div><div><b>до 8</b><small>людей у групі</small></div></div>
-    <div class="book"><a href="#book">Забронювати місце →</a><span>Передоплата 30% — і місце ваше</span></div>
-  </div>
-  <div class="hv"><video id="hv" muted playsinline loop autoplay preload="auto" poster="assets/tour/tenerife-poster.jpg?v=r23a"></video></div>
-</header>
-
-<div class="band b1" style="--bg:url(assets/tour/tenerife-band1.jpg?v=r23a);--bgm:url(assets/tour/tenerife-band1-m.jpg?v=r23a)" aria-hidden="true"></div>
-
-<section class="wrap prog">
-  <div class="lbl">Програма</div>
-  <h2>8 днів між вулканом і океаном</h2>
-  <div class="mstrip"><figure style="--r:4deg"><img src="assets/tour/tenerife-5182.jpg?v=r23a" alt="Тенеріфе — Пляж" loading="lazy" width="700" height="700"><figcaption>Пляж</figcaption></figure><figure style="--r:-3deg"><img src="assets/tour/tenerife-3062.jpg?v=r23a" alt="Тенеріфе — Тейде" loading="lazy" width="700" height="700"><figcaption>Тейде</figcaption></figure><figure style="--r:3deg"><img src="assets/tour/tenerife-5688.jpg?v=r23a" alt="Тенеріфе — Анага" loading="lazy" width="700" height="700"><figcaption>Анага</figcaption></figure><figure style="--r:-4deg"><img src="assets/tour/tenerife-5680.jpg?v=r23a" alt="Тенеріфе — Захід сонця" loading="lazy" width="700" height="700"><figcaption>Захід сонця</figcaption></figure></div>
-  <div class="pgrid">
-    <div class="days" id="days"><span class="fill" id="fill"></span>
-      <article class="day" data-ph=""><i class="dot"></i><div class="dn"><small>День</small><b>01</b></div><div class="dt"><h3>Приліт, знайомство та релакс</h3><ul><li>Зустріч в аеропорту і трансфер на приватну віллу з басейном</li><li>Відпочинок біля басейну</li><li>Вітальна авторська вечеря, знайомство групи та огляд програми</li></ul></div></article>
-      <article class="day" data-ph=""><i class="dot"></i><div class="dn"><small>День</small><b>02</b></div><div class="dt"><h3>Селище Маска і захід сонця на Punta de Teno</h3><ul><li>Легендарне селище Маска — каньйон із запаморочливими видами на гори та фотосесія</li><li>Обід у традиційній таверні з видом на скелі</li><li>Захід сонця біля маяка Punta de Teno і скель Los Gigantes</li></ul></div></article>
-      <article class="day" data-ph="2"><i class="dot"></i><div class="dn"><small>День</small><b>03</b></div><div class="dt"><h3>Серфінг і океанічний релакс</h3><ul><li>Урок серфінгу в океані з інструктором — для початківців і досвідчених</li><li>Атмосферна фотосесія на пляжі</li><li>Обід у канарському закладі, відпочинок на пляжі</li></ul></div></article>
-      <article class="day" data-ph="3"><i class="dot"></i><div class="dn"><small>День</small><b>04</b></div><div class="dt"><h3>Вулкан Тейде і астро-вечір під зорями</h3><ul><li>Підйом на Тейде — найвищу точку Іспанії, «марсіанські» пейзажі та лавові поля</li><li>Астро-вечір у локації з ТОП-3 найкращих місць у світі для спостереження зірок</li></ul></div></article>
-      <article class="day" data-ph=""><i class="dot"></i><div class="dn"><small>День</small><b>05</b></div><div class="dt"><h3>Ocean Safari — дика Атлантика</h3><ul><li>Вихід у відкриту Атлантику на швидкісному човні — шукаємо китів і дельфінів</li><li>Свіжі морепродукти в прибережному ресторані</li><li>Відпочинок на пляжі та біля басейну</li></ul></div></article>
-      <article class="day" data-ph="5"><i class="dot"></i><div class="dn"><small>День</small><b>06</b></div><div class="dt"><h3>Скелі Анага і вулканічні басейни El Caletón</h3><ul><li>Трекінг реліктовими лісами масиву Анага</li><li>Обід у північному містечку</li><li>Купання в природних басейнах із застиглої лави прямо в океані</li></ul></div></article>
-      <article class="day" data-ph="6"><i class="dot"></i><div class="dn"><small>День</small><b>07</b></div><div class="dt"><h3>Секретний маршрут і фінальна вечеря</h3><ul><li>Трекінг секретним маршрутом</li><li>Канарські делікатеси в місцевому закладі, відпочинок на пляжі</li><li>Святкова вечеря на віллі та обмін враженнями</li></ul></div></article>
-      <article class="day" data-ph=""><i class="dot"></i><div class="dn"><small>День</small><b>08</b></div><div class="dt"><h3>Завершення пригоди</h3><ul><li>Авторський сніданок і підсумки подорожі</li><li>Трансфер до аеропорту, виліт додому</li></ul></div></article>
+<header class="th">
+  <div class="th-card">
+    <video id="thv" muted playsinline loop autoplay preload="auto" poster="assets/tour/tenerife-wide-poster.jpg?v=v2c"></video>
+    <div class="th-shade"></div>
+    <a class="th-back" href="v1.html#tours">← Усі тури</a>
+    <div class="th-text">
+      <div class="lbl">Календар 2027 · Іспанія · Канарські острови</div>
+      <h1 style="--n:8">Тенеріфе</h1>
+      <div class="th-dates">18–25 березня 2027</div>
     </div>
-    <aside class="stick"><div class="stack"><span class="sb"></span><figure class="sp on" data-k="2" style="--r:4deg"><img src="assets/tour/tenerife-5182.jpg?v=r23a" alt="Тенеріфе — Пляж" loading="lazy" width="700" height="700"><figcaption>Тенеріфе · Пляж</figcaption></figure><figure class="sp" data-k="3" style="--r:-3deg"><img src="assets/tour/tenerife-3062.jpg?v=r23a" alt="Тенеріфе — Тейде" loading="lazy" width="700" height="700"><figcaption>Тенеріфе · Тейде</figcaption></figure><figure class="sp" data-k="5" style="--r:3deg"><img src="assets/tour/tenerife-5688.jpg?v=r23a" alt="Тенеріфе — Анага" loading="lazy" width="700" height="700"><figcaption>Тенеріфе · Анага</figcaption></figure><figure class="sp" data-k="6" style="--r:-4deg"><img src="assets/tour/tenerife-5680.jpg?v=r23a" alt="Тенеріфе — Захід сонця" loading="lazy" width="700" height="700"><figcaption>Тенеріфе · Захід сонця</figcaption></figure></div></aside>
+    <div class="th-stack"><figure class="th-pol b" id="tpb"><img src="assets/tour/tenerife-d2.jpg?v=v2c" alt="Тенеріфе — Тенеріфе" width="880" height="1100"><figcaption>Тенеріфе</figcaption></figure><figure class="th-pol a" id="tpa"><img src="assets/tour/tenerife-d1.jpg?v=v2c" alt="Тенеріфе — Тенеріфе" width="880" height="1100"><figcaption>Тенеріфе</figcaption></figure></div>
+    <div class="th-meta"><span id="thN">01</span><span class="th-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span id="thP">Тенеріфе</span></div>
   </div>
-</section>
+</header>
+<section class="wrap th-facts"><div class="facts"><div><b>8</b><small>днів</small></div><div><b>1&#8239;500 €</b><small>+ переліт</small></div><div><b>до 8</b><small>людей у групі</small></div></div><div class="book"><a href="#book">Забронювати місце →</a><span>Передоплата 30% — і місце ваше</span></div></section>
 
-<div class="band b2" style="--bg:url(assets/tour/tenerife-band2.jpg?v=r23a);--bgm:url(assets/tour/tenerife-band2-m.jpg?v=r23a)" aria-hidden="true"></div>
+
+<section class="prog2" style="--mtn:url(assets/tour/tenerife-ridge-fade.jpg?v=v2c)"><div class="wrap"><div class="p2-head"><div class="lbl">Програма</div><h2>8 днів між вулканом і океаном</h2></div><div class="p2-bar"><span class="p2-count" id="p2Count"></span><span class="p2-swipe">← гортати →</span><div class="p2-nav"><button class="prev" id="p2Prev" aria-label="Назад">←</button><button class="next" id="p2Next" aria-label="Далі">→</button></div></div><div class="p2-track" id="p2Track"><article class="dcard"><figure class="dpol" style="--r:-1.5deg"><img src="assets/tour/tenerife-d1.jpg?v=v2c" alt="Тенеріфе — Тенеріфе" loading="lazy" width="880" height="1100"><figcaption>Тенеріфе</figcaption></figure><div class="dtx"><div class="dn"><small>День</small><b>01</b></div><h3>Приліт, знайомство та релакс</h3><ul><li>Зустріч в аеропорту і трансфер на приватну віллу з басейном</li><li>Відпочинок біля басейну</li><li>Вітальна авторська вечеря, знайомство групи та огляд програми</li></ul></div></article><article class="dcard"><figure class="dpol" style="--r:1.2deg"><img src="assets/tour/tenerife-d2.jpg?v=v2c" alt="Тенеріфе — Тенеріфе" loading="lazy" width="880" height="1100"><figcaption>Тенеріфе</figcaption></figure><div class="dtx"><div class="dn"><small>День</small><b>02</b></div><h3>Селище Маска і захід сонця на Punta de Teno</h3><ul><li>Легендарне селище Маска — каньйон із запаморочливими видами на гори та фотосесія</li><li>Обід у традиційній таверні з видом на скелі</li><li>Захід сонця біля маяка Punta de Teno і скель Los Gigantes</li></ul></div></article><article class="dcard"><figure class="dpol" style="--r:-0.8deg"><img src="assets/tour/tenerife-d3.jpg?v=v2c" alt="Тенеріфе — Пляж" loading="lazy" width="880" height="1100"><figcaption>Пляж</figcaption></figure><div class="dtx"><div class="dn"><small>День</small><b>03</b></div><h3>Серфінг і океанічний релакс</h3><ul><li>Урок серфінгу в океані з інструктором — для початківців і досвідчених</li><li>Атмосферна фотосесія на пляжі</li><li>Обід у канарському закладі, відпочинок на пляжі</li></ul></div></article><article class="dcard"><figure class="dpol" style="--r:-1.5deg"><img src="assets/tour/tenerife-d4.jpg?v=v2c" alt="Тенеріфе — Тейде" loading="lazy" width="880" height="1100"><figcaption>Тейде</figcaption></figure><div class="dtx"><div class="dn"><small>День</small><b>04</b></div><h3>Вулкан Тейде і астро-вечір під зорями</h3><ul><li>Підйом на Тейде — найвищу точку Іспанії, «марсіанські» пейзажі та лавові поля</li><li>Астро-вечір у локації з ТОП-3 найкращих місць у світі для спостереження зірок</li></ul></div></article><article class="dcard"><figure class="dpol" style="--r:1.2deg"><img src="assets/tour/tenerife-d5.jpg?v=v2c" alt="Тенеріфе — Тенеріфе" loading="lazy" width="880" height="1100"><figcaption>Тенеріфе</figcaption></figure><div class="dtx"><div class="dn"><small>День</small><b>05</b></div><h3>Ocean Safari — дика Атлантика</h3><ul><li>Вихід у відкриту Атлантику на швидкісному човні — шукаємо китів і дельфінів</li><li>Свіжі морепродукти в прибережному ресторані</li><li>Відпочинок на пляжі та біля басейну</li></ul></div></article><article class="dcard"><figure class="dpol" style="--r:-0.8deg"><img src="assets/tour/tenerife-d6.jpg?v=v2c" alt="Тенеріфе — Анага" loading="lazy" width="880" height="1100"><figcaption>Анага</figcaption></figure><div class="dtx"><div class="dn"><small>День</small><b>06</b></div><h3>Скелі Анага і вулканічні басейни El Caletón</h3><ul><li>Трекінг реліктовими лісами масиву Анага</li><li>Обід у північному містечку</li><li>Купання в природних басейнах із застиглої лави прямо в океані</li></ul></div></article><article class="dcard"><figure class="dpol" style="--r:-1.5deg"><img src="assets/tour/tenerife-d7.jpg?v=v2c" alt="Тенеріфе — Захід сонця" loading="lazy" width="880" height="1100"><figcaption>Захід сонця</figcaption></figure><div class="dtx"><div class="dn"><small>День</small><b>07</b></div><h3>Секретний маршрут і фінальна вечеря</h3><ul><li>Трекінг секретним маршрутом</li><li>Канарські делікатеси в місцевому закладі, відпочинок на пляжі</li><li>Святкова вечеря на віллі та обмін враженнями</li></ul></div></article><article class="dcard"><figure class="dpol" style="--r:1.2deg"><img src="assets/tour/tenerife-d8.jpg?v=v2c" alt="Тенеріфе — Тенеріфе" loading="lazy" width="880" height="1100"><figcaption>Тенеріфе</figcaption></figure><div class="dtx"><div class="dn"><small>День</small><b>08</b></div><h3>Завершення пригоди</h3><ul><li>Авторський сніданок і підсумки подорожі</li><li>Трансфер до аеропорту, виліт додому</li></ul></div></article></div></div></section>
+
+<div class="ridge-n" style="--bg:url(assets/tour/tenerife-ridge.jpg?v=v2c);--bgm:url(assets/tour/tenerife-ridge-m.jpg?v=v2c)" aria-hidden="true"></div>
 
 <div class="inc-bg">
 <section class="wrap inc">
@@ -245,22 +306,16 @@ body{background:var(--bone);color:var(--navy)}
       <div class="ft-brand"><img src="assets/logo-gold.png" alt="The Art of Travel" width="569" height="604" loading="lazy"><div><b>THE ART OF TRAVEL</b><span>Відкривай · Відчувай · Надихайся</span></div></div>
       <div><h4>Меню</h4><ul><li><a href="v1.html#tours">Тури</a></li><li><a href="calendar.html">Календар 2027</a></li><li><a href="v1.html#about">Про нас</a></li><li><a href="reviews.html">Відгуки</a></li><li><a href="v1.html#contacts">Контакти</a></li></ul></div>
       <div><h4>На зв’язку</h4><ul><li><a href="https://t.me/ArtemPoliakov15" target="_blank" rel="noopener noreferrer">Telegram</a></li><li><a href="https://www.instagram.com/_the_art.of_travel_/" target="_blank" rel="noopener noreferrer">Instagram</a></li><li><a href="mailto:biuro.theartoftravel@gmail.com">biuro.theartoftravel@gmail.com</a></li></ul></div>
-      <div><h4>Мова</h4><ul><li><a href="#" aria-current="true">UA</a> · <a href="tour-tenerife-en.html">EN</a></li></ul></div>
+      <div><h4>Мова</h4><ul><li><a href="#">UA · EN</a></li></ul></div>
     </div>
     <div class="ft-bot"><span>© 2026 The Art of Travel</span><span>Дизайн і розробка — LVSKSTUDIO</span></div>
   </div>
 </footer>
 <div class="toast" id="toast"></div>
 <script>
-const hv = document.getElementById('hv'); hv.src = 'assets/tour/tenerife' + (hv.canPlayType('video/mp4; codecs="hvc1"') !== '' ? '-hevc' : '') + '.mp4?v=r23a';
+
 // timeline: the gold line fills as you scroll; the polaroid on the right follows the day you are reading
 document.querySelectorAll('.gal-wall').forEach(w => { const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { w.classList.add('on'); io.disconnect(); } }), {threshold: .12}); io.observe(w); });
-const sps = [...document.querySelectorAll('.sp')], daysEl = document.getElementById('days'), fill = document.getElementById('fill'), days = [...document.querySelectorAll('.day')];
-function tl(){ const r = daysEl.getBoundingClientRect(), mid = innerHeight * .6, h = Math.min(Math.max(mid - r.top, 0), r.height - 20);
-  fill.style.height = h + 'px'; let ph = '2';
-  days.forEach(d => { const on = d.getBoundingClientRect().top < mid; d.classList.toggle('on', on); if (on && d.dataset.ph) ph = d.dataset.ph; });
-  sps.forEach(x => x.classList.toggle('on', x.dataset.k === ph)); }
-let busy = false; addEventListener('scroll', () => { if (!busy) { busy = true; requestAnimationFrame(() => { tl(); busy = false; }); } }, {passive: true}); addEventListener('resize', tl); tl();
 // postcard → copy text + open Artem's Telegram
 const toast = document.getElementById('toast');
 const say = m => { toast.textContent = m; toast.classList.add('on'); clearTimeout(say.t); say.t = setTimeout(() => toast.classList.remove('on'), 4200); };
@@ -274,6 +329,34 @@ document.getElementById('pcard').addEventListener('submit', e => {
   const ok = copy(msg); say(ok ? 'Текст листівки скопійовано — якщо його немає в чаті, просто вставте' : 'Відкриваємо чат з Артемом…');
   const url = 'https://t.me/ArtemPoliakov15?text=' + encodeURIComponent(msg); if (!window.open(url, '_blank')) location.href = url;
 });
+
+// v2 hero: video (HEVC where possible, wide on desktop / tall crop on phones) + polaroid stack cycling through the trip
+(() => {
+  const v = document.getElementById('thv'), m = innerWidth < 860 ? 'tall' : 'wide';
+  if (v) { const hevc = v.canPlayType('video/mp4; codecs="hvc1"') !== ''; v.poster = `assets/tour/tenerife-${m}-poster.jpg?v=v2c`; v.src = `assets/tour/tenerife-${m}${hevc ? '-hevc' : ''}.mp4?v=v2c`; }
+  const P = [["Тенеріфе", "assets/tour/tenerife-d1.jpg?v=v2c"], ["Тенеріфе", "assets/tour/tenerife-d2.jpg?v=v2c"], ["Пляж", "assets/tour/tenerife-d3.jpg?v=v2c"], ["Тейде", "assets/tour/tenerife-d4.jpg?v=v2c"], ["Тенеріфе", "assets/tour/tenerife-d5.jpg?v=v2c"], ["Анага", "assets/tour/tenerife-d6.jpg?v=v2c"], ["Захід сонця", "assets/tour/tenerife-d7.jpg?v=v2c"], ["Тенеріфе", "assets/tour/tenerife-d8.jpg?v=v2c"]], dots = [...document.querySelectorAll('.th-dots i')], n = document.getElementById('thN'), pl = document.getElementById('thP');
+  let front = document.getElementById('tpa'), back = document.getElementById('tpb'), k = 0;
+  const fill = (el, i) => { el.querySelector('img').src = P[i][1]; el.querySelector('img').alt = P[i][0]; el.querySelector('figcaption').textContent = P[i][0]; };
+  const meta = i => { dots.forEach((d, j) => d.classList.toggle('on', j === i)); n.textContent = String(i + 1).padStart(2, '0'); pl.textContent = P[i][0]; };
+  meta(0); P.forEach(p => { const im = new Image(); im.src = p[1]; });
+  setInterval(() => {
+    k = (k + 1) % P.length; meta(k);
+    const f = front, b = back; front = b; back = f;
+    b.className = 'th-pol a'; f.classList.add('out');
+    setTimeout(() => { f.className = 'th-pol b'; fill(f, (k + 1) % P.length); }, 600);
+  }, 3200);
+})();
+// programme track: arrows + «01 — 03 з 08»
+(() => {
+  const tr = document.getElementById('p2Track'); if (!tr) return;
+  const n = tr.children.length, cnt = document.getElementById('p2Count'), pv = document.getElementById('p2Prev'), nx = document.getElementById('p2Next');
+  const step = () => tr.children[0].offsetWidth + parseFloat(getComputedStyle(tr).columnGap || 56);
+  const pad = x => String(x).padStart(2, '0');
+  const upd = () => { const s = step(), f = Math.round(tr.scrollLeft / s), vis = Math.max(1, Math.round((tr.clientWidth + 20) / s)), l = Math.min(n, f + vis);
+    cnt.textContent = vis > 1 ? `${pad(f + 1)} — ${pad(l)}  з  ${pad(n)}` : `${pad(f + 1)}  з  ${pad(n)}`; pv.disabled = f <= 0; nx.disabled = l >= n; };
+  pv.onclick = () => tr.scrollBy({left: -step()}); nx.onclick = () => tr.scrollBy({left: step()});
+  tr.addEventListener('scroll', () => requestAnimationFrame(upd), {passive: true}); addEventListener('resize', upd); upd();
+})();
 </script>
 <script src="menu.js?v=r29a"></script>
 </body>
