@@ -104,8 +104,8 @@ h1 .gold{color:var(--gold)}
 /* ================= below the hero: blocks 1–3 ================= */
 .wrap{max-width:1440px;margin:0 auto;padding:0 80px}
 .lbl{font:600 13px/1 var(--sans);letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
-.btn-o{display:inline-flex;gap:12px;align-items:center;border:1px solid rgba(2,26,82,.5);color:var(--navy);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:19px 34px;border-radius:40px;transition:background .3s,color .3s}
-.btn-o:hover{background:var(--navy);color:var(--bone)}
+.btn-o{display:inline-flex;gap:12px;align-items:center;border:1px solid var(--navy);background:var(--navy);color:var(--bone);font:600 15px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:19px 34px;border-radius:40px;transition:background .3s,color .3s}
+.btn-o:hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
 .btn-o.mob,.swipe{display:none}
 /* 1 · nearest tours — faint mountains behind the heading, photo + gold line frame with the choice (ref) */
 .tours{position:relative;padding:130px 0 60px;overflow:hidden}
@@ -482,7 +482,7 @@ h1 .gold{color:var(--gold)}
       <p class="lead">Групи до 8 людей. Усе з програми вже в ціні, окремо — лише переліт та обіди.</p>
     </div>
     <div class="t-pick">
-      <video class="t-ph" id="tVid" muted playsinline loop preload="none" poster="assets/r2/finder-poster.jpg?v=r17a"></video>
+      <img class="t-ph" src="assets/r2/finder-poster.jpg?v=r17a" alt="Ісландія — гора Вестрахорн" width="1080" height="1440" loading="lazy">
       <div class="t-frame"></div>
       <form class="wish" id="finder" onsubmit="return false">
         <p>Хочу поїхати</p>
@@ -831,18 +831,6 @@ render(TOURS);
   document.querySelectorAll('.rv-pols, .rv-q').forEach(n => io.observe(n));
 })();
 
-// «Хочу поїхати»: its own vertical montage (Vestrahorn, waterfall, canyon, Madeira) in the photo frame; loads only when close, pauses off screen
-(() => {
-  const v = document.getElementById('tVid'); if (!v) return;
-  const hevc = v.canPlayType('video/mp4; codecs="hvc1"') !== '';
-  let loaded = false;
-  new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) {
-      if (!loaded) { loaded = true; v.src = `assets/r2/finder${hevc ? '-hevc' : ''}.mp4?v=r17b`; }
-      const pr = v.play(); if (pr) pr.catch(() => {});
-    } else v.pause();
-  }), {rootMargin: '300px 0px'}).observe(v);
-})();
 
 // contacts: the postcard becomes a ready message → copied, and Artem's Telegram chat opens (Telegram can't prefill a personal chat)
 (() => {
