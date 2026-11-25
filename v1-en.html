@@ -210,8 +210,8 @@ h1 .gold{color:var(--gold)}
   .t-head .lead{font-size:15px;margin-top:18px}
   .t-bar .btn-o,.t-nav{display:none}
   .t-pick{height:auto;margin-top:50px}
-  .t-ph{position:relative;left:auto;width:78%;height:300px}
-  .t-frame{left:14%;right:0;top:220px;height:auto;bottom:-24px}
+  .t-ph{position:relative;left:auto;width:78%;height:auto;aspect-ratio:3/4}
+  .t-frame{left:14%;right:0;top:calc((100vw - 40px) * .78 * 4 / 3 - 80px);height:auto;bottom:-24px}
   .wish{position:relative;left:auto;right:auto;top:auto;margin:40px 0 0 calc(14% + 24px);padding-right:20px}
   .wish > p{font-size:38px}
   .flds{flex-direction:column;gap:22px;margin-top:26px}
