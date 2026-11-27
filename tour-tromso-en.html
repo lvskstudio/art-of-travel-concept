@@ -236,9 +236,10 @@ body{background:var(--bone);color:var(--navy)}
 .film-strip{position:relative;margin-top:50px;height:400px;background:#1a1714;overflow:hidden}
 .film-strip::before,.film-strip::after{content:"";position:absolute;left:0;right:0;height:17px;z-index:2;background:repeating-linear-gradient(90deg,rgba(232,221,200,.85) 0 28px,transparent 28px 56px);background-position:10px 0}
 .film-strip::before{top:16px}.film-strip::after{bottom:16px}
-.film-scroll{height:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;cursor:grab}
-.film-scroll::-webkit-scrollbar{display:none}
-.film-run{display:flex;gap:10px;height:100%;padding:40px 0;width:max-content}
+.film-scroll{height:100%;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.film-scroll:active{cursor:grabbing}
+.film-run{display:flex;gap:10px;height:100%;padding:40px 0;width:max-content;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
+.fr img{-webkit-user-drag:none;pointer-events:none}
 .fr{position:relative;margin:0;flex:0 0 300px;height:320px}.fr.n{flex-basis:246px}
 .fr img{display:block;width:100%;height:100%;object-fit:cover}
 .fr span{position:absolute;left:8px;bottom:-24px;font:600 11px/1 var(--sans);color:#e6993a}
@@ -320,7 +321,7 @@ body{background:var(--bone);color:var(--navy)}
 <img class="inc-logo" src="assets/logo-gold.png" alt="The Art of Travel" loading="lazy" width="569" height="604">
 </div>
 
-<section class="film"><div class="wrap film-h"><div class="lbl">What it looks like</div><h2>Tromsø in pictures</h2></div><div class="film-strip" aria-label="Tromsø in pictures"><div class="film-scroll"><div class="film-run"><figure class="fr"><img src="assets/tour/gal-tromso-1.jpg?v=v2h" alt="Norway — Boats in the harbour" loading="eager" decoding="async" width="700" height="875"><span>12A</span></figure><figure class="fr n"><img src="assets/tour/gal-tromso-2.jpg?v=v2h" alt="Norway — Northern lights" loading="eager" decoding="async" width="700" height="875"><span>13A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-3.jpg?v=v2h" alt="Norway — Fjord in the snow" loading="eager" decoding="async" width="700" height="875"><span>14A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-4.jpg?v=v2h" alt="Norway — Tromsø at night" loading="eager" decoding="async" width="700" height="875"><span>15A</span></figure><figure class="fr n"><img src="assets/tour/gal-tromso-5.jpg?v=v2h" alt="Norway — Sommarøy" loading="eager" decoding="async" width="700" height="875"><span>16A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-6.jpg?v=v2h" alt="Norway — Road along the fjord" loading="eager" decoding="async" width="700" height="875"><span>17A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-7.jpg?v=v2h" alt="Norway — Aurora over the mountains" loading="eager" decoding="async" width="700" height="875"><span>18A</span></figure><figure class="fr n"><img src="assets/tour/gal-tromso-8.jpg?v=v2h" alt="Norway — Ersfjordbotn" loading="eager" decoding="async" width="700" height="875"><span>19A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-9.jpg?v=v2h" alt="Norway — A walk in the snow" loading="eager" decoding="async" width="700" height="875"><span>20A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-1.jpg?v=v2h" alt="Norway — Boats in the harbour" loading="eager" decoding="async" width="700" height="875"><span>12A</span></figure><figure aria-hidden="true" class="fr n"><img src="assets/tour/gal-tromso-2.jpg?v=v2h" alt="Norway — Northern lights" loading="eager" decoding="async" width="700" height="875"><span>13A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-3.jpg?v=v2h" alt="Norway — Fjord in the snow" loading="eager" decoding="async" width="700" height="875"><span>14A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-4.jpg?v=v2h" alt="Norway — Tromsø at night" loading="eager" decoding="async" width="700" height="875"><span>15A</span></figure><figure aria-hidden="true" class="fr n"><img src="assets/tour/gal-tromso-5.jpg?v=v2h" alt="Norway — Sommarøy" loading="eager" decoding="async" width="700" height="875"><span>16A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-6.jpg?v=v2h" alt="Norway — Road along the fjord" loading="eager" decoding="async" width="700" height="875"><span>17A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-7.jpg?v=v2h" alt="Norway — Aurora over the mountains" loading="eager" decoding="async" width="700" height="875"><span>18A</span></figure><figure aria-hidden="true" class="fr n"><img src="assets/tour/gal-tromso-8.jpg?v=v2h" alt="Norway — Ersfjordbotn" loading="eager" decoding="async" width="700" height="875"><span>19A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-9.jpg?v=v2h" alt="Norway — A walk in the snow" loading="eager" decoding="async" width="700" height="875"><span>20A</span></figure></div></div></div></section>
+<section class="film"><div class="wrap film-h"><div class="lbl">What it looks like</div><h2>Tromsø in pictures</h2></div><div class="film-strip" aria-label="Tromsø in pictures"><div class="film-scroll"><div class="film-run"><figure class="fr"><img src="assets/tour/gal-tromso-1.jpg?v=v2h" alt="Norway — Boats in the harbour" loading="eager" width="700" height="875"><span>12A</span></figure><figure class="fr n"><img src="assets/tour/gal-tromso-2.jpg?v=v2h" alt="Norway — Northern lights" loading="eager" width="700" height="875"><span>13A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-3.jpg?v=v2h" alt="Norway — Fjord in the snow" loading="eager" width="700" height="875"><span>14A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-4.jpg?v=v2h" alt="Norway — Tromsø at night" loading="eager" width="700" height="875"><span>15A</span></figure><figure class="fr n"><img src="assets/tour/gal-tromso-5.jpg?v=v2h" alt="Norway — Sommarøy" loading="eager" width="700" height="875"><span>16A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-6.jpg?v=v2h" alt="Norway — Road along the fjord" loading="eager" width="700" height="875"><span>17A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-7.jpg?v=v2h" alt="Norway — Aurora over the mountains" loading="eager" width="700" height="875"><span>18A</span></figure><figure class="fr n"><img src="assets/tour/gal-tromso-8.jpg?v=v2h" alt="Norway — Ersfjordbotn" loading="eager" width="700" height="875"><span>19A</span></figure><figure class="fr"><img src="assets/tour/gal-tromso-9.jpg?v=v2h" alt="Norway — A walk in the snow" loading="eager" width="700" height="875"><span>20A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-1.jpg?v=v2h" alt="Norway — Boats in the harbour" loading="eager" width="700" height="875"><span>12A</span></figure><figure aria-hidden="true" class="fr n"><img src="assets/tour/gal-tromso-2.jpg?v=v2h" alt="Norway — Northern lights" loading="eager" width="700" height="875"><span>13A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-3.jpg?v=v2h" alt="Norway — Fjord in the snow" loading="eager" width="700" height="875"><span>14A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-4.jpg?v=v2h" alt="Norway — Tromsø at night" loading="eager" width="700" height="875"><span>15A</span></figure><figure aria-hidden="true" class="fr n"><img src="assets/tour/gal-tromso-5.jpg?v=v2h" alt="Norway — Sommarøy" loading="eager" width="700" height="875"><span>16A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-6.jpg?v=v2h" alt="Norway — Road along the fjord" loading="eager" width="700" height="875"><span>17A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-7.jpg?v=v2h" alt="Norway — Aurora over the mountains" loading="eager" width="700" height="875"><span>18A</span></figure><figure aria-hidden="true" class="fr n"><img src="assets/tour/gal-tromso-8.jpg?v=v2h" alt="Norway — Ersfjordbotn" loading="eager" width="700" height="875"><span>19A</span></figure><figure aria-hidden="true" class="fr"><img src="assets/tour/gal-tromso-9.jpg?v=v2h" alt="Norway — A walk in the snow" loading="eager" width="700" height="875"><span>20A</span></figure></div></div></div></section>
 <section class="cta" id="book" style="--bg:url(assets/tour/tromso-cta.jpg?v=r23a);--bgm:url(assets/tour/tromso-cta-m.jpg?v=r23a)">
   <div class="wrap">
     <div><h2>Want to go to Tromsø?</h2><p>Fill in the postcard — and it will fly straight to Artem on Telegram.</p>
@@ -387,26 +388,31 @@ document.getElementById('pcard').addEventListener('submit', e => {
     setTimeout(() => { f.className = 'th-pol b'; fill(f, (k + 1) % P.length); }, 600);
   }, 3200);
 })();
-// «… в кадрах» film: runs by itself; mouse over / finger on it stops it and lets you swipe; it goes on by itself a moment later
+// «… в кадрах» film: runs by itself (GPU transform — iPhone Safari leaves black gaps when a strip is scrolled by script);
+// mouse over / finger down stops it, drag or swipe it by hand, it goes on by itself a moment later
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('.film-scroll').forEach(sc => {
     const run = sc.firstElementChild, SPEED = 70; // px per second
-    let pos = 0, last = performance.now(), hold = false, wait = 0, idle;
+    let x = 0, last = performance.now(), hold = false, idle, drag = null;
     const half = () => run.scrollWidth / 2;
-    const wrap = () => { const h = half(); if (sc.scrollLeft >= h) sc.scrollLeft -= h; else if (sc.scrollLeft <= 0) sc.scrollLeft += h; };
-    const resume = ms => { clearTimeout(idle); idle = setTimeout(() => { pos = sc.scrollLeft; hold = false; }, ms); };
-    const tick = t => {
-      const dt = Math.min(.1, (t - last) / 1000); last = t;
-      if (!hold && !still && !document.hidden) { pos += SPEED * dt; if (pos >= half()) pos -= half(); sc.scrollLeft = pos; }
-      requestAnimationFrame(tick);
-    };
+    const put = () => { const h = half(); x = ((x % h) + h) % h; run.style.transform = `translate3d(${-x}px,0,0)`; };
+    const resume = ms => { clearTimeout(idle); idle = setTimeout(() => { hold = false; }, ms); };
+    const tick = t => { const dt = Math.min(.1, (t - last) / 1000); last = t; if (!hold && !still && !document.hidden) { x += SPEED * dt; put(); } requestAnimationFrame(tick); };
     sc.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { clearTimeout(idle); hold = true; } });
-    sc.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') resume(300); });
-    sc.addEventListener('touchstart', () => { clearTimeout(idle); hold = true; }, {passive: true});
+    sc.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && !drag) resume(300); });
+    sc.addEventListener('pointerdown', e => { clearTimeout(idle); hold = true; drag = {id: e.pointerId, sx: e.clientX, sy: e.clientY, x0: x, moved: false}; });
+    sc.addEventListener('pointermove', e => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.sx;
+      if (!drag.moved && Math.abs(dx) > 6) { drag.moved = true; try { sc.setPointerCapture(e.pointerId); } catch (_) {} }
+      if (drag.moved) { x = drag.x0 - dx; put(); }
+    });
+    const end = e => { if (!drag || (e && e.pointerId !== drag.id)) return; const touch = e && e.pointerType !== 'mouse'; drag = null; if (touch) resume(2500); };
+    sc.addEventListener('pointerup', end); sc.addEventListener('pointercancel', end);
     sc.addEventListener('touchend', () => resume(2500), {passive: true});
-    sc.addEventListener('scroll', () => { if (hold) wrap(); }, {passive: true});
-    requestAnimationFrame(tick);
+    sc.addEventListener('wheel', e => { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { e.preventDefault(); x += e.deltaX; put(); } }, {passive: false});
+    put(); requestAnimationFrame(tick);
   });
 })();
 // «Where you’ll stay» strip: arrows + «01 — 03 з 05»
