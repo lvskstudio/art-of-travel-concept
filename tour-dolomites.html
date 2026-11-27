@@ -238,9 +238,10 @@ body{background:var(--bone);color:var(--navy)}
 .film-strip::before{top:16px}.film-strip::after{bottom:16px}
 .film-scroll{height:100%;overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
 .film-scroll:active{cursor:grabbing}
-.film-run{display:flex;gap:10px;height:100%;padding:40px 0;width:max-content;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
+.film-run{position:relative;height:100%}
+.film-run .fr{position:absolute;left:0;top:40px;will-change:transform;backface-visibility:hidden}
 .fr img{-webkit-user-drag:none;pointer-events:none}
-.fr{position:relative;margin:0;flex:0 0 300px;height:320px}.fr.n{flex-basis:246px}
+.fr{position:relative;margin:0;width:300px;height:320px}.fr.n{width:246px}
 .fr img{display:block;width:100%;height:100%;object-fit:cover}
 .fr span{position:absolute;left:8px;bottom:-24px;font:600 11px/1 var(--sans);color:#e6993a}
 @media (max-width:860px){
@@ -252,7 +253,7 @@ body{background:var(--bone);color:var(--navy)}
   .st-swipe{display:block;margin-top:16px;text-align:right;font:400 22px/1 "Caveat",cursive;color:var(--cream);opacity:.6}
   .film{padding:20px 0 70px}.film-h h2{font-size:40px}
   .film-strip{margin-top:30px;height:270px}.film-strip::before,.film-strip::after{height:11px;top:10px;background:repeating-linear-gradient(90deg,rgba(232,221,200,.85) 0 19px,transparent 19px 38px)}.film-strip::after{top:auto;bottom:10px}
-  .film-run{padding:27px 0;gap:8px}.fr{flex-basis:190px;height:216px}.fr.n{flex-basis:156px}.fr span{font-size:9px;bottom:-19px}
+  .film-run .fr{top:27px}.film-run .fr{width:190px;height:216px}.film-run .fr.n{width:156px}.fr span{font-size:9px;bottom:-19px}
 }
 </style>
 <!-- seo -->
@@ -388,31 +389,32 @@ document.getElementById('pcard').addEventListener('submit', e => {
     setTimeout(() => { f.className = 'th-pol b'; fill(f, (k + 1) % P.length); }, 600);
   }, 3200);
 })();
-// «… в кадрах» film: runs by itself (GPU transform — iPhone Safari leaves black gaps when a strip is scrolled by script);
-// mouse over / finger down stops it, drag or swipe it by hand, it goes on by itself a moment later
+// «… в кадрах» film: endless — every frame moves on its own and the one leaving on the left comes back at the right end
+// (one long moving strip left black gaps on iPhone Safari); mouse over / finger down stops it, drag or swipe by hand
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('.film-scroll').forEach(sc => {
-    const run = sc.firstElementChild, SPEED = 70; // px per second
-    let x = 0, last = performance.now(), hold = false, idle, drag = null;
-    const half = () => run.scrollWidth / 2;
-    const put = () => { const h = half(); x = ((x % h) + h) % h; run.style.transform = `translate3d(${-x}px,0,0)`; };
+    const run = sc.firstElementChild, fr = [...run.children], SPEED = 70; // px per second
+    let base = [], total = 0, x = 0, last = performance.now(), hold = false, idle, drag = null;
+    const layout = () => { const gap = innerWidth < 860 ? 8 : 10; base = []; total = 0; fr.forEach(f => { base.push(total); total += f.offsetWidth + gap; }); };
+    const put = () => { fr.forEach((f, i) => { let p = ((base[i] - x) % total + total) % total; if (p > total - f.offsetWidth - 12) p -= total; f.style.transform = `translate3d(${p}px,0,0)`; }); };
     const resume = ms => { clearTimeout(idle); idle = setTimeout(() => { hold = false; }, ms); };
-    const tick = t => { const dt = Math.min(.1, (t - last) / 1000); last = t; if (!hold && !still && !document.hidden) { x += SPEED * dt; put(); } requestAnimationFrame(tick); };
+    const tick = t => { const dt = Math.min(.1, (t - last) / 1000); last = t; if (!hold && !still && !document.hidden) { x = (x + SPEED * dt) % total; put(); } requestAnimationFrame(tick); };
     sc.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { clearTimeout(idle); hold = true; } });
     sc.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && !drag) resume(300); });
-    sc.addEventListener('pointerdown', e => { clearTimeout(idle); hold = true; drag = {id: e.pointerId, sx: e.clientX, sy: e.clientY, x0: x, moved: false}; });
+    sc.addEventListener('pointerdown', e => { clearTimeout(idle); hold = true; drag = {id: e.pointerId, sx: e.clientX, x0: x, moved: false}; });
     sc.addEventListener('pointermove', e => {
       if (!drag || e.pointerId !== drag.id) return;
       const dx = e.clientX - drag.sx;
       if (!drag.moved && Math.abs(dx) > 6) { drag.moved = true; try { sc.setPointerCapture(e.pointerId); } catch (_) {} }
       if (drag.moved) { x = drag.x0 - dx; put(); }
     });
-    const end = e => { if (!drag || (e && e.pointerId !== drag.id)) return; const touch = e && e.pointerType !== 'mouse'; drag = null; if (touch) resume(2500); };
+    const end = e => { if (!drag || e.pointerId !== drag.id) return; const touch = e.pointerType !== 'mouse'; drag = null; if (touch) resume(2500); };
     sc.addEventListener('pointerup', end); sc.addEventListener('pointercancel', end);
     sc.addEventListener('touchend', () => resume(2500), {passive: true});
     sc.addEventListener('wheel', e => { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { e.preventDefault(); x += e.deltaX; put(); } }, {passive: false});
-    put(); requestAnimationFrame(tick);
+    addEventListener('resize', () => { layout(); put(); });
+    layout(); put(); requestAnimationFrame(tick);
   });
 })();
 // «Де ви житимете» strip: arrows + «01 — 03 з 05»
